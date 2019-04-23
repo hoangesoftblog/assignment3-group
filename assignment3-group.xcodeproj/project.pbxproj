@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		674B17CF226EE27600A72A4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 674B17CE226EE27600A72A4B /* GoogleService-Info.plist */; };
 		67BA85092265DEDB00239E2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BA85082265DEDB00239E2D /* AppDelegate.swift */; };
 		67BA850B2265DEDB00239E2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BA850A2265DEDB00239E2D /* ViewController.swift */; };
 		67BA850E2265DEDB00239E2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67BA850C2265DEDB00239E2D /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		4DEB4BA320240A3A8ED81455 /* Pods_assignment3_group.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_assignment3_group.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		674B17CE226EE27600A72A4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		67BA85052265DEDB00239E2D /* assignment3-group.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "assignment3-group.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BA85082265DEDB00239E2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67BA850A2265DEDB00239E2D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				67BA850A2265DEDB00239E2D /* ViewController.swift */,
 				67BA850C2265DEDB00239E2D /* Main.storyboard */,
 				67BA850F2265DEDD00239E2D /* Assets.xcassets */,
+				674B17CE226EE27600A72A4B /* GoogleService-Info.plist */,
 				67BA85112265DEDD00239E2D /* LaunchScreen.storyboard */,
 				67BA85142265DEDD00239E2D /* Info.plist */,
 			);
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67BA85132265DEDD00239E2D /* LaunchScreen.storyboard in Resources */,
+				674B17CF226EE27600A72A4B /* GoogleService-Info.plist in Resources */,
 				67BA85102265DEDD00239E2D /* Assets.xcassets in Resources */,
 				67BA850E2265DEDB00239E2D /* Main.storyboard in Resources */,
 			);
