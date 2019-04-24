@@ -615,12 +615,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="hVE-ZY-IJp"/>
                     <navigationItem key="navigationItem" id="Fnp-9S-N6v"/>
-                    <connections>
-                        <outlet property="avtImageView" destination="wnR-Ph-xB1" id="28A-F3-fO8"/>
-                        <outlet property="collectionView" destination="E6s-Sj-M5M" id="KEE-1f-DCe"/>
-                        <outlet property="topView" destination="ECt-3e-a0r" id="LeN-bx-K80"/>
-                        <outlet property="uploadPhotoImageView" destination="Q3A-Yn-Vr8" id="kLS-Mi-3iw"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebr-dJ-UxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

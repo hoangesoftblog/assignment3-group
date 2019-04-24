@@ -13,7 +13,7 @@ private let reuseIdentifier = "personalCollectionViewCell"
 var cellWidth: CGFloat = 0
 var cellHeight: CGFloat = 0
 
-class MainPersonalViewController: UIViewController{
+class MainPersonalViewController:UIViewController{
     
     @IBOutlet weak var topView: UIView!
     
@@ -23,6 +23,7 @@ class MainPersonalViewController: UIViewController{
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    
     var arrImages: [String] = ["tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1"]
     
     override func viewDidLoad() {
@@ -30,7 +31,7 @@ class MainPersonalViewController: UIViewController{
         updateUI()
         collectionView.delegate = self
         collectionView.dataSource = self
-       
+      
     }
     
     override func viewDidLayoutSubviews() {
@@ -45,7 +46,7 @@ class MainPersonalViewController: UIViewController{
         uploadPhotoImageView.layer.cornerRadius = uploadPhotoImageView.frame.height/2
         uploadPhotoImageView.layer.masksToBounds = true
     }
-
+    
 }
 
 extension MainPersonalViewController:  UICollectionViewDelegateFlowLayout{

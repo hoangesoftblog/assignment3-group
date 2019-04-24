@@ -18,6 +18,7 @@
 		8877A75A2270B4490003E08E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8877A7522270B4490003E08E /* Assets.xcassets */; };
 		8877A75B2270B4490003E08E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7532270B4490003E08E /* LoginViewController.swift */; };
 		8877A7602270BAC90003E08E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8877A75E2270BAC90003E08E /* Main.storyboard */; };
+		8877A7622270BE310003E08E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7612270BE310003E08E /* ViewController.swift */; };
 		B8EE7BABF91C91CE67A39A5F /* Pods_assignment3_group.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEB4BA320240A3A8ED81455 /* Pods_assignment3_group.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		8877A7522270B4490003E08E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../AwesomePhoto/AwesomePhoto/Assets.xcassets; sourceTree = "<group>"; };
 		8877A7532270B4490003E08E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8877A75F2270BAC90003E08E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8877A7612270BE310003E08E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E93E278C32AE1F0CEFC346E6 /* Pods-assignment3-group.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-assignment3-group.release.xcconfig"; path = "Pods/Target Support Files/Pods-assignment3-group/Pods-assignment3-group.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +87,7 @@
 				674B17CE226EE27600A72A4B /* GoogleService-Info.plist */,
 				67BA85112265DEDD00239E2D /* LaunchScreen.storyboard */,
 				67BA85142265DEDD00239E2D /* Info.plist */,
+				8877A7612270BE310003E08E /* ViewController.swift */,
 			);
 			path = "assignment3-group";
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8877A7622270BE310003E08E /* ViewController.swift in Sources */,
 				8877A75B2270B4490003E08E /* LoginViewController.swift in Sources */,
 				8877A7592270B4490003E08E /* HomeViewController.swift in Sources */,
 				8877A7562270B4490003E08E /* RegisterViewController.swift in Sources */,
