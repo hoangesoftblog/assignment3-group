@@ -1,18 +1,17 @@
 //
-//  ViewController.swift
-//  assignment3-group
+//  MainPaymentViewController.swift
+//  AwesomePhoto
 //
-//  Created by Chau Phuoc Tuong on 4/24/19.
-//  Copyright © 2019 Hoang, Truong Quoc. All rights reserved.
+//  Created by Chau Phuoc Tuong on 4/21/19.
+//  Copyright © 2019 Chau Phuoc Tuong. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainPaymentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     

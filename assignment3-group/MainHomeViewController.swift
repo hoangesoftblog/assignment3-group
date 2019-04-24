@@ -13,9 +13,9 @@ class MainHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        /*let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-        self.present(controller, animated: true, completion: nil)
+        self.present(controller, animated: true, completion: nil)*/
         // Do any additional setup after loading the view.
         
     }

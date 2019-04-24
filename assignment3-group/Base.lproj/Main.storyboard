@@ -325,10 +325,10 @@
             </objects>
             <point key="canvasLocation" x="2305" y="-1813"/>
         </scene>
-        <!--View Controller-->
+        <!--About View Controller-->
         <scene sceneID="i4T-Ig-oG3">
             <objects>
-                <viewController id="iz7-Xl-a5B" sceneMemberID="viewController">
+                <viewController id="iz7-Xl-a5B" customClass="AboutViewController" customModule="assignment3_group" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GJZ-db-muK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -454,7 +454,7 @@
         <!--Main Personal View Controller-->
         <scene sceneID="sG1-2M-52z">
             <objects>
-                <viewController id="DfI-G9-rop" customClass="MainPersonalViewController" customModule="assignment3_group" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainPersonalViewController" id="DfI-G9-rop" customClass="MainPersonalViewController" customModule="assignment3_group" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ce3-sO-NYP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -615,6 +615,12 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="hVE-ZY-IJp"/>
                     <navigationItem key="navigationItem" id="Fnp-9S-N6v"/>
+                    <connections>
+                        <outlet property="avtImageView" destination="wnR-Ph-xB1" id="tbH-9G-eQV"/>
+                        <outlet property="collectionView" destination="E6s-Sj-M5M" id="vVY-UP-8lp"/>
+                        <outlet property="topView" destination="ECt-3e-a0r" id="2BF-Yn-i9F"/>
+                        <outlet property="uploadPhotoImageView" destination="Q3A-Yn-Vr8" id="1iu-4s-wLV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebr-dJ-UxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -6,14 +6,13 @@
 //  Copyright © 2019 Apple. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 private let reuseIdentifier = "personalCollectionViewCell"
 var cellWidth: CGFloat = 0
 var cellHeight: CGFloat = 0
 
-class MainPersonalViewController:UIViewController{
+class MainPersonalViewController: UIViewController{
     
     @IBOutlet weak var topView: UIView!
     
