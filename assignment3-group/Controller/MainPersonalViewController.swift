@@ -13,7 +13,7 @@ private let reuseIdentifier = "personalCollectionViewCell"
 var cellWidth: CGFloat = 0
 var cellHeight: CGFloat = 0
 
-class MainPersonalController:UIViewController{
+class MainPersonalViewController: UIViewController{
     
     @IBOutlet weak var topView: UIView!
     
@@ -48,7 +48,7 @@ class MainPersonalController:UIViewController{
 
 }
 
-extension MainPersonalController:  UICollectionViewDelegateFlowLayout{
+extension MainPersonalViewController:  UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: cellWidth/2, height: cellHeight/2)
@@ -57,7 +57,7 @@ extension MainPersonalController:  UICollectionViewDelegateFlowLayout{
     
 }
 
-extension MainPersonalController: UICollectionViewDataSource{
+extension MainPersonalViewController: UICollectionViewDataSource{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
