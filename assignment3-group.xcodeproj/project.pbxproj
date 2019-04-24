@@ -9,10 +9,15 @@
 /* Begin PBXBuildFile section */
 		674B17CF226EE27600A72A4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 674B17CE226EE27600A72A4B /* GoogleService-Info.plist */; };
 		67BA85092265DEDB00239E2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BA85082265DEDB00239E2D /* AppDelegate.swift */; };
-		67BA850B2265DEDB00239E2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BA850A2265DEDB00239E2D /* ViewController.swift */; };
-		67BA850E2265DEDB00239E2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67BA850C2265DEDB00239E2D /* Main.storyboard */; };
-		67BA85102265DEDD00239E2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67BA850F2265DEDD00239E2D /* Assets.xcassets */; };
 		67BA85132265DEDD00239E2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67BA85112265DEDD00239E2D /* LaunchScreen.storyboard */; };
+		8877A7552270B4490003E08E /* Controller in Resources */ = {isa = PBXBuildFile; fileRef = 8877A74D2270B4490003E08E /* Controller */; };
+		8877A7562270B4490003E08E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A74E2270B4490003E08E /* RegisterViewController.swift */; };
+		8877A7572270B4490003E08E /* Tutorial Screen in Resources */ = {isa = PBXBuildFile; fileRef = 8877A74F2270B4490003E08E /* Tutorial Screen */; };
+		8877A7582270B4490003E08E /* WaterMarlkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7502270B4490003E08E /* WaterMarlkViewController.swift */; };
+		8877A7592270B4490003E08E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7512270B4490003E08E /* HomeViewController.swift */; };
+		8877A75A2270B4490003E08E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8877A7522270B4490003E08E /* Assets.xcassets */; };
+		8877A75B2270B4490003E08E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7532270B4490003E08E /* LoginViewController.swift */; };
+		8877A75D2270B4960003E08E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8877A75C2270B4960003E08E /* Main.storyboard */; };
 		B8EE7BABF91C91CE67A39A5F /* Pods_assignment3_group.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEB4BA320240A3A8ED81455 /* Pods_assignment3_group.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,12 +26,17 @@
 		674B17CE226EE27600A72A4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		67BA85052265DEDB00239E2D /* assignment3-group.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "assignment3-group.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BA85082265DEDB00239E2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		67BA850A2265DEDB00239E2D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		67BA850D2265DEDB00239E2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		67BA850F2265DEDD00239E2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		67BA85122265DEDD00239E2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67BA85142265DEDD00239E2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68F509AA36AB3475A31BF471 /* Pods-assignment3-group.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-assignment3-group.debug.xcconfig"; path = "Pods/Target Support Files/Pods-assignment3-group/Pods-assignment3-group.debug.xcconfig"; sourceTree = "<group>"; };
+		8877A74D2270B4490003E08E /* Controller */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Controller; sourceTree = "<group>"; };
+		8877A74E2270B4490003E08E /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		8877A74F2270B4490003E08E /* Tutorial Screen */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Tutorial Screen"; sourceTree = "<group>"; };
+		8877A7502270B4490003E08E /* WaterMarlkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterMarlkViewController.swift; sourceTree = "<group>"; };
+		8877A7512270B4490003E08E /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		8877A7522270B4490003E08E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../AwesomePhoto/AwesomePhoto/Assets.xcassets; sourceTree = "<group>"; };
+		8877A7532270B4490003E08E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8877A75C2270B4960003E08E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E93E278C32AE1F0CEFC346E6 /* Pods-assignment3-group.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-assignment3-group.release.xcconfig"; path = "Pods/Target Support Files/Pods-assignment3-group/Pods-assignment3-group.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,10 +73,15 @@
 		67BA85072265DEDB00239E2D /* assignment3-group */ = {
 			isa = PBXGroup;
 			children = (
+				8877A75C2270B4960003E08E /* Main.storyboard */,
 				67BA85082265DEDB00239E2D /* AppDelegate.swift */,
-				67BA850A2265DEDB00239E2D /* ViewController.swift */,
-				67BA850C2265DEDB00239E2D /* Main.storyboard */,
-				67BA850F2265DEDD00239E2D /* Assets.xcassets */,
+				8877A7522270B4490003E08E /* Assets.xcassets */,
+				8877A74D2270B4490003E08E /* Controller */,
+				8877A7512270B4490003E08E /* HomeViewController.swift */,
+				8877A7532270B4490003E08E /* LoginViewController.swift */,
+				8877A74E2270B4490003E08E /* RegisterViewController.swift */,
+				8877A74F2270B4490003E08E /* Tutorial Screen */,
+				8877A7502270B4490003E08E /* WaterMarlkViewController.swift */,
 				674B17CE226EE27600A72A4B /* GoogleService-Info.plist */,
 				67BA85112265DEDD00239E2D /* LaunchScreen.storyboard */,
 				67BA85142265DEDD00239E2D /* Info.plist */,
@@ -151,10 +166,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8877A75D2270B4960003E08E /* Main.storyboard in Resources */,
 				67BA85132265DEDD00239E2D /* LaunchScreen.storyboard in Resources */,
 				674B17CF226EE27600A72A4B /* GoogleService-Info.plist in Resources */,
-				67BA85102265DEDD00239E2D /* Assets.xcassets in Resources */,
-				67BA850E2265DEDB00239E2D /* Main.storyboard in Resources */,
+				8877A7552270B4490003E08E /* Controller in Resources */,
+				8877A75A2270B4490003E08E /* Assets.xcassets in Resources */,
+				8877A7572270B4490003E08E /* Tutorial Screen in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,7 +235,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67BA850B2265DEDB00239E2D /* ViewController.swift in Sources */,
+				8877A75B2270B4490003E08E /* LoginViewController.swift in Sources */,
+				8877A7592270B4490003E08E /* HomeViewController.swift in Sources */,
+				8877A7562270B4490003E08E /* RegisterViewController.swift in Sources */,
+				8877A7582270B4490003E08E /* WaterMarlkViewController.swift in Sources */,
 				67BA85092265DEDB00239E2D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,14 +246,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		67BA850C2265DEDB00239E2D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				67BA850D2265DEDB00239E2D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		67BA85112265DEDD00239E2D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
