@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		182136F522715A5F00032692 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182136F422715A5F00032692 /* MainTabBarViewController.swift */; };
+		182136FD2271AE0A00032692 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182136FC2271AE0A00032692 /* User.swift */; };
+		182136FF2271AFD000032692 /* Multimedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182136FE2271AFD000032692 /* Multimedia.swift */; };
 		674B17CF226EE27600A72A4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 674B17CE226EE27600A72A4B /* GoogleService-Info.plist */; };
 		67BA85092265DEDB00239E2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BA85082265DEDB00239E2D /* AppDelegate.swift */; };
 		67BA85132265DEDD00239E2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67BA85112265DEDD00239E2D /* LaunchScreen.storyboard */; };
@@ -32,6 +34,8 @@
 /* Begin PBXFileReference section */
 		16F6F6F56AB76649CCAC8972 /* Pods-assignment3-group.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-assignment3-group.release.xcconfig"; path = "Target Support Files/Pods-assignment3-group/Pods-assignment3-group.release.xcconfig"; sourceTree = "<group>"; };
 		182136F422715A5F00032692 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		182136FC2271AE0A00032692 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		182136FE2271AFD000032692 /* Multimedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multimedia.swift; sourceTree = "<group>"; };
 		674B17CE226EE27600A72A4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		67BA85052265DEDB00239E2D /* assignment3-group.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "assignment3-group.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BA85082265DEDB00239E2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 		182136EE22714ABD00032692 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				182136FC2271AE0A00032692 /* User.swift */,
+				182136FE2271AFD000032692 /* Multimedia.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -294,12 +300,14 @@
 				8877A7722270CE060003E08E /* TutorialCollectionViewCell.swift in Sources */,
 				8877A76B2270CDF20003E08E /* MainSharePageViewController.swift in Sources */,
 				8877A7642270C1D60003E08E /* AboutViewController.swift in Sources */,
+				182136FD2271AE0A00032692 /* User.swift in Sources */,
 				8877A76A2270CDF20003E08E /* MainPersonalViewController.swift in Sources */,
 				8877A7742270CE060003E08E /* TutorialCollectionViewController.swift in Sources */,
 				8877A75B2270B4490003E08E /* LoginViewController.swift in Sources */,
 				8877A7592270B4490003E08E /* HomeViewController.swift in Sources */,
 				8877A7732270CE060003E08E /* WelcomeViewController.swift in Sources */,
 				8877A76C2270CDF20003E08E /* MainUploadedViewController.swift in Sources */,
+				182136FF2271AFD000032692 /* Multimedia.swift in Sources */,
 				8877A76D2270CDF20003E08E /* MainPaymentViewController.swift in Sources */,
 				8877A7562270B4490003E08E /* RegisterViewController.swift in Sources */,
 				8877A76E2270CDF20003E08E /* MainHomeViewController.swift in Sources */,

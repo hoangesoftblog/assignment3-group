@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Upload images, video to firebase and store in model
 class MainUploadedViewController: UIViewController {
 
     override func viewDidLoad() {

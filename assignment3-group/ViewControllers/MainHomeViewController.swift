@@ -7,19 +7,33 @@
 //
 
 import UIKit
+import Firebase
+
+let ref: DatabaseReference = Database.database().reference()
+
+var images: [String] = []
 
 class MainHomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        /*let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-        self.present(controller, animated: true, completion: nil)*/
+        
+        
         // Do any additional setup after loading the view.
         
     }
     
+    //get data of all images from firebase
+    func getData(){
+        // Listen for new comments in the Firebase database
+        ref.observe(.value, with: { (snapshot) -> Void in
+            if let value = snapshot.value as? [String: Any]{
+                let imageString = value["url"] as? String ?? ""
+                images.append(imageString)
+            }
+            
+        })
+    }
 
     /*
     // MARK: - Navigation

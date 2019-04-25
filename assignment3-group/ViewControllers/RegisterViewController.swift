@@ -48,15 +48,17 @@ class RegisterViewController: UIViewController{
                     Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
                         if error == nil{
                             print("sign in success")
-                            
+                            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                            let tabBarViewController = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as! MainTabBarViewController
+                            self?.show(tabBarViewController, sender: nil)
                         }
                         else{
                             print(error?.localizedDescription)
                         }
                         
                     }
-                    
-                    let avtRef = storageRef.child("images/\(email).jpg")
+                    let userNameFolder: String = email
+                    let avtRef = storageRef.child("\(userNameFolder)/\(email).jpg")
                     ///////////////////////////////////////////
                     //water mark image before upload to firebase
                     
