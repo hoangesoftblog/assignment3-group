@@ -33,6 +33,23 @@ class WaterMarlkViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func addWatermark(on origin: UIImage?, with template: UIImage?) -> UIImage? {
+        if origin == nil || template == nil {
+            return UIImage()
+        }
+        
+        let width = Double(origin?.size.width ?? 0.0)
+        let height = Double(origin?.size.height ?? 0.0)
+        
+        UIGraphicsBeginImageContext(CGSize(width: CGFloat(width), height: CGFloat(height)))
+        origin?.draw(in: CGRect(x: 0.0, y: 0.0, width: CGFloat(width), height: CGFloat(height)))
+        template?.draw(in: CGRect(x: 0.0, y: 0.0, width: CGFloat(width), height: CGFloat(height)))
+        var newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+
 
     /*
     // MARK: - Navigation
