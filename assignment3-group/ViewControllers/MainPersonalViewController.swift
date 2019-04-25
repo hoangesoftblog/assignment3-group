@@ -23,6 +23,10 @@ class MainPersonalViewController: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
     
     
+    @IBOutlet weak var sideViewLeadingContraint: NSLayoutConstraint!
+    
+    var menuShowing:Bool = false
+    
     var arrImages: [String] = ["tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1"]
     
     override func viewDidLoad() {
@@ -30,7 +34,7 @@ class MainPersonalViewController: UIViewController{
         updateUI()
         collectionView.delegate = self
         collectionView.dataSource = self
-      
+    
     }
     
     override func viewDidLayoutSubviews() {
@@ -40,12 +44,31 @@ class MainPersonalViewController: UIViewController{
     }
     
     func updateUI(){
+        
         avtImageView.layer.cornerRadius = avtImageView.frame.height / 2.0
         avtImageView.layer.masksToBounds = true
         uploadPhotoImageView.layer.cornerRadius = uploadPhotoImageView.frame.height/2
         uploadPhotoImageView.layer.masksToBounds = true
+        
     }
     
+    @IBAction func toggledTapped(_ sender: Any) {
+        if menuShowing{
+            sideViewLeadingContraint.constant = -140
+        }else{
+            sideViewLeadingContraint.constant = 0
+        }
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        menuShowing = !menuShowing
+        
+    }
+    
+    
+
 }
 
 extension MainPersonalViewController:  UICollectionViewDelegateFlowLayout{
