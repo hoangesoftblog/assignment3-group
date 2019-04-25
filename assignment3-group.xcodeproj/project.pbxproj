@@ -66,6 +66,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		182136ED22714A5500032692 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8877A7652270CDF20003E08E /* MainHomeViewController.swift */,
+				8877A7662270CDF20003E08E /* MainPaymentViewController.swift */,
+				8877A7672270CDF20003E08E /* MainPersonalViewController.swift */,
+				8877A7682270CDF20003E08E /* MainSharePageViewController.swift */,
+				8877A7692270CDF20003E08E /* MainUploadedViewController.swift */,
+				8877A7712270CE060003E08E /* TutorialCollectionViewCell.swift */,
+				8877A76F2270CE060003E08E /* TutorialCollectionViewController.swift */,
+				8877A7702270CE060003E08E /* WelcomeViewController.swift */,
+				8877A7512270B4490003E08E /* HomeViewController.swift */,
+				8877A7532270B4490003E08E /* LoginViewController.swift */,
+				8877A74E2270B4490003E08E /* RegisterViewController.swift */,
+				8877A7502270B4490003E08E /* WaterMarlkViewController.swift */,
+				8877A7632270C1D60003E08E /* AboutViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		182136EE22714ABD00032692 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		182136EF22714AC400032692 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		182136F322714B2B00032692 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		67BA84FC2265DEDB00239E2D = {
 			isa = PBXGroup;
 			children = (
@@ -87,25 +128,16 @@
 		67BA85072265DEDB00239E2D /* assignment3-group */ = {
 			isa = PBXGroup;
 			children = (
-				8877A7652270CDF20003E08E /* MainHomeViewController.swift */,
-				8877A7662270CDF20003E08E /* MainPaymentViewController.swift */,
-				8877A7672270CDF20003E08E /* MainPersonalViewController.swift */,
-				8877A7682270CDF20003E08E /* MainSharePageViewController.swift */,
-				8877A7692270CDF20003E08E /* MainUploadedViewController.swift */,
-				8877A7712270CE060003E08E /* TutorialCollectionViewCell.swift */,
-				8877A76F2270CE060003E08E /* TutorialCollectionViewController.swift */,
-				8877A7702270CE060003E08E /* WelcomeViewController.swift */,
+				182136F322714B2B00032692 /* Views */,
+				182136EF22714AC400032692 /* Resources */,
+				182136EE22714ABD00032692 /* Models */,
+				182136ED22714A5500032692 /* ViewControllers */,
 				8877A75E2270BAC90003E08E /* Main.storyboard */,
 				67BA85082265DEDB00239E2D /* AppDelegate.swift */,
 				8877A7522270B4490003E08E /* Assets.xcassets */,
-				8877A7512270B4490003E08E /* HomeViewController.swift */,
-				8877A7532270B4490003E08E /* LoginViewController.swift */,
-				8877A74E2270B4490003E08E /* RegisterViewController.swift */,
-				8877A7502270B4490003E08E /* WaterMarlkViewController.swift */,
 				674B17CE226EE27600A72A4B /* GoogleService-Info.plist */,
 				67BA85112265DEDD00239E2D /* LaunchScreen.storyboard */,
 				67BA85142265DEDD00239E2D /* Info.plist */,
-				8877A7632270C1D60003E08E /* AboutViewController.swift */,
 			);
 			path = "assignment3-group";
 			sourceTree = "<group>";
