@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Firebase
 
 private let reuseIdentifier = "personalCollectionViewCell"
+
 var cellWidth: CGFloat = 0
 var cellHeight: CGFloat = 0
 
@@ -35,6 +37,24 @@ class MainPersonalViewController: UIViewController{
         collectionView.delegate = self
         collectionView.dataSource = self
     
+    }
+    
+    func getImageOfUser(){
+        let userID = Auth.auth().currentUser?.uid
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let username = value?["username"] as? String ?? ""
+            let email = value?["email"] as? String ?? ""
+            let fullName = value?["fullName"] as? String ?? ""
+            let avtImage = value?["avtImage"] as? String ?? ""
+            //let arrImages: Dictionary = value?[""] as? Dictionary
+            //let user = User(id: userID!, email: email, fullName: fullName, avtImage: avtImage, arrImages: arrImages)
+            
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
     
     override func viewDidLayoutSubviews() {

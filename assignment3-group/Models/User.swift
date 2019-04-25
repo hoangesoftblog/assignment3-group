@@ -13,18 +13,18 @@ struct User {
     let id:String!
     let email: String!
     let fullName: String!
-    let avtImage: UIImage!
-    let arrImages: [UIImage]!
+    let avtImage: String!
+    let arrImages: [String]!
     
     init() {
         self.id = ""
         self.email = ""
         self.fullName = ""
-        self.avtImage = UIImage(named: "blabla")
+        self.avtImage = ""
         self.arrImages = []
     }
     
-    init(id: String, email: String, fullName: String, avtImage: UIImage, arrImages: [UIImage]) {
+    init(id: String, email: String, fullName: String, avtImage: String, arrImages: [String]) {
         self.id = id
         self.email = email
         self.fullName = fullName
