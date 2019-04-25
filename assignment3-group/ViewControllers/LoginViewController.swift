@@ -15,10 +15,18 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var facebookButton: UIButton!
+    
+    @IBOutlet weak var gmailButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func updateUI(){
+        
     }
     
     @IBAction func login(_ sender: Any) {
@@ -29,14 +37,23 @@ class LoginViewController: UIViewController {
             // ...
             if error == nil{
                 print("Login success")
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-                self?.navigationController?.pushViewController(homeVC, animated: true)
+                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let mainTabbarController = storyboard.instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
+                self?.navigationController?.pushViewController(mainTabbarController, animated: true)
             }else{
                 print(error?.localizedDescription)
             }
         }
     }
+    
+    @IBAction func facebookTapped(_ sender: Any) {
+        
+    }
+    
+    @IBAction func gmailTapped(_ sender: Any) {
+        
+    }
+    
     
     /*
     // MARK: - Navigation
