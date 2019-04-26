@@ -39,7 +39,7 @@ class MainPersonalViewController: UIViewController{
     
     }
     
-    func getImageOfUser(){
+    func getImagesOfUser(){
         let userID = Auth.auth().currentUser?.uid
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
@@ -74,7 +74,7 @@ class MainPersonalViewController: UIViewController{
     
     @IBAction func toggledTapped(_ sender: Any) {
         if menuShowing{
-            sideViewLeadingContraint.constant = -140
+            sideViewLeadingContraint.constant = -200
         }else{
             sideViewLeadingContraint.constant = 0
         }

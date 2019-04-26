@@ -12,8 +12,7 @@ import FirebaseStorage
 
 let storage = Storage.storage()
 
-var storageRef = storage.reference(forURL: "gs://awesomephoto-37668.appspot.com/")
-
+var storageRef = storage.reference()
 
 class RegisterViewController: UIViewController{
     
@@ -57,6 +56,7 @@ class RegisterViewController: UIViewController{
                         }
                         
                     }
+                    
                     let userNameFolder: String = email
                     let avtRef = storageRef.child("\(userNameFolder)/\(email).jpg")
                     ///////////////////////////////////////////

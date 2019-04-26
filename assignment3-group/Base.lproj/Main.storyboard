@@ -614,7 +614,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="Iai-pL-a1E">
-                                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="ul1-hc-siW">
+                                        <barButtonItem key="leftBarButtonItem" image="Contact" id="ul1-hc-siW">
                                             <connections>
                                                 <action selector="toggledTapped:" destination="DfI-G9-rop" id="lhR-mt-d8t"/>
                                             </connections>
@@ -623,10 +623,17 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eg0-jT-IMS" userLabel="sideView">
-                                <rect key="frame" x="-140" y="88" width="140" height="641"/>
-                                <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="-200" y="88" width="200" height="641"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWK-bh-vNy">
+                                        <rect key="frame" x="77" y="305" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.17301860080000001" blue="0.1373886882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="vnB-kS-bUa"/>
+                                    <constraint firstAttribute="width" constant="200" id="vnB-kS-bUa"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -640,7 +647,7 @@
                             <constraint firstItem="mPp-1i-3rP" firstAttribute="trailing" secondItem="ECt-3e-a0r" secondAttribute="trailing" id="K4Q-75-tPe"/>
                             <constraint firstItem="ECt-3e-a0r" firstAttribute="top" secondItem="t7t-am-7yt" secondAttribute="bottom" id="QdK-vx-b8y"/>
                             <constraint firstItem="E6s-Sj-M5M" firstAttribute="leading" secondItem="QbD-43-5sx" secondAttribute="leading" id="TbD-sy-fLT"/>
-                            <constraint firstItem="eg0-jT-IMS" firstAttribute="leading" secondItem="ce3-sO-NYP" secondAttribute="leading" constant="-140" id="aMW-XD-vfS"/>
+                            <constraint firstItem="eg0-jT-IMS" firstAttribute="leading" secondItem="ce3-sO-NYP" secondAttribute="leading" constant="-200" id="aMW-XD-vfS"/>
                             <constraint firstItem="t7t-am-7yt" firstAttribute="trailing" secondItem="mPp-1i-3rP" secondAttribute="trailing" id="cS0-7r-SUZ"/>
                             <constraint firstItem="ECt-3e-a0r" firstAttribute="leading" secondItem="mPp-1i-3rP" secondAttribute="leading" id="de6-WI-raM"/>
                             <constraint firstItem="eg0-jT-IMS" firstAttribute="bottom" secondItem="mPp-1i-3rP" secondAttribute="bottom" id="eXC-eQ-d2c"/>
@@ -650,7 +657,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mPp-1i-3rP"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="hVE-ZY-IJp">
+                    <tabBarItem key="tabBarItem" image="Home" id="hVE-ZY-IJp">
                         <inset key="imageInsets" minX="0.0" minY="10" maxX="0.0" maxY="-10"/>
                     </tabBarItem>
                     <connections>
@@ -663,7 +670,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebr-dJ-UxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1538.4000000000001" y="-533.49753694581284"/>
+            <point key="canvasLocation" x="-1290.4000000000001" y="-526.10837438423653"/>
         </scene>
         <!--Main Share Page View Controller-->
         <scene sceneID="EMn-xS-JGh">
@@ -693,7 +700,7 @@
                         <color key="backgroundColor" red="1" green="0.02303179902" blue="0.92275567219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="wMK-qQ-9XM"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="2" systemItem="recents" id="XFn-LG-RxH">
+                    <tabBarItem key="tabBarItem" tag="2" image="Contact" id="XFn-LG-RxH">
                         <inset key="imageInsets" minX="0.0" minY="10" maxX="0.0" maxY="-10"/>
                     </tabBarItem>
                 </viewController>
@@ -788,6 +795,5 @@
         <image name="Home" width="29" height="28"/>
         <image name="Shared Symbol" width="31" height="30"/>
         <image name="about-screen" width="502" height="622"/>
-        <image name="hamburger" width="30" height="30"/>
     </resources>
 </document>
