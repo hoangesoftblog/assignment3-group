@@ -8,13 +8,11 @@
 
 import UIKit
 import Firebase
+import Photos
 
 private let reuseIdentifier = "personalCollectionViewCell"
 
-var cellWidth: CGFloat = 0
-var cellHeight: CGFloat = 0
-
-class MainPersonalViewController: UIViewController{
+class MainPersonalViewController: UIViewController, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var topView: UIView!
     
@@ -24,19 +22,51 @@ class MainPersonalViewController: UIViewController{
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
     @IBOutlet weak var sideViewLeadingContraint: NSLayoutConstraint!
     
     var menuShowing:Bool = false
     
-    var arrImages: [String] = ["tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1","tutorial-1"]
+    var arrImages = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
+        
         collectionView.delegate = self
         collectionView.dataSource = self
+        grabPhoto()
+        if let layout = collectionView?.collectionViewLayout as? CollectionViewPhotoLayout {
+            layout.delegate = self as? LayoutDelegate
+            
+        }
     
+    }
+    
+    func grabPhoto(){
+        let iM = PHImageManager.default()
+        let iMRequest = PHImageRequestOptions()
+        iMRequest.isSynchronous = true
+        iMRequest.deliveryMode = .highQualityFormat
+        
+        let fetchOptions = PHFetchOptions()
+        
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        
+        if let fetchResult : PHFetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions) {
+            if fetchResult.count > 0  {
+                for i in 0..<fetchResult.count {
+                    iM.requestImage(for: fetchResult.object(at: i) , targetSize: CGSize(width: 200, height: 200), contentMode: .aspectFill, options: iMRequest, resultHandler: {
+                        image , error in
+                        
+                        self.arrImages.append(image!)
+                    })
+                }
+            }
+            else {
+                print("You dont have photo")
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     func getImagesOfUser(){
@@ -59,8 +89,7 @@ class MainPersonalViewController: UIViewController{
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        cellWidth = self.collectionView.bounds.size.width
-        cellHeight = self.collectionView.bounds.size.height
+        
     }
     
     func updateUI(){
@@ -91,30 +120,27 @@ class MainPersonalViewController: UIViewController{
 
 }
 
-extension MainPersonalViewController:  UICollectionViewDelegateFlowLayout{
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: cellWidth/2, height: cellHeight/2)
-    }
-    
-    
-}
-
 extension MainPersonalViewController: UICollectionViewDataSource{
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! UICollectionViewCell
-        let imgView = cell.viewWithTag(100) as! UIImageView
-        imgView.image = UIImage(named: arrImages[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCollectionViewCell
+        cell.image.image = arrImages[indexPath.row]
         return cell
     }
     
+    
+}
+
+extension MainPersonalViewController : LayoutDelegate {
+    
+    // 1. Returns the photo height
+    func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
+        
+        return arrImages[indexPath.item].size.height
+    }
     
 }

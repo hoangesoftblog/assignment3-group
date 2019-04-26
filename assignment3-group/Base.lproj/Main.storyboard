@@ -570,6 +570,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="F9z-cQ-926" secondAttribute="trailing" constant="10" id="4Zi-Ry-8Wm"/>
                                     <constraint firstAttribute="height" constant="52" id="DR8-s7-3Hi"/>
@@ -582,22 +583,18 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="E6s-Sj-M5M">
                                 <rect key="frame" x="0.0" y="420" width="375" height="309"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jEW-oP-vSZ">
-                                    <size key="itemSize" width="92" height="85"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <collectionViewLayout key="collectionViewLayout" id="sLm-g6-DOz" customClass="CollectionViewPhotoLayout" customModule="assignment3_group" customModuleProvider="target"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="personalCollectionViewCell" id="jRm-l9-dZ9">
-                                        <rect key="frame" x="0.0" y="0.0" width="92" height="85"/>
+                                    <collectionViewCell multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="personalCollectionViewCell" id="jRm-l9-dZ9" customClass="PhotoCollectionViewCell" customModule="assignment3_group" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="92" height="85"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OXH-g5-iqm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="92" height="85"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -607,6 +604,9 @@
                                             <constraint firstItem="OXH-g5-iqm" firstAttribute="leading" secondItem="jRm-l9-dZ9" secondAttribute="leading" id="t3m-OE-9Jk"/>
                                             <constraint firstAttribute="bottom" secondItem="OXH-g5-iqm" secondAttribute="bottom" id="zo6-21-gKz"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="image" destination="OXH-g5-iqm" id="V4r-y1-KJ9"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -637,6 +637,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="t7t-am-7yt" firstAttribute="leading" secondItem="mPp-1i-3rP" secondAttribute="leading" id="0I1-00-G2K"/>
                             <constraint firstItem="mPp-1i-3rP" firstAttribute="trailing" secondItem="E6s-Sj-M5M" secondAttribute="trailing" id="1S8-Su-H59"/>
