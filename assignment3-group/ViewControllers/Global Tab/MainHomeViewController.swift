@@ -18,7 +18,6 @@ class MainHomeViewController: UIViewController {
     
     private let reuseIdentifier = "Cell"
     
-    
     @IBOutlet weak var imageCollection: UICollectionView!
     
     override func viewDidLoad() {
@@ -27,13 +26,10 @@ class MainHomeViewController: UIViewController {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 23))
         imageView.image = #imageLiteral(resourceName: "AwesomePhotos-Logo")
         navigationItem.titleView = imageView
-        // Do any additional setup after loading the view.
-        
     }
     
     //get data of all images from firebase
     func getDataOnce(){
-        // Listen for new comments in the Firebase database
         ref.child("publicPicture").observeSingleEvent(of: .value, with: { (snapshot) -> Void in
             print(snapshot.value)
             
@@ -67,16 +63,6 @@ class MainHomeViewController: UIViewController {
             
         })
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
 extension MainHomeViewController: UICollectionViewDataSource {
@@ -99,8 +85,12 @@ extension MainHomeViewController: UICollectionViewDataSource {
             }
         }
         
-        // Configure the cell
         return cell
     }
 }
 
+extension MainHomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+}
