@@ -10,6 +10,7 @@
 		182136F522715A5F00032692 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182136F422715A5F00032692 /* MainTabBarViewController.swift */; };
 		182136FD2271AE0A00032692 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182136FC2271AE0A00032692 /* User.swift */; };
 		182136FF2271AFD000032692 /* Multimedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182136FE2271AFD000032692 /* Multimedia.swift */; };
+		20074D5822789B96005C2128 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20074D5722789B95005C2128 /* DetailViewController.swift */; };
 		674315152276CFD200199F5C /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674315142276CFD200199F5C /* PhotoViewCell.swift */; };
 		674315192276E3DD00199F5C /* PhotoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674315182276E3DD00199F5C /* PhotoLayout.swift */; };
 		6743151D2277029A00199F5C /* AwesomePhotos-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6743151C2277029A00199F5C /* AwesomePhotos-Logo.png */; };
@@ -41,6 +42,7 @@
 		182136F422715A5F00032692 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		182136FC2271AE0A00032692 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		182136FE2271AFD000032692 /* Multimedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multimedia.swift; sourceTree = "<group>"; };
+		20074D5722789B95005C2128 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		674315142276CFD200199F5C /* PhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
 		674315182276E3DD00199F5C /* PhotoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLayout.swift; sourceTree = "<group>"; };
 		6743151C2277029A00199F5C /* AwesomePhotos-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AwesomePhotos-Logo.png"; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				8877A7652270CDF20003E08E /* MainHomeViewController.swift */,
 				674315142276CFD200199F5C /* PhotoViewCell.swift */,
 				674315182276E3DD00199F5C /* PhotoLayout.swift */,
+				20074D5722789B95005C2128 /* DetailViewController.swift */,
 			);
 			path = "Global Tab";
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				8877A75B2270B4490003E08E /* LoginViewController.swift in Sources */,
 				8838E99222733F35006F4BE3 /* CollectionViewPhotoLayout.swift in Sources */,
 				8877A7592270B4490003E08E /* HomeViewController.swift in Sources */,
+				20074D5822789B96005C2128 /* DetailViewController.swift in Sources */,
 				8877A7732270CE060003E08E /* WelcomeViewController.swift in Sources */,
 				8838E99022733F2A006F4BE3 /* PhotoCollecionViewCell.swift in Sources */,
 				8877A76C2270CDF20003E08E /* MainUploadedViewController.swift in Sources */,

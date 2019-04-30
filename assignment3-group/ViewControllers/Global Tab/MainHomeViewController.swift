@@ -31,7 +31,9 @@ class MainHomeViewController: UIViewController {
     //get data of all images from firebase
     func getDataOnce(){
         ref.child("publicPicture").observeSingleEvent(of: .value, with: { (snapshot) -> Void in
-            print(snapshot.value)
+            let value = snapshot.value as? NSDictionary
+            print(value
+            )
             
             for i in snapshot.children {
                 if let i2 = (i as? DataSnapshot)?.value as? String {
@@ -91,6 +93,6 @@ extension MainHomeViewController: UICollectionViewDataSource {
 
 extension MainHomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+    
     }
 }
