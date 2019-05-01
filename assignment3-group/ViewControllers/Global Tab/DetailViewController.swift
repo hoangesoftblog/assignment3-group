@@ -2,17 +2,23 @@
 //  DetailViewController.swift
 //  assignment3-group
 //
-//  Created by hoang on 4/30/19.
+//  Created by Hoang, Truong Quoc on 5/1/19.
 //  Copyright © 2019 Hoang, Truong Quoc. All rights reserved.
 //
 
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    var image: UIImage?
+    @IBOutlet weak var mainPic: UIImageView!
+    @IBOutlet weak var profilePic: UIImageView!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var usernameButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        mainPic.image = image
         // Do any additional setup after loading the view.
     }
     

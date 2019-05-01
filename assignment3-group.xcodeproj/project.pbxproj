@@ -10,10 +10,10 @@
 		182136F522715A5F00032692 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182136F422715A5F00032692 /* MainTabBarViewController.swift */; };
 		182136FD2271AE0A00032692 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182136FC2271AE0A00032692 /* User.swift */; };
 		182136FF2271AFD000032692 /* Multimedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182136FE2271AFD000032692 /* Multimedia.swift */; };
-		20074D5822789B96005C2128 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20074D5722789B95005C2128 /* DetailViewController.swift */; };
+		671153CE227958D900FFD8B0 /* PhotoCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671153CD227958D900FFD8B0 /* PhotoCollectionHeaderView.swift */; };
+		673B8B5A2279840A00CD3000 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673B8B592279840A00CD3000 /* DetailViewController.swift */; };
 		674315152276CFD200199F5C /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674315142276CFD200199F5C /* PhotoViewCell.swift */; };
 		674315192276E3DD00199F5C /* PhotoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674315182276E3DD00199F5C /* PhotoLayout.swift */; };
-		6743151D2277029A00199F5C /* AwesomePhotos-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6743151C2277029A00199F5C /* AwesomePhotos-Logo.png */; };
 		674B17CF226EE27600A72A4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 674B17CE226EE27600A72A4B /* GoogleService-Info.plist */; };
 		67BA85092265DEDB00239E2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BA85082265DEDB00239E2D /* AppDelegate.swift */; };
 		67BA85132265DEDD00239E2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67BA85112265DEDD00239E2D /* LaunchScreen.storyboard */; };
@@ -42,10 +42,10 @@
 		182136F422715A5F00032692 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		182136FC2271AE0A00032692 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		182136FE2271AFD000032692 /* Multimedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multimedia.swift; sourceTree = "<group>"; };
-		20074D5722789B95005C2128 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		671153CD227958D900FFD8B0 /* PhotoCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoCollectionHeaderView.swift; path = "/Users/s3694808/Desktop/assignment3-group/assignment3-group/ViewControllers/Global Tab/PhotoCollectionHeaderView.swift"; sourceTree = "<absolute>"; };
+		673B8B592279840A00CD3000 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		674315142276CFD200199F5C /* PhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
 		674315182276E3DD00199F5C /* PhotoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLayout.swift; sourceTree = "<group>"; };
-		6743151C2277029A00199F5C /* AwesomePhotos-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AwesomePhotos-Logo.png"; sourceTree = "<group>"; };
 		674B17CE226EE27600A72A4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		67BA85052265DEDB00239E2D /* assignment3-group.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "assignment3-group.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BA85082265DEDB00239E2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,10 +133,11 @@
 		674315132276CFB000199F5C /* Global Tab */ = {
 			isa = PBXGroup;
 			children = (
+				673B8B592279840A00CD3000 /* DetailViewController.swift */,
+				671153CD227958D900FFD8B0 /* PhotoCollectionHeaderView.swift */,
 				8877A7652270CDF20003E08E /* MainHomeViewController.swift */,
 				674315142276CFD200199F5C /* PhotoViewCell.swift */,
 				674315182276E3DD00199F5C /* PhotoLayout.swift */,
-				20074D5722789B95005C2128 /* DetailViewController.swift */,
 			);
 			path = "Global Tab";
 			sourceTree = "<group>";
@@ -169,7 +170,6 @@
 				8877A75E2270BAC90003E08E /* Main.storyboard */,
 				67BA85082265DEDB00239E2D /* AppDelegate.swift */,
 				8838E98D22733071006F4BE3 /* Assets.xcassets */,
-				6743151C2277029A00199F5C /* AwesomePhotos-Logo.png */,
 				674B17CE226EE27600A72A4B /* GoogleService-Info.plist */,
 				67BA85112265DEDD00239E2D /* LaunchScreen.storyboard */,
 				67BA85142265DEDD00239E2D /* Info.plist */,
@@ -257,7 +257,6 @@
 			files = (
 				8877A7602270BAC90003E08E /* Main.storyboard in Resources */,
 				67BA85132265DEDD00239E2D /* LaunchScreen.storyboard in Resources */,
-				6743151D2277029A00199F5C /* AwesomePhotos-Logo.png in Resources */,
 				8838E98E22733071006F4BE3 /* Assets.xcassets in Resources */,
 				674B17CF226EE27600A72A4B /* GoogleService-Info.plist in Resources */,
 			);
@@ -325,6 +324,7 @@
 			files = (
 				182136F522715A5F00032692 /* MainTabBarViewController.swift in Sources */,
 				8877A7722270CE060003E08E /* TutorialCollectionViewCell.swift in Sources */,
+				673B8B5A2279840A00CD3000 /* DetailViewController.swift in Sources */,
 				8877A76B2270CDF20003E08E /* MainSharePageViewController.swift in Sources */,
 				8877A7642270C1D60003E08E /* AboutViewController.swift in Sources */,
 				182136FD2271AE0A00032692 /* User.swift in Sources */,
@@ -334,7 +334,7 @@
 				8877A75B2270B4490003E08E /* LoginViewController.swift in Sources */,
 				8838E99222733F35006F4BE3 /* CollectionViewPhotoLayout.swift in Sources */,
 				8877A7592270B4490003E08E /* HomeViewController.swift in Sources */,
-				20074D5822789B96005C2128 /* DetailViewController.swift in Sources */,
+				671153CE227958D900FFD8B0 /* PhotoCollectionHeaderView.swift in Sources */,
 				8877A7732270CE060003E08E /* WelcomeViewController.swift in Sources */,
 				8838E99022733F2A006F4BE3 /* PhotoCollecionViewCell.swift in Sources */,
 				8877A76C2270CDF20003E08E /* MainUploadedViewController.swift in Sources */,

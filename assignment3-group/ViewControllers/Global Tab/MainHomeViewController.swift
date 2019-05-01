@@ -15,7 +15,9 @@ class MainHomeViewController: UIViewController {
     var imageNames: [String] = []
     var imagePhoto: [Int: UIImage] = [:]
     var numberOfColumns: CGFloat = 2
+    var selectedPicture: Int = 0
     
+    let goToDetail = "showDetail"
     private let reuseIdentifier = "Cell"
     
     @IBOutlet weak var imageCollection: UICollectionView!
@@ -24,16 +26,14 @@ class MainHomeViewController: UIViewController {
         super.viewDidLoad()
         getDataOnce()
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 23))
-        imageView.image = #imageLiteral(resourceName: "AwesomePhotos-Logo")
+        imageView.image = #imageLiteral(resourceName: "Image")
         navigationItem.titleView = imageView
     }
     
     //get data of all images from firebase
     func getDataOnce(){
         ref.child("publicPicture").observeSingleEvent(of: .value, with: { (snapshot) -> Void in
-            let value = snapshot.value as? NSDictionary
-            print(value
-            )
+            print(snapshot.value)
             
             for i in snapshot.children {
                 if let i2 = (i as? DataSnapshot)?.value as? String {
@@ -93,6 +93,43 @@ extension MainHomeViewController: UICollectionViewDataSource {
 
 extension MainHomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedPicture = indexPath.row
+        performSegue(withIdentifier: goToDetail, sender: imagePhoto[indexPath.row])
+    }
+}
+
+extension MainHomeViewController {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                    withReuseIdentifier: "PhotoHeaderView", for: indexPath) as? PhotoCollectionHeaderView
+            else {
+                fatalError("Invalid view type")
+            }
+            
+            if headerView.button1.isEnabled {
+                print("button 2 is pressed")
+            }
+            else if headerView.button2.isEnabled{
+                print("button 1 is pressed")
+            }
+            
+            return headerView
+            
+        default:
+            assert(false, "Invalid element type")
+        }
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == goToDetail {
+            if let dest = segue.destination as? DetailViewController {
+                print(selectedPicture)
+                if let image = sender as? UIImage {
+                    dest.image = image
+                }
+            }
+        }
     }
 }
