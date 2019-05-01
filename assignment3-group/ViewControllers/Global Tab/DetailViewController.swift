@@ -9,6 +9,8 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    var insetLeft: CGFloat = 20
+    var insetTop: CGFloat = 20
     var image: UIImage?
     @IBOutlet weak var mainPic: UIImageView!
     @IBOutlet weak var profilePic: UIImageView!
@@ -19,7 +21,12 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainPic.image = image
-        // Do any additional setup after loading the view.
+        print(image?.size)
+        if image != nil {
+            let width = self.view.frame.width - 2 * insetLeft
+            mainPic.frame = CGRect(x: insetLeft, y: insetTop, width: width, height: width * (image?.size.height)! / (image?.size.width)!)
+        }
+        
     }
     
 

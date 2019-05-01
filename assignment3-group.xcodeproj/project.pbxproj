@@ -10,7 +10,7 @@
 		182136F522715A5F00032692 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182136F422715A5F00032692 /* MainTabBarViewController.swift */; };
 		182136FD2271AE0A00032692 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182136FC2271AE0A00032692 /* User.swift */; };
 		182136FF2271AFD000032692 /* Multimedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182136FE2271AFD000032692 /* Multimedia.swift */; };
-		671153CE227958D900FFD8B0 /* PhotoCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671153CD227958D900FFD8B0 /* PhotoCollectionHeaderView.swift */; };
+		206F6FB22279E174003E376C /* PhotoCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206F6FB12279E174003E376C /* PhotoCollectionHeaderView.swift */; };
 		673B8B5A2279840A00CD3000 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673B8B592279840A00CD3000 /* DetailViewController.swift */; };
 		674315152276CFD200199F5C /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674315142276CFD200199F5C /* PhotoViewCell.swift */; };
 		674315192276E3DD00199F5C /* PhotoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674315182276E3DD00199F5C /* PhotoLayout.swift */; };
@@ -42,7 +42,7 @@
 		182136F422715A5F00032692 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		182136FC2271AE0A00032692 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		182136FE2271AFD000032692 /* Multimedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multimedia.swift; sourceTree = "<group>"; };
-		671153CD227958D900FFD8B0 /* PhotoCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoCollectionHeaderView.swift; path = "/Users/s3694808/Desktop/assignment3-group/assignment3-group/ViewControllers/Global Tab/PhotoCollectionHeaderView.swift"; sourceTree = "<absolute>"; };
+		206F6FB12279E174003E376C /* PhotoCollectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionHeaderView.swift; sourceTree = "<group>"; };
 		673B8B592279840A00CD3000 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		674315142276CFD200199F5C /* PhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
 		674315182276E3DD00199F5C /* PhotoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLayout.swift; sourceTree = "<group>"; };
@@ -133,8 +133,8 @@
 		674315132276CFB000199F5C /* Global Tab */ = {
 			isa = PBXGroup;
 			children = (
+				206F6FB12279E174003E376C /* PhotoCollectionHeaderView.swift */,
 				673B8B592279840A00CD3000 /* DetailViewController.swift */,
-				671153CD227958D900FFD8B0 /* PhotoCollectionHeaderView.swift */,
 				8877A7652270CDF20003E08E /* MainHomeViewController.swift */,
 				674315142276CFD200199F5C /* PhotoViewCell.swift */,
 				674315182276E3DD00199F5C /* PhotoLayout.swift */,
@@ -333,8 +333,8 @@
 				8877A7742270CE060003E08E /* TutorialCollectionViewController.swift in Sources */,
 				8877A75B2270B4490003E08E /* LoginViewController.swift in Sources */,
 				8838E99222733F35006F4BE3 /* CollectionViewPhotoLayout.swift in Sources */,
+				206F6FB22279E174003E376C /* PhotoCollectionHeaderView.swift in Sources */,
 				8877A7592270B4490003E08E /* HomeViewController.swift in Sources */,
-				671153CE227958D900FFD8B0 /* PhotoCollectionHeaderView.swift in Sources */,
 				8877A7732270CE060003E08E /* WelcomeViewController.swift in Sources */,
 				8838E99022733F2A006F4BE3 /* PhotoCollecionViewCell.swift in Sources */,
 				8877A76C2270CDF20003E08E /* MainUploadedViewController.swift in Sources */,
