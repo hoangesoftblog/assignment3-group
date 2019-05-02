@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class DetailViewController: UIViewController {
+    
+    var fileName: String?
     var insetLeft: CGFloat = 20
     var insetTop: CGFloat = 20
     var image: UIImage?
@@ -22,10 +25,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         mainPic.image = image
         print(image?.size)
-        if image != nil {
-            let width = self.view.frame.width - 2 * insetLeft
-            mainPic.frame = CGRect(x: insetLeft, y: insetTop, width: width, height: width * (image?.size.height)! / (image?.size.width)!)
-        }
+        
         
     }
     

@@ -24,7 +24,7 @@ class MainPersonalViewController: UIViewController, UICollectionViewDelegateFlow
     
     @IBOutlet weak var sideViewLeadingContraint: NSLayoutConstraint!
     
-    var menuShowing:Bool = false
+    var menuShowing: Bool = false
     
     var arrImages = [UIImage]()
     
