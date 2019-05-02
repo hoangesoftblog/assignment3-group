@@ -11,14 +11,20 @@ import Firebase
 
 let userToIDChild = "userToID"
 
-class Media{
-    static func getFileName(fileName: String){
-        
+class Media {
+    
+    static func getFileName(fileName: String) -> String {
+        var res = fileName
+        ref.child("fileName/\(fileName)").observeSingleEvent(of: .value){ snapshot in
+            if let temp = snapshot.value as? [String: Any] {
+                if let fileExtension = temp["extension"] as? String {
+                    print(fileExtension)
+                    res += ".\(fileExtension)"
+                }
+            }
+        }
+        return res
     }
     
-    private static func getReference(info needed: String){
-        ref.child(needed).observeSingleEvent(of: .value){ snapshot in
-                        
-        }
-    }
+    
 }

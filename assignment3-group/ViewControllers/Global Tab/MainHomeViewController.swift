@@ -28,13 +28,6 @@ class MainHomeViewController: UIViewController {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 23))
         imageView.image = #imageLiteral(resourceName: "Image")
         navigationItem.titleView = imageView
-        
-        ref.child("fileName/chris-fowler-1203898-unsplash").observeSingleEvent(of: .value){ snapshot in
-            if let temp = snapshot.value as? [String: String]{
-                print("owner is \(temp["userID"])")
-                print("extension is \(temp["extension"])")
-            }
-        }
     }
     
     //get data of all images from firebase
@@ -42,7 +35,9 @@ class MainHomeViewController: UIViewController {
         ref.child("publicPicture").observeSingleEvent(of: .value){ snapshot in
             for i in snapshot.children {
                 if let i2 = (i as? DataSnapshot)?.value as? String {
-                    self.imageNames.append(i2)
+                    let val = Media.getFileName(fileName: i2)
+                    print(val)
+                    self.imageNames.append(val)
                 }
             }
             
@@ -50,20 +45,17 @@ class MainHomeViewController: UIViewController {
             
             for i in 0..<self.imageNames.count {
                 storageRef.child(self.imageNames[i]).getData(maxSize: INT64_MAX){ data, error in
-                    //print(self.imageNames[i], separator: "", terminator: " ")
+                    print(self.imageNames[i], separator: "", terminator: " ")
                     if error != nil {
-                        //print("Error occurs")
+                        print("Error occurs")
                     }
                     else if data != nil {
                         if let imageTemp = UIImage(data: data!) {
-                            //print("image available")
+                            print("image available")
                             self.imagePhoto[i] = imageTemp
                         }
                     }
-                    else {
-                        //print("Data nil")
-                    }
-                    
+                
                     self.imageCollection.reloadData()
                 }
             }
