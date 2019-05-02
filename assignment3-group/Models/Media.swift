@@ -13,18 +13,16 @@ let userToIDChild = "userToID"
 
 class Media {
     
-    static func getFileName(fileName: String) -> String {
-        var res = fileName
-        ref.child("fileName/\(fileName)").observeSingleEvent(of: .value){ snapshot in
-            if let temp = snapshot.value as? [String: Any] {
-                if let fileExtension = temp["extension"] as? String {
-                    print(fileExtension)
-                    res += ".\(fileExtension)"
-                }
-            }
+    static func removeFileExtension(file name: String) -> String {
+        if let i = name.lastIndex(of: "."){
+            var a = name
+            a.removeSubrange(i..<a.endIndex)
+            return a
         }
-        return res
+        else {
+            return name
+        }
+        
     }
-    
     
 }

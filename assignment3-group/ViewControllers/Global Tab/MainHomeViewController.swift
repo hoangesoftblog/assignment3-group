@@ -35,9 +35,7 @@ class MainHomeViewController: UIViewController {
         ref.child("publicPicture").observeSingleEvent(of: .value){ snapshot in
             for i in snapshot.children {
                 if let i2 = (i as? DataSnapshot)?.value as? String {
-                    let val = Media.getFileName(fileName: i2)
-                    print(val)
-                    self.imageNames.append(val)
+                    self.imageNames.append(i2)
                 }
             }
             
