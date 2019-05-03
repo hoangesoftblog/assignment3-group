@@ -35,7 +35,6 @@
 		8877A7722270CE060003E08E /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7712270CE060003E08E /* TutorialCollectionViewCell.swift */; };
 		8877A7732270CE060003E08E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7702270CE060003E08E /* WelcomeViewController.swift */; };
 		8877A7742270CE060003E08E /* TutorialCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A76F2270CE060003E08E /* TutorialCollectionViewController.swift */; };
-		88DF974A227B1B7D00455895 /* AppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DF9749227B1B7D00455895 /* AppearanceViewController.swift */; };
 		AC48B2B618378B7059AFFC30 /* Pods_assignment3_group.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDBA3F323894B8D270B4ABF2 /* Pods_assignment3_group.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +71,6 @@
 		8877A76F2270CE060003E08E /* TutorialCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewController.swift; sourceTree = "<group>"; };
 		8877A7702270CE060003E08E /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		8877A7712270CE060003E08E /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
-		88DF9749227B1B7D00455895 /* AppearanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceViewController.swift; sourceTree = "<group>"; };
 		BDBA3F323894B8D270B4ABF2 /* Pods_assignment3_group.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_assignment3_group.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -107,7 +105,6 @@
 				8877A7502270B4490003E08E /* WaterMarlkViewController.swift */,
 				8877A7632270C1D60003E08E /* AboutViewController.swift */,
 				182136F422715A5F00032692 /* MainTabBarViewController.swift */,
-				88DF9749227B1B7D00455895 /* AppearanceViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -344,7 +341,6 @@
 				8877A7732270CE060003E08E /* WelcomeViewController.swift in Sources */,
 				676EF8F0227AF521002E5FCA /* Media.swift in Sources */,
 				8838E99022733F2A006F4BE3 /* PhotoCollecionViewCell.swift in Sources */,
-				88DF974A227B1B7D00455895 /* AppearanceViewController.swift in Sources */,
 				8877A76C2270CDF20003E08E /* MainUploadedViewController.swift in Sources */,
 				182136FF2271AFD000032692 /* Multimedia.swift in Sources */,
 				8877A76D2270CDF20003E08E /* MainPaymentViewController.swift in Sources */,

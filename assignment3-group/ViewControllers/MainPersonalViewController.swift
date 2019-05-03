@@ -116,25 +116,8 @@ class MainPersonalViewController: UIViewController, UICollectionViewDelegateFlow
         
     }
     
-    @IBAction func acountSettings(_ sender: UITapGestureRecognizer) {
-        
-    }
     
-    @IBAction func appearanceTapped(_ sender: UITapGestureRecognizer) {
-    }
-    
-    @IBAction func staticTapped(_ sender: UITapGestureRecognizer) {
-    }
-    
-    @IBAction func logoutTapped(_ sender: UITapGestureRecognizer) {
-    }
-    
-    @IBAction func aboutTapped(_ sender: UITapGestureRecognizer) {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let aboutVC = storyboard.instantiateViewController(withIdentifier: "AboutViewController") as! AboutViewController
-        self.show(aboutVC, sender: nil)
-    }
-    
+
 }
 
 extension MainPersonalViewController: UICollectionViewDataSource{
