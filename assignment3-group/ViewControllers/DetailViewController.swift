@@ -11,28 +11,33 @@ import Firebase
 
 class DetailViewController: UIViewController {
     
-//    var fileName: String?
-//    var insetLeft: CGFloat = 20
-//    var insetTop: CGFloat = 20
-//    var image: UIImage?
-//    var database: DatabaseReference?
-//    @IBOutlet weak var mainPic: UIImageView!
-//    @IBOutlet weak var profilePic: UIImageView!
-//    @IBOutlet weak var locationLabel: UILabel!
-//    @IBOutlet weak var timeLabel: UILabel!
-//    @IBOutlet weak var usernameButton: UIButton!
-//    
-//    override func viewDidLoad() {
-//        database = Database.database().reference()
-//        super.viewDidLoad()
-//        mainPic.image = image
-//        database?.child("fileName/\(Media.removeFileExtension(file: fileName!))").observeSingleEvent(of: .value){ snapshot in
-//            if let val = snapshot.value as? [String: Any]{
-//                self.usernameButton.setTitle((val["owner"] as? String) ?? "Not available", for: .normal)
-//            }
-//        }
-//        
-//    }
+    var fileName: String?
+    var insetLeft: CGFloat = 20
+    var insetTop: CGFloat = 20
+    var image: UIImage?
+    var database: DatabaseReference?
+    
+    @IBOutlet weak var mainPic: UIImageView!
+    @IBOutlet weak var profilePic: UIImageView!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var usernameButton: UIButton!
+    
+    @IBAction func pictureAction(_ sender: Any) {
+        
+    }
+    
+    override func viewDidLoad() {
+        database = Database.database().reference()
+        super.viewDidLoad()
+        mainPic.image = image
+        database?.child("fileName/\(Media.removeFileExtension(file: fileName!))").observeSingleEvent(of: .value){ snapshot in
+            if let val = snapshot.value as? [String: Any]{
+                self.usernameButton.setTitle((val["owner"] as? String) ?? "Not available", for: .normal)
+            }
+        }
+        
+    }
     
 
     /*
