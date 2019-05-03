@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class MainSharePageViewController: UIViewController {
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
