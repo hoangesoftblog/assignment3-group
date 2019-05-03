@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:assignment3-group/ViewControllers/Global Tab">
-   </FileRef>
-   <FileRef
       location = "group:assignment3-group.xcodeproj">
    </FileRef>
    <FileRef
