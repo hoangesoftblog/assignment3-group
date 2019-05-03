@@ -25,6 +25,7 @@
 		8877A7582270B4490003E08E /* WaterMarlkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7502270B4490003E08E /* WaterMarlkViewController.swift */; };
 		8877A7592270B4490003E08E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7512270B4490003E08E /* HomeViewController.swift */; };
 		8877A75B2270B4490003E08E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7532270B4490003E08E /* LoginViewController.swift */; };
+		8877A7602270BAC90003E08E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8877A75E2270BAC90003E08E /* Main.storyboard */; };
 		8877A7642270C1D60003E08E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7632270C1D60003E08E /* AboutViewController.swift */; };
 		8877A76A2270CDF20003E08E /* MainPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7672270CDF20003E08E /* MainPersonalViewController.swift */; };
 		8877A76B2270CDF20003E08E /* MainSharePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7682270CDF20003E08E /* MainSharePageViewController.swift */; };
@@ -60,6 +61,7 @@
 		8877A7502270B4490003E08E /* WaterMarlkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterMarlkViewController.swift; sourceTree = "<group>"; };
 		8877A7512270B4490003E08E /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8877A7532270B4490003E08E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8877A75F2270BAC90003E08E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8877A7632270C1D60003E08E /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		8877A7652270CDF20003E08E /* MainHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeViewController.swift; sourceTree = "<group>"; };
 		8877A7662270CDF20003E08E /* MainPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPaymentViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				182136EF22714AC400032692 /* Resources */,
 				182136EE22714ABD00032692 /* Models */,
 				182136ED22714A5500032692 /* ViewControllers */,
+				8877A75E2270BAC90003E08E /* Main.storyboard */,
 				67BA85082265DEDB00239E2D /* AppDelegate.swift */,
 				8838E98D22733071006F4BE3 /* Assets.xcassets */,
 				674B17CE226EE27600A72A4B /* GoogleService-Info.plist */,
@@ -255,6 +258,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8877A7602270BAC90003E08E /* Main.storyboard in Resources */,
 				67BA85132265DEDD00239E2D /* LaunchScreen.storyboard in Resources */,
 				8838E98E22733071006F4BE3 /* Assets.xcassets in Resources */,
 				674B17CF226EE27600A72A4B /* GoogleService-Info.plist in Resources */,
@@ -357,6 +361,14 @@
 				67BA85122265DEDD00239E2D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		8877A75E2270BAC90003E08E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8877A75F2270BAC90003E08E /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
