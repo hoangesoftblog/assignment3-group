@@ -32,18 +32,22 @@ class LoginViewController: UIViewController {
     @IBAction func login(_ sender: Any) {
         let email = emailTextField.text
         let password = passwordTextField.text
-        Auth.auth().signIn(withEmail: email!, password: password!) { [weak self] user, error in
-            guard let strongSelf = self else { return }
-            // ...
-            if error == nil{
-                print("Login success")
-                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                let mainTabbarController = storyboard.instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
-                self?.navigationController?.pushViewController(mainTabbarController, animated: true)
-            }else{
-                print(error?.localizedDescription)
+        if Auth.auth().currentUser == nil{
+            Auth.auth().signIn(withEmail: email!, password: password!) { [weak self] user, error in
+                guard let strongSelf = self else { return }
+                // ...
+                if error == nil{
+                    print("Login success")
+                    let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                    let mainTabbarController = storyboard.instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
+                    self?.navigationController?.pushViewController(mainTabbarController, animated: true)
+                }else{
+                    print(error?.localizedDescription)
+                }
             }
         }
+        
+        print("Login in")
     }
     
     @IBAction func facebookTapped(_ sender: Any) {

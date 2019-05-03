@@ -25,9 +25,9 @@ class MainHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getDataOnce()
-        //let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 23))
-        //imageView.image = #imageLiteral(resourceName: "Image")
-        //navigationItem.titleView = imageView
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 23))
+        imageView.image = #imageLiteral(resourceName: "Image")
+        navigationItem.titleView = imageView
     }
     
     //get data of all images from firebase
