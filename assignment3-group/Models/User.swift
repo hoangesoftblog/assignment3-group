@@ -9,26 +9,26 @@
 import Foundation
 import UIKit
 
-struct User {
-    let id:String!
-    let email: String!
-    let fullName: String!
-    let avtImage: String!
-    let arrImages: [String]!
-    
-    init() {
-        self.id = ""
-        self.email = ""
-        self.fullName = ""
-        self.avtImage = ""
-        self.arrImages = []
-    }
-    
-    init(id: String, email: String, fullName: String, avtImage: String, arrImages: [String]) {
-        self.id = id
-        self.email = email
-        self.fullName = fullName
-        self.avtImage = avtImage
-        self.arrImages = arrImages
-    }
-}
+//struct User {
+//    let id:String!
+//    let email: String!
+//    let fullName: String!
+//    let avtImage: String!
+//    let arrImages: [String]!
+//    
+//    init() {
+//        self.id = ""
+//        self.email = ""
+//        self.fullName = ""
+//        self.avtImage = ""
+//        self.arrImages = []
+//    }
+//    
+//    init(id: String, email: String, fullName: String, avtImage: String, arrImages: [String]) {
+//        self.id = id
+//        self.email = email
+//        self.fullName = fullName
+//        self.avtImage = avtImage
+//        self.arrImages = arrImages
+//    }
+//}

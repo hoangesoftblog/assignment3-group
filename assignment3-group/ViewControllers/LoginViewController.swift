@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+var currentUser: String?
+
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
@@ -21,8 +23,21 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        if let user = Auth.auth().currentUser {
+            ref.child("IDToUser/\(user.uid)").observeSingleEvent(of: .value){ snapshot in
+                if let name = snapshot.value as? String {
+                    currentUser = name
+                }
+            }
+            
+            print("Already login")
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let mainTabbarController = storyboard.instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
+            navigationController?.pushViewController(mainTabbarController, animated: true)
+            
+        }
     }
     
     func updateUI(){
@@ -32,19 +47,39 @@ class LoginViewController: UIViewController {
     @IBAction func login(_ sender: Any) {
         let email = emailTextField.text
         let password = passwordTextField.text
-        if Auth.auth().currentUser == nil{
+        if Auth.auth().currentUser == nil {
             Auth.auth().signIn(withEmail: email!, password: password!) { [weak self] user, error in
                 guard let strongSelf = self else { return }
                 // ...
                 if error == nil{
                     print("Login success")
+                    
+                    ref.child("IDToUser/\(user?.user.uid)").observeSingleEvent(of: .value){ snapshot in
+                        print("UserID is " + (user?.user.uid ?? "not available"))
+                        if let name = snapshot.value as? String {
+                            currentUser = name
+                        }
+                    }
+                    
                     let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                     let mainTabbarController = storyboard.instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
                     self?.navigationController?.pushViewController(mainTabbarController, animated: true)
-                }else{
+                } else{
                     print(error?.localizedDescription)
                 }
             }
+        }
+        else {
+            ref.child("IDToUser/\(Auth.auth().currentUser!.uid)").observeSingleEvent(of: .value){ snapshot in
+                if let name = snapshot.value as? String {
+                    currentUser = name
+                }
+            }
+            
+            print("Already login")
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let mainTabbarController = storyboard.instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
+            navigationController?.pushViewController(mainTabbarController, animated: true)
         }
         
         print("Login in")
