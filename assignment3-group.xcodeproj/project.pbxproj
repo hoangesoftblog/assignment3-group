@@ -10,6 +10,7 @@
 		182136F522715A5F00032692 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182136F422715A5F00032692 /* MainTabBarViewController.swift */; };
 		182136FD2271AE0A00032692 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182136FC2271AE0A00032692 /* User.swift */; };
 		182136FF2271AFD000032692 /* Multimedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182136FE2271AFD000032692 /* Multimedia.swift */; };
+		20124D12227DD22200B1607E /* SelectPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20124D11227DD22200B1607E /* SelectPersonViewController.swift */; };
 		20678BF0227C8A7B001E6CD2 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20678BEF227C8A7B001E6CD2 /* Media.swift */; };
 		20678BF2227C9585001E6CD2 /* SharedPhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20678BF1227C9585001E6CD2 /* SharedPhotoViewCell.swift */; };
 		671682A4227C3F4F0004AC55 /* MainHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671682A3227C3F4F0004AC55 /* MainHomeViewController.swift */; };
@@ -44,6 +45,7 @@
 		182136F422715A5F00032692 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		182136FC2271AE0A00032692 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		182136FE2271AFD000032692 /* Multimedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multimedia.swift; sourceTree = "<group>"; };
+		20124D11227DD22200B1607E /* SelectPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPersonViewController.swift; sourceTree = "<group>"; };
 		20678BEF227C8A7B001E6CD2 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		20678BF1227C9585001E6CD2 /* SharedPhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedPhotoViewCell.swift; sourceTree = "<group>"; };
 		671682A3227C3F4F0004AC55 /* MainHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHomeViewController.swift; sourceTree = "<group>"; };
@@ -91,10 +93,9 @@
 		182136ED22714A5500032692 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				20124D17227DED4D00B1607E /* Global Tab */,
 				671682A9227C3F660004AC55 /* DetailViewController.swift */,
-				671682A7227C3F5E0004AC55 /* PublicPhotoViewCell.swift */,
-				671682A5227C3F590004AC55 /* PhotoCollectionHeaderView.swift */,
-				671682A3227C3F4F0004AC55 /* MainHomeViewController.swift */,
+				20124D11227DD22200B1607E /* SelectPersonViewController.swift */,
 				8838E99122733F35006F4BE3 /* CollectionViewPhotoLayout.swift */,
 				8838E98F22733F2A006F4BE3 /* PhotoCollecionViewCell.swift */,
 				8877A7662270CDF20003E08E /* MainPaymentViewController.swift */,
@@ -138,6 +139,16 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		20124D17227DED4D00B1607E /* Global Tab */ = {
+			isa = PBXGroup;
+			children = (
+				671682A3227C3F4F0004AC55 /* MainHomeViewController.swift */,
+				671682A7227C3F5E0004AC55 /* PublicPhotoViewCell.swift */,
+				671682A5227C3F590004AC55 /* PhotoCollectionHeaderView.swift */,
+			);
+			path = "Global Tab";
 			sourceTree = "<group>";
 		};
 		67BA84FC2265DEDB00239E2D = {
@@ -340,6 +351,7 @@
 				8877A76C2270CDF20003E08E /* MainUploadedViewController.swift in Sources */,
 				182136FF2271AFD000032692 /* Multimedia.swift in Sources */,
 				8877A76D2270CDF20003E08E /* MainPaymentViewController.swift in Sources */,
+				20124D12227DD22200B1607E /* SelectPersonViewController.swift in Sources */,
 				671682A4227C3F4F0004AC55 /* MainHomeViewController.swift in Sources */,
 				8877A7562270B4490003E08E /* RegisterViewController.swift in Sources */,
 				8877A7582270B4490003E08E /* WaterMarlkViewController.swift in Sources */,
