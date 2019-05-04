@@ -21,6 +21,10 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var gmailButton: UIButton!
     
+    func goToMain(){
+        navigationController?.pushViewController(UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,9 +37,7 @@ class LoginViewController: UIViewController {
             }
             
             print("Already login")
-            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let mainTabbarController = storyboard.instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
-            navigationController?.pushViewController(mainTabbarController, animated: true)
+            goToMain()
             
         }
     }
@@ -61,25 +63,21 @@ class LoginViewController: UIViewController {
                         }
                     }
                     
-                    let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                    let mainTabbarController = storyboard.instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
-                    self?.navigationController?.pushViewController(mainTabbarController, animated: true)
+                    self?.goToMain()
                 } else{
                     print(error?.localizedDescription)
                 }
             }
         }
         else {
-            ref.child("IDToUser/\(Auth.auth().currentUser!.uid)").observeSingleEvent(of: .value){ snapshot in
+        ref.child("IDToUser/\(Auth.auth().currentUser!.uid)").observeSingleEvent(of: .value){ snapshot in
                 if let name = snapshot.value as? String {
                     currentUser = name
                 }
             }
             
             print("Already login")
-            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let mainTabbarController = storyboard.instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
-            navigationController?.pushViewController(mainTabbarController, animated: true)
+            goToMain()
         }
         
         print("Login in")

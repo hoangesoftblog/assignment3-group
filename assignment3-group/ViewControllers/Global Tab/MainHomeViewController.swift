@@ -87,6 +87,7 @@ extension MainHomeViewController: UICollectionViewDataSource {
 
 extension MainHomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("image choosen is \(imageNames[indexPath.row])")
         performSegue(withIdentifier: PublicToDetail, sender: (imageNames[indexPath.row], imagePhoto[indexPath.row]))
     }
 }
@@ -99,13 +100,6 @@ extension MainHomeViewController {
                     withReuseIdentifier: "PhotoHeaderView", for: indexPath) as? PhotoCollectionHeaderView
             else {
                 fatalError("Invalid view type")
-            }
-
-            if headerView.button1.isEnabled {
-                //print("button 2 is pressed")
-            }
-            else if headerView.button2.isEnabled{
-                //print("button 1 is pressed")
             }
 
             return headerView

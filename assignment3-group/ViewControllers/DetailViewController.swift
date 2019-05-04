@@ -17,15 +17,13 @@ class DetailViewController: UIViewController {
     var image: UIImage?
     var database: DatabaseReference?
     
+    let selectPerson = "DetailToSelectPerson"
+    
     @IBOutlet weak var mainPic: UIImageView!
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var usernameButton: UIButton!
-    
-    @IBAction func pictureAction(_ sender: Any) {
-        
-    }
     
     override func viewDidLoad() {
         database = Database.database().reference()
@@ -39,15 +37,55 @@ class DetailViewController: UIViewController {
         
     }
     
+    @IBAction func pictureAction(_ sender: Any) {
+        let action = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        
+        if currentUser == self.usernameButton.titleLabel?.text! {
+            action.addAction(UIAlertAction(title: "Shared with someone", style: .default) { (_) in
+                
+                self.performSegue(withIdentifier: self.selectPerson, sender: (self.usernameButton.titleLabel?.text!, self.fileName!))
+                
+            })
+        }
+        else {
+            action.addAction(UIAlertAction(title: "Not the owner so no sharing", style: .default
+                , handler: nil))
+        }
+        
+        action.addAction(UIAlertAction(title: "Dismiss", style: .cancel) { (_) in
+            print("Return to normal")
+        })
+        
+        present(action, animated: true, completion: nil)
+    }
+    
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == selectPerson {
+            if let temp = segue.destination as? SelectPersonViewController {
+                if let (owner, fileName) = sender as? (String, String){
+                    temp.owner = owner
+                    temp.fileName = fileName
+                }
+            }
+        }
     }
-    */
-
+    
+    let backToLogin = "backToLogin"
+    @IBAction func logOut(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            performSegue(withIdentifier: backToLogin, sender: self)
+        }
+        catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
 }
