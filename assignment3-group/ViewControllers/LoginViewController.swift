@@ -22,29 +22,30 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var gmailButton: UIButton!
     
     func goToMain(){
-        navigationController?.pushViewController(UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController, animated: true)
+        performSegue(withIdentifier: "goToMain", sender: self)
+    }
+    
+    func getCurrentUsername(user: User){
+        ref.child("IDToUser/\(user.uid)").observeSingleEvent(of: .value){ snapshot in
+            if let name = snapshot.value as? String {
+                currentUser = name
+            }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         if let user = Auth.auth().currentUser {
-            ref.child("IDToUser/\(user.uid)").observeSingleEvent(of: .value){ snapshot in
-                if let name = snapshot.value as? String {
-                    currentUser = name
-                }
-            }
-            
+            getCurrentUsername(user: user)
             print("Already login")
             goToMain()
-            
         }
     }
     
-    func updateUI(){
-        
-    }
+    
     
     @IBAction func login(_ sender: Any) {
         let email = emailTextField.text
@@ -55,32 +56,18 @@ class LoginViewController: UIViewController {
                 // ...
                 if error == nil{
                     print("Login success")
-                    
-                    ref.child("IDToUser/\(user?.user.uid)").observeSingleEvent(of: .value){ snapshot in
-                        print("UserID is " + (user?.user.uid ?? "not available"))
-                        if let name = snapshot.value as? String {
-                            currentUser = name
-                        }
-                    }
-                    
-                    self?.goToMain()
-                } else{
+                    self?.getCurrentUsername(user: user!.user)
+                }
+                else {
                     print(error?.localizedDescription)
                 }
             }
         }
         else {
-        ref.child("IDToUser/\(Auth.auth().currentUser!.uid)").observeSingleEvent(of: .value){ snapshot in
-                if let name = snapshot.value as? String {
-                    currentUser = name
-                }
-            }
-            
-            print("Already login")
+            self.getCurrentUsername(user: Auth.auth().currentUser!)
+            print("Already login click on Login button")
             goToMain()
         }
-        
-        print("Login in")
     }
     
     @IBAction func facebookTapped(_ sender: Any) {
