@@ -21,6 +21,9 @@ class MainSharePageViewController: UIViewController {
         super.viewDidLoad()
         print("Current username is " + (currentUser ?? "not available"))
         getDataOnce()
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 23))
+        imageView.image = #imageLiteral(resourceName: "awesome")
+        navigationItem.titleView = imageView
 
         // Do any additional setup after loading the view.
     }
