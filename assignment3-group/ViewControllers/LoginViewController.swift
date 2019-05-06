@@ -57,6 +57,7 @@ class LoginViewController: UIViewController {
                 if error == nil{
                     print("Login success")
                     self?.getCurrentUsername(user: user!.user)
+                    self?.goToMain()
                 }
                 else {
                     print(error?.localizedDescription)

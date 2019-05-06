@@ -82,7 +82,7 @@ class DetailViewController: UIViewController {
     @IBAction func logOut(_ sender: Any) {
         do {
             try Auth.auth().signOut()
-            performSegue(withIdentifier: backToLogin, sender: self)
+            self.dismiss(animated: true, completion: nil)
         }
         catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
