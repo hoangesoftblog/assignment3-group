@@ -13,13 +13,37 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var mainTabBar: MainTabBarViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        //changeWindowRoot()
+        
         return true
     }
+    
+    func changeWindowRoot() {
+        //window = UIWindow(frame: UIScreen.main.bounds)
+        //if let _ = AkUserDefaults.UserToken.get(), let _ = AkUserDefaults.UserId.get() {
+            showMainTabBar()
+//        } else {
+//            //Logout any current Firebase users
+//            //            try! FIRAuth.auth()!.signOut()
+//
+//            let nav = UINavigationController(rootViewController: LoginViewController())
+//            window?.rootViewController = nav
+//            window?.makeKeyAndVisible()
+//        }
+    }
+    
+    func showMainTabBar() {
+        let vc = MainTabBarViewController()
+        self.mainTabBar = vc
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
+    }
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
