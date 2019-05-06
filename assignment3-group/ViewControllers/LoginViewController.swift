@@ -22,6 +22,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var gmailButton: UIButton!
     
     func goToMain(){
+        print(currentUser ?? "Not have yet")
         performSegue(withIdentifier: "goToMain", sender: self)
     }
     

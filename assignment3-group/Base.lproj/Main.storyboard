@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="koL-S2-MRc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="koL-S2-MRc">
     <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -756,7 +756,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                             <outletCollection property="gestureRecognizers" destination="nnh-SD-XN1" appends="YES" id="qyx-Ge-oVZ"/>
                                         </connections>
                                     </label>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ABout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnU-aj-Hlj">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnU-aj-Hlj">
                                         <rect key="frame" x="22" y="258" width="47" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
@@ -973,11 +973,11 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="328" id="XH3-3g-UsH" customClass="PaymentCell" customModule="assignment3_group" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="328"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="372" id="XH3-3g-UsH" customClass="PaymentCell" customModule="assignment3_group" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="372"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XH3-3g-UsH" id="f8A-xJ-svT">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="327.66666666666669"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="371.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iFc-lA-rK7">
@@ -1324,16 +1324,16 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
         </scene>
     </scenes>
     <resources>
-        <image name="Camera" width="100" height="100"/>
+        <image name="Camera" width="33.333332061767578" height="33.333332061767578"/>
         <image name="Camera-photo.svg" width="240" height="240"/>
         <image name="Contact" width="34" height="34"/>
-        <image name="Facebook login" width="693" height="120"/>
-        <image name="Google login" width="693" height="120"/>
+        <image name="Facebook login" width="231" height="40"/>
+        <image name="Google login" width="231" height="40"/>
         <image name="Home" width="29" height="28"/>
         <image name="Image-1" width="34" height="22"/>
         <image name="Shared Symbol" width="31" height="30"/>
-        <image name="awesome" width="500" height="96"/>
-        <image name="loginButton" width="693" height="120"/>
+        <image name="awesome" width="166.66667175292969" height="32"/>
+        <image name="loginButton" width="231" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cW4-b4-L4e"/>
