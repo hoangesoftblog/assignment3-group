@@ -97,6 +97,16 @@ extension MainHomeViewController: UICollectionViewDelegate {
 }
 
 extension MainHomeViewController {
+    @objc func bt1Click(){
+        numberOfColumns = 2
+        self.imageCollection.reloadData()
+    }
+    
+    @objc func bt2Click(){
+        numberOfColumns = 1
+        self.imageCollection.reloadData()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
@@ -105,6 +115,11 @@ extension MainHomeViewController {
             else {
                 fatalError("Invalid view type")
             }
+            headerView.layer.borderWidth = 5
+            
+            headerView.button1.addTarget(self, action: #selector(bt1Click), for: .touchUpInside)
+            
+            headerView.button2.addTarget(self, action: #selector(bt2Click), for: .touchUpInside)
 
             return headerView
 

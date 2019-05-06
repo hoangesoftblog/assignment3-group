@@ -1099,16 +1099,10 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvp-o7-vWI">
                                                     <rect key="frame" x="0.0" y="2" width="195" height="30"/>
                                                     <state key="normal" title="Button1"/>
-                                                    <connections>
-                                                        <action selector="button1Action:" destination="5Bb-C4-5pB" eventType="touchUpInside" id="vaP-9q-YCg"/>
-                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxQ-8H-QdD">
                                                     <rect key="frame" x="203" y="2" width="195" height="30"/>
                                                     <state key="normal" title="Button2"/>
-                                                    <connections>
-                                                        <action selector="button2Action:" destination="5Bb-C4-5pB" eventType="touchUpInside" id="4vV-Q7-Mq3"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
