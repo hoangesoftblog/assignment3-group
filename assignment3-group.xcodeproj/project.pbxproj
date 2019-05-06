@@ -20,6 +20,7 @@
 		674B17CF226EE27600A72A4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 674B17CE226EE27600A72A4B /* GoogleService-Info.plist */; };
 		67BA85092265DEDB00239E2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BA85082265DEDB00239E2D /* AppDelegate.swift */; };
 		67BA85132265DEDD00239E2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67BA85112265DEDD00239E2D /* LaunchScreen.storyboard */; };
+		67D0B1BD2280487700BA9810 /* PaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D0B1BC2280487700BA9810 /* PaymentCell.swift */; };
 		8838E98E22733071006F4BE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8838E98D22733071006F4BE3 /* Assets.xcassets */; };
 		8838E99022733F2A006F4BE3 /* PhotoCollecionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8838E98F22733F2A006F4BE3 /* PhotoCollecionViewCell.swift */; };
 		8838E99222733F35006F4BE3 /* CollectionViewPhotoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8838E99122733F35006F4BE3 /* CollectionViewPhotoLayout.swift */; };
@@ -57,6 +58,7 @@
 		67BA85082265DEDB00239E2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67BA85122265DEDD00239E2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67BA85142265DEDD00239E2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67D0B1BC2280487700BA9810 /* PaymentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCell.swift; sourceTree = "<group>"; };
 		7705599C8A045C6963CF7B6E /* Pods-assignment3-group.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-assignment3-group.debug.xcconfig"; path = "Target Support Files/Pods-assignment3-group/Pods-assignment3-group.debug.xcconfig"; sourceTree = "<group>"; };
 		8838E98D22733071006F4BE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8838E98F22733F2A006F4BE3 /* PhotoCollecionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollecionViewCell.swift; sourceTree = "<group>"; };
@@ -93,12 +95,12 @@
 		182136ED22714A5500032692 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				67D0B1BE228048BD00BA9810 /* Payment Tab */,
 				20124D17227DED4D00B1607E /* Global Tab */,
 				671682A9227C3F660004AC55 /* DetailViewController.swift */,
 				20124D11227DD22200B1607E /* SelectPersonViewController.swift */,
 				8838E99122733F35006F4BE3 /* CollectionViewPhotoLayout.swift */,
 				8838E98F22733F2A006F4BE3 /* PhotoCollecionViewCell.swift */,
-				8877A7662270CDF20003E08E /* MainPaymentViewController.swift */,
 				8877A7672270CDF20003E08E /* MainPersonalViewController.swift */,
 				8877A7682270CDF20003E08E /* MainSharePageViewController.swift */,
 				8877A7692270CDF20003E08E /* MainUploadedViewController.swift */,
@@ -184,6 +186,15 @@
 				67BA85142265DEDD00239E2D /* Info.plist */,
 			);
 			path = "assignment3-group";
+			sourceTree = "<group>";
+		};
+		67D0B1BE228048BD00BA9810 /* Payment Tab */ = {
+			isa = PBXGroup;
+			children = (
+				8877A7662270CDF20003E08E /* MainPaymentViewController.swift */,
+				67D0B1BC2280487700BA9810 /* PaymentCell.swift */,
+			);
+			path = "Payment Tab";
 			sourceTree = "<group>";
 		};
 		E08955A0F88DBEA6BC412FA9 /* Frameworks */ = {
@@ -355,6 +366,7 @@
 				671682A4227C3F4F0004AC55 /* MainHomeViewController.swift in Sources */,
 				8877A7562270B4490003E08E /* RegisterViewController.swift in Sources */,
 				8877A7582270B4490003E08E /* WaterMarlkViewController.swift in Sources */,
+				67D0B1BD2280487700BA9810 /* PaymentCell.swift in Sources */,
 				67BA85092265DEDB00239E2D /* AppDelegate.swift in Sources */,
 				671682A8227C3F5E0004AC55 /* PublicPhotoViewCell.swift in Sources */,
 			);

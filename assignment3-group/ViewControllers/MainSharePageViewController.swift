@@ -12,6 +12,11 @@ import Firebase
 class MainSharePageViewController: UIViewController {
     var imageNames: [String] = []
     var imagePhoto: [Int: UIImage] = [:]
+    let sectionInsets = UIEdgeInsets(top: 50.0,
+                                     left: 20.0,
+                                     bottom: 50.0,
+                                     right: 20.0)
+    var numberOfColumns: CGFloat = 2
     
     @IBOutlet weak var imageCollection: UICollectionView!
     let reuseIdentifier = "Cell"
@@ -101,4 +106,41 @@ extension MainSharePageViewController: UICollectionViewDelegate {
         }
     }
 }
+
+extension MainSharePageViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let paddingSpace = sectionInsets.left * (numberOfColumns + 1)
+        let available = view.frame.width - paddingSpace
+        let widthPerItem = available / numberOfColumns
+        
+        print("IndexPath row is \(indexPath.row)")
+        print("imagePhoto has \(imagePhoto.count)\n")
+        if indexPath.row < imagePhoto.count && imagePhoto[indexPath.row] != nil {
+            let photoHeight = (imagePhoto[indexPath.row]?.size.height)!
+            let photoWidth = (imagePhoto[indexPath.row]?.size.width)!
+            print("\(photoHeight)\t\(photoWidth)")
+            
+            return CGSize(width: widthPerItem, height: widthPerItem * (photoHeight / photoWidth))
+        }
+        else {
+            return CGSize(width: widthPerItem, height: widthPerItem)
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    // 4
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
+}
+
 
