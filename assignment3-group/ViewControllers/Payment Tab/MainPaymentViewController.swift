@@ -7,25 +7,101 @@
 //
 
 import UIKit
+import Firebase
+
+class Notif {
+    var sender: String?
+    var image: UIImage?
+    var time: String?
+    
+    init(sender: String, image: UIImage, time: String) {
+        self.sender = sender
+        self.image = image
+        self.time = time
+    }
+}
 
 class MainPaymentViewController: UIViewController {
-
+    let reuseIdentifier = "Cell"
     @IBOutlet weak var tableView: UITableView!
+    var notificationArray = [Int: Notif]()
     
     override func viewDidLoad() {
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 400
+        var temp = [DataSnapshot]()
         super.viewDidLoad()
         
+        print(currentUser!)
+        ref.child("userPicture/\(currentUser!)/notification").observeSingleEvent(of: .value){ snapshot in
+            print("On first completion")
+            print(snapshot.value)
+            for i in snapshot.children {
+                print("In 1st for loop")
+                if let i2 = i as? DataSnapshot{
+                    print("value of i2 is: ")
+                    print(i2.value)
+                    temp.append(i2)
+                }
+            }
+            
+            print("Reload data 1st, temp has \(temp.count)")
+            self.tableView.reloadData()
+            
+            for i in 0..<temp.count {
+                if let val = temp[i].value as? [String: String]{
+                    print("Getting on get picture")
+                    storageRef.child(val["image"] ?? "").getData(maxSize: INT64_MAX){ data, error in
+                        if error != nil {
+                            print("Error occurs")
+                        }
+                        else if data != nil {
+                            if let imageTemp = UIImage(data: data!) {
+                                print("image in payment available")
+                                self.notificationArray[i] = Notif(sender: val["sender"] ?? "No sender", image: imageTemp, time: val["time"] ?? "No time")
+                            }
+                        }
+                        
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+            
+        }
+        
+    }
+}
+
+extension MainPaymentViewController: UITableViewDataSource {
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("There are \(notificationArray.count) notifications")
+        return notificationArray.count
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("Cell for row at start working")
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        
+        if let customCell = cell as? PaymentCell {
+            if indexPath.row < notificationArray.count {
+                print("Can return payment cell")
+                customCell.photo.image = notificationArray[indexPath.row]?.image
+                customCell.usernameButton.titleLabel?.text = notificationArray[indexPath.row]?.sender
+                customCell.timeLabel.text = notificationArray[indexPath.row]?.time
+                
+                return customCell
+            }            
+            
+            print("Can not return payment cell")
+        }
+        
+        return cell
+    }
 }
+

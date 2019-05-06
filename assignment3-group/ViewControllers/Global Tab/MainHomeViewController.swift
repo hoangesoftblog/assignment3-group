@@ -91,7 +91,7 @@ extension MainHomeViewController: UICollectionViewDataSource {
 
 extension MainHomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("image choosen is \(imageNames[indexPath.row])")
+        //print("image choosen is \(imageNames[indexPath.row])")
         performSegue(withIdentifier: PublicToDetail, sender: (imageNames[indexPath.row], imagePhoto[indexPath.row]))
     }
 }
@@ -132,14 +132,12 @@ extension MainHomeViewController: UICollectionViewDelegateFlowLayout {
         let available = view.frame.width - paddingSpace
         let widthPerItem = available / numberOfColumns
         
-        print("IndexPath row is \(indexPath.row)")
-        print("imagePhoto has \(imagePhoto.count)\n")
+        //print("IndexPath row is \(indexPath.row)")
+        //print("imagePhoto has \(imagePhoto.count)\n")
         if indexPath.row < imagePhoto.count && imagePhoto[indexPath.row] != nil {
-            let photoHeight = (imagePhoto[indexPath.row]?.size.height)!
-            let photoWidth = (imagePhoto[indexPath.row]?.size.width)!
-            print("\(photoHeight)\t\(photoWidth)")
+            //print("\(photoHeight)\t\(photoWidth)")
             
-            return CGSize(width: widthPerItem, height: widthPerItem * (photoHeight / photoWidth))
+            return CGSize(width: widthPerItem, height: widthPerItem * ((imagePhoto[indexPath.row]?.size.height)! / (imagePhoto[indexPath.row]?.size.width)!))
         }
         else {
             return CGSize(width: widthPerItem, height: widthPerItem)

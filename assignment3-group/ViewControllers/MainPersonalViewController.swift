@@ -155,6 +155,13 @@ class MainPersonalViewController: UIViewController, UICollectionViewDelegateFlow
     }
     
     @IBAction func logoutTapped(_ sender: UITapGestureRecognizer) {
+        do {
+            try Auth.auth().signOut()
+            self.dismiss(animated: true, completion: nil)
+        }
+        catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
     
     @IBAction func aboutTapped(_ sender: UITapGestureRecognizer) {
