@@ -7,25 +7,28 @@
 //
 
 import UIKit
+import Firebase
 
 class MainPaymentViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref.child("userPicture/\(currentUser)/notification").observeSingleEvent(of: .value){ snapshot in
+            for i in snapshot.children {
+                if let i2 = i as? DataSnapshot {
+                    
+                }
+            }
+        }
         
     }
+
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+
