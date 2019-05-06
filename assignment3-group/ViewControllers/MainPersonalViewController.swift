@@ -14,6 +14,10 @@ private let reuseIdentifier = "personalCollectionViewCell"
 
 class MainPersonalViewController: UIViewController, UICollectionViewDelegateFlowLayout{
     
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    @IBOutlet weak var jobLabel: UILabel!
+    
     @IBOutlet weak var topView: UIView!
     
     @IBOutlet weak var avtImageView: UIImageView!
@@ -24,12 +28,36 @@ class MainPersonalViewController: UIViewController, UICollectionViewDelegateFlow
     
     @IBOutlet weak var sideViewLeadingContraint: NSLayoutConstraint!
     
-    var menuShowing:Bool = false
+    var menuShowing: Bool = false
     
     var arrImages = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        usernameLabel.text = currentUser
+        
+//        ref.child("userPicture/\(currentUser)").observeSingleEvent(of: .value){ snapshot in
+//            if let val = snapshot.value as? [String: Any] {
+//                if let avtName = val["avtImage"] as? String{
+//                    storageRef.child(avtName).getData(maxSize: INT64_MAX){ data, error in
+//                        print(avtName + " is get")
+//                        if error != nil {
+//                            print("Error occurs")
+//                        }
+//                        else if data != nil {
+//                            if let imageTemp = UIImage(data: data!) {
+//                                print("image available")
+//                                self.avtImageView.image = imageTemp
+//                            }
+//                        }
+//                    }
+//                }
+//                
+//                self.jobLabel.text = ((val["job"] as? String) ?? "Traveler")
+//            }
+//        }
+        
         updateUI()
         
         collectionView.delegate = self
@@ -69,23 +97,23 @@ class MainPersonalViewController: UIViewController, UICollectionViewDelegateFlow
         }
     }
     
-    func getImagesOfUser(){
-        let userID = Auth.auth().currentUser?.uid
-        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            let username = value?["username"] as? String ?? ""
-            let email = value?["email"] as? String ?? ""
-            let fullName = value?["fullName"] as? String ?? ""
-            let avtImage = value?["avtImage"] as? String ?? ""
-            //let arrImages: Dictionary = value?[""] as? Dictionary
-            //let user = User(id: userID!, email: email, fullName: fullName, avtImage: avtImage, arrImages: arrImages)
-            
-            // ...
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    }
+//    func getImagesOfUser(){
+//        let userID = Auth.auth().currentUser?.uid
+//        ref.child("userPicture").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+//            // Get user value
+//            let value = snapshot.value as? NSDictionary
+//            let username = value?["username"] as? String ?? ""
+//            let email = value?["email"] as? String ?? ""
+//            let fullName = value?["fullName"] as? String ?? ""
+//            let avtImage = value?["avtImage"] as? String ?? ""
+//            //let arrImages: Dictionary = value?[""] as? Dictionary
+//            //let user = User(id: userID!, email: email, fullName: fullName, avtImage: avtImage, arrImages: arrImages)
+//
+//            // ...
+//        }) { (error) in
+//            print(error.localizedDescription)
+//        }
+//    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

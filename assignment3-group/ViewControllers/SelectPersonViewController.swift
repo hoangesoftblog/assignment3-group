@@ -13,7 +13,7 @@ class SelectPersonViewController: UITableViewController {
     enum nameOfArray: Int {
         case canShare, shared
     }
-    var info = [[String]]()
+    var info: [[String]] = [[String]](repeating: [], count: 2)
     var owner: String?
     var fileName: String?
     let reuseIdentifier = "Cell"
@@ -21,6 +21,7 @@ class SelectPersonViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //O is Can share
+
         ref.child("IDToUser").observeSingleEvent(of: .value){ snapshot in
             for i in snapshot.children {
                 if let i2 = (i as? DataSnapshot)?.value as? String {
@@ -128,7 +129,7 @@ class SelectPersonViewController: UITableViewController {
                 case .canShare:
                     res = "People you can share"
                 case .shared:
-                    res = "Shared To"
+                    res = "Already shared to: "
             }
         }
         return res
