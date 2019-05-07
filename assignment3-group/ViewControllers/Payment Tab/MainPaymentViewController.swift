@@ -13,16 +13,19 @@ class Notif {
     var sender: String?
     var image: UIImage?
     var time: String?
+    var imageName: String?
     
-    init(sender: String, image: UIImage, time: String) {
+    init(sender: String, imageName: String, image: UIImage, time: String) {
         self.sender = sender
         self.image = image
         self.time = time
+        self.imageName = imageName
     }
 }
 
 class MainPaymentViewController: UIViewController,UITableViewDelegate {
     let reuseIdentifier = "Cell"
+    let goToPersonal = "fromPaymentToPersonal"
     var temp : CGFloat = 0
     @IBOutlet weak var tableView: UITableView!
     var notificationArray = [Int: Notif]()
@@ -52,14 +55,14 @@ class MainPaymentViewController: UIViewController,UITableViewDelegate {
             for i in 0..<temp.count {
                 if let val = temp[i].value as? [String: String]{
                     print("Getting on get picture")
-                    storageRef.child(val["image"] ?? "").getData(maxSize: INT64_MAX){ data, error in
+                    storageRef.child(val["image"] ?? "No filename").getData(maxSize: INT64_MAX){ data, error in
                         if error != nil {
                             print("Error occurs")
                         }
                         else if data != nil {
                             if let imageTemp = UIImage(data: data!) {
                                 print("image in payment available")
-                                self.notificationArray[i] = Notif(sender: val["sender"] ?? "No sender", image: imageTemp, time: val["time"] ?? "No time")
+                                self.notificationArray[i] = Notif(sender: val["sender"] ?? "No sender", imageName: val["image"] ?? "No filename", image: imageTemp, time: val["time"] ?? "No time")
                             }
                         }
                         
@@ -93,6 +96,18 @@ extension MainPaymentViewController: UITableViewDataSource {
         return notificationArray.count
     }
     
+    @objc func acceptPic(file name: String){
+        ref.child("fileName/\(Media.removeFileExtension(file: name))/Fully shared for").childByAutoId().setValue(currentUser!)
+        
+        ref.child(currentUser!).child("fileSharedWithoutWatermark").childByAutoId().setValue(name)        
+    }
+    
+    @objc func contactOwner(username name: String) {
+        performSegue(withIdentifier: goToPersonal, sender: name)
+    }
+    
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("Cell for row at start working")
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
@@ -105,6 +120,9 @@ extension MainPaymentViewController: UITableViewDataSource {
                 customCell.photo.image = notificationArray[indexPath.row]?.image
                 customCell.usernameButton.titleLabel?.text = notificationArray[indexPath.row]?.sender
                 customCell.timeLabel.text = notificationArray[indexPath.row]?.time
+                
+                customCell.acceptButton.addTarget(self, action: #selector(acceptPic(file: )), for: .touchUpInside)
+                customCell.contactButton.addTarget(self, action: #selector(contactOwner(username: )), for: .touchUpInside)
                 
                 return customCell
             }            
