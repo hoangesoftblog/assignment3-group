@@ -9,10 +9,11 @@
 import UIKit
 
 class PaymentCell: UITableViewCell {
-    @IBOutlet weak var photo: UIImageView!
+
     @IBOutlet weak var usernameButton: UIButton!
     @IBOutlet weak var sendRequestLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
+
+    @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     
     
