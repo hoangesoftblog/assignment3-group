@@ -1,7 +1,7 @@
 import UIKit
 
 class PhotoCollectionViewCell : UICollectionViewCell {
-    var roundNumber : CGFloat = 12
+    var roundNumber : CGFloat = 40
     
  
     @IBOutlet weak var image: UIImageView!
