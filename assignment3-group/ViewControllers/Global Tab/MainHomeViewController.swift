@@ -49,7 +49,6 @@ class MainHomeViewController: UIViewController {
                     print(self.imageNames[i], separator: "", terminator: " ")
                     if error != nil {
                         print("Error occurs")
-            //            print(error?.localizedDescription)
                     }
                     else if data != nil {
                         if let imageTemp = UIImage(data: data!) {
@@ -147,9 +146,7 @@ extension MainHomeViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let paddingSpace = sectionInsets.left * (numberOfColumns + 1)
-        print(paddingSpace)
         let available = view.frame.width - paddingSpace
-        print(available)
         let widthPerItem = available / numberOfColumns
         
         //print("IndexPath row is \(indexPath.row)")

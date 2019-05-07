@@ -1,3 +1,11 @@
+//
+//  MainPersonalController.swift
+//  SideMenu
+//
+//  Created by namtranx on 4/20/19.
+//  Copyright © 2019 Apple. All rights reserved.
+//
+
 import UIKit
 import Firebase
 import Photos
@@ -33,26 +41,26 @@ class MainPersonalViewController: UIViewController, UICollectionViewDelegateFlow
         
         usernameLabel.text = currentUser
         
-        //        ref.child("userPicture/\(currentUser)").observeSingleEvent(of: .value){ snapshot in
-        //            if let val = snapshot.value as? [String: Any] {
-        //                if let avtName = val["avtImage"] as? String{
-        //                    storageRef.child(avtName).getData(maxSize: INT64_MAX){ data, error in
-        //                        print(avtName + " is get")
-        //                        if error != nil {
-        //                            print("Error occurs")
-        //                        }
-        //                        else if data != nil {
-        //                            if let imageTemp = UIImage(data: data!) {
-        //                                print("image available")
-        //                                self.avtImageView.image = imageTemp
-        //                            }
-        //                        }
-        //                    }
-        //                }
-        //
-        //                self.jobLabel.text = ((val["job"] as? String) ?? "Traveler")
-        //            }
-        //        }
+//        ref.child("userPicture/\(currentUser)").observeSingleEvent(of: .value){ snapshot in
+//            if let val = snapshot.value as? [String: Any] {
+//                if let avtName = val["avtImage"] as? String{
+//                    storageRef.child(avtName).getData(maxSize: INT64_MAX){ data, error in
+//                        print(avtName + " is get")
+//                        if error != nil {
+//                            print("Error occurs")
+//                        }
+//                        else if data != nil {
+//                            if let imageTemp = UIImage(data: data!) {
+//                                print("image available")
+//                                self.avtImageView.image = imageTemp
+//                            }
+//                        }
+//                    }
+//                }
+//                
+//                self.jobLabel.text = ((val["job"] as? String) ?? "Traveler")
+//            }
+//        }
         
         updateUI()
         
@@ -63,7 +71,7 @@ class MainPersonalViewController: UIViewController, UICollectionViewDelegateFlow
             layout.delegate = self as? LayoutDelegate
             
         }
-        
+    
     }
     
     func grabPhoto(){
@@ -93,23 +101,23 @@ class MainPersonalViewController: UIViewController, UICollectionViewDelegateFlow
         }
     }
     
-    //    func getImagesOfUser(){
-    //        let userID = Auth.auth().currentUser?.uid
-    //        ref.child("userPicture").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-    //            // Get user value
-    //            let value = snapshot.value as? NSDictionary
-    //            let username = value?["username"] as? String ?? ""
-    //            let email = value?["email"] as? String ?? ""
-    //            let fullName = value?["fullName"] as? String ?? ""
-    //            let avtImage = value?["avtImage"] as? String ?? ""
-    //            //let arrImages: Dictionary = value?[""] as? Dictionary
-    //            //let user = User(id: userID!, email: email, fullName: fullName, avtImage: avtImage, arrImages: arrImages)
-    //
-    //            // ...
-    //        }) { (error) in
-    //            print(error.localizedDescription)
-    //        }
-    //    }
+//    func getImagesOfUser(){
+//        let userID = Auth.auth().currentUser?.uid
+//        ref.child("userPicture").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+//            // Get user value
+//            let value = snapshot.value as? NSDictionary
+//            let username = value?["username"] as? String ?? ""
+//            let email = value?["email"] as? String ?? ""
+//            let fullName = value?["fullName"] as? String ?? ""
+//            let avtImage = value?["avtImage"] as? String ?? ""
+//            //let arrImages: Dictionary = value?[""] as? Dictionary
+//            //let user = User(id: userID!, email: email, fullName: fullName, avtImage: avtImage, arrImages: arrImages)
+//
+//            // ...
+//        }) { (error) in
+//            print(error.localizedDescription)
+//        }
+//    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -193,6 +201,6 @@ extension MainPersonalViewController : LayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
         
         return arrImages[indexPath.item].size.height
-}
-
+    }
+    
 }
