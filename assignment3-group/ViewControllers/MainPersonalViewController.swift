@@ -14,6 +14,10 @@ private let reuseIdentifier = "personalCollectionViewCell"
 
 class MainPersonalViewController: UIViewController, UICollectionViewDelegateFlowLayout{
     
+    let goToAccountSetting = "goToAccountSetting"
+    let goToAppearance = "goToAppearance"
+    let goToStatistic = "goToStatistic"
+    
     @IBOutlet weak var usernameLabel: UILabel!
     
     @IBOutlet weak var jobLabel: UILabel!
@@ -145,13 +149,17 @@ class MainPersonalViewController: UIViewController, UICollectionViewDelegateFlow
     }
     
     @IBAction func acountSettings(_ sender: UITapGestureRecognizer) {
-        
+        performSegue(withIdentifier: goToAccountSetting, sender: self)
     }
     
     @IBAction func appearanceTapped(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: goToAppearance, sender: self)
     }
     
     @IBAction func staticTapped(_ sender: UITapGestureRecognizer) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let aboutVC = storyboard.instantiateViewController(withIdentifier: "StatisticsViewController") as! StatisticsViewController
+        self.show(aboutVC, sender: nil)
     }
     
     @IBAction func logoutTapped(_ sender: UITapGestureRecognizer) {
