@@ -38,7 +38,6 @@
 		8877A7732270CE060003E08E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7702270CE060003E08E /* WelcomeViewController.swift */; };
 		8877A7742270CE060003E08E /* TutorialCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A76F2270CE060003E08E /* TutorialCollectionViewController.swift */; };
 		88DF974A227B1B7D00455895 /* AppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DF9749227B1B7D00455895 /* AppearanceViewController.swift */; };
-		8B9296FB228145DD00F52056 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9296FA228145DD00F52056 /* StatisticsViewController.swift */; };
 		AC48B2B618378B7059AFFC30 /* Pods_assignment3_group.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDBA3F323894B8D270B4ABF2 /* Pods_assignment3_group.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,7 +77,6 @@
 		8877A7702270CE060003E08E /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		8877A7712270CE060003E08E /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
 		88DF9749227B1B7D00455895 /* AppearanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceViewController.swift; sourceTree = "<group>"; };
-		8B9296FA228145DD00F52056 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		BDBA3F323894B8D270B4ABF2 /* Pods_assignment3_group.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_assignment3_group.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -104,7 +102,6 @@
 				8838E99122733F35006F4BE3 /* CollectionViewPhotoLayout.swift */,
 				8838E98F22733F2A006F4BE3 /* PhotoCollecionViewCell.swift */,
 				8877A7672270CDF20003E08E /* MainPersonalViewController.swift */,
-				8B9296FA228145DD00F52056 /* StatisticsViewController.swift */,
 				8877A7682270CDF20003E08E /* MainSharePageViewController.swift */,
 				8877A7692270CDF20003E08E /* MainUploadedViewController.swift */,
 				8877A7712270CE060003E08E /* TutorialCollectionViewCell.swift */,
@@ -297,7 +294,6 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-assignment3-group/Pods-assignment3-group-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -307,7 +303,6 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -374,7 +369,6 @@
 				67D0B1BD2280487700BA9810 /* PaymentCell.swift in Sources */,
 				67BA85092265DEDB00239E2D /* AppDelegate.swift in Sources */,
 				671682A8227C3F5E0004AC55 /* PublicPhotoViewCell.swift in Sources */,
-				8B9296FB228145DD00F52056 /* StatisticsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

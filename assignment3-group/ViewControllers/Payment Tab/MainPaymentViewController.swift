@@ -21,8 +21,9 @@ class Notif {
     }
 }
 
-class MainPaymentViewController: UIViewController {
+class MainPaymentViewController: UIViewController,UITableViewDelegate {
     let reuseIdentifier = "Cell"
+    var temp : CGFloat = 0
     @IBOutlet weak var tableView: UITableView!
     var notificationArray = [Int: Notif]()
     
@@ -65,6 +66,7 @@ class MainPaymentViewController: UIViewController {
                         self.tableView.reloadData()
                     }
                 }
+            
             }
             
         }
@@ -74,7 +76,14 @@ class MainPaymentViewController: UIViewController {
 
 extension MainPaymentViewController: UITableViewDataSource {
     
-    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+//        if let customCell = cell as? PaymentCell{
+//           temp = customCell.timeLabel.frame.origin.y + 30
+//        }
+//            return temp
+//
+//    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -89,6 +98,8 @@ extension MainPaymentViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         
         if let customCell = cell as? PaymentCell {
+           // temp = customCell.timeLabel.frame.origin.y + customCell.timeLabel.font.ascender
+            temp = customCell.photo.frame.origin.y + customCell.photo.frame.height
             if indexPath.row < notificationArray.count {
                 print("Can return payment cell")
                 customCell.photo.image = notificationArray[indexPath.row]?.image
@@ -103,5 +114,15 @@ extension MainPaymentViewController: UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return (temp + 60)
+    }
 }
 
+//extension MainPaymentViewController: UITableViewDelegate {
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+//    {
+//        return 400;//Your custom row height
+//    }
+//}

@@ -117,8 +117,6 @@ extension MainHomeViewController {
             }
             headerView.layer.borderWidth = 5
             
-        
-            
             headerView.button1.addTarget(self, action: #selector(bt1Click), for: .touchUpInside)
             
             headerView.button2.addTarget(self, action: #selector(bt2Click), for: .touchUpInside)
