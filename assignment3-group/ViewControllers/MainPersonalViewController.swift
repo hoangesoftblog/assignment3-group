@@ -146,28 +146,76 @@ class MainPersonalViewController: UIViewController, UICollectionViewDelegateFlow
     
     @IBAction func appearanceTapped(_ sender: UITapGestureRecognizer) {
         performSegue(withIdentifier: goToAppearance, sender: self)
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let aboutVC = storyboard.instantiateViewController(withIdentifier:"MainPersonalViewController") as! MainPersonalViewController
+        
     }
     
     @IBAction func staticTapped(_ sender: UITapGestureRecognizer) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let aboutVC = storyboard.instantiateViewController(withIdentifier: "StatisticsViewController") as! StatisticsViewController
+        let aboutVC = storyboard.instantiateViewController(withIdentifier: "AboutViewController") as! AboutViewController
         self.show(aboutVC, sender: nil)
     }
     
-    @IBAction func logoutTapped(_ sender: UITapGestureRecognizer) {
-        do {
-            try Auth.auth().signOut()
-            self.dismiss(animated: true, completion: nil)
-        }
-        catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-    }
+    
     
     @IBAction func aboutTapped(_ sender: UITapGestureRecognizer) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let aboutVC = storyboard.instantiateViewController(withIdentifier: "AboutViewController") as! AboutViewController
         self.show(aboutVC, sender: nil)
+    }
+    
+ 
+    @IBAction func editTapped(_ sender: Any) {
+        print("edit bg")
+        //code...
+        var bgViewLayer = CALayer()
+        let image = UIImage(named: "logo")
+        bgViewLayer.frame = topView.bounds
+        bgViewLayer.contents = image
+        topView.layer.addSublayer(bgViewLayer)
+        
+        let alertController = UIAlertController(title: " Thông báo", message: "Bạn muốn chọn chế độ nào ?", preferredStyle: .alert)
+        let imgPicker = UIImagePickerController()
+        
+        // Adding photo-button into the alert
+        let photoAction = UIAlertAction(title: "Photo", style: UIAlertAction.Style.default) { (UIAlertAction) in
+            imgPicker.allowsEditing = true
+            imgPicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            imgPicker.sourceType = .photoLibrary
+            self.present(imgPicker, animated: true, completion: nil)
+        }
+        
+        alertController.addAction(photoAction)
+        
+        // Asking for taking photo - can enable or not
+        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertAction.Style.default) { (UIAlertAction) in
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera){
+                imgPicker.allowsEditing = true
+                imgPicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+                imgPicker.sourceType = .camera
+                self.present(imgPicker, animated: true, completion: nil)
+            }else{
+                print("No detect camera")
+            }
+            
+        }
+        
+        alertController.addAction(cameraAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func logoutTapped(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            print("sign out success")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            self.navigationController?.pushViewController(loginViewController, animated: true)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
     
 }

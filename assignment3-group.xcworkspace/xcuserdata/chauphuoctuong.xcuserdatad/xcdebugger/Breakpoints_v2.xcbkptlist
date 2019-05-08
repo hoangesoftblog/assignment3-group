@@ -26,28 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "assignment3-group/ViewControllers/MainPersonalViewController.swift"
-            timestampString = "578548101.740242"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "collectionView(_:heightForPhotoAtIndexPath:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "assignment3-group/ViewControllers/MainPersonalViewController.swift"
-            timestampString = "578548101.74209"
+            timestampString = "579017640.446678"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
             endingLineNumber = "133"
-            landmarkName = "aboutTapped(_:)"
+            landmarkName = "toggledTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

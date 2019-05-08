@@ -239,52 +239,138 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fF4-BF-JOL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2409" y="140"/>
+            <point key="canvasLocation" x="-3172" y="155"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Clu-c0-XsH">
+        <!--Account Setting View Controller-->
+        <scene sceneID="T2i-vd-CyD">
             <objects>
-                <viewController id="gtd-fA-FoM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="a3H-nC-9Jf">
+                <viewController id="mKt-gg-DKN" customClass="AccountSettingViewController" customModule="assignment3_group" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EiG-uS-BQe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5id-fE-Vhr">
-                                <rect key="frame" x="55" y="135" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Auto upload" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e25-bX-oAQ">
+                                <rect key="frame" x="51" y="112" width="105" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXW-Gj-uY2">
-                                <rect key="frame" x="55" y="221" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Auto save" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkZ-6F-qmD">
+                                <rect key="frame" x="51" y="253" width="94" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hnN-BF-Sgs">
-                                <rect key="frame" x="241" y="130" width="49" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6eO-CL-ZGM">
+                                <rect key="frame" x="263" y="105" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="onTintColor" red="1" green="0.17301860080000001" blue="0.1373886882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="autoSaveTapped:" destination="mKt-gg-DKN" eventType="valueChanged" id="KNC-ZJ-Kbm"/>
+                                    <action selector="autoUpload:" destination="mKt-gg-DKN" eventType="valueChanged" id="XZF-Jz-hZR"/>
+                                </connections>
                             </switch>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Xm-2w-lzM">
-                                <rect key="frame" x="111" y="332" width="97" height="45"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8RB-DK-bOH">
+                                <rect key="frame" x="263" y="251" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="contentEdgeInsets" minX="-24" minY="0.0" maxX="-7" maxY="0.0"/>
-                                <inset key="titleEdgeInsets" minX="17" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="abc" image="Home">
-                                    <color key="titleColor" red="1" green="0.81091640330000003" blue="0.2398056432" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                            </button>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delete Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2M-Vu-4gx">
+                                <rect key="frame" x="51" y="798" width="134" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Fnk-hw-NKe" appends="YES" id="Sar-7F-9PV"/>
+                                </connections>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="tDC-o1-fet"/>
+                        <viewLayoutGuide key="safeArea" id="oS6-aX-Ju7"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YfB-iV-DoU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p5j-mf-eJI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Fnk-hw-NKe" userLabel="deleteAccount">
+                    <connections>
+                        <action selector="deleteAccount:" destination="mKt-gg-DKN" id="2yY-Px-5hv"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1501" y="254"/>
+            <point key="canvasLocation" x="-2359.4202898550725" y="277.90178571428572"/>
+        </scene>
+        <!--Appearance View Controller-->
+        <scene sceneID="84F-iB-JbH">
+            <objects>
+                <viewController storyboardIdentifier="AppearanceViewController" id="k1O-nB-Oon" customClass="AppearanceViewController" customModule="assignment3_group" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BOE-9Z-sJ0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rounded corner on images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTG-q5-IG8">
+                                <rect key="frame" x="81" y="118" width="206" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Background Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXf-p0-c1R">
+                                <rect key="frame" x="81" y="188" width="138" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMu-Og-Mw5">
+                                <rect key="frame" x="46" y="249" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.81091640330000003" blue="0.2398056432" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="yellowButtonTapped:" destination="k1O-nB-Oon" eventType="touchUpInside" id="pc5-ix-kT8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8PI-Em-lc6">
+                                <rect key="frame" x="101" y="249" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yP7-sW-EQw">
+                                <rect key="frame" x="155" y="249" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIV-cK-zIZ">
+                                <rect key="frame" x="213" y="249" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.98242336511611938" green="0.023471411317586899" blue="0.43195497989654541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kfh-7C-n8c">
+                                <rect key="frame" x="277" y="249" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zK-cv-g5j">
+                                <rect key="frame" x="337" y="249" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.58824176770504688" green="0.97812217226917875" blue="0.40088261843976392" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qoT-tO-qOS">
+                                <rect key="frame" x="315" y="113" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="dgN-OM-shm"/>
+                    </view>
+                    <connections>
+                        <outlet property="yellowButton" destination="wMu-Og-Mw5" id="sIN-4o-AO4"/>
+                        <segue destination="DfI-G9-rop" kind="show" id="Q8j-fD-bzx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MP2-p9-biN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1633.3333333333335" y="277.90178571428572"/>
         </scene>
         <!--Tutorial Collection View Controller-->
         <scene sceneID="p3v-RK-EKD">
@@ -379,14 +465,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="awesome" translatesAutoresizingMaskIntoConstraints="NO" id="TcM-DU-nV4">
-                                <rect key="frame" x="117" y="141" width="181" height="0.0"/>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="NMU-G7-N1x">
-                                <rect key="frame" x="64" y="192" width="285" height="317"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="NMU-G7-N1x">
+                                <rect key="frame" x="65" y="325" width="285" height="365"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nlm-aP-mtq">
-                                        <rect key="frame" x="0.0" y="0.0" width="285" height="164"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="285" height="173"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Created by RMIT students having a passion for photography.
 
@@ -397,7 +480,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3M-Z7-xUG">
-                                        <rect key="frame" x="0.0" y="165" width="285" height="50"/>
+                                        <rect key="frame" x="0.0" y="187" width="285" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="JDl-x6-dbi"/>
@@ -406,7 +489,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Credit" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XON-cW-vNY">
-                                        <rect key="frame" x="0.0" y="216" width="285" height="50"/>
+                                        <rect key="frame" x="0.0" y="251" width="285" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="nfX-vs-8Gk"/>
@@ -415,7 +498,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" editable="NO" text="AwesomePhotos Team." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cu-Wr-SIz">
-                                        <rect key="frame" x="0.0" y="267" width="285" height="50"/>
+                                        <rect key="frame" x="0.0" y="315" width="285" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="2Bg-22-F6P"/>
@@ -429,6 +512,9 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                     <constraint firstAttribute="height" constant="365" id="c04-hc-Wu8"/>
                                 </constraints>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="awesome" translatesAutoresizingMaskIntoConstraints="NO" id="TcM-DU-nV4">
+                                <rect key="frame" x="117" y="217" width="181" height="32"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -447,22 +533,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="muw-c6-kn2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-397" y="188"/>
-        </scene>
-        <!--Appearance View Controller-->
-        <scene sceneID="0y9-cH-xow">
-            <objects>
-                <viewController id="KBU-9e-D1T" customClass="AppearanceViewController" customModule="assignment3_group" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gYH-rJ-a6D">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="NnQ-g7-V9X"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cMH-rf-Lm9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="687" y="188"/>
+            <point key="canvasLocation" x="-838" y="278"/>
         </scene>
         <!--Statistics View Controller-->
         <scene sceneID="SPH-sv-E4o">
@@ -607,7 +678,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ECt-3e-a0r">
-                                <rect key="frame" x="0.0" y="132" width="414" height="280"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="280"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="namtranx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dal-OB-Wiu">
                                         <rect key="frame" x="163.66666666666666" y="43" width="86.666666666666657" height="27.333333333333329"/>
@@ -648,9 +719,13 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebJ-ez-X3E">
                                                 <rect key="frame" x="51" y="0.0" width="39" height="20"/>
+                                                <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="fxF-AI-hOD" appends="YES" id="HjV-Bn-gVL"/>
+                                                </connections>
                                             </label>
                                         </subviews>
                                         <constraints>
@@ -675,7 +750,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QbD-43-5sx">
-                                <rect key="frame" x="0.0" y="412" width="414" height="52"/>
+                                <rect key="frame" x="0.0" y="368" width="414" height="52"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M6o-SW-afv">
                                         <rect key="frame" x="10" y="5" width="121" height="43"/>
@@ -715,7 +790,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="E6s-Sj-M5M">
-                                <rect key="frame" x="0.0" y="464" width="414" height="349"/>
+                                <rect key="frame" x="0.0" y="420" width="414" height="442"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewLayout key="collectionViewLayout" id="sLm-g6-DOz" customClass="CollectionViewPhotoLayout" customModule="assignment3_group" customModuleProvider="target"/>
                                 <cells>
@@ -744,7 +819,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 </cells>
                             </collectionView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7t-am-7yt">
-                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem id="Iai-pL-a1E">
                                         <barButtonItem key="leftBarButtonItem" image="Contact" id="ul1-hc-siW">
@@ -808,7 +883,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                             <outletCollection property="gestureRecognizers" destination="Rik-Cv-nDi" appends="YES" id="efh-JS-2T2"/>
                                         </connections>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Apperances" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeW-YD-Ekm">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Apperances" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeW-YD-Ekm" customClass="AppearanceView">
                                         <rect key="frame" x="22" y="133" width="92" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
@@ -876,9 +951,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <outlet property="uploadPhotoImageView" destination="Q3A-Yn-Vr8" id="1iu-4s-wLV"/>
                         <outlet property="usernameLabel" destination="Dal-OB-Wiu" id="Q5v-lv-2LS"/>
                         <segue destination="iz7-Xl-a5B" kind="show" identifier="showAbout" id="5Lb-kh-zDl"/>
-                        <segue destination="gtd-fA-FoM" kind="show" identifier="goToAccountSetting" id="8e5-4S-Mq8"/>
                         <segue destination="ya7-x1-NBT" kind="show" identifier="goToStatistic" id="hLm-E5-LOa"/>
-                        <segue destination="KBU-9e-D1T" kind="show" identifier="goToAppearance" id="rMv-6R-wPJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebr-dJ-UxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -904,11 +977,16 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="Rik-Cv-nDi" userLabel="logoutTap">
                     <connections>
-                        <action selector="logoutTapped:" destination="DfI-G9-rop" id="bie-4U-0oO"/>
+                        <action selector="logoutTapped:" destination="DfI-G9-rop" id="l9Y-cK-rCX"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="fxF-AI-hOD" userLabel="editTap">
+                    <connections>
+                        <action selector="editTapped:" destination="DfI-G9-rop" id="otB-1L-MYp"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1633" y="-528"/>
+            <point key="canvasLocation" x="-1633.3333333333335" y="-528.34821428571422"/>
         </scene>
         <!--Main Share Page View Controller-->
         <scene sceneID="EMn-xS-JGh">
@@ -1364,6 +1442,6 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cW4-b4-L4e"/>
-        <segue reference="Aji-Dy-Rvo"/>
+        <segue reference="Q8j-fD-bzx"/>
     </inferredMetricsTieBreakers>
 </document>
