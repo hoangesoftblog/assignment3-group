@@ -9,12 +9,16 @@
 import UIKit
 
 class PaymentCell: UITableViewCell {
-    @IBOutlet weak var photo: UIImageView!
+
     @IBOutlet weak var usernameButton: UIButton!
     @IBOutlet weak var sendRequestLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
+
+    @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var acceptButton: UIButton!
+    @IBOutlet weak var denyButton: UIButton!
+    @IBOutlet weak var contactButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
