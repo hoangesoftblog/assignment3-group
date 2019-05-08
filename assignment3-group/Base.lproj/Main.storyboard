@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="koL-S2-MRc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="koL-S2-MRc">
     <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -380,13 +380,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="awesome" translatesAutoresizingMaskIntoConstraints="NO" id="TcM-DU-nV4">
-                                <rect key="frame" x="117" y="97" width="181" height="45"/>
+                                <rect key="frame" x="117" y="141" width="181" height="0.0"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="NMU-G7-N1x">
-                                <rect key="frame" x="64" y="193" width="285" height="365"/>
+                                <rect key="frame" x="64" y="192" width="285" height="317"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nlm-aP-mtq">
-                                        <rect key="frame" x="0.0" y="0.0" width="285" height="212"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="285" height="164"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Created by RMIT students having a passion for photography.
 
@@ -397,7 +397,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3M-Z7-xUG">
-                                        <rect key="frame" x="0.0" y="213" width="285" height="50"/>
+                                        <rect key="frame" x="0.0" y="165" width="285" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="JDl-x6-dbi"/>
@@ -406,7 +406,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Credit" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XON-cW-vNY">
-                                        <rect key="frame" x="0.0" y="264" width="285" height="50"/>
+                                        <rect key="frame" x="0.0" y="216" width="285" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="nfX-vs-8Gk"/>
@@ -415,7 +415,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" editable="NO" text="AwesomePhotos Team." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cu-Wr-SIz">
-                                        <rect key="frame" x="0.0" y="315" width="285" height="50"/>
+                                        <rect key="frame" x="0.0" y="267" width="285" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="2Bg-22-F6P"/>
@@ -577,7 +577,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ECt-3e-a0r">
-                                <rect key="frame" x="0.0" y="88" width="414" height="280"/>
+                                <rect key="frame" x="0.0" y="132" width="414" height="280"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="namtranx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dal-OB-Wiu">
                                         <rect key="frame" x="163.66666666666666" y="43" width="86.666666666666657" height="27.333333333333329"/>
@@ -645,7 +645,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QbD-43-5sx">
-                                <rect key="frame" x="0.0" y="368" width="414" height="52"/>
+                                <rect key="frame" x="0.0" y="412" width="414" height="52"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M6o-SW-afv">
                                         <rect key="frame" x="10" y="5" width="121" height="43"/>
@@ -685,7 +685,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="E6s-Sj-M5M">
-                                <rect key="frame" x="0.0" y="420" width="414" height="442"/>
+                                <rect key="frame" x="0.0" y="464" width="414" height="349"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewLayout key="collectionViewLayout" id="sLm-g6-DOz" customClass="CollectionViewPhotoLayout" customModule="assignment3_group" customModuleProvider="target"/>
                                 <cells>
@@ -714,7 +714,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 </cells>
                             </collectionView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7t-am-7yt">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <items>
                                     <navigationItem id="Iai-pL-a1E">
                                         <barButtonItem key="leftBarButtonItem" image="Contact" id="ul1-hc-siW">
@@ -726,7 +726,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eg0-jT-IMS" userLabel="sideView">
-                                <rect key="frame" x="-200" y="88" width="200" height="774"/>
+                                <rect key="frame" x="-200" y="132" width="200" height="681"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="namtranx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWv-TW-Gch">
                                         <rect key="frame" x="22" y="18" width="156" height="20.333333333333329"/>
@@ -970,7 +970,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hK7-sQ-Wa4">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="442" id="XH3-3g-UsH" customClass="PaymentCell" customModule="assignment3_group" customModuleProvider="target">
@@ -1057,9 +1057,13 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6e1-gG-olr"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="3" image="Image-1" id="MQF-Or-aqd">
-                        <inset key="imageInsets" minX="0.0" minY="10" maxX="0.0" maxY="-10"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="jY0-ls-CZn">
+                        <barButtonItem key="rightBarButtonItem" title="Request" id="h3z-yI-07c">
+                            <connections>
+                                <segue destination="mPW-It-ST4" kind="show" id="zQo-AL-ctZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="hK7-sQ-Wa4" id="YnS-TG-hWm"/>
                         <segue destination="DfI-G9-rop" kind="show" identifier="fromPaymentToPersonal" id="U9S-cE-gg1"/>
@@ -1067,7 +1071,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gj6-yA-cga" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1436.2318840579712" y="-1894.4196428571427"/>
+            <point key="canvasLocation" x="-601" y="-1990"/>
         </scene>
         <!--Main Home View Controller-->
         <scene sceneID="jkK-D4-Dwn">
@@ -1163,7 +1167,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QlT-MG-2zR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="228.98550724637684" y="-1795.3125"/>
+            <point key="canvasLocation" x="1139.1304347826087" y="-1795.3125"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="yHq-kA-gFO">
@@ -1243,7 +1247,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mCT-58-gJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="-1794.6428571428571"/>
+            <point key="canvasLocation" x="1957.9710144927537" y="-1794.6428571428571"/>
         </scene>
         <!--Select Person View Controller-->
         <scene sceneID="l0a-sY-2QJ">
@@ -1271,7 +1275,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2L-8R-1or" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1834.7826086956522" y="-1795.3125"/>
+            <point key="canvasLocation" x="2744.9275362318845" y="-1795.3125"/>
         </scene>
         <!--Main Tab Bar View Controller-->
         <scene sceneID="rwZ-ng-ipt">
@@ -1288,7 +1292,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <segue destination="yJX-Ko-POG" kind="relationship" relationship="viewControllers" id="12k-KI-cTM"/>
                         <segue destination="r79-i0-dJS" kind="relationship" relationship="viewControllers" id="A2s-hU-9e4"/>
                         <segue destination="uwD-xO-xil" kind="relationship" relationship="viewControllers" id="wNx-L8-JVZ"/>
-                        <segue destination="Chk-Rg-pwI" kind="relationship" relationship="viewControllers" id="E0H-nU-NBG"/>
+                        <segue destination="r3I-2y-1iH" kind="relationship" relationship="viewControllers" id="E0H-nU-NBG"/>
                         <segue destination="DfI-G9-rop" kind="relationship" relationship="viewControllers" id="ERE-UC-r5G"/>
                     </connections>
                 </tabBarController>
@@ -1315,7 +1319,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fQc-9y-Lyy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-535.20000000000005" y="-1795.5665024630543"/>
+            <point key="canvasLocation" x="151" y="-1503"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ri5-bi-ZVH">
@@ -1338,21 +1342,127 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
             </objects>
             <point key="canvasLocation" x="-397.10144927536237" y="-1066.0714285714284"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YCJ-2e-dfP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r3I-2y-1iH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="3" image="Image-1" id="MQF-Or-aqd">
+                        <inset key="imageInsets" minX="0.0" minY="10" maxX="0.0" maxY="-10"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Osp-wY-1zB">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Chk-Rg-pwI" kind="relationship" relationship="rootViewController" id="6rW-eU-Cok"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BfJ-TC-RcB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1436.2318840579712" y="-1894.4196428571427"/>
+        </scene>
+        <!--All Requests View Controller-->
+        <scene sceneID="4bF-g2-wat">
+            <objects>
+                <viewController id="mPW-It-ST4" customClass="AllRequestsViewController" customModule="assignment3_group" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MB9-S1-jEN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rD6-Eh-sbr">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellRequest" rowHeight="442" id="qAq-3s-FCZ" customClass="RequestCell" customModule="assignment3_group" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="442"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qAq-3s-FCZ" id="jJL-9P-S67">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="441.66666666666669"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrB-ua-6sG">
+                                                    <rect key="frame" x="25" y="21" width="369" height="36"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                                    <state key="normal" title="User">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You requested" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhw-wu-gSF">
+                                                    <rect key="frame" x="25" y="65" width="369" height="24"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                    <color key="textColor" red="0.91372549020000005" green="0.23529411759999999" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NH2-Ga-ocF">
+                                                    <rect key="frame" x="25" y="96" width="369" height="23"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="owd-bu-Ly8">
+                                                    <rect key="frame" x="20" y="138" width="374" height="267"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="NH2-Ga-ocF" firstAttribute="top" secondItem="Qhw-wu-gSF" secondAttribute="bottom" constant="8" id="OP6-r6-YXf"/>
+                                                <constraint firstItem="NH2-Ga-ocF" firstAttribute="leading" secondItem="jJL-9P-S67" secondAttribute="leadingMargin" constant="5" id="dPD-Hn-SOK"/>
+                                                <constraint firstItem="FrB-ua-6sG" firstAttribute="top" secondItem="jJL-9P-S67" secondAttribute="topMargin" constant="10" id="l8n-zL-52g"/>
+                                                <constraint firstItem="Qhw-wu-gSF" firstAttribute="top" secondItem="FrB-ua-6sG" secondAttribute="bottom" constant="8" id="mBY-DN-ezo"/>
+                                                <constraint firstItem="FrB-ua-6sG" firstAttribute="leading" secondItem="jJL-9P-S67" secondAttribute="leadingMargin" constant="5" id="oXj-g7-nrP"/>
+                                                <constraint firstItem="Qhw-wu-gSF" firstAttribute="leading" secondItem="jJL-9P-S67" secondAttribute="leadingMargin" constant="5" id="sfc-6n-e9L"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="photo" destination="owd-bu-Ly8" id="ikH-na-Mo0"/>
+                                            <outlet property="requestLabel" destination="Qhw-wu-gSF" id="ztZ-Hb-upy"/>
+                                            <outlet property="usernameButton" destination="FrB-ua-6sG" id="Ba2-iU-7EE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="mPW-It-ST4" id="NUA-IX-dkK"/>
+                                    <outlet property="delegate" destination="mPW-It-ST4" id="HSY-8g-GTt"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rD6-Eh-sbr" firstAttribute="top" secondItem="O8l-gA-fo4" secondAttribute="top" id="6co-Ji-xqh"/>
+                            <constraint firstItem="O8l-gA-fo4" firstAttribute="bottom" secondItem="rD6-Eh-sbr" secondAttribute="bottom" id="RQI-24-ZiJ"/>
+                            <constraint firstItem="O8l-gA-fo4" firstAttribute="trailing" secondItem="rD6-Eh-sbr" secondAttribute="trailing" id="aHP-Ts-f9f"/>
+                            <constraint firstItem="rD6-Eh-sbr" firstAttribute="leading" secondItem="O8l-gA-fo4" secondAttribute="leading" id="k2S-Ty-osR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="O8l-gA-fo4"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YXV-pD-NGk">
+                        <barButtonItem key="rightBarButtonItem" title="Request" id="GKJ-Nk-uaV"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="rD6-Eh-sbr" id="kvY-ko-j0Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eON-71-CjS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="206" y="-2141"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Accept" width="74" height="24"/>
-        <image name="Camera" width="100" height="100"/>
+        <image name="Camera" width="33.333332061767578" height="33.333332061767578"/>
         <image name="Camera-photo.svg" width="240" height="240"/>
         <image name="Contact" width="34" height="34"/>
         <image name="ContactPayment" width="79" height="24"/>
         <image name="Deny" width="63" height="24"/>
-        <image name="Facebook login" width="693" height="120"/>
-        <image name="Google login" width="693" height="120"/>
+        <image name="Facebook login" width="231" height="40"/>
+        <image name="Google login" width="231" height="40"/>
         <image name="Home" width="29" height="28"/>
         <image name="Image-1" width="34" height="22"/>
         <image name="Shared Symbol" width="31" height="30"/>
-        <image name="awesome" width="500" height="96"/>
-        <image name="loginButton" width="693" height="120"/>
+        <image name="awesome" width="166.66667175292969" height="32"/>
+        <image name="loginButton" width="231" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cW4-b4-L4e"/>

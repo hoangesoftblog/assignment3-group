@@ -21,6 +21,8 @@
 		67BA85092265DEDB00239E2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BA85082265DEDB00239E2D /* AppDelegate.swift */; };
 		67BA85132265DEDD00239E2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67BA85112265DEDD00239E2D /* LaunchScreen.storyboard */; };
 		67D0B1BD2280487700BA9810 /* PaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D0B1BC2280487700BA9810 /* PaymentCell.swift */; };
+		74ED53DA2282C3380037F91D /* AllRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED53D92282C3380037F91D /* AllRequestsViewController.swift */; };
+		74ED53DC2282C48D0037F91D /* RequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED53DB2282C48D0037F91D /* RequestCell.swift */; };
 		8838E98E22733071006F4BE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8838E98D22733071006F4BE3 /* Assets.xcassets */; };
 		8838E99022733F2A006F4BE3 /* PhotoCollecionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8838E98F22733F2A006F4BE3 /* PhotoCollecionViewCell.swift */; };
 		8838E99222733F35006F4BE3 /* CollectionViewPhotoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8838E99122733F35006F4BE3 /* CollectionViewPhotoLayout.swift */; };
@@ -59,6 +61,8 @@
 		67BA85122265DEDD00239E2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67BA85142265DEDD00239E2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67D0B1BC2280487700BA9810 /* PaymentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCell.swift; sourceTree = "<group>"; };
+		74ED53D92282C3380037F91D /* AllRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AllRequestsViewController.swift; path = "/Users/khanhdang/Desktop/assignment3-group5-awesomephoto/assignment3-group/ViewControllers/AllRequestsViewController.swift"; sourceTree = "<absolute>"; };
+		74ED53DB2282C48D0037F91D /* RequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCell.swift; sourceTree = "<group>"; };
 		7705599C8A045C6963CF7B6E /* Pods-assignment3-group.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-assignment3-group.debug.xcconfig"; path = "Target Support Files/Pods-assignment3-group/Pods-assignment3-group.debug.xcconfig"; sourceTree = "<group>"; };
 		8838E98D22733071006F4BE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8838E98F22733F2A006F4BE3 /* PhotoCollecionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollecionViewCell.swift; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 		182136ED22714A5500032692 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				74ED53D92282C3380037F91D /* AllRequestsViewController.swift */,
+				74ED53DB2282C48D0037F91D /* RequestCell.swift */,
 				67FD22442282818900F1B2FF /* Personal and Miscellaneous */,
 				67FD22432282817100F1B2FF /* Login and Register */,
 				67D0B1BE228048BD00BA9810 /* Payment Tab */,
@@ -374,11 +380,13 @@
 				8838E99222733F35006F4BE3 /* CollectionViewPhotoLayout.swift in Sources */,
 				8877A7592270B4490003E08E /* HomeViewController.swift in Sources */,
 				8877A7732270CE060003E08E /* WelcomeViewController.swift in Sources */,
+				74ED53DA2282C3380037F91D /* AllRequestsViewController.swift in Sources */,
 				8838E99022733F2A006F4BE3 /* PhotoCollecionViewCell.swift in Sources */,
 				20678BF0227C8A7B001E6CD2 /* Media.swift in Sources */,
 				88DF974A227B1B7D00455895 /* AppearanceViewController.swift in Sources */,
 				8877A76C2270CDF20003E08E /* MainUploadedViewController.swift in Sources */,
 				182136FF2271AFD000032692 /* Multimedia.swift in Sources */,
+				74ED53DC2282C48D0037F91D /* RequestCell.swift in Sources */,
 				8877A76D2270CDF20003E08E /* MainPaymentViewController.swift in Sources */,
 				20124D12227DD22200B1607E /* SelectPersonViewController.swift in Sources */,
 				671682A4227C3F4F0004AC55 /* MainHomeViewController.swift in Sources */,

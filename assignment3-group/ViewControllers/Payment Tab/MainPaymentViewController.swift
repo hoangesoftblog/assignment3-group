@@ -36,7 +36,7 @@ class MainPaymentViewController: UIViewController,UITableViewDelegate {
         var temp = [DataSnapshot]()
         super.viewDidLoad()
         
-        ref.child("userPicture/\(currentUser!)/notification").observeSingleEvent(of: .value){ snapshot in
+        ref.child("userPicture/\(currentUser!)/requestSomeoneSentMe").observeSingleEvent(of: .value){ snapshot in
             var tempPic: UIImage?
             print("On first completion")
             print(snapshot.value)
