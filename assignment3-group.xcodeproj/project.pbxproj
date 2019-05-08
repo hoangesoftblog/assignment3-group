@@ -13,6 +13,7 @@
 		20124D12227DD22200B1607E /* SelectPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20124D11227DD22200B1607E /* SelectPersonViewController.swift */; };
 		20678BF0227C8A7B001E6CD2 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20678BEF227C8A7B001E6CD2 /* Media.swift */; };
 		20678BF2227C9585001E6CD2 /* SharedPhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20678BF1227C9585001E6CD2 /* SharedPhotoViewCell.swift */; };
+		66B786342282F09C0089E879 /* VideoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B786332282F09C0089E879 /* VideoHelper.swift */; };
 		671682A4227C3F4F0004AC55 /* MainHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671682A3227C3F4F0004AC55 /* MainHomeViewController.swift */; };
 		671682A6227C3F590004AC55 /* PhotoCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671682A5227C3F590004AC55 /* PhotoCollectionHeaderView.swift */; };
 		671682A8227C3F5E0004AC55 /* PublicPhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671682A7227C3F5E0004AC55 /* PublicPhotoViewCell.swift */; };
@@ -51,6 +52,7 @@
 		20124D11227DD22200B1607E /* SelectPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPersonViewController.swift; sourceTree = "<group>"; };
 		20678BEF227C8A7B001E6CD2 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		20678BF1227C9585001E6CD2 /* SharedPhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedPhotoViewCell.swift; sourceTree = "<group>"; };
+		66B786332282F09C0089E879 /* VideoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoHelper.swift; sourceTree = "<group>"; };
 		671682A3227C3F4F0004AC55 /* MainHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHomeViewController.swift; sourceTree = "<group>"; };
 		671682A5227C3F590004AC55 /* PhotoCollectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionHeaderView.swift; sourceTree = "<group>"; };
 		671682A7227C3F5E0004AC55 /* PublicPhotoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicPhotoViewCell.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				8877A7502270B4490003E08E /* WaterMarlkViewController.swift */,
 				182136F422715A5F00032692 /* MainTabBarViewController.swift */,
 				20678BF1227C9585001E6CD2 /* SharedPhotoViewCell.swift */,
+				66B786332282F09C0089E879 /* VideoHelper.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				182136F522715A5F00032692 /* MainTabBarViewController.swift in Sources */,
 				8877A7722270CE060003E08E /* TutorialCollectionViewCell.swift in Sources */,
 				671682AA227C3F660004AC55 /* DetailViewController.swift in Sources */,
+				66B786342282F09C0089E879 /* VideoHelper.swift in Sources */,
 				8877A76B2270CDF20003E08E /* MainSharePageViewController.swift in Sources */,
 				20678BF2227C9585001E6CD2 /* SharedPhotoViewCell.swift in Sources */,
 				8877A7642270C1D60003E08E /* AboutViewController.swift in Sources */,
@@ -542,6 +546,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9DCZ672L8Y;
 				INFOPLIST_FILE = "assignment3-group/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -560,6 +565,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9DCZ672L8Y;
 				INFOPLIST_FILE = "assignment3-group/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
