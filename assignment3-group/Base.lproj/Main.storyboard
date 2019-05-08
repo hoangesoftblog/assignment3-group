@@ -653,6 +653,9 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                             <segment title="" image="Contact"/>
                                             <segment title="Second"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="switchView:" destination="DfI-G9-rop" eventType="valueChanged" id="Qs6-eF-jCu"/>
+                                        </connections>
                                     </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="F9z-cQ-926">
                                         <rect key="frame" x="311.66666666666669" y="11" width="92.333333333333314" height="30"/>
@@ -684,35 +687,6 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                     <constraint firstItem="M6o-SW-afv" firstAttribute="centerY" secondItem="QbD-43-5sx" secondAttribute="centerY" id="rC5-ge-Iy1"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="E6s-Sj-M5M">
-                                <rect key="frame" x="0.0" y="464" width="414" height="349"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <collectionViewLayout key="collectionViewLayout" id="sLm-g6-DOz" customClass="CollectionViewPhotoLayout" customModule="assignment3_group" customModuleProvider="target"/>
-                                <cells>
-                                    <collectionViewCell multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="personalCollectionViewCell" id="jRm-l9-dZ9" customClass="PhotoCollectionViewCell" customModule="assignment3_group" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OXH-g5-iqm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                </imageView>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="OXH-g5-iqm" secondAttribute="trailing" id="6RX-EJ-Pz3"/>
-                                            <constraint firstItem="OXH-g5-iqm" firstAttribute="top" secondItem="jRm-l9-dZ9" secondAttribute="top" id="lMN-fr-25A"/>
-                                            <constraint firstItem="OXH-g5-iqm" firstAttribute="leading" secondItem="jRm-l9-dZ9" secondAttribute="leading" id="t3m-OE-9Jk"/>
-                                            <constraint firstAttribute="bottom" secondItem="OXH-g5-iqm" secondAttribute="bottom" id="zo6-21-gKz"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="image" destination="OXH-g5-iqm" id="V4r-y1-KJ9"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7t-am-7yt">
                                 <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <items>
@@ -812,24 +786,59 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                     <constraint firstAttribute="width" constant="200" id="vnB-kS-bUa"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DNF-AG-vKS">
+                                <rect key="frame" x="0.0" y="472" width="414" height="341"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RT7-KX-KuW">
+                                    <size key="itemSize" width="98" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="personalCollectionViewCell" id="wVu-Zb-iX3" customClass="PhotoCollectionViewCell" customModule="assignment3_group" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="98" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="98" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QQ2-62-mt2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="98" height="100"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="QQ2-62-mt2" firstAttribute="top" secondItem="wVu-Zb-iX3" secondAttribute="top" id="8Dk-kc-n3Z"/>
+                                            <constraint firstAttribute="trailing" secondItem="QQ2-62-mt2" secondAttribute="trailing" id="DdD-TC-FuN"/>
+                                            <constraint firstItem="QQ2-62-mt2" firstAttribute="leading" secondItem="wVu-Zb-iX3" secondAttribute="leading" id="Ng2-r0-upD"/>
+                                            <constraint firstAttribute="bottom" secondItem="QQ2-62-mt2" secondAttribute="bottom" id="pv6-pg-5gC"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageViewInCell" destination="QQ2-62-mt2" id="qzH-xy-T1l"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="DfI-G9-rop" id="AOn-iH-zSu"/>
+                                    <outlet property="delegate" destination="DfI-G9-rop" id="52E-k1-2G1"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="t7t-am-7yt" firstAttribute="leading" secondItem="mPp-1i-3rP" secondAttribute="leading" id="0I1-00-G2K"/>
-                            <constraint firstItem="mPp-1i-3rP" firstAttribute="trailing" secondItem="E6s-Sj-M5M" secondAttribute="trailing" id="1S8-Su-H59"/>
                             <constraint firstItem="QbD-43-5sx" firstAttribute="top" secondItem="ECt-3e-a0r" secondAttribute="bottom" id="1v1-hN-UXz"/>
                             <constraint firstItem="eg0-jT-IMS" firstAttribute="top" secondItem="t7t-am-7yt" secondAttribute="bottom" id="6N4-7l-X6v"/>
                             <constraint firstItem="t7t-am-7yt" firstAttribute="top" secondItem="mPp-1i-3rP" secondAttribute="top" id="FQO-QW-raU"/>
-                            <constraint firstItem="mPp-1i-3rP" firstAttribute="bottom" secondItem="E6s-Sj-M5M" secondAttribute="bottom" id="ITt-NG-2WY"/>
                             <constraint firstItem="mPp-1i-3rP" firstAttribute="trailing" secondItem="ECt-3e-a0r" secondAttribute="trailing" id="K4Q-75-tPe"/>
                             <constraint firstItem="ECt-3e-a0r" firstAttribute="top" secondItem="t7t-am-7yt" secondAttribute="bottom" id="QdK-vx-b8y"/>
-                            <constraint firstItem="E6s-Sj-M5M" firstAttribute="leading" secondItem="QbD-43-5sx" secondAttribute="leading" id="TbD-sy-fLT"/>
                             <constraint firstItem="eg0-jT-IMS" firstAttribute="leading" secondItem="ce3-sO-NYP" secondAttribute="leading" constant="-200" id="aMW-XD-vfS"/>
                             <constraint firstItem="t7t-am-7yt" firstAttribute="trailing" secondItem="mPp-1i-3rP" secondAttribute="trailing" id="cS0-7r-SUZ"/>
                             <constraint firstItem="ECt-3e-a0r" firstAttribute="leading" secondItem="mPp-1i-3rP" secondAttribute="leading" id="de6-WI-raM"/>
                             <constraint firstItem="eg0-jT-IMS" firstAttribute="bottom" secondItem="mPp-1i-3rP" secondAttribute="bottom" id="eXC-eQ-d2c"/>
                             <constraint firstItem="mPp-1i-3rP" firstAttribute="trailing" secondItem="QbD-43-5sx" secondAttribute="trailing" id="oVn-8H-ilB"/>
-                            <constraint firstItem="E6s-Sj-M5M" firstAttribute="top" secondItem="QbD-43-5sx" secondAttribute="bottom" id="uK5-py-M0S"/>
                             <constraint firstItem="QbD-43-5sx" firstAttribute="leading" secondItem="ECt-3e-a0r" secondAttribute="leading" id="wE0-kB-DFm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mPp-1i-3rP"/>
@@ -839,7 +848,8 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                     </tabBarItem>
                     <connections>
                         <outlet property="avtImageView" destination="wnR-Ph-xB1" id="tbH-9G-eQV"/>
-                        <outlet property="collectionView" destination="E6s-Sj-M5M" id="vVY-UP-8lp"/>
+                        <outlet property="choiceOfColumns" destination="M6o-SW-afv" id="hfE-rL-V6z"/>
+                        <outlet property="collectionView" destination="DNF-AG-vKS" id="A8I-4z-Td6"/>
                         <outlet property="jobLabel" destination="pIy-eY-bka" id="mH7-Kg-4wu"/>
                         <outlet property="sideViewLeadingContraint" destination="aMW-XD-vfS" id="5D8-wC-Plu"/>
                         <outlet property="topView" destination="ECt-3e-a0r" id="2BF-Yn-i9F"/>
@@ -875,7 +885,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1633" y="-528"/>
+            <point key="canvasLocation" x="-1633.3333333333335" y="-528.34821428571422"/>
         </scene>
         <!--Main Share Page View Controller-->
         <scene sceneID="EMn-xS-JGh">

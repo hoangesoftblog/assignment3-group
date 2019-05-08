@@ -12,7 +12,15 @@ import Photos
 
 private let reuseIdentifier = "personalCollectionViewCell"
 
-class MainPersonalViewController: UIViewController, UICollectionViewDelegateFlowLayout{
+class MainPersonalViewController: UIViewController{
+    let sectionInsets = UIEdgeInsets(top: 50.0,
+                                     left: 20.0,
+                                     bottom: 50.0,
+                                     right: 20.0)
+    var numberOfColumns: CGFloat = 2
+    let goToAccountSetting = "goToAccountSetting"
+    let goToAppearance = "goToAppearance"
+    let goToStatistic = "goToStatistic"
     
     @IBOutlet weak var usernameLabel: UILabel!
     
@@ -28,71 +36,89 @@ class MainPersonalViewController: UIViewController, UICollectionViewDelegateFlow
     
     @IBOutlet weak var sideViewLeadingContraint: NSLayoutConstraint!
     
-    var menuShowing: Bool = false
+    @IBOutlet weak var choiceOfColumns: UISegmentedControl!
+    @IBAction func switchView(_ sender: Any) {
+        switch choiceOfColumns.selectedSegmentIndex {
+        case 0:
+            numberOfColumns = 1
+        case 1:
+            numberOfColumns = 2
+        default:
+            break
+        }
+        
+        self.collectionView.reloadData()
+    }
     
-    var arrImages = [UIImage]()
+    var menuShowing: Bool = false
+    var imageNames = [String]()
+    var arrImages = [Int: UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         usernameLabel.text = currentUser
-        
-//        ref.child("userPicture/\(currentUser)").observeSingleEvent(of: .value){ snapshot in
-//            if let val = snapshot.value as? [String: Any] {
-//                if let avtName = val["avtImage"] as? String{
-//                    storageRef.child(avtName).getData(maxSize: INT64_MAX){ data, error in
-//                        print(avtName + " is get")
-//                        if error != nil {
-//                            print("Error occurs")
-//                        }
-//                        else if data != nil {
-//                            if let imageTemp = UIImage(data: data!) {
-//                                print("image available")
-//                                self.avtImageView.image = imageTemp
-//                            }
-//                        }
-//                    }
-//                }
-//                
-//                self.jobLabel.text = ((val["job"] as? String) ?? "Traveler")
-//            }
-//        }
-        
         updateUI()
-        
-        collectionView.delegate = self
-        collectionView.dataSource = self
+//        collectionView.delegate = self
+//        collectionView.dataSource = self
         grabPhoto()
-        if let layout = collectionView?.collectionViewLayout as? CollectionViewPhotoLayout {
-            layout.delegate = self as? LayoutDelegate
-            
-        }
+        numberOfColumns = CGFloat( choiceOfColumns.selectedSegmentIndex + 1)
+//        if let layout = collectionView?.collectionViewLayout as? CollectionViewPhotoLayout {
+//            layout.delegate = self as? LayoutDelegate
+//
+//        }
     
     }
     
     func grabPhoto(){
-        let iM = PHImageManager.default()
-        let iMRequest = PHImageRequestOptions()
-        iMRequest.isSynchronous = true
-        iMRequest.deliveryMode = .highQualityFormat
+//        let iM = PHImageManager.default()
+//        let iMRequest = PHImageRequestOptions()
+//        iMRequest.isSynchronous = true
+//        iMRequest.deliveryMode = .highQualityFormat
+//
+//        let fetchOptions = PHFetchOptions()
+//
+//        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+//
+//        if let fetchResult : PHFetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions) {
+//            if fetchResult.count > 0  {
+//                for i in 0..<fetchResult.count {
+//                    iM.requestImage(for: fetchResult.object(at: i) , targetSize: CGSize(width: 200, height: 200), contentMode: .aspectFill, options: iMRequest, resultHandler: {
+//                        image , error in
+//
+//                        self.arrImages.append(image!)
+//                    })
+//                }
+//            }
+//            else {
+//                print("You dont have photo")
+//                self.collectionView.reloadData()
+//            }
+//        }
         
-        let fetchOptions = PHFetchOptions()
-        
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        
-        if let fetchResult : PHFetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions) {
-            if fetchResult.count > 0  {
-                for i in 0..<fetchResult.count {
-                    iM.requestImage(for: fetchResult.object(at: i) , targetSize: CGSize(width: 200, height: 200), contentMode: .aspectFill, options: iMRequest, resultHandler: {
-                        image , error in
-                        
-                        self.arrImages.append(image!)
-                    })
+        ref.child("userPicture/\(currentUser!)/fileOwned").observeSingleEvent(of: .value){ snapshot in
+            for i in snapshot.children {
+                if let i2 = (i as? DataSnapshot)?.value as? String {
+                    self.imageNames.append(i2)
                 }
             }
-            else {
-                print("You dont have photo")
-                self.collectionView.reloadData()
+            
+            self.collectionView.reloadData()
+            
+            for i in 0..<self.imageNames.count {
+                storageRef.child(self.imageNames[i]).getData(maxSize: INT64_MAX){ data, error in
+                    print(self.imageNames[i], separator: "", terminator: " ")
+                    if error != nil {
+                        print("Error occurs")
+                    }
+                    else if data != nil {
+                        if let imageTemp = UIImage(data: data!) {
+                            print("image available")
+                            self.arrImages[i] = imageTemp
+                        }
+                    }
+                    
+                    self.collectionView.reloadData()
+                }
             }
         }
     }
@@ -145,14 +171,18 @@ class MainPersonalViewController: UIViewController, UICollectionViewDelegateFlow
     }
     
     @IBAction func acountSettings(_ sender: UITapGestureRecognizer) {
-        
+        performSegue(withIdentifier: goToAccountSetting, sender: self)
     }
     
     @IBAction func appearanceTapped(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: goToAppearance, sender: self)
     }
     
-    @IBAction func staticTapped(_ sender: UITapGestureRecognizer) {
-    }
+//    @IBAction func staticTapped(_ sender: UITapGestureRecognizer) {
+//        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//        let aboutVC = storyboard.instantiateViewController(withIdentifier: "StatisticsViewController") as! StatisticsViewController
+//        self.show(aboutVC, sender: nil)
+//    }
     
     @IBAction func logoutTapped(_ sender: UITapGestureRecognizer) {
         do {
@@ -173,26 +203,73 @@ class MainPersonalViewController: UIViewController, UICollectionViewDelegateFlow
 }
 
 extension MainPersonalViewController: UICollectionViewDataSource{
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        print("number of sections")
+        return 1
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("\(arrImages.count) picture found")
         return arrImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCollectionViewCell
-        cell.image.image = arrImages[indexPath.row]
+        print("Cell for item at")
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        if let customCell = cell as? PhotoCollectionViewCell {
+            if indexPath.row < arrImages.count {
+                print("customCell available")
+                customCell.imageViewInCell.image = arrImages[indexPath.row]
+                return customCell
+            }
+        }
+        
         return cell
     }
     
     
 }
 
-extension MainPersonalViewController : LayoutDelegate {
+//extension MainPersonalViewController : LayoutDelegate {
+//
+//    // 1. Returns the photo height
+//    func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
+//
+//        return arrImages[indexPath.item]!.size.height
+//    }
+//
+//}
+
+extension MainPersonalViewController: UICollectionViewDelegateFlowLayout {
     
-    // 1. Returns the photo height
-    func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let paddingSpace = sectionInsets.left * (numberOfColumns + 1)
+        let available = view.frame.width - paddingSpace
+        let widthPerItem = available / numberOfColumns
         
-        return arrImages[indexPath.item].size.height
+        //print("IndexPath row is \(indexPath.row)")
+        //print("imagePhoto has \(imagePhoto.count)\n")
+        if indexPath.row < arrImages.count && arrImages[indexPath.row] != nil {
+            //print("\(photoHeight)\t\(photoWidth)")
+            
+            return CGSize(width: widthPerItem, height: widthPerItem * ((arrImages[indexPath.row]?.size.height)! / (arrImages[indexPath.row]?.size.width)!))
+        }
+        else {
+            return CGSize(width: widthPerItem, height: widthPerItem)
+        }
+        
     }
     
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    // 4
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
 }
