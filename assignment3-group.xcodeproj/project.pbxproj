@@ -95,25 +95,20 @@
 		182136ED22714A5500032692 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				67FD22442282818900F1B2FF /* Personal and Miscellaneous */,
+				67FD22432282817100F1B2FF /* Login and Register */,
 				67D0B1BE228048BD00BA9810 /* Payment Tab */,
 				20124D17227DED4D00B1607E /* Global Tab */,
 				671682A9227C3F660004AC55 /* DetailViewController.swift */,
 				20124D11227DD22200B1607E /* SelectPersonViewController.swift */,
-				8838E99122733F35006F4BE3 /* CollectionViewPhotoLayout.swift */,
-				8838E98F22733F2A006F4BE3 /* PhotoCollecionViewCell.swift */,
-				8877A7672270CDF20003E08E /* MainPersonalViewController.swift */,
 				8877A7682270CDF20003E08E /* MainSharePageViewController.swift */,
 				8877A7692270CDF20003E08E /* MainUploadedViewController.swift */,
 				8877A7712270CE060003E08E /* TutorialCollectionViewCell.swift */,
 				8877A76F2270CE060003E08E /* TutorialCollectionViewController.swift */,
 				8877A7702270CE060003E08E /* WelcomeViewController.swift */,
 				8877A7512270B4490003E08E /* HomeViewController.swift */,
-				8877A7532270B4490003E08E /* LoginViewController.swift */,
-				8877A74E2270B4490003E08E /* RegisterViewController.swift */,
 				8877A7502270B4490003E08E /* WaterMarlkViewController.swift */,
-				8877A7632270C1D60003E08E /* AboutViewController.swift */,
 				182136F422715A5F00032692 /* MainTabBarViewController.swift */,
-				88DF9749227B1B7D00455895 /* AppearanceViewController.swift */,
 				20678BF1227C9585001E6CD2 /* SharedPhotoViewCell.swift */,
 			);
 			path = ViewControllers;
@@ -195,6 +190,27 @@
 				67D0B1BC2280487700BA9810 /* PaymentCell.swift */,
 			);
 			path = "Payment Tab";
+			sourceTree = "<group>";
+		};
+		67FD22432282817100F1B2FF /* Login and Register */ = {
+			isa = PBXGroup;
+			children = (
+				8877A7532270B4490003E08E /* LoginViewController.swift */,
+				8877A74E2270B4490003E08E /* RegisterViewController.swift */,
+			);
+			path = "Login and Register";
+			sourceTree = "<group>";
+		};
+		67FD22442282818900F1B2FF /* Personal and Miscellaneous */ = {
+			isa = PBXGroup;
+			children = (
+				8877A7672270CDF20003E08E /* MainPersonalViewController.swift */,
+				8838E98F22733F2A006F4BE3 /* PhotoCollecionViewCell.swift */,
+				8838E99122733F35006F4BE3 /* CollectionViewPhotoLayout.swift */,
+				8877A7632270C1D60003E08E /* AboutViewController.swift */,
+				88DF9749227B1B7D00455895 /* AppearanceViewController.swift */,
+			);
+			path = "Personal and Miscellaneous";
 			sourceTree = "<group>";
 		};
 		E08955A0F88DBEA6BC412FA9 /* Frameworks */ = {
