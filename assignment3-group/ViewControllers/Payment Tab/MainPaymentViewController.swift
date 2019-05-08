@@ -124,6 +124,7 @@ extension MainPaymentViewController: UITableViewDataSource {
     }
     
     @objc func contactOwner(sender: UIButton) {
+        print("Contacting")
         self.performSegue(withIdentifier: goToPersonal, sender: sender.accessibilityIdentifier)
     }
     
