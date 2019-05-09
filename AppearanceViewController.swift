@@ -40,49 +40,55 @@ class AppearanceView {
     func backgroundColorChanged(color : UIColor) {
         AppearanceView.sharedService.backgroundColor = color;
     }
-    class AppearanceViewController: UIViewController {
-        
-        @IBOutlet weak var yellowButton: UIButton!
-        
-        @IBOutlet weak var yellowButtonTapped: UIButton!
-        
-        
-        
-        
-        @IBOutlet weak var blackButton: UIButton!
-        
-        @IBAction func blackButtonTapped(_ sender: UIButton) {
-        }
-        
-        
-        
-        
-        override func viewDidLoad() {
-            super.viewDidLoad()
-        blackButton.layer.cornerRadius = blackButton.frame.height / 2.0
-        blackButton.layer.masksToBounds = true
-            
-            
-        yellowButton.layer.cornerRadius = yellowButton.frame.height / 2.0
-        yellowButton.layer.masksToBounds = true
-            self.view.backgroundColor = AppearanceView.sharedService.backgroundColor;
-            
-            // Do any additional setup after loading the view.
+}
+
+class AppearanceViewController: UIViewController {
+    
+    
+    @IBOutlet weak var yellowButton: UIButton!
+    @IBAction func yellowButtonTapped(_ sender: UIButton) {
+        UserDefaults.standard.set("yellow", forKey: "bgColor")
+        guard let color: String = UserDefaults.standard.object(forKey: "bgColor") as? String else {return}
+        if color == "yellow" {
+            self.view.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
         }
     }
     
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        yellowButton.layer.cornerRadius = yellowButton.frame.height / 2.0
+        yellowButton.layer.masksToBounds = true
+        
+        
+        yellowButton.layer.cornerRadius = yellowButton.frame.height / 2.0
+        yellowButton.layer.masksToBounds = true
+        self.view.backgroundColor = AppearanceView.sharedService.backgroundColor;
+
+        // Do any additional setup after loading the view.
+    }
     
-    
-    
-    
+
     /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }
+
+
+
+
+        
+        
+        
+    
+        
+        
+        
+
