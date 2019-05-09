@@ -10,12 +10,19 @@ import UIKit
 import Firebase
 import AVKit
 
+class SimpleAlert{
+    init(warning: String){
+        
+    }
+}
+
 class DetailViewController: UIViewController {
     
     var fileName: String?
     var insetLeft: CGFloat = 20
     var insetTop: CGFloat = 20
     var image: UIImage?
+    var videoName: String?
     var database: DatabaseReference?
     
     let selectPerson = "DetailToSelectPerson"
@@ -32,10 +39,10 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         if fileName!.contains("thumbnail") {
             mainPic.isHidden = true
-            var temp: String = fileName!.replacingOccurrences(of: "thumbnail", with: "")
-            temp += ".mp4"
-            print("Value of temp is \(temp)")
-            storageRef.child(temp).downloadURL {url, error in
+            videoName = fileName!.replacingOccurrences(of: "thumbnail", with: "")
+            videoName += ".mp4"
+            print("Value of temp is \(videoName)")
+            storageRef.child(videoName).downloadURL {url, error in
                 if error != nil {
                     print("Get video url fail")
                     print(error?.localizedDescription)
@@ -98,6 +105,43 @@ class DetailViewController: UIViewController {
             action.addAction(UIAlertAction(title: "Not the owner so no sharing", style: .default
                 , handler: nil))
         }
+        
+        action.addAction(UIAlertAction(title: "Download with watermark", style: .default) { (_) in
+            
+            
+        })
+        
+        let temp = UIAlertAction(title: "Download without watermark", style: .default){ _ in
+            let location = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(self.fileName!)
+            if (self.fileName?.contains("thumbnail"))! {
+                storageRef.child(self.videoName!).write(toFile: location) { url, error in
+                    print("URL to download is \(url?.path)")
+                    
+                    if error != nil {
+                        print("Error occurr \(error?.localizedDescription)")
+                    }
+                    else {
+                        print("URL download good")
+                    }
+                }
+            }
+            
+            else {
+                do {
+                    try self.image?.pngData()?.write(to: location)
+                }
+                catch {
+                    print("Save image not available")
+                }
+                
+            }
+        }
+        
+        if currentUser != usernameButton.currentTitle {
+            temp.isEnabled = false
+        }
+        
+        action.addAction(temp)
         
         action.addAction(UIAlertAction(title: "Dismiss", style: .cancel) { (_) in
             print("Return to normal")
