@@ -102,13 +102,14 @@ class MainPersonalViewController: UIViewController{
                 }
             }
             
+            print("\n\n\n\n\(self.imageNames.count) images found\n\n\n\n")
             self.collectionView.reloadData()
             
             for i in 0..<self.imageNames.count {
                 storageRef.child(self.imageNames[i]).getData(maxSize: INT64_MAX){ data, error in
                     print(self.imageNames[i], separator: "", terminator: " ")
                     if error != nil {
-                        print("Error occurs")
+                        print("Error occurs. \(error?.localizedDescription)")
                     }
                     else if data != nil {
                         if let imageTemp = UIImage(data: data!) {
@@ -214,11 +215,10 @@ extension MainPersonalViewController: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("Cell for item at")
+        print()
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         if let customCell = cell as? PhotoCollectionViewCell {
             if indexPath.row < arrImages.count {
-                print("customCell available")
                 customCell.imageViewInCell.image = arrImages[indexPath.row]
                 return customCell
             }
