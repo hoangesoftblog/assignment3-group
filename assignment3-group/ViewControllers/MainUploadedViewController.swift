@@ -63,27 +63,9 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
     func uploadVideo(url1: URL){
         let meta = StorageMetadata()
         meta.contentType = "video"
-        //Get user's to create or access user's folder to store images
-        //                let userID = Auth.auth().currentUser!.uid
+
         var curTime = Date()
-//        var namevideo = String(curTime) + ".mp4"
-//        let fileref = Storage.storage().reference().child("/\(curTime)")
-        //        let image = imageView.image!
-        //get the PNG data for this image
-        //        let data = image.pngData()
-        //        let videoData = try Data(contentsOf: url   as URL)
-//        do {
-//            let videoData = try Data(contentsOf: url1    as URL)
-//            fileref.putData(videoData, metadata: meta, completion: { (meta, error) in
-//                if error == nil {
-//                    self.ref2?.child("Usershaha/account2/image/test2").setValue("filename")
-//                    print("updated")
-//
-//                }
-//            })
-//        } catch {
-//            print("unable to convert url to data")
-//        }
+
                 let fileref2 = Storage.storage().reference().child("\(curTime).mp4")
         fileref2.putFile(from: url1, metadata: meta, completion: { (meta, error) in
             if error == nil {
