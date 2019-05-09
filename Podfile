@@ -7,6 +7,7 @@ target 'assignment3-group' do
 
   # Pods for assignment3-group
 
+pod "Charts"
 pod "Firebase"
 pod "Firebase/Core"
 pod "Firebase/Database"
