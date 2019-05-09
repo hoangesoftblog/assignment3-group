@@ -58,12 +58,20 @@ class MainPersonalViewController: UIViewController{
     var imageNames = [String]()
     var arrImages = [Int: UIImage]()
     
+    
+    @IBOutlet weak var sideView: UIView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        sideView.layer.borderWidth = 0.25
+        sideView.layer.borderColor = UIColor.lightGray.cgColor
 //        usernameLabel.text = currentUser
 //        updateUI()
 //        collectionView.delegate = self
 //        collectionView.dataSource = self
+        
         grabPhoto()
 //        numberOfColumns = CGFloat( choiceOfColumns.selectedSegmentIndex + 1)
 //        if let layout = collectionView?.collectionViewLayout as? CollectionViewPhotoLayout {
@@ -278,6 +286,7 @@ extension MainPersonalViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+
 extension MainPersonalViewController{
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind{
@@ -295,7 +304,7 @@ extension MainPersonalViewController{
             headerView.uploadPhotoImageView.layer.masksToBounds = true
             
             numberOfColumns = CGFloat(headerView.choiceOfColumns.selectedSegmentIndex + 1)
-            headerView.choiceOfColumns.addTarget(self, action: #selector(switchView(_:)), for: .touchUpInside)
+            headerView.choiceOfColumns.addTarget(self, action: #selector(switchView(_:)), for: .valueChanged)
             
             
             return headerView

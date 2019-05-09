@@ -757,44 +757,6 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                                         <constraint firstAttribute="height" constant="50" id="pHz-Vd-n8E"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QbD-43-5sx">
-                                                    <rect key="frame" x="0.0" y="228" width="414" height="52"/>
-                                                    <subviews>
-                                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M6o-SW-afv">
-                                                            <rect key="frame" x="10" y="5" width="121" height="43"/>
-                                                            <segments>
-                                                                <segment title="" image="Contact"/>
-                                                                <segment title="Second"/>
-                                                            </segments>
-                                                        </segmentedControl>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="F9z-cQ-926">
-                                                            <rect key="frame" x="313" y="11" width="92.333333333333329" height="30"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Newest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZN-G2-I8e">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="56.333333333333336" height="30"/>
-                                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Contact" translatesAutoresizingMaskIntoConstraints="NO" id="tPr-q3-Ten">
-                                                                    <rect key="frame" x="62.333333333333343" y="0.0" width="30" height="30"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="30" id="DQ5-Oc-jei"/>
-                                                                        <constraint firstAttribute="width" constant="30" id="MCl-f3-Ds9"/>
-                                                                    </constraints>
-                                                                </imageView>
-                                                            </subviews>
-                                                        </stackView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="52" id="DR8-s7-3Hi"/>
-                                                        <constraint firstItem="M6o-SW-afv" firstAttribute="leading" secondItem="QbD-43-5sx" secondAttribute="leading" constant="10" id="ZUD-T9-uct"/>
-                                                        <constraint firstItem="M6o-SW-afv" firstAttribute="top" secondItem="QbD-43-5sx" secondAttribute="top" constant="5" id="aeK-uk-90q"/>
-                                                        <constraint firstAttribute="bottom" secondItem="M6o-SW-afv" secondAttribute="bottom" constant="5" id="qVt-zw-acn"/>
-                                                        <constraint firstItem="M6o-SW-afv" firstAttribute="centerY" secondItem="QbD-43-5sx" secondAttribute="centerY" id="rC5-ge-Iy1"/>
-                                                    </constraints>
-                                                </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="vYt-uO-IVS">
                                                     <rect key="frame" x="316" y="194" width="90" height="20"/>
                                                     <subviews>
@@ -821,27 +783,54 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                                         <constraint firstAttribute="height" constant="20" id="eMy-gq-bMG"/>
                                                     </constraints>
                                                 </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="F9z-cQ-926">
+                                                    <rect key="frame" x="313" y="242" width="92.333333333333314" height="30"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Newest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZN-G2-I8e">
+                                                            <rect key="frame" x="0.0" y="0.0" width="56.333333333333336" height="30"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Contact" translatesAutoresizingMaskIntoConstraints="NO" id="tPr-q3-Ten">
+                                                            <rect key="frame" x="62.333333333333314" y="0.0" width="30" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="DQ5-Oc-jei"/>
+                                                                <constraint firstAttribute="width" constant="30" id="MCl-f3-Ds9"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                </stackView>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M6o-SW-afv">
+                                                    <rect key="frame" x="18" y="242" width="121" height="29"/>
+                                                    <segments>
+                                                        <segment title="" image="Contact"/>
+                                                        <segment title="Second"/>
+                                                    </segments>
+                                                </segmentedControl>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="QbD-43-5sx" firstAttribute="top" secondItem="vYt-uO-IVS" secondAttribute="bottom" constant="14" id="0bk-Az-Feo"/>
                                                 <constraint firstItem="pIy-eY-bka" firstAttribute="top" secondItem="Dal-OB-Wiu" secondAttribute="bottom" constant="15" id="62f-rZ-bNu"/>
+                                                <constraint firstAttribute="trailing" secondItem="F9z-cQ-926" secondAttribute="trailing" constant="8.6699999999999999" id="Cb8-nV-jhD"/>
                                                 <constraint firstItem="Q3A-Yn-Vr8" firstAttribute="leading" secondItem="wnR-Ph-xB1" secondAttribute="trailing" constant="-30" id="DAp-Dm-SnJ"/>
                                                 <constraint firstItem="Dal-OB-Wiu" firstAttribute="top" secondItem="ECt-3e-a0r" secondAttribute="top" constant="43" id="G1M-VY-quv"/>
                                                 <constraint firstAttribute="trailing" secondItem="pIy-eY-bka" secondAttribute="trailing" constant="179.66999999999999" id="KoU-8p-QOr"/>
+                                                <constraint firstItem="M6o-SW-afv" firstAttribute="leading" secondItem="ECt-3e-a0r" secondAttribute="leading" constant="18" id="Mut-wP-ghA"/>
                                                 <constraint firstItem="wnR-Ph-xB1" firstAttribute="leading" secondItem="ECt-3e-a0r" secondAttribute="leading" constant="157" id="RGf-zl-w2a"/>
+                                                <constraint firstAttribute="bottom" secondItem="M6o-SW-afv" secondAttribute="bottom" constant="10" id="Rwg-DP-bGD"/>
                                                 <constraint firstAttribute="trailing" secondItem="wnR-Ph-xB1" secondAttribute="trailing" constant="157" id="Ste-XN-0HK"/>
                                                 <constraint firstItem="wnR-Ph-xB1" firstAttribute="top" secondItem="pIy-eY-bka" secondAttribute="bottom" constant="10" id="VIY-3W-Rf6"/>
                                                 <constraint firstItem="Q3A-Yn-Vr8" firstAttribute="top" secondItem="pIy-eY-bka" secondAttribute="bottom" constant="76" id="Wnq-bO-Kxp"/>
                                                 <constraint firstAttribute="height" constant="280" id="aeO-5f-sFn"/>
                                                 <constraint firstItem="pIy-eY-bka" firstAttribute="centerX" secondItem="ECt-3e-a0r" secondAttribute="centerX" id="eNC-2h-E2L"/>
-                                                <constraint firstAttribute="trailing" secondItem="vYt-uO-IVS" secondAttribute="trailing" constant="8" id="eUR-9y-YCT"/>
+                                                <constraint firstAttribute="bottom" secondItem="F9z-cQ-926" secondAttribute="bottom" constant="8" id="hx8-X6-jVs"/>
                                                 <constraint firstItem="pIy-eY-bka" firstAttribute="leading" secondItem="ECt-3e-a0r" secondAttribute="leading" constant="180" id="irT-cD-cW2"/>
                                                 <constraint firstItem="Dal-OB-Wiu" firstAttribute="centerX" secondItem="ECt-3e-a0r" secondAttribute="centerX" id="m3n-0l-sQE"/>
-                                                <constraint firstAttribute="bottom" secondItem="QbD-43-5sx" secondAttribute="bottom" id="mod-5U-5gO"/>
+                                                <constraint firstAttribute="trailing" secondItem="vYt-uO-IVS" secondAttribute="trailing" constant="8" id="mCs-Lg-3S7"/>
                                                 <constraint firstAttribute="trailing" secondItem="Dal-OB-Wiu" secondAttribute="trailing" constant="163.66999999999999" id="tzJ-5T-5RK"/>
                                                 <constraint firstItem="Dal-OB-Wiu" firstAttribute="leading" secondItem="ECt-3e-a0r" secondAttribute="leading" constant="163.66999999999999" id="uIv-n8-lmM"/>
                                                 <constraint firstItem="wnR-Ph-xB1" firstAttribute="centerX" secondItem="ECt-3e-a0r" secondAttribute="centerX" id="x9A-Gv-gPW"/>
+                                                <constraint firstItem="F9z-cQ-926" firstAttribute="top" secondItem="vYt-uO-IVS" secondAttribute="bottom" constant="28" id="xF1-Kf-F9W"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -859,8 +848,8 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                     <outlet property="delegate" destination="DfI-G9-rop" id="52E-k1-2G1"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eg0-jT-IMS" userLabel="sideView">
-                                <rect key="frame" x="0.0" y="132" width="200" height="681"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eg0-jT-IMS" userLabel="sideView">
+                                <rect key="frame" x="-200" y="132" width="200" height="681"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="namtranx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWv-TW-Gch">
                                         <rect key="frame" x="22" y="18" width="156" height="23.333333333333329"/>
@@ -917,9 +906,10 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="paQ-Ea-Mb4">
+                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="paQ-Ea-Mb4">
                                         <rect key="frame" x="2" y="46.333333333333343" width="196" height="1"/>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Gw4-aA-SGt"/>
                                         </constraints>
@@ -957,6 +947,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                     </tabBarItem>
                     <connections>
                         <outlet property="collectionView" destination="DNF-AG-vKS" id="A8I-4z-Td6"/>
+                        <outlet property="sideView" destination="eg0-jT-IMS" id="A1G-J0-5OA"/>
                         <outlet property="sideViewLeadingContraint" destination="aMW-XD-vfS" id="5D8-wC-Plu"/>
                         <segue destination="iz7-Xl-a5B" kind="show" identifier="showAbout" id="5Lb-kh-zDl"/>
                         <segue destination="ya7-x1-NBT" kind="show" identifier="goToStatistic" id="hLm-E5-LOa"/>

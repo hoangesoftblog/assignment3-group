@@ -17,7 +17,7 @@ class MainHomeViewController: UIViewController {
                                      bottom: 50.0,
                                      right: 20.0)
     var fileName: [String] = []
-    var imagePhoto: [Int: Any] = [:]
+    var imagePhoto: [Int: UIImage] = [:]
     var numberOfColumns: CGFloat = 2
     
     let PublicToDetail = "PublicToDetail"
@@ -171,36 +171,36 @@ extension MainHomeViewController {
     }
 }
 
-//extension MainHomeViewController: UICollectionViewDelegateFlowLayout {
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let paddingSpace = sectionInsets.left * (numberOfColumns + 1)
-//        let available = view.frame.width - paddingSpace
-//        let widthPerItem = available / numberOfColumns
-//
-//        //print("IndexPath row is \(indexPath.row)")
-//        //print("imagePhoto has \(imagePhoto.count)\n")
-//        if indexPath.row < imagePhoto.count && imagePhoto[indexPath.row] != nil {
-//            //print("\(photoHeight)\t\(photoWidth)")
-//
-//            return CGSize(width: widthPerItem, height: widthPerItem * ((imagePhoto[indexPath.row]?.size.height)! / (imagePhoto[indexPath.row]?.size.width)!))
-//        }
-//        else {
-//            return CGSize(width: widthPerItem, height: widthPerItem)
-//        }
-//
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return sectionInsets
-//    }
-//
-//    // 4
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return sectionInsets.left
-//    }
-//}
+extension MainHomeViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let paddingSpace = sectionInsets.left * (numberOfColumns + 1)
+        let available = view.frame.width - paddingSpace
+        let widthPerItem = available / numberOfColumns
+
+        //print("IndexPath row is \(indexPath.row)")
+        //print("imagePhoto has \(imagePhoto.count)\n")
+        if indexPath.row < imagePhoto.count && imagePhoto[indexPath.row] != nil {
+            //print("\(photoHeight)\t\(photoWidth)")
+
+            return CGSize(width: widthPerItem, height: widthPerItem * ((imagePhoto[indexPath.row]?.size.height)! / (imagePhoto[indexPath.row]?.size.width)!))
+        }
+        else {
+            return CGSize(width: widthPerItem, height: widthPerItem)
+        }
+
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+
+    // 4
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
+}
