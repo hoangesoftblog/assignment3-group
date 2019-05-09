@@ -10,9 +10,11 @@ import UIKit
 import Firebase
 import Photos
 import MobileCoreServices
+import AVKit
 //Upload images, video to firebase and store in model
 class MainUploadedViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var imagePicker = UIImagePickerController()
+//    var imagestore
     override func viewDidLoad() {
         ref2 = Database.database().reference()
         super.viewDidLoad()
@@ -22,7 +24,7 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
     }
     var choice = 0
     var ref2: DatabaseReference?
-
+    
     @IBOutlet weak var imageView: UIImageView!
     func takePhoto() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
@@ -31,7 +33,7 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
             imagePicker.sourceType = UIImagePickerController.SourceType.camera
             imagePicker.allowsEditing = false
             self.present(imagePicker, animated: true, completion: nil)
-            print("Here: \(String(describing: imageView))")
+//            print("Here: \(String(describing: imageView))")
         }
         
     }
@@ -42,6 +44,7 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
             print("here")
             imagePicker.dismiss(animated: true, completion: nil)
             imageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+//            imagestore = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
             uploadPhoto()
         }
         if(choice == 2){
@@ -62,41 +65,129 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
         meta.contentType = "video"
         //Get user's to create or access user's folder to store images
         //                let userID = Auth.auth().currentUser!.uid
-        let tempUserID = "user01"
-        let fileref = Storage.storage().reference().child("/test")
+        var curTime = Date()
+//        var namevideo = String(curTime) + ".mp4"
+//        let fileref = Storage.storage().reference().child("/\(curTime)")
         //        let image = imageView.image!
         //get the PNG data for this image
         //        let data = image.pngData()
         //        let videoData = try Data(contentsOf: url   as URL)
-        do {
-            let videoData = try Data(contentsOf: url1    as URL)
-            fileref.putData(videoData, metadata: meta, completion: { (meta, error) in
-                if error == nil {
-                    self.ref2?.child("Usershaha/account2/image/test2").setValue("filename")
-                    print("updated")
-                }
-            })
-        } catch {
-            print("unable to convert url to data")
+//        do {
+//            let videoData = try Data(contentsOf: url1    as URL)
+//            fileref.putData(videoData, metadata: meta, completion: { (meta, error) in
+//                if error == nil {
+//                    self.ref2?.child("Usershaha/account2/image/test2").setValue("filename")
+//                    print("updated")
+//
+//                }
+//            })
+//        } catch {
+//            print("unable to convert url to data")
+//        }
+                let fileref2 = Storage.storage().reference().child("\(curTime).mp4")
+        fileref2.putFile(from: url1, metadata: meta, completion: { (meta, error) in
+            if error == nil {
+//                self.ref2?.child("userPicture/\(currentUser!)/fileOwned").setValue("\(curTime)")
+                print("uploaded video to storage")
+                self.getImageVideo(url1: url1, name: "\(curTime)")
+                self.downloadVideo(address: "\(curTime)")
+            } else {
+                print(error)
+            }
+        })
+//        self.playVideo(url1: url1)
+    }
+    
+    func playVideo(url1: URL){
+            var player = AVPlayer(url: url1)
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        
+        present(playerViewController, animated: true) {
+            player.play()
         }
+//        getImageVideo(url1: url1,name: "haha")
         
     }
-    func uploadPhoto(){
-        let gameKey = ref2?.child("Usershaha/account2").key
-        let filename = "\(gameKey).png"
+    func downloadVideo(address: String){
+//        storageRef.child(address).getData(maxSize: INT64_MAX){ data, error in
+//            if error != nil {
+//                print("Error occurs. \(error?.localizedDescription)")
+//            }
+//            else if data != nil {
+//                playVideo(url1: data)
+//            }
+//        }
+        storageRef.child("\(address). ").downloadURL { (urlx, error) in
+            if urlx == nil {
+                print("Error occurs. \(error?.localizedDescription)")
+            }
+            else if urlx != nil {
+                print("link url: \(urlx)")
+                self.playVideo(url1: urlx!)
+            }
+        }
+    }
+    
+    func getImageVideo(url1: URL, name: String){
+        var err: NSError? = nil
+        var name2 = name + "thumbnail"
+        let asset = AVURLAsset(url: url1)
+        let imgGenerator = AVAssetImageGenerator(asset: asset)
+         do {
+            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(value: 0, timescale: 1), actualTime: nil)
+        // !! check the error before proceeding
+            let uiImage = UIImage(cgImage: cgImage)
+//            let imageViewX = UIImageView(image: uiImage)
+            imageView.image = uiImage
+            print("done")
+            uploadThumbnail(image: uiImage, name: name2)
+        }
+         catch {
+            print("error")
+        }
+    }
+    
+    func uploadThumbnail(image: UIImage, name: String){
         let meta = StorageMetadata()
         meta.contentType = "image/png"
         //Get user's to create or access user's folder to store images
         //                let userID = Auth.auth().currentUser!.uid
-        let tempUserID = "user01"
-        let fileref = Storage.storage().reference().child("/\(tempUserID)/test")
+        let fileref = Storage.storage().reference().child("/\(name)")
+        //                imageView.transform =  imageView.transform.rotated(by: CGFloat(M_PI_2))
         let image = imageView.image!
+        
         //get the PNG data for this image
         //        let data = image.pngData()
+        //        let imageToUpload: UIImage = UIImage(cgImage: (self.imageView .image?.cgImage!)!, scale: self.imageView.image!.scale, orientation: .right)
+        
         let imageData: Data = image.pngData()!
-        fileref.putData(imageData, metadata: meta, completion: { (meta, error) in
+        let imageData2 = image.jpegData(compressionQuality: 0.0)
+        fileref.putData(imageData2!, metadata: meta, completion: { (meta, error) in
             if error == nil {
-                self.ref2?.child("Usershaha/account2/image/test").setValue("filename")
+                self.ref2?.child("userPicture/\(currentUser!)/fileOwned").childByAutoId().setValue("\(name)")
+            }
+        })
+    }
+    func uploadPhoto(){
+        var curTime = Date()
+        let meta = StorageMetadata()
+        meta.contentType = "image/png"
+        //Get user's to create or access user's folder to store images
+        //                let userID = Auth.auth().currentUser!.uid
+        let fileref = Storage.storage().reference().child("/\(curTime)")
+//                imageView.transform =  imageView.transform.rotated(by: CGFloat(M_PI_2))
+        let image = imageView.image!
+        
+        //get the PNG data for this image
+        //        let data = image.pngData()
+//        let imageToUpload: UIImage = UIImage(cgImage: (self.imageView .image?.cgImage!)!, scale: self.imageView.image!.scale, orientation: .right)
+
+        let imageData: Data = image.pngData()!
+        let imageData2 = image.jpegData(compressionQuality: 0.0)
+        fileref.putData(imageData2!, metadata: meta, completion: { (meta, error) in
+            if error == nil {
+                self.ref2?.child("userPicture/\(currentUser!)/fileOwned").childByAutoId().setValue("\(curTime)")
             }
         })
     }
@@ -195,3 +286,4 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
      */
     
 }
+
