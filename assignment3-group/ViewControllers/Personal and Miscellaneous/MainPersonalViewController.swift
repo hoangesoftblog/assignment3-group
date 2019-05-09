@@ -22,26 +22,30 @@ class MainPersonalViewController: UIViewController{
     let goToAppearance = "goToAppearance"
     let goToStatistic = "goToStatistic"
     
-    @IBOutlet weak var usernameLabel: UILabel!
-    
-    @IBOutlet weak var jobLabel: UILabel!
-    
-    @IBOutlet weak var topView: UIView!
-    
-    @IBOutlet weak var avtImageView: UIImageView!
-    
-    @IBOutlet weak var uploadPhotoImageView: UIImageView!
+//    @IBOutlet weak var usernameLabel: UILabel!
+//
+//    @IBOutlet weak var jobLabel: UILabel!
+//
+//    @IBOutlet weak var topView: UIView!
+//
+//    @IBOutlet weak var avtImageView: UIImageView!
+//
+//    @IBOutlet weak var uploadPhotoImageView: UIImageView!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var sideViewLeadingContraint: NSLayoutConstraint!
     
-    @IBOutlet weak var choiceOfColumns: UISegmentedControl!
-    @IBAction func switchView(_ sender: Any) {
-        switch choiceOfColumns.selectedSegmentIndex {
+//    @IBOutlet weak var choiceOfColumns: UISegmentedControl!
+    
+    @objc func switchView(_ sender: UISegmentedControl) {
+        print("Column pressed")
+        switch sender.selectedSegmentIndex {
         case 0:
+            print("Number of columns = 1")
             numberOfColumns = 1
         case 1:
+            print("Number of columns = 2")
             numberOfColumns = 2
         default:
             break
@@ -56,12 +60,12 @@ class MainPersonalViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        usernameLabel.text = currentUser
-        updateUI()
+//        usernameLabel.text = currentUser
+//        updateUI()
 //        collectionView.delegate = self
 //        collectionView.dataSource = self
         grabPhoto()
-        numberOfColumns = CGFloat( choiceOfColumns.selectedSegmentIndex + 1)
+//        numberOfColumns = CGFloat( choiceOfColumns.selectedSegmentIndex + 1)
 //        if let layout = collectionView?.collectionViewLayout as? CollectionViewPhotoLayout {
 //            layout.delegate = self as? LayoutDelegate
 //
@@ -146,14 +150,14 @@ class MainPersonalViewController: UIViewController{
         
     }
     
-    func updateUI(){
-        
-        avtImageView.layer.cornerRadius = avtImageView.frame.height / 2.0
-        avtImageView.layer.masksToBounds = true
-        uploadPhotoImageView.layer.cornerRadius = uploadPhotoImageView.frame.height/2
-        uploadPhotoImageView.layer.masksToBounds = true
-        
-    }
+//    func updateUI(){
+//
+//        avtImageView.layer.cornerRadius = avtImageView.frame.height / 2.0
+//        avtImageView.layer.masksToBounds = true
+//        uploadPhotoImageView.layer.cornerRadius = uploadPhotoImageView.frame.height/2
+//        uploadPhotoImageView.layer.masksToBounds = true
+//
+//    }
     
     @IBAction func toggledTapped(_ sender: Any) {
         if menuShowing{
@@ -178,11 +182,11 @@ class MainPersonalViewController: UIViewController{
         performSegue(withIdentifier: goToAppearance, sender: self)
     }
     
-//    @IBAction func staticTapped(_ sender: UITapGestureRecognizer) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-//        let aboutVC = storyboard.instantiateViewController(withIdentifier: "StatisticsViewController") as! StatisticsViewController
-//        self.show(aboutVC, sender: nil)
-//    }
+    @IBAction func staticTapped(_ sender: UITapGestureRecognizer) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let aboutVC = storyboard.instantiateViewController(withIdentifier: "StatisticsViewController") as! StatisticsViewController
+        self.show(aboutVC, sender: nil)
+    }
     
     @IBAction func logoutTapped(_ sender: UITapGestureRecognizer) {
         do {
@@ -273,3 +277,42 @@ extension MainPersonalViewController: UICollectionViewDelegateFlowLayout {
         return sectionInsets.left
     }
 }
+
+extension MainPersonalViewController{
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind{
+        case UICollectionView.elementKindSectionHeader:
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PersonalHeaderViewController", for: indexPath) as? PersonalHeaderViewController
+            
+                else{
+                    fatalError("Invalid personal view type")
+            }
+            
+            headerView.usernameLabel.text = currentUser
+            headerView.layer.cornerRadius = headerView.avtImageView.frame.height / 2.0
+            headerView.uploadPhotoImageView.layer.masksToBounds = true
+            headerView.uploadPhotoImageView.layer.cornerRadius = headerView.uploadPhotoImageView.frame.height/2
+            headerView.uploadPhotoImageView.layer.masksToBounds = true
+            
+            numberOfColumns = CGFloat(headerView.choiceOfColumns.selectedSegmentIndex + 1)
+            headerView.choiceOfColumns.addTarget(self, action: #selector(switchView(_:)), for: .touchUpInside)
+            
+            
+            return headerView
+            
+        default:
+            assert(false, "invalid element type")
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+}
+
+
