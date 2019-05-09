@@ -100,7 +100,7 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
 //                playVideo(url1: data)
 //            }
 //        }
-        storageRef.child("\(address). ").downloadURL { (urlx, error) in
+        storageRef.child("\(address).mp4").downloadURL { (urlx, error) in
             if urlx == nil {
                 print("Error occurs. \(error?.localizedDescription)")
             }
