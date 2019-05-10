@@ -10,7 +10,8 @@ import UIKit
 import Firebase
 import FirebaseUI
 import GoogleSignIn
-
+import FBSDKCoreKit
+import FBSDKLoginKit
 var currentUser: String?
 
 class LoginViewController: UIViewController, FUIAuthDelegate  {
@@ -110,11 +111,29 @@ class LoginViewController: UIViewController, FUIAuthDelegate  {
     }
     
     @IBAction func facebookTapped(_ sender: Any) {
-        
+//        let loginButton = FBSDKLoginButton()
+//        loginButton.delegate = self as! FBSDKLoginButtonDelegate
     }
-    
+//    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+//        if let error = error {
+//            print(error.localizedDescription)
+//            return
+//        }
+//        // ...
+//    }
     @IBAction func gmailTapped(_ sender: Any) {
-        
+        if Auth.auth().currentUser == nil {
+            if let authVC = authUI?.authViewController() {
+                present(authVC, animated: true, completion: nil)
+            }
+            //            if let email = tfEmail.text, let password = tfPassword.text {
+            //                Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
+            //                    if error == nil {
+            //                        self.btnLogin.setTitle("Logout", for: .normal)
+            //                    }
+            //                })
+            //            }
+        }
     }
     
     

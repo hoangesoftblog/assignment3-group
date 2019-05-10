@@ -60,6 +60,7 @@ class MainPersonalViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(currentUser)
         if showingUser != nil {
             sideView.isHidden = true
         }

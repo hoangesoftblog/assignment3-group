@@ -35,7 +35,7 @@ class MainPaymentViewController: UIViewController,UITableViewDelegate {
         self.tableView.estimatedRowHeight = 400
         var temp = [DataSnapshot]()
         super.viewDidLoad()
-        
+        print("Current user \(currentUser)")
         ref.child("userPicture/\(currentUser!)/requestSomeoneSentMe").observeSingleEvent(of: .value){ snapshot in
             var tempPic: UIImage?
             print("On first completion")
