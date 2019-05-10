@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class MainSharePageViewController: UIViewController {
-    var imageNames: [String] = []
+    var fileName: [String] = []
     var imagePhoto: [Int: UIImage] = [:]
     let sectionInsets = UIEdgeInsets(top: 50.0,
                                      left: 20.0,
@@ -19,7 +19,8 @@ class MainSharePageViewController: UIViewController {
     var numberOfColumns: CGFloat = 2
     
     @IBOutlet weak var imageCollection: UICollectionView!
-    let reuseIdentifier = "Cell"
+    let photoCellReuse = "photoCell"
+    let videoCellReuse = "videoCell"
     let SharedToDetail = "SharedToDetail"
 
     override func viewDidLoad() {
@@ -38,15 +39,15 @@ class MainSharePageViewController: UIViewController {
             ref.child("userPicture/\(currentUser!)/fileSharedWithWatermark").observeSingleEvent(of: .value){ snapshot in
                 for i in snapshot.children {
                     if let i2 = (i as? DataSnapshot)?.value as? String {
-                        self.imageNames.append(i2)
+                        self.fileName.append(i2)
                     }
                 }
                 
                 self.imageCollection.reloadData()
                 
-                for i in 0..<self.imageNames.count {
-                    storageRef.child(self.imageNames[i]).getData(maxSize: INT64_MAX){ data, error in
-                        print(self.imageNames[i], separator: "", terminator: " ")
+                for i in 0..<self.fileName.count {
+                    storageRef.child(self.fileName[i]).getData(maxSize: INT64_MAX){ data, error in
+                        print(self.fileName[i], separator: "", terminator: " ")
                         if error != nil {
                             print("Error occurs")
                         }
@@ -77,22 +78,36 @@ extension MainSharePageViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = imageCollection.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        
-        if let photoViewCell = cell as? SharedPhotoViewCell {
-            if indexPath.row < imagePhoto.count{
-                photoViewCell.imageView.image = imagePhoto[indexPath.row]
-                return photoViewCell
+        if (!fileName[indexPath.row].contains("thumbnail")) {
+            let cell = imageCollection.dequeueReusableCell(withReuseIdentifier: photoCellReuse, for: indexPath)
+            
+            if let photoViewCell = cell as? SharedPhotoViewCell {
+                if indexPath.row < imagePhoto.count{
+                    photoViewCell.imageView.image = imagePhoto[indexPath.row] as? UIImage
+                    return photoViewCell
+                }
             }
+            
+            return cell
         }
-        
-        return cell
+        else {
+            let cell = imageCollection.dequeueReusableCell(withReuseIdentifier: videoCellReuse, for: indexPath)
+            
+            if let videoViewCell = cell as? SharedVideoCell {
+                if indexPath.row < imagePhoto.count{
+                    videoViewCell.thumbnailView.image = imagePhoto[indexPath.row] as? UIImage
+                    return videoViewCell
+                }
+            }
+            
+            return cell
+        }
     }
 }
 
 extension MainSharePageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: SharedToDetail, sender: (imageNames[indexPath.row], imagePhoto[indexPath.row]))
+        performSegue(withIdentifier: SharedToDetail, sender: (fileName[indexPath.row], imagePhoto[indexPath.row]))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -143,4 +158,35 @@ extension MainSharePageViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension MainSharePageViewController {
+    @objc func bt1Click(){
+        numberOfColumns = 2
+        self.imageCollection.reloadData()
+    }
+    
+    @objc func bt2Click(){
+        numberOfColumns = 1
+        self.imageCollection.reloadData()
+    }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sharedHeaderView", for: indexPath) as? SharedHeaderView
+                else {
+                    fatalError("Invalid view type")
+            }
+            headerView.layer.borderWidth = 5
+            
+            headerView.button1.addTarget(self, action: #selector(bt1Click), for: .touchUpInside)
+            
+            headerView.button2.addTarget(self, action: #selector(bt2Click), for: .touchUpInside)
+            
+            return headerView
+            
+        default:
+            assert(false, "Invalid element type")
+        }
+    }
+    
+}
 
