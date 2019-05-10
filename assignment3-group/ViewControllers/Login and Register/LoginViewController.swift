@@ -12,10 +12,49 @@ import FirebaseUI
 import GoogleSignIn
 import FBSDKCoreKit
 import FBSDKLoginKit
+
 var currentUser: String?
 
-class LoginViewController: UIViewController, FUIAuthDelegate  {
-
+class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDelegate   {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult, error: Error!) {
+        print("running")
+//        print(error.localizedDescription)
+        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        print("credential: \(credential)")
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            print(credential)
+            currentUser = Auth.auth().currentUser?.uid
+            self.goToMain()
+            // User is signed in
+            // ...
+        }
+        if let error = error {
+//            print("running2)
+            print(error.localizedDescription)
+            let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            print("credential: \(credential)")
+            Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                print(credential)
+                // User is signed in
+                // ...
+            }
+            return
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("user logout")
+    }
+    
+//FBSDKLoginButtonDelegate
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
@@ -74,6 +113,12 @@ class LoginViewController: UIViewController, FUIAuthDelegate  {
         authUI?.delegate = self
         let providers : [FUIAuthProvider] = [FUIGoogleAuth()]
         authUI?.providers = providers
+        let loginButton = FBSDKLoginButton()
+        loginButton.delegate = self
+//        let loginButton = LoginButton(readPermissions: [ .publicProfile ])
+        loginButton.center = view.center
+        
+        view.addSubview(loginButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
