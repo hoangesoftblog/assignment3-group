@@ -158,17 +158,16 @@ class DetailViewController: UIViewController {
                 newImageView.backgroundColor = .black
                 newImageView.contentMode = .scaleAspectFit
                 newImageView.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: Selector(("dismissFullscreenImage:")))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(sender:)))
                 newImageView.addGestureRecognizer(tap)
                 self.view.addSubview(newImageView)
                 self.navigationController?.isNavigationBarHidden = true
                 self.tabBarController?.tabBar.isHidden = true
             }
-    
-            func dismissFullscreenImage(sender: UITapGestureRecognizer) {
+    @objc func dismissFullscreenImage(sender: UITapGestureRecognizer) {
                 self.navigationController?.isNavigationBarHidden = false
                 self.tabBarController?.tabBar.isHidden = false
-                sender.view?.removeFromSuperview()
+        sender.view?.removeFromSuperview()
             }
 
     
