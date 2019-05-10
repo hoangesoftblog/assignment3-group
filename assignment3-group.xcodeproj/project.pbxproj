@@ -114,6 +114,7 @@
 		182136ED22714A5500032692 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				673223522285803700E7FA36 /* Upload Tab */,
 				6732234922857DC000E7FA36 /* Shared Tab */,
 				8B243BE52282E8CF00001419 /* AllRequestsViewController.swift */,
 				74ED53DB2282C48D0037F91D /* RequestCell.swift */,
@@ -123,15 +124,12 @@
 				20124D17227DED4D00B1607E /* Global Tab */,
 				671682A9227C3F660004AC55 /* DetailViewController.swift */,
 				20124D11227DD22200B1607E /* SelectPersonViewController.swift */,
-				8877A7692270CDF20003E08E /* MainUploadedViewController.swift */,
 				8877A7712270CE060003E08E /* TutorialCollectionViewCell.swift */,
 				8877A76F2270CE060003E08E /* TutorialCollectionViewController.swift */,
 				8877A7702270CE060003E08E /* WelcomeViewController.swift */,
 				8877A7512270B4490003E08E /* HomeViewController.swift */,
 				8877A7502270B4490003E08E /* WaterMarlkViewController.swift */,
 				182136F422715A5F00032692 /* MainTabBarViewController.swift */,
-				8829A1C42282B6D60077C226 /* AppearanceViewController.swift */,
-				8829A1C62282C6C10077C226 /* AccountSettingViewController.swift */,
 				66B786332282F09C0089E879 /* VideoHelper.swift */,
 			);
 			path = ViewControllers;
@@ -182,6 +180,14 @@
 				6732235022857E2900E7FA36 /* SharedHeaderView.swift */,
 			);
 			path = "Shared Tab";
+			sourceTree = "<group>";
+		};
+		673223522285803700E7FA36 /* Upload Tab */ = {
+			isa = PBXGroup;
+			children = (
+				8877A7692270CDF20003E08E /* MainUploadedViewController.swift */,
+			);
+			path = "Upload Tab";
 			sourceTree = "<group>";
 		};
 		67BA84FC2265DEDB00239E2D = {
@@ -240,6 +246,8 @@
 		67FD22442282818900F1B2FF /* Personal and Miscellaneous */ = {
 			isa = PBXGroup;
 			children = (
+				8829A1C62282C6C10077C226 /* AccountSettingViewController.swift */,
+				8829A1C42282B6D60077C226 /* AppearanceViewController.swift */,
 				8877A7672270CDF20003E08E /* MainPersonalViewController.swift */,
 				8838E98F22733F2A006F4BE3 /* PhotoCollecionViewCell.swift */,
 				8838E99122733F35006F4BE3 /* CollectionViewPhotoLayout.swift */,

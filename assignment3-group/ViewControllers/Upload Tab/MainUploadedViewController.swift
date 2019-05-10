@@ -18,10 +18,15 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
     override func viewDidLoad() {
         ref2 = Database.database().reference()
         super.viewDidLoad()
-        self.display2()
+        
         
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.display2()
+    }
+    
     var choice = 0
     var ref2: DatabaseReference?
     

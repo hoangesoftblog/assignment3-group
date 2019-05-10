@@ -466,10 +466,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="NMU-G7-N1x">
-                                <rect key="frame" x="65" y="325" width="285" height="221"/>
+                                <rect key="frame" x="65" y="325" width="285" height="365"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nlm-aP-mtq">
-                                        <rect key="frame" x="0.0" y="0.0" width="285" height="29"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="285" height="173"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Created by RMIT students having a passion for photography.
 
@@ -480,7 +480,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3M-Z7-xUG">
-                                        <rect key="frame" x="0.0" y="43" width="285" height="50"/>
+                                        <rect key="frame" x="0.0" y="187" width="285" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="JDl-x6-dbi"/>
@@ -489,7 +489,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Credit" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XON-cW-vNY">
-                                        <rect key="frame" x="0.0" y="107" width="285" height="50"/>
+                                        <rect key="frame" x="0.0" y="251" width="285" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="nfX-vs-8Gk"/>
@@ -498,7 +498,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" editable="NO" text="AwesomePhotos Team." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cu-Wr-SIz">
-                                        <rect key="frame" x="0.0" y="171" width="285" height="50"/>
+                                        <rect key="frame" x="0.0" y="315" width="285" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="2Bg-22-F6P"/>
