@@ -8,12 +8,10 @@
 
 import UIKit
 import Firebase
-import FirebaseUI
-import GoogleSignIn
 
 var currentUser: String?
 
-class LoginViewController: UIViewController, FUIAuthDelegate  {
+class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -22,43 +20,12 @@ class LoginViewController: UIViewController, FUIAuthDelegate  {
     @IBOutlet weak var facebookButton: UIButton!
     
     @IBOutlet weak var gmailButton: UIButton!
-    var authUI : FUIAuth?
-    
-    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
-        if error == nil {
-            print("log in with Google Acccount")
-        }
-    }
-    
-    @IBAction func logInWithGoogle(_ sender: Any) {
-//        currentUser = nil
-        if Auth.auth().currentUser == nil {
-            if let authVC = authUI?.authViewController() {
-                present(authVC, animated: true, completion: nil)
-            }
-            //            if let email = tfEmail.text, let password = tfPassword.text {
-            //                Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
-            //                    if error == nil {
-            //                        self.btnLogin.setTitle("Logout", for: .normal)
-            //                    }
-            //                })
-            //            }
-        }
-    }
-    
     
     func goToMain(){
         print(currentUser ?? "Not have yet")
         performSegue(withIdentifier: "goToMain", sender: self)
     }
-//    func goToRegister(){
-//        print(currentUser ?? "Not have yet")
-//        performSegue(withIdentifier: "goToMain", sender: self)
-//    }
     
-    @IBAction func tapRegister(_ sender: Any) {
-        performSegue(withIdentifier: "RegisterSegue", sender: self)
-    }
     func getCurrentUsername(user: User){
         ref.child("IDToUser/\(user.uid)").observeSingleEvent(of: .value){ snapshot in
             if let name = snapshot.value as? String {
@@ -69,10 +36,6 @@ class LoginViewController: UIViewController, FUIAuthDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        authUI = FUIAuth.defaultAuthUI()
-        authUI?.delegate = self
-        let providers : [FUIAuthProvider] = [FUIGoogleAuth()]
-        authUI?.providers = providers
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -9,13 +9,12 @@
 import UIKit
 import FirebaseAuth
 import FirebaseStorage
-import FirebaseUI
-import GoogleSignIn
+
 let storage = Storage.storage()
 
 var storageRef = storage.reference()
 
-class RegisterViewController: UIViewController, FUIAuthDelegate{
+class RegisterViewController: UIViewController{
     
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -28,7 +27,6 @@ class RegisterViewController: UIViewController, FUIAuthDelegate{
     @IBOutlet weak var avtImageView: UIImageView!
     
     var imgData:Data!
-    var authUI : FUIAuth?
     
     @IBAction func signUpTapped(_ sender: Any) {
         if (emailTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)! || (rePassWordTextField.text?.isEmpty)! || (fullNameTextField.text?.isEmpty)!{
@@ -109,27 +107,6 @@ class RegisterViewController: UIViewController, FUIAuthDelegate{
         }
     }
     
-    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
-        if error == nil {
-            print("log in with Google Acccount")
-        }
-    }
-    
-    @IBAction func tapRegisterWithGoogle(_ sender: Any) {
-        if Auth.auth().currentUser == nil {
-            if let authVC = authUI?.authViewController() {
-                present(authVC, animated: true, completion: nil)
-            }
-            //            if let email = tfEmail.text, let password = tfPassword.text {
-            //                Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
-            //                    if error == nil {
-            //                        self.btnLogin.setTitle("Logout", for: .normal)
-            //                    }
-            //                })
-            //            }
-        }
-    }
-    
     @IBAction func chooseModeAvt(_ sender: UITapGestureRecognizer) {
         let alertController = UIAlertController(title: " Thông báo", message: "Bạn muốn chọn chế độ nào ?", preferredStyle: .alert)
         let imgPicker = UIImagePickerController()
@@ -163,10 +140,6 @@ class RegisterViewController: UIViewController, FUIAuthDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         imgData = UIImage.pngData(UIImage(named: "Camera-photo.svg")!)()
-        authUI = FUIAuth.defaultAuthUI()
-        authUI?.delegate = self
-        let providers : [FUIAuthProvider] = [FUIGoogleAuth()]
-        authUI?.providers = providers
         
     }
     
