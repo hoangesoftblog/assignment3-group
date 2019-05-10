@@ -21,12 +21,7 @@ class SelectPersonViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //O is Can share
-        print("Owner in select person is \(owner)")
-        let searchBar = UISearchBar()
-        searchBar.placeholder = "Search for username"
-        searchBar.sizeToFit()
-        navigationItem.titleView = searchBar
-        
+
         ref.child("IDToUser").observeSingleEvent(of: .value){ snapshot in
             for i in snapshot.children {
                 if let i2 = (i as? DataSnapshot)?.value as? String {

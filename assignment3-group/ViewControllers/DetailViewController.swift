@@ -40,9 +40,9 @@ class DetailViewController: UIViewController {
         if fileName!.contains("thumbnail") {
             mainPic.isHidden = true
             videoName = fileName!.replacingOccurrences(of: "thumbnail", with: "")
-            videoName += ".mp4"
+            videoName! += ".mp4"
             print("Value of temp is \(videoName)")
-            storageRef.child(videoName).downloadURL {url, error in
+            storageRef.child(videoName!).downloadURL {url, error in
                 if error != nil {
                     print("Get video url fail")
                     print(error?.localizedDescription)

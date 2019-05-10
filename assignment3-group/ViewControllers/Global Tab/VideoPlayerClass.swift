@@ -19,7 +19,7 @@ class VideoPlayer: UIView {
         return layer as! AVPlayerLayer
     }
     
-    var player: AVPlayer? {
+    var plater: AVPlayer? {
         get {
             return playerLayer.player
         }

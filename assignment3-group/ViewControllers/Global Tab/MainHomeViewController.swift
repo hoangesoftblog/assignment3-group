@@ -21,8 +21,8 @@ class MainHomeViewController: UIViewController {
     var numberOfColumns: CGFloat = 2
     
     let PublicToDetail = "PublicToDetail"
-    let pictureCellReuse = "pictureCell"
-    let videoCellReuse = "videoCell"
+    private let pictureCellReuse = "pictureCell"
+    private let videoCellReuse = "videoCell"
     
     @IBOutlet weak var imageCollection: UICollectionView!
     
@@ -43,23 +43,37 @@ class MainHomeViewController: UIViewController {
                 }
             }
             
-            print("\(self.fileName.count) pictures count in array")
             self.imageCollection.reloadData()
             
             for i in 0..<self.fileName.count {
-                storageRef.child(self.fileName[i]).getData(maxSize: INT64_MAX){ data, error in
-                    print(self.fileName[i], separator: "", terminator: " ")
-                    if error != nil {
-                        print("Error occurs")
-                    }
-                    else if data != nil {
-                        if let imageTemp = UIImage(data: data!) {
-                            print("image available")
-                            self.imagePhoto[i] = imageTemp
+                let fileExtension = Media.getFileExtension(file: self.fileName[i])
+                if fileExtension == "jpg" {
+                    storageRef.child(self.fileName[i]).getData(maxSize: INT64_MAX){ data, error in
+                        print(self.fileName[i], separator: "", terminator: " ")
+                        if error != nil {
+                            print("Error occurs")
                         }
+                        else if data != nil {
+                            if let imageTemp = UIImage(data: data!) {
+                                print("image available")
+                                self.imagePhoto[i] = imageTemp
+                            }
+                        }
+                        
+                        self.imageCollection.reloadData()
                     }
-                    
-                    self.imageCollection.reloadData()
+                }
+                else if fileExtension == "mp4" {
+                    storageRef.child(self.fileName[i]).getMetadata{ metadata, error in
+                        if error != nil {
+                            print(error?.localizedDescription)
+                        }
+                        else if metadata != nil {
+                            print(metadata)
+                            metadata?.dictionaryWithValues(forKeys: ["downloadURLs"])
+                        }
+                        
+                    }
                 }
             }
         }
@@ -81,7 +95,7 @@ extension MainHomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if (!fileName[indexPath.row].contains("thumbnail")) {
+        if Media.getFileExtension(file: fileName[indexPath.row]) == "jpg" {
             let cell = imageCollection.dequeueReusableCell(withReuseIdentifier: pictureCellReuse, for: indexPath)
             
             if let photoViewCell = cell as? PhotoViewCell {
@@ -93,13 +107,14 @@ extension MainHomeViewController: UICollectionViewDataSource {
             
             return cell
         }
+        
         else {
             let cell = imageCollection.dequeueReusableCell(withReuseIdentifier: videoCellReuse, for: indexPath)
             
-            if let videoViewCell = cell as? VideoViewCell {
-                if indexPath.row < imagePhoto.count{
-                    videoViewCell.thumbnailView.image = imagePhoto[indexPath.row] as? UIImage
-                    return videoViewCell
+            if let customCell = cell as? VideoViewCell {
+                if indexPath.row < imagePhoto.count {
+                 
+                    return customCell
                 }
             }
             
@@ -110,7 +125,7 @@ extension MainHomeViewController: UICollectionViewDataSource {
 
 extension MainHomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //print("image choosen is \(fileName[indexPath.row])")
+        //print("image choosen is \(imageNames[indexPath.row])")
         performSegue(withIdentifier: PublicToDetail, sender: (fileName[indexPath.row], imagePhoto[indexPath.row]))
     }
 }
@@ -150,7 +165,7 @@ extension MainHomeViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == PublicToDetail {
             if let dest = segue.destination as? DetailViewController {
-                if let (name, image) = sender as? (String?, UIImage?) {
+                if let (name, image) = sender as? (String, UIImage) {
                     dest.image = image
                     dest.fileName = name
                 }

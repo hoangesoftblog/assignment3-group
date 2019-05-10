@@ -12,7 +12,7 @@
 		182136FF2271AFD000032692 /* Multimedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182136FE2271AFD000032692 /* Multimedia.swift */; };
 		20124D12227DD22200B1607E /* SelectPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20124D11227DD22200B1607E /* SelectPersonViewController.swift */; };
 		2014D96D22832E6F00683835 /* VideoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2014D96C22832E6F00683835 /* VideoViewCell.swift */; };
-		2014D96F2283325100683835 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2014D96E2283325100683835 /* VideoPlayer.swift */; };
+		2014D96F2283325100683835 /* VideoPlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2014D96E2283325100683835 /* VideoPlayerClass.swift */; };
 		20678BF0227C8A7B001E6CD2 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20678BEF227C8A7B001E6CD2 /* Media.swift */; };
 		20678BF2227C9585001E6CD2 /* SharedPhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20678BF1227C9585001E6CD2 /* SharedPhotoViewCell.swift */; };
 		66B786342282F09C0089E879 /* VideoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B786332282F09C0089E879 /* VideoHelper.swift */; };
@@ -25,6 +25,7 @@
 		67BA85132265DEDD00239E2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67BA85112265DEDD00239E2D /* LaunchScreen.storyboard */; };
 		67D0B1BD2280487700BA9810 /* PaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D0B1BC2280487700BA9810 /* PaymentCell.swift */; };
 		74ED53DC2282C48D0037F91D /* RequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED53DB2282C48D0037F91D /* RequestCell.swift */; };
+		74ED53DE228437220037F91D /* PersonalHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED53DD228437220037F91D /* PersonalHeaderViewController.swift */; };
 		8829A1C52282B6D60077C226 /* AppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8829A1C42282B6D60077C226 /* AppearanceViewController.swift */; };
 		8829A1C72282C6C10077C226 /* AccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8829A1C62282C6C10077C226 /* AccountSettingViewController.swift */; };
 		8838E98E22733071006F4BE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8838E98D22733071006F4BE3 /* Assets.xcassets */; };
@@ -54,7 +55,7 @@
 		182136FE2271AFD000032692 /* Multimedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multimedia.swift; sourceTree = "<group>"; };
 		20124D11227DD22200B1607E /* SelectPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPersonViewController.swift; sourceTree = "<group>"; };
 		2014D96C22832E6F00683835 /* VideoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewCell.swift; sourceTree = "<group>"; };
-		2014D96E2283325100683835 /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
+		2014D96E2283325100683835 /* VideoPlayerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerClass.swift; sourceTree = "<group>"; };
 		20678BEF227C8A7B001E6CD2 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		20678BF1227C9585001E6CD2 /* SharedPhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedPhotoViewCell.swift; sourceTree = "<group>"; };
 		66B786332282F09C0089E879 /* VideoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoHelper.swift; sourceTree = "<group>"; };
@@ -69,6 +70,7 @@
 		67BA85142265DEDD00239E2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67D0B1BC2280487700BA9810 /* PaymentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCell.swift; sourceTree = "<group>"; };
 		74ED53DB2282C48D0037F91D /* RequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCell.swift; sourceTree = "<group>"; };
+		74ED53DD228437220037F91D /* PersonalHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHeaderViewController.swift; sourceTree = "<group>"; };
 		7705599C8A045C6963CF7B6E /* Pods-assignment3-group.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-assignment3-group.debug.xcconfig"; path = "Target Support Files/Pods-assignment3-group/Pods-assignment3-group.debug.xcconfig"; sourceTree = "<group>"; };
 		8829A1C42282B6D60077C226 /* AppearanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceViewController.swift; sourceTree = SOURCE_ROOT; };
 		8829A1C62282C6C10077C226 /* AccountSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewController.swift; sourceTree = "<group>"; };
@@ -160,7 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				671682A3227C3F4F0004AC55 /* MainHomeViewController.swift */,
-				2014D96E2283325100683835 /* VideoPlayer.swift */,
+				2014D96E2283325100683835 /* VideoPlayerClass.swift */,
 				671682A7227C3F5E0004AC55 /* PhotoViewCell.swift */,
 				671682A5227C3F590004AC55 /* PhotoCollectionHeaderView.swift */,
 				2014D96C22832E6F00683835 /* VideoViewCell.swift */,
@@ -229,6 +231,7 @@
 				8838E99122733F35006F4BE3 /* CollectionViewPhotoLayout.swift */,
 				8877A7632270C1D60003E08E /* AboutViewController.swift */,
 				88DF9749227B1B7D00455895 /* AppearanceViewController.swift */,
+				74ED53DD228437220037F91D /* PersonalHeaderViewController.swift */,
 			);
 			path = "Personal and Miscellaneous";
 			sourceTree = "<group>";
@@ -398,12 +401,13 @@
 				8B243BE62282E8CF00001419 /* AllRequestsViewController.swift in Sources */,
 				8838E99222733F35006F4BE3 /* CollectionViewPhotoLayout.swift in Sources */,
 				8877A7592270B4490003E08E /* HomeViewController.swift in Sources */,
-				2014D96F2283325100683835 /* VideoPlayer.swift in Sources */,
+				2014D96F2283325100683835 /* VideoPlayerClass.swift in Sources */,
 				8877A7732270CE060003E08E /* WelcomeViewController.swift in Sources */,
 				8838E99022733F2A006F4BE3 /* PhotoCollecionViewCell.swift in Sources */,
 				20678BF0227C8A7B001E6CD2 /* Media.swift in Sources */,
 				8877A76C2270CDF20003E08E /* MainUploadedViewController.swift in Sources */,
 				182136FF2271AFD000032692 /* Multimedia.swift in Sources */,
+				74ED53DE228437220037F91D /* PersonalHeaderViewController.swift in Sources */,
 				74ED53DC2282C48D0037F91D /* RequestCell.swift in Sources */,
 				8877A76D2270CDF20003E08E /* MainPaymentViewController.swift in Sources */,
 				20124D12227DD22200B1607E /* SelectPersonViewController.swift in Sources */,
