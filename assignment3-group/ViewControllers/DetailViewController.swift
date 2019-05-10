@@ -18,7 +18,7 @@ class DetailViewController: UIViewController {
     var image: UIImage?
     var videoName: String?
     var database: DatabaseReference?
-    
+    var videoURL: URL?
     let selectPerson = "DetailToSelectPerson"
     let goToPersonalPage = "goToPersonalPage"
     
@@ -35,6 +35,15 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         database = Database.database().reference()
         super.viewDidLoad()
+        
+        
+        let imagetappedGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        mainPic.isUserInteractionEnabled = true
+        mainPic.addGestureRecognizer(imagetappedGestureRecognizer)
+
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(videoTapped(tapGestureRecognizer:)))
+           videoPlayer.isUserInteractionEnabled = true
+           videoPlayer.addGestureRecognizer(tapGestureRecognizer)
         if fileName!.contains("thumbnail") {
             mainPic.isHidden = true
             videoName = fileName!.replacingOccurrences(of: "thumbnail", with: "")
@@ -56,9 +65,12 @@ class DetailViewController: UIViewController {
                     print("Get URL good")
                     print(url)
                     let avPlayer = AVPlayer(url: url!)
+                    self.videoURL = url
                     let castedLayer = self.videoPlayer.layer as! AVPlayerLayer
                     self.videoPlayer.playerLayer.player = avPlayer
                     self.videoPlayer.playerLayer.player?.play()
+                    
+//                    _ = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.playVideo))
                 }
                 
                 else {
@@ -95,6 +107,72 @@ class DetailViewController: UIViewController {
         
     }
     
+//    @objc func playVideo(){
+//        var player = AVPlayer(url: videoURL!)
+//        let playerViewController = AVPlayerViewController()
+//        playerViewController.player = player
+//
+//        present(playerViewController, animated: true) {
+//            player.play()
+//        }
+//    }
+    
+//    @IBAction func imageTapped(sender: UITapGestureRecognizer) {
+//        let imageView = sender.view as! UIImageView
+//        let newImageView = UIImageView(image: imageView.image)
+//        newImageView.frame = UIScreen.main.bounds
+//        newImageView.backgroundColor = .black
+//        newImageView.contentMode = .scaleAspectFit
+//        newImageView.isUserInteractionEnabled = true
+//        let tap = UITapGestureRecognizer(target: self, action: Selector("dismissFullscreenImage:"))
+//        newImageView.addGestureRecognizer(tap)
+//        self.view.addSubview(newImageView)
+//        self.navigationController?.isNavigationBarHidden = true
+//        self.tabBarController?.tabBar.isHidden = true
+//    }
+//
+//    func dismissFullscreenImage(sender: UITapGestureRecognizer) {
+//        self.navigationController?.isNavigationBarHidden = false
+//        self.tabBarController?.tabBar.isHidden = false
+//        sender.view?.removeFromSuperview()
+//    }
+//
+    @objc func videoTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        var player = AVPlayer(url: videoURL!)
+                let playerViewController = AVPlayerViewController()
+                playerViewController.player = player
+        
+                present(playerViewController, animated: true) {
+                    player.play()
+                }
+        
+        // Your action
+    }
+ 
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let imageView = tapGestureRecognizer.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+                newImageView.frame = UIScreen.main.bounds
+                newImageView.backgroundColor = .black
+                newImageView.contentMode = .scaleAspectFit
+                newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: Selector(("dismissFullscreenImage:")))
+                newImageView.addGestureRecognizer(tap)
+                self.view.addSubview(newImageView)
+                self.navigationController?.isNavigationBarHidden = true
+                self.tabBarController?.tabBar.isHidden = true
+            }
+    
+            func dismissFullscreenImage(sender: UITapGestureRecognizer) {
+                self.navigationController?.isNavigationBarHidden = false
+                self.tabBarController?.tabBar.isHidden = false
+                sender.view?.removeFromSuperview()
+            }
+
+    
+
     @IBAction func pictureAction(_ sender: Any) {
         let action = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
         
@@ -263,4 +341,6 @@ class DetailViewController: UIViewController {
             print ("Error signing out: %@", signOutError)
         }
     }
+    
 }
+
