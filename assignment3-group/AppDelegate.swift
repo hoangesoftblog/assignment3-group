@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import FirebaseUI
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+//    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+//        if let error = error {
+//            print(error.localizedDescription)
+//            return
+//        }
+//        // ...
+//    }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String
