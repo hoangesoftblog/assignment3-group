@@ -89,7 +89,6 @@ extension MainPaymentViewController: UITableViewDataSource {
             if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)){
                 if let customCell = cell as? PaymentCell {
                     customCell.usernameButton.isHidden = true
-                    customCell.usernameButton.titleLabel?.isHidden = true
                     customCell.timeLabel.isHidden = true
                     customCell.timeLabel.text = ""
                     customCell.acceptButton.isHidden = true
@@ -156,7 +155,7 @@ extension MainPaymentViewController: UITableViewDataSource {
                 print("Can return payment cell at \(indexPath.row)")
                 customCell.photo.image = notificationArray[indexPath.row]?.image
                 print("username is \(notificationArray[indexPath.row]?.sender)")
-                customCell.usernameButton.titleLabel?.text = notificationArray[indexPath.row]?.sender
+                customCell.usernameButton.setTitle(notificationArray[indexPath.row]?.sender, for: .normal) 
                 customCell.timeLabel.text = notificationArray[indexPath.row]?.time
                 
                 customCell.acceptButton.tag = indexPath.row

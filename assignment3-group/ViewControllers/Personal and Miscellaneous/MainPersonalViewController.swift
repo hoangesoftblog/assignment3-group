@@ -13,6 +13,7 @@ import Photos
 private let reuseIdentifier = "personalCollectionViewCell"
 
 class MainPersonalViewController: UIViewController{
+    var showingUser: String?
     let sectionInsets = UIEdgeInsets(top: 50.0,
                                      left: 20.0,
                                      bottom: 50.0,
@@ -59,6 +60,9 @@ class MainPersonalViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if showingUser != nil {
+            sideView.isHidden = true
+        }
         
         sideView.layer.borderWidth = 0.25
         sideView.layer.borderColor = UIColor.lightGray.cgColor
@@ -101,8 +105,9 @@ class MainPersonalViewController: UIViewController{
 //                self.collectionView.reloadData()
 //            }
 //        }
+        var workingUser: String = (showingUser == nil) ? currentUser! : showingUser!
         
-        ref.child("userPicture/\(currentUser!)/fileOwned").observeSingleEvent(of: .value){ snapshot in
+        ref.child("userPicture/\(workingUser)/fileOwned").observeSingleEvent(of: .value){ snapshot in
             for i in snapshot.children {
                 if let i2 = (i as? DataSnapshot)?.value as? String {
                     self.imageNames.append(i2)
@@ -291,7 +296,15 @@ extension MainPersonalViewController{
                     fatalError("Invalid personal view type")
             }
             
-            headerView.usernameLabel.text = currentUser
+            if showingUser == nil {
+                headerView.usernameLabel.text = currentUser
+            }
+            else {
+                headerView.usernameLabel.text = showingUser
+                headerView.changeBackgroundButton.isHidden = true
+                headerView.uploadPhotoImageView.isHidden = true
+            }
+            
             headerView.layer.cornerRadius = headerView.avtImageView.frame.height / 2.0
             headerView.uploadPhotoImageView.layer.masksToBounds = true
             headerView.uploadPhotoImageView.layer.cornerRadius = headerView.uploadPhotoImageView.frame.height/2

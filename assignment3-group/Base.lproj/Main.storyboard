@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="koL-S2-MRc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="koL-S2-MRc">
     <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -548,7 +548,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="33Q-Kp-gaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1623" y="193"/>
+            <point key="canvasLocation" x="-749" y="-368"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="sed-Dp-UWJ">
@@ -579,7 +579,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 <rect key="frame" x="90" y="586" width="234" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="1"/>
-                                <state key="normal" title="Login" image="loginButton"/>
+                                <state key="normal" image="loginButton"/>
                                 <connections>
                                     <action selector="login:" destination="koL-S2-MRc" eventType="touchUpInside" id="PSa-NK-sDA"/>
                                 </connections>
@@ -587,7 +587,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ssd-GO-HIu">
                                 <rect key="frame" x="90" y="649" width="277" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Gmail" image="Google login"/>
+                                <state key="normal" image="Google login"/>
                                 <connections>
                                     <action selector="gmailTapped:" destination="koL-S2-MRc" eventType="touchUpInside" id="w6C-ZJ-yLN"/>
                                 </connections>
@@ -599,7 +599,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2L0-g7-Jh0">
                                 <rect key="frame" x="90" y="709" width="253" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="FB" image="Facebook login"/>
+                                <state key="normal" image="Facebook login"/>
                                 <connections>
                                     <action selector="facebookTapped:" destination="koL-S2-MRc" eventType="touchUpInside" id="apN-nw-woW"/>
                                 </connections>
@@ -794,32 +794,20 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                                         <constraint firstAttribute="height" constant="52" id="DR8-s7-3Hi"/>
                                                     </constraints>
                                                 </view>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="vYt-uO-IVS">
-                                                    <rect key="frame" x="316" y="194" width="90" height="20"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZYz-dJ-Wpa">
-                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="20"/>
-                                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="40" id="mwa-8z-4gX"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebJ-ez-X3E">
-                                                            <rect key="frame" x="51" y="0.0" width="39" height="20"/>
-                                                            <gestureRecognizers/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                            <connections>
-                                                                <outletCollection property="gestureRecognizers" destination="fxF-AI-hOD" appends="YES" id="HjV-Bn-gVL"/>
-                                                            </connections>
-                                                        </label>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="90" id="MMT-al-ucI"/>
-                                                        <constraint firstAttribute="height" constant="20" id="eMy-gq-bMG"/>
-                                                    </constraints>
-                                                </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X3c-ij-w2y">
+                                                    <rect key="frame" x="278" y="116" width="118" height="75"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
+                                                    <state key="normal" image="editBackground">
+                                                        <attributedString key="attributedTitle">
+                                                            <fragment content="Edit">
+                                                                <attributes>
+                                                                    <font key="NSFont" size="10" name="AvenirNext-Regular"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -830,8 +818,6 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                                 <constraint firstItem="Dal-OB-Wiu" firstAttribute="top" secondItem="ECt-3e-a0r" secondAttribute="top" constant="43" id="G1M-VY-quv"/>
                                                 <constraint firstAttribute="trailing" secondItem="QbD-43-5sx" secondAttribute="trailing" constant="8" id="K8Q-Pi-Zg1"/>
                                                 <constraint firstItem="M6o-SW-afv" firstAttribute="leading" secondItem="ECt-3e-a0r" secondAttribute="leading" constant="8" id="PQM-iF-ofC"/>
-                                                <constraint firstAttribute="trailing" secondItem="vYt-uO-IVS" secondAttribute="trailing" constant="8" id="QHu-Kw-SOw"/>
-                                                <constraint firstItem="QbD-43-5sx" firstAttribute="top" secondItem="vYt-uO-IVS" secondAttribute="bottom" id="Tct-tL-2ax"/>
                                                 <constraint firstAttribute="bottom" secondItem="QbD-43-5sx" secondAttribute="bottom" constant="14" id="Txc-HB-Bi9"/>
                                                 <constraint firstItem="wnR-Ph-xB1" firstAttribute="top" secondItem="pIy-eY-bka" secondAttribute="bottom" constant="10" id="VIY-3W-Rf6"/>
                                                 <constraint firstItem="Q3A-Yn-Vr8" firstAttribute="top" secondItem="pIy-eY-bka" secondAttribute="bottom" constant="76" id="Wnq-bO-Kxp"/>
@@ -848,6 +834,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <connections>
                                         <outlet property="avtImageView" destination="wnR-Ph-xB1" id="hdP-py-bXZ"/>
+                                        <outlet property="changeBackgroundButton" destination="X3c-ij-w2y" id="AGv-uG-8YG"/>
                                         <outlet property="choiceOfColumns" destination="M6o-SW-afv" id="eyL-ht-SNL"/>
                                         <outlet property="jobLabel" destination="pIy-eY-bka" id="heK-Al-kli"/>
                                         <outlet property="topView" destination="ECt-3e-a0r" id="ybk-dT-ApP"/>
@@ -1252,16 +1239,15 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="427"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zDX-Qq-rYn" customClass="VideoPlayer" customModule="assignment3_group" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eal-fN-GLs">
                                                     <rect key="frame" x="87" y="149" width="240" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </view>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="playerView" destination="zDX-Qq-rYn" id="b3S-wo-VBK"/>
+                                            <outlet property="thumbnailView" destination="eal-fN-GLs" id="kgl-ns-4Jj"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1349,6 +1335,9 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                         <rect key="frame" x="128" y="246" width="46" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="openPersonalPage:" destination="593-Lz-Njb" eventType="touchUpInside" id="TJy-bD-m78"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2v-BT-zSQ">
                                         <rect key="frame" x="270" y="295" width="42" height="21"/>
@@ -1373,6 +1362,11 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                             <action selector="logOut:" destination="593-Lz-Njb" eventType="touchUpInside" id="p5x-UT-87k"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dQh-LB-ZYX" customClass="VideoPlayer" customModule="assignment3_group" customModuleProvider="target">
+                                        <rect key="frame" x="21" y="8" width="371" height="193"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -1391,6 +1385,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <outlet property="profilePic" destination="yfg-r2-aWr" id="KOe-Jn-gFz"/>
                         <outlet property="timeLabel" destination="P2v-BT-zSQ" id="LgR-bU-rMi"/>
                         <outlet property="usernameButton" destination="3De-bG-1Cd" id="M69-JS-Sye"/>
+                        <outlet property="videoPlayer" destination="dQh-LB-ZYX" id="GAe-t7-prs"/>
                         <segue destination="vtd-Hn-me6" kind="show" identifier="DetailToSelectPerson" id="Kus-7E-hJ6"/>
                         <segue destination="DfI-G9-rop" kind="show" identifier="goToPersonalPage" id="Aji-Dy-Rvo"/>
                     </connections>
@@ -1601,18 +1596,19 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
     </scenes>
     <resources>
         <image name="Accept" width="74" height="24"/>
-        <image name="Camera" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="Camera" width="100" height="100"/>
         <image name="Camera-photo.svg" width="240" height="240"/>
         <image name="Contact" width="34" height="34"/>
         <image name="ContactPayment" width="79" height="24"/>
         <image name="Deny" width="63" height="24"/>
-        <image name="Facebook login" width="231" height="40"/>
-        <image name="Google login" width="231" height="40"/>
+        <image name="Facebook login" width="693" height="120"/>
+        <image name="Google login" width="693" height="120"/>
         <image name="Home" width="29" height="28"/>
         <image name="Image-1" width="34" height="22"/>
         <image name="Shared Symbol" width="31" height="30"/>
-        <image name="awesome" width="166.66667175292969" height="32"/>
-        <image name="loginButton" width="231" height="40"/>
+        <image name="awesome" width="500" height="96"/>
+        <image name="editBackground" width="100" height="75"/>
+        <image name="loginButton" width="693" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cW4-b4-L4e"/>

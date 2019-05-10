@@ -23,6 +23,7 @@ class PersonalHeaderViewController: UICollectionReusableView {
     
     @IBOutlet weak var choiceOfColumns: UISegmentedControl!
     
+    @IBOutlet weak var changeBackgroundButton: UIButton!
     
     
 }
