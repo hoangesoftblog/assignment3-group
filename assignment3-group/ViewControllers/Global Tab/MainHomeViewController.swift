@@ -17,7 +17,7 @@ class MainHomeViewController: UIViewController {
                                      bottom: 50.0,
                                      right: 20.0)
     var fileName: [String] = []
-    var imagePhoto: [Int: UIImage] = [:]
+    var imagePhoto: [Int: Any] = [:]
     var numberOfColumns: CGFloat = 2
     
     let PublicToDetail = "PublicToDetail"
@@ -46,23 +46,41 @@ class MainHomeViewController: UIViewController {
             self.imageCollection.reloadData()
             
             for i in 0..<self.fileName.count {
-                storageRef.child(self.fileName[i]).getData(maxSize: INT64_MAX){ data, error in
-                    print(self.fileName[i], separator: "", terminator: " ")
-                    if error != nil {
-                        print("Error occurs")
-                    }
-                    else if data != nil {
-                        if let imageTemp = UIImage(data: data!) {
-                            print("image available")
-                            self.imagePhoto[i] = imageTemp
+                let fileExtension = Media.getFileExtension(file: self.fileName[i])
+                if fileExtension == "jpg" {
+                    storageRef.child(self.fileName[i]).getData(maxSize: INT64_MAX){ data, error in
+                        print(self.fileName[i], separator: "", terminator: " ")
+                        if error != nil {
+                            print("Error occurs")
                         }
+                        else if data != nil {
+                            if let imageTemp = UIImage(data: data!) {
+                                print("image available")
+                                self.imagePhoto[i] = imageTemp
+                            }
+                        }
+                        
+                        self.imageCollection.reloadData()
                     }
-                    
-                    self.imageCollection.reloadData()
+                }
+                else if fileExtension == "mp4" {
+                    storageRef.child(self.fileName[i]).getMetadata{ metadata, error in
+                        if error != nil {
+                            print(error?.localizedDescription)
+                        }
+                        else if metadata != nil {
+                            print(metadata)
+                            metadata?.dictionaryWithValues(forKeys: ["downloadURLs"])
+                        }
+                        
+                    }
                 }
             }
         }
     }
+    
+    
+    
 }
 
 extension MainHomeViewController: UICollectionViewDataSource {
@@ -77,7 +95,7 @@ extension MainHomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if (!fileName[indexPath.row].contains("thumbnail")) {
+        if Media.getFileExtension(file: fileName[indexPath.row]) == "jpg" {
             let cell = imageCollection.dequeueReusableCell(withReuseIdentifier: pictureCellReuse, for: indexPath)
             
             if let photoViewCell = cell as? PhotoViewCell {
@@ -89,13 +107,14 @@ extension MainHomeViewController: UICollectionViewDataSource {
             
             return cell
         }
+        
         else {
             let cell = imageCollection.dequeueReusableCell(withReuseIdentifier: videoCellReuse, for: indexPath)
             
-            if let videoViewCell = cell as? VideoViewCell {
-                if indexPath.row < imagePhoto.count{
-                    videoViewCell.thumbnailView.image = imagePhoto[indexPath.row] as? UIImage
-                    return videoViewCell
+            if let customCell = cell as? VideoViewCell {
+                if indexPath.row < imagePhoto.count {
+                 
+                    return customCell
                 }
             }
             
@@ -155,36 +174,36 @@ extension MainHomeViewController {
     }
 }
 
-extension MainHomeViewController: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let paddingSpace = sectionInsets.left * (numberOfColumns + 1)
-        let available = view.frame.width - paddingSpace
-        let widthPerItem = available / numberOfColumns
-
-        //print("IndexPath row is \(indexPath.row)")
-        //print("imagePhoto has \(imagePhoto.count)\n")
-        if indexPath.row < imagePhoto.count && imagePhoto[indexPath.row] != nil {
-            //print("\(photoHeight)\t\(photoWidth)")
-
-            return CGSize(width: widthPerItem, height: widthPerItem * ((imagePhoto[indexPath.row]?.size.height)! / (imagePhoto[indexPath.row]?.size.width)!))
-        }
-        else {
-            return CGSize(width: widthPerItem, height: widthPerItem)
-        }
-
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return sectionInsets
-    }
-
-    // 4
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return sectionInsets.left
-    }
-}
+//extension MainHomeViewController: UICollectionViewDelegateFlowLayout {
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let paddingSpace = sectionInsets.left * (numberOfColumns + 1)
+//        let available = view.frame.width - paddingSpace
+//        let widthPerItem = available / numberOfColumns
+//
+//        //print("IndexPath row is \(indexPath.row)")
+//        //print("imagePhoto has \(imagePhoto.count)\n")
+//        if indexPath.row < imagePhoto.count && imagePhoto[indexPath.row] != nil {
+//            //print("\(photoHeight)\t\(photoWidth)")
+//
+//            return CGSize(width: widthPerItem, height: widthPerItem * ((imagePhoto[indexPath.row]?.size.height)! / (imagePhoto[indexPath.row]?.size.width)!))
+//        }
+//        else {
+//            return CGSize(width: widthPerItem, height: widthPerItem)
+//        }
+//
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return sectionInsets
+//    }
+//
+//    // 4
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return sectionInsets.left
+//    }
+//}
