@@ -23,13 +23,19 @@ class Request {
 class AllRequestsViewController: UIViewController,UITableViewDelegate {
     var requestArray = [Int: Request]()
     let reuseIdentifier = "CellRequest"
-    var temp: CGFloat = 0
+    var tempLength: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem?.title = ""
         navigationItem.rightBarButtonItem?.isEnabled = false
+        
+        print("View did load cua request")
+        getDataOnce()
+    }
+    
+    func getDataOnce() {
         var temp = [DataSnapshot]()
-       print("View did load cua request")
         ref.child("userPicture/\(currentUser!)/RequestISentSomeone").observeSingleEvent(of: .value){ snapshot in
             var tempPic: UIImage?
             for i in snapshot.children {
@@ -79,7 +85,7 @@ extension AllRequestsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         
         if let customCell = cell as? RequestCell {
-            temp = customCell.photo.frame.origin.y + customCell.photo.frame.height
+            tempLength = customCell.photo.frame.origin.y + customCell.photo.frame.height
             if indexPath.row < requestArray.count {
                 print("Can return request cell at \(indexPath.row)")
                 customCell.photo.image = requestArray[indexPath.row]?.image
@@ -104,8 +110,8 @@ extension AllRequestsViewController: UITableViewDataSource {
 //        return (temp + 100)
 //    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-                print(temp)
-                return (temp + 100)
+                print(tempLength)
+                return (tempLength + 100)
     }
     
 }
