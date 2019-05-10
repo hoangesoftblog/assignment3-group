@@ -10,5 +10,6 @@ import UIKit
 
 class VideoViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var playerView: VideoPlayer!
+    
+    @IBOutlet weak var thumbnailView: UIImageView!
 }

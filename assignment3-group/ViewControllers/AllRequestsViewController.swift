@@ -84,7 +84,7 @@ extension AllRequestsViewController: UITableViewDataSource {
                 print("Can return request cell at \(indexPath.row)")
                 customCell.photo.image = requestArray[indexPath.row]?.image
                 print("username is \(requestArray[indexPath.row]?.owner)")
-                customCell.usernameButton.titleLabel?.text = requestArray[indexPath.row]?.owner
+                customCell.usernameButton.setTitle(requestArray[indexPath.row]?.owner, for: .normal)
     
                 return customCell
             }

@@ -13,6 +13,7 @@ import Photos
 private let reuseIdentifier = "personalCollectionViewCell"
 
 class MainPersonalViewController: UIViewController{
+    var showingUser: String?
     let sectionInsets = UIEdgeInsets(top: 50.0,
                                      left: 20.0,
                                      bottom: 50.0,
@@ -22,23 +23,23 @@ class MainPersonalViewController: UIViewController{
     let goToAppearance = "goToAppearance"
     let goToStatistic = "goToStatistic"
     
-    @IBOutlet weak var usernameLabel: UILabel!
+    //@IBOutlet weak var usernameLabel: UILabel!
     
-    @IBOutlet weak var jobLabel: UILabel!
+//    @IBOutlet weak var jobLabel: UILabel!
     
-    @IBOutlet weak var topView: UIView!
+//    @IBOutlet weak var topView: UIView!
     
-    @IBOutlet weak var avtImageView: UIImageView!
+//    @IBOutlet weak var avtImageView: UIImageView!
     
-    @IBOutlet weak var uploadPhotoImageView: UIImageView!
+//    @IBOutlet weak var uploadPhotoImageView: UIImageView!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var sideViewLeadingContraint: NSLayoutConstraint!
     
-    @IBOutlet weak var choiceOfColumns: UISegmentedControl!
-    @IBAction func switchView(_ sender: Any) {
-        switch choiceOfColumns.selectedSegmentIndex {
+//    @IBOutlet weak var choiceOfColumns: UISegmentedControl!
+    @IBAction func switchView(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
         case 0:
             numberOfColumns = 1
         case 1:
@@ -54,14 +55,24 @@ class MainPersonalViewController: UIViewController{
     var imageNames = [String]()
     var arrImages = [Int: UIImage]()
     
+    @IBOutlet weak var sideView: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        usernameLabel.text = currentUser
-        updateUI()
+        if showingUser != nil {
+            sideView.isHidden = true
+        }
+        
+        sideView.layer.borderWidth = 0.25
+        sideView.layer.borderColor = UIColor.lightGray.cgColor
+        
+//        usernameLabel.text = currentUser
+//        updateUI()
 //        collectionView.delegate = self
 //        collectionView.dataSource = self
         grabPhoto()
-        numberOfColumns = CGFloat( choiceOfColumns.selectedSegmentIndex + 1)
+//        numberOfColumns = CGFloat( choiceOfColumns.selectedSegmentIndex + 1)
 //        if let layout = collectionView?.collectionViewLayout as? CollectionViewPhotoLayout {
 //            layout.delegate = self as? LayoutDelegate
 //
@@ -94,8 +105,9 @@ class MainPersonalViewController: UIViewController{
 //                self.collectionView.reloadData()
 //            }
 //        }
+        var workingUser: String = (showingUser == nil) ? currentUser! : showingUser!
         
-        ref.child("userPicture/\(currentUser!)/fileOwned").observeSingleEvent(of: .value){ snapshot in
+        ref.child("userPicture/\(workingUser)/fileOwned").observeSingleEvent(of: .value){ snapshot in
             for i in snapshot.children {
                 if let i2 = (i as? DataSnapshot)?.value as? String {
                     self.imageNames.append(i2)
@@ -149,10 +161,10 @@ class MainPersonalViewController: UIViewController{
     
     func updateUI(){
         
-        avtImageView.layer.cornerRadius = avtImageView.frame.height / 2.0
-        avtImageView.layer.masksToBounds = true
-        uploadPhotoImageView.layer.cornerRadius = uploadPhotoImageView.frame.height/2
-        uploadPhotoImageView.layer.masksToBounds = true
+//        avtImageView.layer.cornerRadius = avtImageView.frame.height / 2.0
+//        avtImageView.layer.masksToBounds = true
+//        uploadPhotoImageView.layer.cornerRadius = uploadPhotoImageView.frame.height/2
+//        uploadPhotoImageView.layer.masksToBounds = true
         
     }
     
@@ -273,3 +285,50 @@ extension MainPersonalViewController: UICollectionViewDelegateFlowLayout {
         return sectionInsets.left
     }
 }
+
+extension MainPersonalViewController{
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind{
+        case UICollectionView.elementKindSectionHeader:
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PersonalHeaderViewController", for: indexPath) as? PersonalHeaderViewController
+                
+                else{
+                    fatalError("Invalid personal view type")
+            }
+            
+            if showingUser == nil {
+                headerView.usernameLabel.text = currentUser
+            }
+            else {
+                headerView.usernameLabel.text = showingUser
+                headerView.changeBackgroundButton.isHidden = true
+                headerView.uploadPhotoImageView.isHidden = true
+            }
+            
+            headerView.layer.cornerRadius = headerView.avtImageView.frame.height / 2.0
+            headerView.uploadPhotoImageView.layer.masksToBounds = true
+            headerView.uploadPhotoImageView.layer.cornerRadius = headerView.uploadPhotoImageView.frame.height/2
+            headerView.uploadPhotoImageView.layer.masksToBounds = true
+            
+            numberOfColumns = CGFloat(headerView.choiceOfColumns.selectedSegmentIndex + 1)
+            headerView.choiceOfColumns.addTarget(self, action: #selector(switchView(_:)), for: .valueChanged)
+            
+            
+            return headerView
+            
+        default:
+            assert(false, "invalid element type")
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+}
+
+
