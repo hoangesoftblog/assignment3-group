@@ -163,8 +163,6 @@ extension MainPaymentViewController: UITableViewDataSource {
                 customCell.denyButton.tag = indexPath.row
                 customCell.denyButton.addTarget(self, action: #selector(denyPic(sender:)), for: .touchUpInside)
                 customCell.contactButton.accessibilityIdentifier = notificationArray[indexPath.row]?.sender
-                customCell.contactButton.addTarget(self, action: #selector(contactOwner(sender:)), for: .touchUpInside)
-                
                 return customCell
             }            
             
