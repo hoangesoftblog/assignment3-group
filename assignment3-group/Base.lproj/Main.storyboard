@@ -1486,32 +1486,6 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                             <constraint firstAttribute="width" constant="100" id="dhw-NH-cok"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="6eu-b5-F1c">
-                                        <rect key="frame" x="316" y="197" width="90" height="20"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rYz-1J-vHM">
-                                                <rect key="frame" x="0.0" y="0.0" width="40" height="20"/>
-                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="wmN-8W-8AB"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNw-I7-tvX">
-                                                <rect key="frame" x="51" y="0.0" width="39" height="20"/>
-                                                <gestureRecognizers/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="BAd-BD-Zam" appends="YES" id="aWn-ee-UqB"/>
-                                                </connections>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="90" id="719-vJ-Uo7"/>
-                                            <constraint firstAttribute="height" constant="20" id="rOg-4x-qbp"/>
-                                        </constraints>
-                                    </stackView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="40c-LF-NE8">
                                         <rect key="frame" x="228" y="131" width="43" height="44"/>
                                         <gestureRecognizers/>
@@ -1529,7 +1503,6 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                     <constraint firstItem="40c-LF-NE8" firstAttribute="top" secondItem="12p-7w-hl5" secondAttribute="bottom" constant="76" id="0v9-wg-HqX"/>
                                     <constraint firstItem="h8m-7G-ra8" firstAttribute="top" secondItem="rWn-Jj-f7Y" secondAttribute="top" constant="230" id="3Xa-28-Rq8"/>
                                     <constraint firstAttribute="height" constant="280" id="54I-m6-VTZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="6eu-b5-F1c" secondAttribute="trailing" constant="10" id="EVE-Mf-gtP"/>
                                     <constraint firstItem="40c-LF-NE8" firstAttribute="leading" secondItem="dQg-x9-TuM" secondAttribute="trailing" constant="-30" id="EfO-dm-ppd"/>
                                     <constraint firstItem="ZeG-fg-EH6" firstAttribute="top" secondItem="rWn-Jj-f7Y" secondAttribute="top" constant="43" id="J0W-VY-2bg"/>
                                     <constraint firstItem="dQg-x9-TuM" firstAttribute="centerX" secondItem="rWn-Jj-f7Y" secondAttribute="centerX" id="VQs-OY-GuA"/>
@@ -1538,7 +1511,6 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                     <constraint firstItem="ZeG-fg-EH6" firstAttribute="centerX" secondItem="rWn-Jj-f7Y" secondAttribute="centerX" id="jfu-Xa-WYE"/>
                                     <constraint firstItem="12p-7w-hl5" firstAttribute="top" secondItem="ZeG-fg-EH6" secondAttribute="bottom" constant="15" id="mQq-Uv-h3H"/>
                                     <constraint firstAttribute="bottom" secondItem="h8m-7G-ra8" secondAttribute="bottom" constant="8" id="ob1-H1-Cty"/>
-                                    <constraint firstAttribute="bottom" secondItem="6eu-b5-F1c" secondAttribute="bottom" constant="10" id="qKN-UH-o3b"/>
                                     <constraint firstItem="12p-7w-hl5" firstAttribute="centerX" secondItem="rWn-Jj-f7Y" secondAttribute="centerX" id="qq2-Ea-Xib"/>
                                     <constraint firstItem="h8m-7G-ra8" firstAttribute="centerY" secondItem="rWn-Jj-f7Y" secondAttribute="centerY" constant="111" id="wrE-A5-B5X"/>
                                 </constraints>
@@ -1572,36 +1544,6 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                     <constraint firstItem="EdA-5r-Roa" firstAttribute="centerY" secondItem="4Mx-cK-PH6" secondAttribute="centerY" id="oaV-nA-UWG"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KjC-5D-bRh">
-                                <rect key="frame" x="0.0" y="420" width="414" height="442"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <collectionViewLayout key="collectionViewLayout" id="evL-Xq-HAu" customClass="CollectionViewPhotoLayout" customModule="assignment3_group" customModuleProvider="target"/>
-                                <cells>
-                                    <collectionViewCell multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="personalCollectionViewCell" id="Q6M-pp-6qf" customClass="PhotoCollectionViewCell" customModule="assignment3_group" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ue0-DM-WHo">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                </imageView>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="Ue0-DM-WHo" firstAttribute="leading" secondItem="Q6M-pp-6qf" secondAttribute="leading" id="2zq-4q-IrZ"/>
-                                            <constraint firstAttribute="bottom" secondItem="Ue0-DM-WHo" secondAttribute="bottom" id="Acu-ne-d09"/>
-                                            <constraint firstItem="Ue0-DM-WHo" firstAttribute="top" secondItem="Q6M-pp-6qf" secondAttribute="top" id="hj6-It-dDY"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ue0-DM-WHo" secondAttribute="trailing" id="oCp-9j-Zht"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="image" destination="Ue0-DM-WHo" id="c7o-mX-EP0"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SO6-Mg-JqS">
                                 <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <items>
@@ -1830,8 +1772,8 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
         <image name="loginButton" width="231" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1ih-rv-tgV"/>
-        <segue reference="Aji-Dy-Rvo"/>
+        <segue reference="8Fu-od-Qx6"/>
+        <segue reference="U9S-cE-gg1"/>
         <segue reference="Cba-QY-Zxx"/>
         <segue reference="cW4-b4-L4e"/>
     </inferredMetricsTieBreakers>

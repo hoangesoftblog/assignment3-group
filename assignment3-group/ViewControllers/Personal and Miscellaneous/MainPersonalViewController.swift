@@ -62,7 +62,14 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        usernameLabel.text = currentUser
+        if showingUser == nil {
+            print("user is current user")
+            usernameLabel.text = currentUser
+        }
+        else {
+            print("user is showing user \(showingUser)")
+            usernameLabel.text = showingUser
+        }
         updateUI()
 //        collectionView.delegate = self
 //        collectionView.dataSource = self
@@ -188,7 +195,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
 //            }
 //        }
         
-        ref.child("userPicture/\(currentUser!)/fileOwned").observeSingleEvent(of: .value){ snapshot in
+        ref.child("userPicture/\(usernameLabel.text!)/fileOwned").observeSingleEvent(of: .value){ snapshot in
             for i in snapshot.children {
                 if let i2 = (i as? DataSnapshot)?.value as? String {
                     self.imageNames.append(i2)
