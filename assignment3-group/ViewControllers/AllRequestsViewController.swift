@@ -23,7 +23,6 @@ class Request {
 class AllRequestsViewController: UIViewController,UITableViewDelegate {
     var requestArray = [Int: Request]()
     let reuseIdentifier = "CellRequest"
-    let fromRequestToPersonal = "fromRequestToPersonal"
     var temp: CGFloat = 0
     
     override func viewDidLoad() {
@@ -76,11 +75,6 @@ extension AllRequestsViewController: UITableViewDataSource {
         return requestArray.count
     }
     
-    @objc func goToSender(sender: UIButton) {
-        print("Moving to sender")
-        self.performSegue(withIdentifier: fromRequestToPersonal, sender: sender.currentTitle)
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("Cell for row at indexpath \(indexPath.row) request")
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
@@ -92,7 +86,6 @@ extension AllRequestsViewController: UITableViewDataSource {
                 customCell.photo.image = requestArray[indexPath.row]?.image
                 print("username is \(requestArray[indexPath.row]?.owner)")
                 customCell.usernameButton.setTitle(requestArray[indexPath.row]?.owner, for: .normal)
-                customCell.usernameButton.addTarget(self, action: #selector(goToSender(sender:)), for: .touchUpInside)
     
                 return customCell
             }
@@ -101,16 +94,6 @@ extension AllRequestsViewController: UITableViewDataSource {
         }
         
         return cell
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == fromRequestToPersonal {
-            if let dest = segue.destination as? MainPersonalViewController {
-                if let temp_sender = sender as? String {
-                    dest.showingUser = temp_sender
-                }
-            }
-        }
     }
     
 //    func numberOfSections(in tableView: UITableView) -> Int {

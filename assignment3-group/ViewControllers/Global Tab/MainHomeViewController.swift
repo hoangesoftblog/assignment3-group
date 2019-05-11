@@ -26,16 +26,6 @@ class MainHomeViewController: UIViewController {
     
     let refreshControl = UIRefreshControl()
     @IBOutlet weak var imageCollection: UICollectionView!
-    @IBOutlet weak var reloadActivityView: UIActivityIndicatorView!
-    
-    @objc func refreshData(){
-        self.reloadActivityView.startAnimating()
-        fileName.removeAll()
-        imagePhoto.removeAll()
-        getDataOnce()
-        self.refreshControl.endRefreshing()
-        self.reloadActivityView.stopAnimating()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +39,6 @@ class MainHomeViewController: UIViewController {
         } else {
             self.imageCollection.addSubview(refreshControl)
         }
-        
-        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        refreshControl.attributedTitle = NSAttributedString(string: "Fetching image")
     }
     
     //get data of all images from firebase
