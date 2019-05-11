@@ -22,6 +22,18 @@ class MainSharePageViewController: UIViewController {
     let photoCellReuse = "photoCell"
     let videoCellReuse = "videoCell"
     let SharedToDetail = "SharedToDetail"
+    
+    let refreshControl = UIRefreshControl()
+    @IBOutlet weak var reloadIndicatorView: UIActivityIndicatorView!
+    
+    @objc func refreshView(){
+        print("refresing view working")
+        reloadIndicatorView.startAnimating()
+        imagePhoto.removeAll()
+        fileName.removeAll()
+        getDataOnce()
+        reloadIndicatorView.stopAnimating()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +42,15 @@ class MainSharePageViewController: UIViewController {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 23))
         imageView.image = #imageLiteral(resourceName: "awesome")
         navigationItem.titleView = imageView
-
+        
+        if #available(iOS 10.0, *) {
+            self.imageCollection.refreshControl = refreshControl
+        } else {
+            self.imageCollection.addSubview(refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "Reloading")
         // Do any additional setup after loading the view.
     }
 
