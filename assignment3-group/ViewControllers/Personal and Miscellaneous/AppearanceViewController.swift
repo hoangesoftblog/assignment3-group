@@ -40,49 +40,140 @@ class AppearanceView {
     func backgroundColorChanged(color : UIColor) {
         AppearanceView.sharedService.backgroundColor = color;
     }
-    class AppearanceViewController: UIViewController {
-        
-        @IBOutlet weak var yellowButton: UIButton!
-        
-        @IBOutlet weak var yellowButtonTapped: UIButton!
-        
-        
-        
-        
-        @IBOutlet weak var blackButton: UIButton!
-        
-        @IBAction func blackButtonTapped(_ sender: UIButton) {
+}
+
+class AppearanceViewController: UIViewController {
+    
+    
+    
+    
+//    @IBAction func boundedImage(_ sender: Any) {
+//        .layer.cornerRadius = grayButton.frame.height / 2.0
+//        self.layer.masksToBounds = true
+//        self.view.backgroundColor = AppearanceView.sharedService.backgroundColor;
+//    }
+    
+    @IBOutlet weak var yellowButton: UIButton!
+    @IBAction func yellowButtonTapped(_ sender: UIButton) {
+        UserDefaults.standard.set("yellow", forKey: "bgColor")
+        guard let color: String = UserDefaults.standard.object(forKey: "bgColor") as? String else {return}
+        if color == "yellow" {
+            self.view.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
         }
-        
-        
-        
-        
-        override func viewDidLoad() {
-            super.viewDidLoad()
-        blackButton.layer.cornerRadius = blackButton.frame.height / 2.0
-        blackButton.layer.masksToBounds = true
-            
-            
-        yellowButton.layer.cornerRadius = yellowButton.frame.height / 2.0
-        yellowButton.layer.masksToBounds = true
-            self.view.backgroundColor = AppearanceView.sharedService.backgroundColor;
-            
-            // Do any additional setup after loading the view.
+    }
+     @IBOutlet weak var grayButton: UIButton!
+    
+    @IBAction func grayButtonTapped(_ sender: Any) {
+        UserDefaults.standard.set("gray", forKey: "bgColor")
+        guard let color: String = UserDefaults.standard.object(forKey: "bgColor") as? String else {return}
+        if color == "gray" {
+            self.view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        }
+    }
+    
+    @IBOutlet weak var pinkButton: UIButton!
+    
+    
+    @IBAction func pinkButtonTapped(_ sender: Any) {
+        UserDefaults.standard.set("pink", forKey: "bgColor")
+        guard let color: String = UserDefaults.standard.object(forKey: "bgColor") as? String else {return}
+        if color == "pink" {
+            self.view.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        }
+    }
+    
+    @IBOutlet weak var blackButton: UIButton!
+    
+    @IBAction func blackButtonTapped(_ sender: Any) {
+        UserDefaults.standard.set("black", forKey: "bgColor")
+        guard let color: String = UserDefaults.standard.object(forKey: "bgColor") as? String else {return}
+        if color == "black" {
+            self.view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
     }
     
     
+    @IBOutlet weak var greenButton: UIButton!
+    
+    @IBAction func greenButtonTapped(_ sender: Any) {
+        UserDefaults.standard.set("green", forKey: "bgColor")
+        guard let color: String = UserDefaults.standard.object(forKey: "bgColor") as? String else {return}
+        if color == "green" {
+            self.view.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+        }
+    }
     
     
+    @IBOutlet weak var whiteButton: UIButton!
     
+    @IBAction func whiteButtonTapped(_ sender: Any) {
+        UserDefaults.standard.set("white", forKey: "bgColor")
+        guard let color: String = UserDefaults.standard.object(forKey: "bgColor") as? String else {return}
+        if color == "white" {
+            self.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        yellowButton.layer.cornerRadius = yellowButton.frame.height / 2.0
+        yellowButton.layer.masksToBounds = true
+        self.view.backgroundColor = AppearanceView.sharedService.backgroundColor;
+        
+        
+        whiteButton.layer.cornerRadius = whiteButton.frame.height / 2.0
+        whiteButton.layer.masksToBounds = true
+        self.view.backgroundColor = AppearanceView.sharedService.backgroundColor;
+        
+        
+        pinkButton.layer.cornerRadius = pinkButton.frame.height / 2.0
+        pinkButton.layer.masksToBounds = true
+        self.view.backgroundColor = AppearanceView.sharedService.backgroundColor;
+        
+        
+        grayButton.layer.cornerRadius = grayButton.frame.height / 2.0
+        grayButton.layer.masksToBounds = true
+        self.view.backgroundColor = AppearanceView.sharedService.backgroundColor;
+        
+        
+        blackButton.layer.cornerRadius = whiteButton.frame.height / 2.0
+        blackButton.layer.masksToBounds = true
+        self.view.backgroundColor = AppearanceView.sharedService.backgroundColor;
+        
+        greenButton.layer.cornerRadius = whiteButton.frame.height / 2.0
+        greenButton.layer.masksToBounds = true
+        self.view.backgroundColor = AppearanceView.sharedService.backgroundColor;
+        
+        
+        
+        
+
+        // Do any additional setup after loading the view.
+    }
+    
+
     /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }
+
+
+
+
+        
+        
+        
+    
+        
+        
+        
+
