@@ -8,9 +8,9 @@
 
 import UIKit
 import FirebaseAuth
+import Photos
 
 class AccountSettingViewController: UIViewController {
-    
     
     
     
@@ -24,25 +24,99 @@ class AccountSettingViewController: UIViewController {
                 // Account deleted.
             }
         }
+        let alertDelete = UIAlertController(title: "Alert", message: "Your account has been deleted", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Done", style: .default) {
+            (action:UIAlertAction) in print("You pressed the done");
+        }
+        alertDelete.addAction(action)
+        self.present(alertDelete, animated: true, completion: nil)
     }
     
-  
+    @IBAction func autoUploadTapped(_ sender: Any) {
+        // https://stackoverflow.com/questions/28708846/how-to-save-image-to-custom-album
+        class CustomPhotoAlbum {
+            
+            static let albumName = "My Album"
+            static let sharedInstance = CustomPhotoAlbum()
+            
+            var assetCollection: PHAssetCollection!
+            
+            init() {
+                
+                func fetchAssetCollectionForAlbum() -> PHAssetCollection! {
+                    
+                    let fetchOptions = PHFetchOptions()
+                    fetchOptions.predicate = NSPredicate(format: "title = %@", CustomPhotoAlbum.albumName)
+                    let collection = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
+                    
+                    if let firstObject: AnyObject = collection.firstObject {
+                        return collection.firstObject as! PHAssetCollection
+                    }
+                    
+                    return nil
+                }
+                
+                if let assetCollection = fetchAssetCollectionForAlbum() {
+                    self.assetCollection = assetCollection
+                    return
+                }
+                
+                PHPhotoLibrary.shared().performChanges({
+                    PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: CustomPhotoAlbum.albumName)
+                }) { success, _ in
+                    if success {
+                        self.assetCollection = fetchAssetCollectionForAlbum()
+                    }
+                }
+            }
+            
+            func saveImage(image: UIImage) {
+                
+                if assetCollection == nil {
+                    return   // If there was an error upstream, skip the save.
+                }
+                
+                PHPhotoLibrary.shared().performChanges({
+                    let assetChangeRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
+                    let assetPlaceholder = assetChangeRequest.placeholderForCreatedAsset
+                    let albumChangeRequest = PHAssetCollectionChangeRequest(for: self.assetCollection)
+                    albumChangeRequest?.addAssets([assetPlaceholder] as NSFastEnumeration)
+                }, completionHandler: nil)
+            }
+            
+            
+        }
+
+        
+    }
+    
+    
     @IBAction func autoSaveTapped(_ sender: Any) {
         UserDefaults.standard.set("on", forKey: "autosave")
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let color: String = UserDefaults.standard.object(forKey: "bgColor") as? String else {return
             
         }
-        let autosave = UserDefaults.standard.set("on", forKey: "autosave") as! String
+        let autosave = UserDefaults.standard.set("on", forKey: "autosave") as? String
         if autosave == "on" {
-            
+            let alert = UIAlertController(title: "Saved Image", message: "Your image is saved", preferredStyle: UIAlertController.Style.alert)
+            let confirmAlert1 = UIAlertAction(title: "Done", style: .default) {(action:UIAlertAction) in print("You chose save");
+            }
+            alert.addAction(confirmAlert1)
+            self.present(alert, animated: true, completion: nil)
         } else {
+            let alertDeny = UIAlertController(title: "Deny to save", message: "Your images is unsaved", preferredStyle: UIAlertController.Style.alert)
+            let confirmAlert2 = UIAlertAction(title: "Done", style: .default) {(action:UIAlertAction) in print("You chose deny saving");
+            }
+            alertDeny.addAction(confirmAlert2)
+            self.present(alertDeny, animated: true, completion: nil)
             // show alert confirm save k?
             // alertaction: Save
         }
-
         // Do any additional setup after loading the view.
     }
     
