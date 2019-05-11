@@ -466,10 +466,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="NMU-G7-N1x">
-                                <rect key="frame" x="65" y="325" width="285" height="365"/>
+                                <rect key="frame" x="65" y="325" width="285" height="285"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nlm-aP-mtq">
-                                        <rect key="frame" x="0.0" y="0.0" width="285" height="173"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="285" height="93"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Created by RMIT students having a passion for photography.
 
@@ -480,7 +480,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3M-Z7-xUG">
-                                        <rect key="frame" x="0.0" y="187" width="285" height="50"/>
+                                        <rect key="frame" x="0.0" y="107" width="285" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="JDl-x6-dbi"/>
@@ -489,7 +489,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Credit" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XON-cW-vNY">
-                                        <rect key="frame" x="0.0" y="251" width="285" height="50"/>
+                                        <rect key="frame" x="0.0" y="171" width="285" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="nfX-vs-8Gk"/>
@@ -498,7 +498,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" editable="NO" text="AwesomePhotos Team." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cu-Wr-SIz">
-                                        <rect key="frame" x="0.0" y="315" width="285" height="50"/>
+                                        <rect key="frame" x="0.0" y="235" width="285" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="2Bg-22-F6P"/>
@@ -719,7 +719,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7t-am-7yt">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <items>
                                     <navigationItem id="Iai-pL-a1E">
                                         <barButtonItem key="leftBarButtonItem" image="Contact" id="ul1-hc-siW">
@@ -889,7 +889,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eg0-jT-IMS" userLabel="sideView">
-                                <rect key="frame" x="-200" y="88" width="200" height="774"/>
+                                <rect key="frame" x="-200" y="132" width="200" height="681"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="namtranx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWv-TW-Gch">
                                         <rect key="frame" x="22" y="18" width="156" height="20.333333333333329"/>
@@ -1378,19 +1378,27 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                     <outlet property="delegate" destination="tJM-8V-Vko" id="aqU-Bp-v1s"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="7bA-7P-He0">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.30563569950000002" green="1" blue="0.4000703632" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="RIq-Zs-tup" firstAttribute="leading" secondItem="F6e-yg-WeR" secondAttribute="leading" id="7ck-zN-8iH"/>
                             <constraint firstItem="RIq-Zs-tup" firstAttribute="top" secondItem="F6e-yg-WeR" secondAttribute="top" id="EUI-qu-Ofl"/>
+                            <constraint firstItem="F6e-yg-WeR" firstAttribute="bottom" secondItem="7bA-7P-He0" secondAttribute="bottom" constant="355" id="TeO-Fl-6nu"/>
+                            <constraint firstItem="F6e-yg-WeR" firstAttribute="trailing" secondItem="7bA-7P-He0" secondAttribute="trailing" constant="197" id="XvU-Bw-A5C"/>
+                            <constraint firstItem="7bA-7P-He0" firstAttribute="leading" secondItem="F6e-yg-WeR" secondAttribute="leading" constant="197" id="YOu-lR-hKf"/>
                             <constraint firstItem="F6e-yg-WeR" firstAttribute="bottom" secondItem="RIq-Zs-tup" secondAttribute="bottom" id="nNp-0n-tWl"/>
                             <constraint firstItem="F6e-yg-WeR" firstAttribute="trailing" secondItem="RIq-Zs-tup" secondAttribute="trailing" id="tbG-If-xRX"/>
+                            <constraint firstItem="7bA-7P-He0" firstAttribute="top" secondItem="F6e-yg-WeR" secondAttribute="top" constant="350" id="uFq-2q-zmL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F6e-yg-WeR"/>
                     </view>
                     <navigationItem key="navigationItem" id="tHe-we-0Fn"/>
                     <connections>
                         <outlet property="imageCollection" destination="RIq-Zs-tup" id="MFc-VB-yuP"/>
+                        <outlet property="reloadActivityView" destination="7bA-7P-He0" id="SVL-YU-FvX"/>
                         <segue destination="593-Lz-Njb" kind="show" identifier="PublicToDetail" id="cW4-b4-L4e"/>
                     </connections>
                 </viewController>
@@ -1680,6 +1688,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="rD6-Eh-sbr" id="kvY-ko-j0Y"/>
+                        <segue destination="DfI-G9-rop" kind="show" identifier="fromRequestToPersonal" id="xSL-2Y-f9M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eON-71-CjS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1704,8 +1713,8 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
         <image name="loginButton" width="231" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4dA-6W-JLb"/>
-        <segue reference="NKw-gH-m7a"/>
-        <segue reference="Aji-Dy-Rvo"/>
+        <segue reference="Cba-QY-Zxx"/>
+        <segue reference="cW4-b4-L4e"/>
+        <segue reference="xSL-2Y-f9M"/>
     </inferredMetricsTieBreakers>
 </document>

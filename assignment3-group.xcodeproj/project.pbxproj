@@ -116,10 +116,8 @@
 		182136ED22714A5500032692 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				673223522285803700E7FA36 /* Upload Tab */,
+				673223522285803700E7FA36 /* Take Photo and Upload Tab */,
 				6732234922857DC000E7FA36 /* Shared Tab */,
-				8B243BE52282E8CF00001419 /* AllRequestsViewController.swift */,
-				74ED53DB2282C48D0037F91D /* RequestCell.swift */,
 				67FD22442282818900F1B2FF /* Personal and Miscellaneous */,
 				67FD22432282817100F1B2FF /* Login and Register */,
 				67D0B1BE228048BD00BA9810 /* Payment Tab */,
@@ -132,7 +130,6 @@
 				8877A7512270B4490003E08E /* HomeViewController.swift */,
 				8877A7502270B4490003E08E /* WaterMarlkViewController.swift */,
 				182136F422715A5F00032692 /* MainTabBarViewController.swift */,
-				66B786332282F09C0089E879 /* VideoHelper.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -173,6 +170,24 @@
 			path = "Global Tab";
 			sourceTree = "<group>";
 		};
+		209620DC2286D44300771BF3 /* Request View */ = {
+			isa = PBXGroup;
+			children = (
+				74ED53DB2282C48D0037F91D /* RequestCell.swift */,
+				8B243BE52282E8CF00001419 /* AllRequestsViewController.swift */,
+			);
+			path = "Request View";
+			sourceTree = "<group>";
+		};
+		209620DD2286D4D300771BF3 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8877A75E2270BAC90003E08E /* Main.storyboard */,
+				67BA85112265DEDD00239E2D /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		6732234922857DC000E7FA36 /* Shared Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,12 +199,13 @@
 			path = "Shared Tab";
 			sourceTree = "<group>";
 		};
-		673223522285803700E7FA36 /* Upload Tab */ = {
+		673223522285803700E7FA36 /* Take Photo and Upload Tab */ = {
 			isa = PBXGroup;
 			children = (
+				66B786332282F09C0089E879 /* VideoHelper.swift */,
 				8877A7692270CDF20003E08E /* MainUploadedViewController.swift */,
 			);
-			path = "Upload Tab";
+			path = "Take Photo and Upload Tab";
 			sourceTree = "<group>";
 		};
 		67BA84FC2265DEDB00239E2D = {
@@ -213,15 +229,14 @@
 		67BA85072265DEDB00239E2D /* assignment3-group */ = {
 			isa = PBXGroup;
 			children = (
+				209620DD2286D4D300771BF3 /* Storyboard */,
 				182136F322714B2B00032692 /* Views */,
 				182136EF22714AC400032692 /* Resources */,
 				182136EE22714ABD00032692 /* Models */,
 				182136ED22714A5500032692 /* ViewControllers */,
-				8877A75E2270BAC90003E08E /* Main.storyboard */,
 				67BA85082265DEDB00239E2D /* AppDelegate.swift */,
 				8838E98D22733071006F4BE3 /* Assets.xcassets */,
 				674B17CE226EE27600A72A4B /* GoogleService-Info.plist */,
-				67BA85112265DEDD00239E2D /* LaunchScreen.storyboard */,
 				67BA85142265DEDD00239E2D /* Info.plist */,
 			);
 			path = "assignment3-group";
@@ -230,6 +245,7 @@
 		67D0B1BE228048BD00BA9810 /* Payment Tab */ = {
 			isa = PBXGroup;
 			children = (
+				209620DC2286D44300771BF3 /* Request View */,
 				8877A7662270CDF20003E08E /* MainPaymentViewController.swift */,
 				67D0B1BC2280487700BA9810 /* PaymentCell.swift */,
 			);
