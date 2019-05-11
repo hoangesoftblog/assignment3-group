@@ -750,8 +750,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RIq-Zs-tup">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RIq-Zs-tup">
+                                <rect key="frame" x="-20" y="440" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3pn-mx-AkZ">
                                     <size key="itemSize" width="414" height="427"/>
@@ -836,6 +836,10 @@
                                     <outlet property="delegate" destination="tJM-8V-Vko" id="aqU-Bp-v1s"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Upl-6v-tBD">
+                                <rect key="frame" x="197" y="274" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.30563569950000002" green="1" blue="0.4000703632" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -849,6 +853,7 @@
                     <navigationItem key="navigationItem" id="tHe-we-0Fn"/>
                     <connections>
                         <outlet property="imageCollection" destination="RIq-Zs-tup" id="MFc-VB-yuP"/>
+                        <outlet property="reloadIndicatorView" destination="Upl-6v-tBD" id="Wyc-9T-Khs"/>
                         <segue destination="593-Lz-Njb" kind="show" identifier="PublicToDetail" id="cW4-b4-L4e"/>
                     </connections>
                 </viewController>
@@ -1182,6 +1187,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="rD6-Eh-sbr" id="kvY-ko-j0Y"/>
+                        <segue destination="ZEU-52-lDK" kind="show" identifier="fromRequestToPersonal" id="1ih-rv-tgV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eON-71-CjS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1824,6 +1830,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
         <image name="loginButton" width="231" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="1ih-rv-tgV"/>
         <segue reference="Aji-Dy-Rvo"/>
         <segue reference="Cba-QY-Zxx"/>
         <segue reference="cW4-b4-L4e"/>
