@@ -583,6 +583,9 @@
                                     <outlet property="delegate" destination="hxv-9f-FzA" id="fcZ-GE-efc"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="kbf-Qz-wjm">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.81091640333201442" blue="0.23980564322906317" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -590,12 +593,15 @@
                             <constraint firstItem="t8L-AI-9em" firstAttribute="trailing" secondItem="gnI-5n-8pv" secondAttribute="trailing" id="Cy5-YH-EEF"/>
                             <constraint firstItem="t8L-AI-9em" firstAttribute="bottom" secondItem="gnI-5n-8pv" secondAttribute="bottom" id="Msp-jT-lbn"/>
                             <constraint firstItem="gnI-5n-8pv" firstAttribute="leading" secondItem="t8L-AI-9em" secondAttribute="leading" id="VF1-Rk-j5a"/>
+                            <constraint firstItem="kbf-Qz-wjm" firstAttribute="centerY" secondItem="qAY-SR-jHK" secondAttribute="centerY" id="fDW-cA-fzX"/>
+                            <constraint firstItem="kbf-Qz-wjm" firstAttribute="centerX" secondItem="qAY-SR-jHK" secondAttribute="centerX" id="fTg-gA-3qS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="t8L-AI-9em"/>
                     </view>
                     <navigationItem key="navigationItem" id="iFy-Q1-k46"/>
                     <connections>
                         <outlet property="imageCollection" destination="gnI-5n-8pv" id="UQm-zG-i89"/>
+                        <outlet property="reloadIndicatorView" destination="kbf-Qz-wjm" id="vm1-PK-HCR"/>
                         <segue destination="593-Lz-Njb" kind="show" identifier="SharedToDetail" id="Z2d-Vi-Tdg"/>
                     </connections>
                 </viewController>
@@ -673,19 +679,19 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="79" translatesAutoresizingMaskIntoConstraints="NO" id="Vfy-NN-xSf">
-                                                    <rect key="frame" x="20" y="418" width="374" height="24"/>
+                                                    <rect key="frame" x="20" y="418" width="206" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU8-Z2-lei">
-                                                            <rect key="frame" x="0.0" y="0.0" width="74" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="16" height="22"/>
                                                             <state key="normal" image="Accept"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iap-q6-td5">
-                                                            <rect key="frame" x="153" y="0.0" width="63" height="24"/>
+                                                            <rect key="frame" x="95" y="0.0" width="16" height="22"/>
                                                             <state key="normal" image="Deny"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIV-Fg-es4">
-                                                            <rect key="frame" x="295" y="0.0" width="79" height="24"/>
+                                                            <rect key="frame" x="190" y="0.0" width="16" height="22"/>
                                                             <state key="normal" image="ContactPayment"/>
                                                         </button>
                                                     </subviews>
@@ -750,8 +756,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Upl-6v-tBD">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RIq-Zs-tup">
-                                <rect key="frame" x="-20" y="440" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="86" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3pn-mx-AkZ">
                                     <size key="itemSize" width="414" height="427"/>
@@ -836,15 +845,13 @@
                                     <outlet property="delegate" destination="tJM-8V-Vko" id="aqU-Bp-v1s"/>
                                 </connections>
                             </collectionView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Upl-6v-tBD">
-                                <rect key="frame" x="197" y="274" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.30563569950000002" green="1" blue="0.4000703632" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="RIq-Zs-tup" firstAttribute="leading" secondItem="F6e-yg-WeR" secondAttribute="leading" id="7ck-zN-8iH"/>
                             <constraint firstItem="RIq-Zs-tup" firstAttribute="top" secondItem="F6e-yg-WeR" secondAttribute="top" id="EUI-qu-Ofl"/>
+                            <constraint firstItem="Upl-6v-tBD" firstAttribute="centerY" secondItem="4eg-Lk-lgj" secondAttribute="centerY" id="N1d-QZ-azm"/>
+                            <constraint firstItem="Upl-6v-tBD" firstAttribute="centerX" secondItem="4eg-Lk-lgj" secondAttribute="centerX" id="Rrt-TN-Im5"/>
                             <constraint firstItem="F6e-yg-WeR" firstAttribute="bottom" secondItem="RIq-Zs-tup" secondAttribute="bottom" id="nNp-0n-tWl"/>
                             <constraint firstItem="F6e-yg-WeR" firstAttribute="trailing" secondItem="RIq-Zs-tup" secondAttribute="trailing" id="tbG-If-xRX"/>
                         </constraints>
