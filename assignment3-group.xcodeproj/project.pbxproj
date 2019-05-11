@@ -29,24 +29,23 @@
 		67BA85132265DEDD00239E2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67BA85112265DEDD00239E2D /* LaunchScreen.storyboard */; };
 		67D0B1BD2280487700BA9810 /* PaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D0B1BC2280487700BA9810 /* PaymentCell.swift */; };
 		74ED53DC2282C48D0037F91D /* RequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED53DB2282C48D0037F91D /* RequestCell.swift */; };
-		74ED53DE228437220037F91D /* PersonalHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED53DD228437220037F91D /* PersonalHeaderViewController.swift */; };
-		8829A1C52282B6D60077C226 /* AppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8829A1C42282B6D60077C226 /* AppearanceViewController.swift */; };
-		8829A1C72282C6C10077C226 /* AccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8829A1C62282C6C10077C226 /* AccountSettingViewController.swift */; };
 		8838E98E22733071006F4BE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8838E98D22733071006F4BE3 /* Assets.xcassets */; };
-		8838E99022733F2A006F4BE3 /* PhotoCollecionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8838E98F22733F2A006F4BE3 /* PhotoCollecionViewCell.swift */; };
-		8838E99222733F35006F4BE3 /* CollectionViewPhotoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8838E99122733F35006F4BE3 /* CollectionViewPhotoLayout.swift */; };
 		8877A7562270B4490003E08E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A74E2270B4490003E08E /* RegisterViewController.swift */; };
 		8877A7582270B4490003E08E /* WaterMarlkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7502270B4490003E08E /* WaterMarlkViewController.swift */; };
 		8877A7592270B4490003E08E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7512270B4490003E08E /* HomeViewController.swift */; };
 		8877A75B2270B4490003E08E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7532270B4490003E08E /* LoginViewController.swift */; };
 		8877A7602270BAC90003E08E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8877A75E2270BAC90003E08E /* Main.storyboard */; };
-		8877A7642270C1D60003E08E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7632270C1D60003E08E /* AboutViewController.swift */; };
-		8877A76A2270CDF20003E08E /* MainPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7672270CDF20003E08E /* MainPersonalViewController.swift */; };
 		8877A76C2270CDF20003E08E /* MainUploadedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7692270CDF20003E08E /* MainUploadedViewController.swift */; };
 		8877A76D2270CDF20003E08E /* MainPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7662270CDF20003E08E /* MainPaymentViewController.swift */; };
 		8877A7722270CE060003E08E /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7712270CE060003E08E /* TutorialCollectionViewCell.swift */; };
 		8877A7732270CE060003E08E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A7702270CE060003E08E /* WelcomeViewController.swift */; };
 		8877A7742270CE060003E08E /* TutorialCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877A76F2270CE060003E08E /* TutorialCollectionViewController.swift */; };
+		88D0C2F02286ACFF0096A51E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D0C2EA2286ACFE0096A51E /* AboutViewController.swift */; };
+		88D0C2F12286ACFF0096A51E /* AppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D0C2EB2286ACFE0096A51E /* AppearanceViewController.swift */; };
+		88D0C2F22286ACFF0096A51E /* MainPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D0C2EC2286ACFE0096A51E /* MainPersonalViewController.swift */; };
+		88D0C2F32286ACFF0096A51E /* CollectionViewPhotoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D0C2ED2286ACFE0096A51E /* CollectionViewPhotoLayout.swift */; };
+		88D0C2F42286ACFF0096A51E /* AccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D0C2EE2286ACFE0096A51E /* AccountSettingViewController.swift */; };
+		88D0C2F52286ACFF0096A51E /* PhotoCollecionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D0C2EF2286ACFF0096A51E /* PhotoCollecionViewCell.swift */; };
 		8B243BE62282E8CF00001419 /* AllRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B243BE52282E8CF00001419 /* AllRequestsViewController.swift */; };
 		AC48B2B618378B7059AFFC30 /* Pods_assignment3_group.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDBA3F323894B8D270B4ABF2 /* Pods_assignment3_group.framework */; };
 /* End PBXBuildFile section */
@@ -77,26 +76,24 @@
 		67BA85142265DEDD00239E2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67D0B1BC2280487700BA9810 /* PaymentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCell.swift; sourceTree = "<group>"; };
 		74ED53DB2282C48D0037F91D /* RequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCell.swift; sourceTree = "<group>"; };
-		74ED53DD228437220037F91D /* PersonalHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHeaderViewController.swift; sourceTree = "<group>"; };
 		7705599C8A045C6963CF7B6E /* Pods-assignment3-group.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-assignment3-group.debug.xcconfig"; path = "Target Support Files/Pods-assignment3-group/Pods-assignment3-group.debug.xcconfig"; sourceTree = "<group>"; };
-		8829A1C42282B6D60077C226 /* AppearanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceViewController.swift; sourceTree = SOURCE_ROOT; };
-		8829A1C62282C6C10077C226 /* AccountSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewController.swift; sourceTree = "<group>"; };
 		8838E98D22733071006F4BE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8838E98F22733F2A006F4BE3 /* PhotoCollecionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollecionViewCell.swift; sourceTree = "<group>"; };
-		8838E99122733F35006F4BE3 /* CollectionViewPhotoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewPhotoLayout.swift; sourceTree = "<group>"; };
 		8877A74E2270B4490003E08E /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		8877A7502270B4490003E08E /* WaterMarlkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterMarlkViewController.swift; sourceTree = "<group>"; };
 		8877A7512270B4490003E08E /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8877A7532270B4490003E08E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8877A75F2270BAC90003E08E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8877A7632270C1D60003E08E /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		8877A7662270CDF20003E08E /* MainPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPaymentViewController.swift; sourceTree = "<group>"; };
-		8877A7672270CDF20003E08E /* MainPersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPersonalViewController.swift; sourceTree = "<group>"; };
 		8877A7692270CDF20003E08E /* MainUploadedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUploadedViewController.swift; sourceTree = "<group>"; };
 		8877A76F2270CE060003E08E /* TutorialCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewController.swift; sourceTree = "<group>"; };
 		8877A7702270CE060003E08E /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		8877A7712270CE060003E08E /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
-		88DF9749227B1B7D00455895 /* AppearanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceViewController.swift; sourceTree = "<group>"; };
+		88D0C2EA2286ACFE0096A51E /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		88D0C2EB2286ACFE0096A51E /* AppearanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceViewController.swift; sourceTree = "<group>"; };
+		88D0C2EC2286ACFE0096A51E /* MainPersonalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPersonalViewController.swift; sourceTree = "<group>"; };
+		88D0C2ED2286ACFE0096A51E /* CollectionViewPhotoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewPhotoLayout.swift; sourceTree = "<group>"; };
+		88D0C2EE2286ACFE0096A51E /* AccountSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingViewController.swift; sourceTree = "<group>"; };
+		88D0C2EF2286ACFF0096A51E /* PhotoCollecionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollecionViewCell.swift; sourceTree = "<group>"; };
 		8B243BE52282E8CF00001419 /* AllRequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllRequestsViewController.swift; sourceTree = "<group>"; };
 		BDBA3F323894B8D270B4ABF2 /* Pods_assignment3_group.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_assignment3_group.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -249,14 +246,12 @@
 		67FD22442282818900F1B2FF /* Personal and Miscellaneous */ = {
 			isa = PBXGroup;
 			children = (
-				8829A1C62282C6C10077C226 /* AccountSettingViewController.swift */,
-				8829A1C42282B6D60077C226 /* AppearanceViewController.swift */,
-				8877A7672270CDF20003E08E /* MainPersonalViewController.swift */,
-				8838E98F22733F2A006F4BE3 /* PhotoCollecionViewCell.swift */,
-				8838E99122733F35006F4BE3 /* CollectionViewPhotoLayout.swift */,
-				8877A7632270C1D60003E08E /* AboutViewController.swift */,
-				88DF9749227B1B7D00455895 /* AppearanceViewController.swift */,
-				74ED53DD228437220037F91D /* PersonalHeaderViewController.swift */,
+				88D0C2EA2286ACFE0096A51E /* AboutViewController.swift */,
+				88D0C2EE2286ACFE0096A51E /* AccountSettingViewController.swift */,
+				88D0C2EB2286ACFE0096A51E /* AppearanceViewController.swift */,
+				88D0C2ED2286ACFE0096A51E /* CollectionViewPhotoLayout.swift */,
+				88D0C2EC2286ACFE0096A51E /* MainPersonalViewController.swift */,
+				88D0C2EF2286ACFF0096A51E /* PhotoCollecionViewCell.swift */,
 			);
 			path = "Personal and Miscellaneous";
 			sourceTree = "<group>";
@@ -474,26 +469,24 @@
 				8877A7722270CE060003E08E /* TutorialCollectionViewCell.swift in Sources */,
 				671682AA227C3F660004AC55 /* DetailViewController.swift in Sources */,
 				66B786342282F09C0089E879 /* VideoHelper.swift in Sources */,
-				8829A1C52282B6D60077C226 /* AppearanceViewController.swift in Sources */,
-				8877A7642270C1D60003E08E /* AboutViewController.swift in Sources */,
-				8829A1C72282C6C10077C226 /* AccountSettingViewController.swift in Sources */,
 				182136FD2271AE0A00032692 /* User.swift in Sources */,
-				8877A76A2270CDF20003E08E /* MainPersonalViewController.swift in Sources */,
 				671682A6227C3F590004AC55 /* PhotoCollectionHeaderView.swift in Sources */,
 				6732234B22857DF100E7FA36 /* MainSharePageViewController.swift in Sources */,
+				88D0C2F12286ACFF0096A51E /* AppearanceViewController.swift in Sources */,
+				88D0C2F02286ACFF0096A51E /* AboutViewController.swift in Sources */,
 				8877A7742270CE060003E08E /* TutorialCollectionViewController.swift in Sources */,
+				88D0C2F32286ACFF0096A51E /* CollectionViewPhotoLayout.swift in Sources */,
 				8877A75B2270B4490003E08E /* LoginViewController.swift in Sources */,
 				8B243BE62282E8CF00001419 /* AllRequestsViewController.swift in Sources */,
-				8838E99222733F35006F4BE3 /* CollectionViewPhotoLayout.swift in Sources */,
 				6732234F22857E2100E7FA36 /* SharedVideoCell.swift in Sources */,
 				8877A7592270B4490003E08E /* HomeViewController.swift in Sources */,
 				2014D96F2283325100683835 /* VideoPlayer.swift in Sources */,
+				88D0C2F22286ACFF0096A51E /* MainPersonalViewController.swift in Sources */,
 				8877A7732270CE060003E08E /* WelcomeViewController.swift in Sources */,
-				8838E99022733F2A006F4BE3 /* PhotoCollecionViewCell.swift in Sources */,
+				88D0C2F42286ACFF0096A51E /* AccountSettingViewController.swift in Sources */,
 				20678BF0227C8A7B001E6CD2 /* Media.swift in Sources */,
 				8877A76C2270CDF20003E08E /* MainUploadedViewController.swift in Sources */,
 				182136FF2271AFD000032692 /* Multimedia.swift in Sources */,
-				74ED53DE228437220037F91D /* PersonalHeaderViewController.swift in Sources */,
 				74ED53DC2282C48D0037F91D /* RequestCell.swift in Sources */,
 				20B60E482285D72C00E97D1A /* EnterUsernameViewController.swift in Sources */,
 				8877A76D2270CDF20003E08E /* MainPaymentViewController.swift in Sources */,
@@ -503,6 +496,7 @@
 				671682A4227C3F4F0004AC55 /* MainHomeViewController.swift in Sources */,
 				8877A7562270B4490003E08E /* RegisterViewController.swift in Sources */,
 				8877A7582270B4490003E08E /* WaterMarlkViewController.swift in Sources */,
+				88D0C2F52286ACFF0096A51E /* PhotoCollecionViewCell.swift in Sources */,
 				67D0B1BD2280487700BA9810 /* PaymentCell.swift in Sources */,
 				67BA85092265DEDB00239E2D /* AppDelegate.swift in Sources */,
 				671682A8227C3F5E0004AC55 /* PhotoViewCell.swift in Sources */,
