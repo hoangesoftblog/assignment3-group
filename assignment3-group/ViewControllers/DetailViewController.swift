@@ -183,10 +183,11 @@ class DetailViewController: UIViewController {
                     print("Error occurs. \(error?.localizedDescription)")
                 }
                 else if urlx != nil {
-                    print("link url: \(urlx)")
-                    print("link url in path: \(urlx?.path)")
-                    print("link url in absolute path: \(urlx?.absoluteString)")
-                    //UIPasteboard.general.string = (urlx?.path)
+                    UIPasteboard.general.string = (urlx?.absoluteString)
+                    
+                    let tempAlert = UIAlertController(title: "Link copied", message: "Link is stored in your clipboard", preferredStyle: .alert)
+                    tempAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                    self.present(tempAlert, animated: true, completion: nil)
                 }
             }
         })

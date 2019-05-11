@@ -79,11 +79,18 @@ class MainPaymentViewController: UIViewController,UITableViewDelegate {
 }
 
 extension MainPaymentViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("There are \(notificationArray.count) notifications")
+        return notificationArray.count
+    }
     
     @objc func denyPic(sender: UIButton){
         let val = sender.tag
         notificationArray[val] = nil
-        //self.tableView.deleteRows(at: [IndexPath(row: val, section: 0)], with: .left)
         
         if self.tableView.numberOfRows(inSection: 0) == 1 {
             if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)){
@@ -96,16 +103,13 @@ extension MainPaymentViewController: UITableViewDataSource {
                     customCell.contactButton.isHidden = true
                     customCell.photo.isHidden = true
                     customCell.sendRequestLabel.text = "No notification"
-                    
                 }
             }
             else {
                 print("Cell is nil")
             }
-            
         }
         else {
-            //notificationArray[val] = nil
             self.tableView.deleteRows(at: [IndexPath(row: val, section: 0)], with: .left)
         }
         print("There are \(self.tableView.numberOfRows(inSection: 0)) table row after pressing button")
@@ -127,6 +131,11 @@ extension MainPaymentViewController: UITableViewDataSource {
         self.performSegue(withIdentifier: goToPersonal, sender: sender.accessibilityIdentifier)
     }
     
+    @objc func goToSender(sender: UIButton) {
+        print("Moving to sender")
+        self.performSegue(withIdentifier: goToPersonal, sender: sender.currentTitle)
+    }
+    
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
 //        if let customCell = cell as? PaymentCell{
@@ -135,14 +144,6 @@ extension MainPaymentViewController: UITableViewDataSource {
 //            return temp
 //
 //    }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("There are \(notificationArray.count) notifications")
-        return notificationArray.count
-    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("Cell for row at start working")
@@ -155,14 +156,20 @@ extension MainPaymentViewController: UITableViewDataSource {
                 print("Can return payment cell at \(indexPath.row)")
                 customCell.photo.image = notificationArray[indexPath.row]?.image
                 print("username is \(notificationArray[indexPath.row]?.sender)")
-                customCell.usernameButton.setTitle(notificationArray[indexPath.row]?.sender, for: .normal) 
+                
+                customCell.usernameButton.setTitle(notificationArray[indexPath.row]?.sender, for: .normal)
+                customCell.usernameButton.addTarget(self, action: #selector(goToSender(sender:)), for: .touchUpInside)
+                
                 customCell.timeLabel.text = notificationArray[indexPath.row]?.time
                 
                 customCell.acceptButton.tag = indexPath.row
                 customCell.acceptButton.addTarget(self, action: #selector(acceptPic(sender:)), for: .touchUpInside)
+                
                 customCell.denyButton.tag = indexPath.row
                 customCell.denyButton.addTarget(self, action: #selector(denyPic(sender:)), for: .touchUpInside)
+                
                 customCell.contactButton.accessibilityIdentifier = notificationArray[indexPath.row]?.sender
+                customCell.contactButton.addTarget(self, action: #selector(contactOwner(sender:)), for: .touchUpInside)
                 return customCell
             }            
             
@@ -174,6 +181,16 @@ extension MainPaymentViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return (temp + 100)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == goToPersonal {
+            if let dest = segue.destination as? MainPersonalViewController {
+                if let temp_sender = sender as? String {
+                    dest.showingUser = temp_sender
+                }
+            }
+        }
     }
 }
 

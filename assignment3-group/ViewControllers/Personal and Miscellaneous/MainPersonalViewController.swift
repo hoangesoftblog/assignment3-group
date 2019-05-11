@@ -14,6 +14,7 @@ private let reuseIdentifier = "personalCollectionViewCell"
 
 class MainPersonalViewController: UIViewController{
     var showingUser: String?
+    let fromPersonalToDetail = "fromPersonalToDetail"
     let sectionInsets = UIEdgeInsets(top: 50.0,
                                      left: 20.0,
                                      bottom: 50.0,
@@ -240,7 +241,20 @@ extension MainPersonalViewController: UICollectionViewDataSource{
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: fromPersonalToDetail, sender: (imageNames[indexPath.row], arrImages[indexPath.row]))
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == fromPersonalToDetail {
+            if let dest = segue.destination as? DetailViewController {
+                if let (name, image) = sender as? (String, UIImage) {
+                    dest.image = image
+                    dest.fileName = name
+                }
+            }
+        }
+    }
 }
 
 //extension MainPersonalViewController : LayoutDelegate {

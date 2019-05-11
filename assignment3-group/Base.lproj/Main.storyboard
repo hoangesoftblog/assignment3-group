@@ -630,11 +630,52 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <outlet property="gmailButton" destination="Ssd-GO-HIu" id="c7b-Lr-yUs"/>
                         <outlet property="passwordTextField" destination="rmi-4T-siF" id="yBG-un-9MF"/>
                         <segue destination="sPp-vF-xCq" kind="show" identifier="goToMain" id="4dA-6W-JLb"/>
+                        <segue destination="exB-j1-V8f" kind="show" identifier="enterUsername" id="LMY-2X-IbD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="emN-K1-bnn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3978.2608695652175" y="-1533.4821428571429"/>
+            <point key="canvasLocation" x="-4051" y="-1533"/>
+        </scene>
+        <!--Enter Username View Controller-->
+        <scene sceneID="giT-re-beT">
+            <objects>
+                <viewController id="exB-j1-V8f" customClass="EnterUsernameViewController" customModule="assignment3_group" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b6j-ZZ-SmX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="awesome" translatesAutoresizingMaskIntoConstraints="NO" id="gxZ-ke-4Nr">
+                                <rect key="frame" x="87" y="112" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T19-ux-pQx">
+                                <rect key="frame" x="66" y="395" width="283" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54d-Nj-D5M">
+                                <rect key="frame" x="189" y="491" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Enter"/>
+                                <connections>
+                                    <action selector="enterClicked:" destination="exB-j1-V8f" eventType="touchUpInside" id="m6j-FQ-3rw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="J8m-u7-vLe"/>
+                    </view>
+                    <connections>
+                        <outlet property="username" destination="T19-ux-pQx" id="Gv6-GP-SkA"/>
+                        <segue destination="sPp-vF-xCq" kind="show" identifier="goToMain" id="Cba-QY-Zxx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="poE-UL-VJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3257.971014492754" y="-1533.4821428571429"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="Ttd-jM-3XT">
@@ -678,7 +719,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7t-am-7yt">
-                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem id="Iai-pL-a1E">
                                         <barButtonItem key="leftBarButtonItem" image="Contact" id="ul1-hc-siW">
@@ -848,7 +889,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eg0-jT-IMS" userLabel="sideView">
-                                <rect key="frame" x="-200" y="132" width="200" height="681"/>
+                                <rect key="frame" x="-200" y="88" width="200" height="774"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="namtranx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWv-TW-Gch">
                                         <rect key="frame" x="22" y="18" width="156" height="20.333333333333329"/>
@@ -950,6 +991,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <outlet property="sideViewLeadingContraint" destination="aMW-XD-vfS" id="5D8-wC-Plu"/>
                         <segue destination="iz7-Xl-a5B" kind="show" identifier="showAbout" id="5Lb-kh-zDl"/>
                         <segue destination="ya7-x1-NBT" kind="show" identifier="goToStatistic" id="hLm-E5-LOa"/>
+                        <segue destination="593-Lz-Njb" kind="show" identifier="fromPersonalToDetail" id="NKw-gH-m7a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebr-dJ-UxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1173,19 +1215,19 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="79" translatesAutoresizingMaskIntoConstraints="NO" id="Vfy-NN-xSf">
-                                                    <rect key="frame" x="20" y="418" width="206" height="22"/>
+                                                    <rect key="frame" x="20" y="418" width="374" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU8-Z2-lei">
-                                                            <rect key="frame" x="0.0" y="0.0" width="16" height="22"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="74" height="24"/>
                                                             <state key="normal" image="Accept"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iap-q6-td5">
-                                                            <rect key="frame" x="95" y="0.0" width="16" height="22"/>
+                                                            <rect key="frame" x="153" y="0.0" width="63" height="24"/>
                                                             <state key="normal" image="Deny"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIV-Fg-es4">
-                                                            <rect key="frame" x="190" y="0.0" width="16" height="22"/>
+                                                            <rect key="frame" x="295" y="0.0" width="79" height="24"/>
                                                             <state key="normal" image="ContactPayment"/>
                                                         </button>
                                                     </subviews>
@@ -1662,7 +1704,8 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
         <image name="loginButton" width="231" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cW4-b4-L4e"/>
+        <segue reference="4dA-6W-JLb"/>
+        <segue reference="NKw-gH-m7a"/>
         <segue reference="Aji-Dy-Rvo"/>
     </inferredMetricsTieBreakers>
 </document>

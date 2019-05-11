@@ -24,6 +24,7 @@ class MainHomeViewController: UIViewController {
     private let pictureCellReuse = "pictureCell"
     private let videoCellReuse = "videoCell"
     
+    let refreshControl = UIRefreshControl()
     @IBOutlet weak var imageCollection: UICollectionView!
     
     override func viewDidLoad() {
@@ -32,6 +33,12 @@ class MainHomeViewController: UIViewController {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 23))
         imageView.image = #imageLiteral(resourceName: "awesome")
         navigationItem.titleView = imageView
+        
+        if #available(iOS 10.0, *) {
+            self.imageCollection.refreshControl = refreshControl
+        } else {
+            self.imageCollection.addSubview(refreshControl)
+        }
     }
     
     //get data of all images from firebase

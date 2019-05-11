@@ -27,9 +27,10 @@ class AllRequestsViewController: UIViewController,UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem?.isEnabled = false
+        navigationItem.rightBarButtonItem?.title = ""
+//        navigationItem.rightBarButtonItem?.isEnabled = false
         var temp = [DataSnapshot]()
-       print("View did load cua request")
+        print("View did load cua request")
         ref.child("userPicture/\(currentUser!)/RequestISentSomeone").observeSingleEvent(of: .value){ snapshot in
             var tempPic: UIImage?
             for i in snapshot.children {

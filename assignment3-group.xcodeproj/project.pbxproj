@@ -14,6 +14,7 @@
 		2014D96D22832E6F00683835 /* VideoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2014D96C22832E6F00683835 /* VideoViewCell.swift */; };
 		2014D96F2283325100683835 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2014D96E2283325100683835 /* VideoPlayer.swift */; };
 		20678BF0227C8A7B001E6CD2 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20678BEF227C8A7B001E6CD2 /* Media.swift */; };
+		20B60E482285D72C00E97D1A /* EnterUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B60E472285D72C00E97D1A /* EnterUsernameViewController.swift */; };
 		66B786342282F09C0089E879 /* VideoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B786332282F09C0089E879 /* VideoHelper.swift */; };
 		671682A4227C3F4F0004AC55 /* MainHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671682A3227C3F4F0004AC55 /* MainHomeViewController.swift */; };
 		671682A6227C3F590004AC55 /* PhotoCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671682A5227C3F590004AC55 /* PhotoCollectionHeaderView.swift */; };
@@ -59,6 +60,7 @@
 		2014D96C22832E6F00683835 /* VideoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewCell.swift; sourceTree = "<group>"; };
 		2014D96E2283325100683835 /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		20678BEF227C8A7B001E6CD2 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		20B60E472285D72C00E97D1A /* EnterUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterUsernameViewController.swift; sourceTree = "<group>"; };
 		66B786332282F09C0089E879 /* VideoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoHelper.swift; sourceTree = "<group>"; };
 		671682A3227C3F4F0004AC55 /* MainHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHomeViewController.swift; sourceTree = "<group>"; };
 		671682A5227C3F590004AC55 /* PhotoCollectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionHeaderView.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				8877A7532270B4490003E08E /* LoginViewController.swift */,
+				20B60E472285D72C00E97D1A /* EnterUsernameViewController.swift */,
 				8877A74E2270B4490003E08E /* RegisterViewController.swift */,
 			);
 			path = "Login and Register";
@@ -492,6 +495,7 @@
 				182136FF2271AFD000032692 /* Multimedia.swift in Sources */,
 				74ED53DE228437220037F91D /* PersonalHeaderViewController.swift in Sources */,
 				74ED53DC2282C48D0037F91D /* RequestCell.swift in Sources */,
+				20B60E482285D72C00E97D1A /* EnterUsernameViewController.swift in Sources */,
 				8877A76D2270CDF20003E08E /* MainPaymentViewController.swift in Sources */,
 				6732234D22857E1A00E7FA36 /* SharedPhotoViewCell.swift in Sources */,
 				6732235122857E2900E7FA36 /* SharedHeaderView.swift in Sources */,

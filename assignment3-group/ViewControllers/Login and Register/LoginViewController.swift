@@ -16,6 +16,8 @@ import FBSDKLoginKit
 var currentUser: String?
 
 class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDelegate   {
+    let enterUsername = "enterUsername"
+    
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult, error: Error!) {
         print("running")
 //        print(error.localizedDescription)
@@ -27,11 +29,21 @@ class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDe
                 return
             }
             print(credential)
-            currentUser = Auth.auth().currentUser?.uid
-            self.goToMain()
+            ref.child("IDToUser").observeSingleEvent(of: .value){ snapshot in
+                if snapshot.hasChild(Auth.auth().currentUser!.uid) {
+                    currentUser = snapshot.childSnapshot(forPath: Auth.auth().currentUser!.uid).value as? String
+                    self.goToMain()
+                }
+                else {
+                    self.performSegue(withIdentifier: self.enterUsername, sender: self)
+                }
+            }
+
+            
             // User is signed in
             // ...
         }
+        
         if let error = error {
 //            print("running2)
             print(error.localizedDescription)
