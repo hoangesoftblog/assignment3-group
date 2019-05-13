@@ -55,8 +55,8 @@ class StatisticsViewController: UIViewController {
         totalMemoryPieChart.usePercentValuesEnabled = true
         separateMemoryPieChart.usePercentValuesEnabled = true
         
-        totalMemoryPieChart.holeRadiusPercent = 0.90
-        separateMemoryPieChart.holeRadiusPercent = 0.90
+        totalMemoryPieChart.holeRadiusPercent = 0.80
+        separateMemoryPieChart.holeRadiusPercent = 0.80
         
         totalMemoryPieChart.legend.enabled = false
         
@@ -85,6 +85,8 @@ class StatisticsViewController: UIViewController {
         let totalColors = [UIColor(red: 0, green: 212, blue: 130), UIColor(red: 211, green: 248,blue: 220)]
         totalDataSet.colors = totalColors
         
+        totalDataSet.entryLabelColor = .black
+        
         
         totalMemoryPieChart.data =  PieChartData(dataSet: totalDataSet)
 
@@ -96,6 +98,8 @@ class StatisticsViewController: UIViewController {
         let separateColors = [UIColor(red: 255, green: 43, blue: 108),UIColor(red: 255, green: 108, blue: 43), UIColor(red: 254, green: 215,blue: 223)]
         
         separateDataSet.colors = separateColors
+        
+        separateDataSet.entryLabelColor = .black
         
         separateMemoryPieChart.data = PieChartData(dataSet: separateDataSet)
     }
