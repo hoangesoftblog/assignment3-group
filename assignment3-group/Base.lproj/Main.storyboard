@@ -756,9 +756,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Upl-6v-tBD">
-                                <rect key="frame" x="197" y="438" width="20" height="20"/>
-                            </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RIq-Zs-tup">
                                 <rect key="frame" x="0.0" y="86" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -850,8 +847,6 @@
                         <constraints>
                             <constraint firstItem="RIq-Zs-tup" firstAttribute="leading" secondItem="F6e-yg-WeR" secondAttribute="leading" id="7ck-zN-8iH"/>
                             <constraint firstItem="RIq-Zs-tup" firstAttribute="top" secondItem="F6e-yg-WeR" secondAttribute="top" id="EUI-qu-Ofl"/>
-                            <constraint firstItem="Upl-6v-tBD" firstAttribute="centerY" secondItem="4eg-Lk-lgj" secondAttribute="centerY" id="N1d-QZ-azm"/>
-                            <constraint firstItem="Upl-6v-tBD" firstAttribute="centerX" secondItem="4eg-Lk-lgj" secondAttribute="centerX" id="Rrt-TN-Im5"/>
                             <constraint firstItem="F6e-yg-WeR" firstAttribute="bottom" secondItem="RIq-Zs-tup" secondAttribute="bottom" id="nNp-0n-tWl"/>
                             <constraint firstItem="F6e-yg-WeR" firstAttribute="trailing" secondItem="RIq-Zs-tup" secondAttribute="trailing" id="tbG-If-xRX"/>
                         </constraints>
@@ -860,7 +855,6 @@
                     <navigationItem key="navigationItem" id="tHe-we-0Fn"/>
                     <connections>
                         <outlet property="imageCollection" destination="RIq-Zs-tup" id="MFc-VB-yuP"/>
-                        <outlet property="reloadIndicatorView" destination="Upl-6v-tBD" id="Wyc-9T-Khs"/>
                         <segue destination="593-Lz-Njb" kind="show" identifier="PublicToDetail" id="cW4-b4-L4e"/>
                     </connections>
                 </viewController>
@@ -1831,6 +1825,6 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
         <segue reference="1ih-rv-tgV"/>
         <segue reference="U9S-cE-gg1"/>
         <segue reference="4dA-6W-JLb"/>
-        <segue reference="Z2d-Vi-Tdg"/>
+        <segue reference="cW4-b4-L4e"/>
     </inferredMetricsTieBreakers>
 </document>
