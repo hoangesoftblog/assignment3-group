@@ -32,6 +32,8 @@ class StatisticsViewController: UIViewController {
     
     @IBOutlet weak var separateMemoryPieChart: PieChartView!
     
+    @IBOutlet weak var memoryPercentage: UILabel!
+    
     var photoDataEntry = PieChartDataEntry (value: memoryPhoto)
     var videoDataEntry = PieChartDataEntry(value: memoryVideo)
     var memoryUsedDataEntry = PieChartDataEntry(value: memoryUsed)
@@ -51,6 +53,11 @@ class StatisticsViewController: UIViewController {
        
         totalMemoryPieChart.animate(xAxisDuration: 1, yAxisDuration: 1)
         separateMemoryPieChart.animate(xAxisDuration: 1, yAxisDuration: 1)
+        
+        photoDataEntry.label = ""
+        videoDataEntry.label = ""
+        memoryUsedDataEntry.label = ""
+        memoryLeftDataEntry.label = ""
 
         totalMemoryPieChart.usePercentValuesEnabled = true
         separateMemoryPieChart.usePercentValuesEnabled = true
@@ -66,14 +73,17 @@ class StatisticsViewController: UIViewController {
         
         totalMemoryPieChart.drawEntryLabelsEnabled = false
        
-       totalMemoryPieChart.entryLabelColor = .black
+//       totalMemoryPieChart.entryLabelColor = .black
+        
         separateMemoryPieChart.drawEntryLabelsEnabled = false
         
-        separateMemoryPieChart.entryLabelColor = .black
+//        separateMemoryPieChart.entryLabelColor = .black
         
         
         totalMemoryDataEntries = [memoryUsedDataEntry, memoryLeftDataEntry]
         separateMemoryDataEntries = [photoDataEntry, videoDataEntry, memoryLeftDataEntry]
+        
+        memoryPercentage.text = "\(String(format: "%0.f", (memoryUsed/memoryAllowed)*100))%"
         
         updateTotalChart()
         updateSeparateChart()
@@ -82,10 +92,11 @@ class StatisticsViewController: UIViewController {
     func updateTotalChart(){
         let totalDataSet = PieChartDataSet(entries: totalMemoryDataEntries, label: nil)
 
-        let totalColors = [UIColor(red: 0, green: 212, blue: 130), UIColor(red: 211, green: 248,blue: 220)]
+        let totalColors = [UIColor(red: 233, green: 60, blue: 104), UIColor(red: 232, green: 204,blue: 211)]
         totalDataSet.colors = totalColors
         
         totalDataSet.entryLabelColor = .black
+        totalDataSet.drawValuesEnabled = false
         
         
         totalMemoryPieChart.data =  PieChartData(dataSet: totalDataSet)
@@ -95,11 +106,12 @@ class StatisticsViewController: UIViewController {
     func updateSeparateChart(){
         let separateDataSet = PieChartDataSet(entries: separateMemoryDataEntries, label: nil)
         
-        let separateColors = [UIColor(red: 255, green: 43, blue: 108),UIColor(red: 255, green: 108, blue: 43), UIColor(red: 254, green: 215,blue: 223)]
+        let separateColors = [UIColor(red: 178, green: 0, blue: 255),UIColor(red: 0, green: 38, blue: 255), UIColor(red: 255, green: 255,blue: 255)]
         
         separateDataSet.colors = separateColors
         
         separateDataSet.entryLabelColor = .black
+        separateDataSet.drawValuesEnabled = false
         
         separateMemoryPieChart.data = PieChartData(dataSet: separateDataSet)
     }

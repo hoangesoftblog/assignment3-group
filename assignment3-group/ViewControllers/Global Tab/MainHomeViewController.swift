@@ -29,12 +29,12 @@ class MainHomeViewController: UIViewController {
     @IBOutlet weak var reloadIndicatorView: UIActivityIndicatorView!
     
     @objc func refreshView(){
-        print("refresing view working")
+        print("\n\nrefresing view working\n\n")
         reloadIndicatorView.startAnimating()
         imagePhoto.removeAll()
         fileName.removeAll()
         getDataOnce()
-        reloadIndicatorView.stopAnimating()
+        
     }
     
     override func viewDidLoad() {
@@ -81,6 +81,9 @@ class MainHomeViewController: UIViewController {
                     self.imageCollection.reloadData()
                 }
             }
+            
+            print("\n\nStop spinning\n\n")
+            self.reloadIndicatorView.stopAnimating()
         }
     }
 }
