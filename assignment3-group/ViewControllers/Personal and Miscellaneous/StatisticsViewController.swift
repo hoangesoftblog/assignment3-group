@@ -17,7 +17,7 @@ extension UIColor{
         self.init(red: newRed, green: newGreen, blue:newBlue, alpha: 1.0)
     }
 }
-
+// Memory is in MB
 var memoryPhoto : Double = 23
 var memoryVideo : Double = 4
 var memoryAllowed : Double = 100
