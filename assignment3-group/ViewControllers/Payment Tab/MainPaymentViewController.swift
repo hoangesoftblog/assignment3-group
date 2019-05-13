@@ -119,7 +119,7 @@ extension MainPaymentViewController: UITableViewDataSource {
     @objc func acceptPic(sender: UIButton){
         let val = sender.tag
         
-        ref.child("fileName/\(Media.removeFileExtension(file: (notificationArray[val]?.imageName ?? "Not available")))/Fully shared for").childByAutoId().setValue(currentUser!)
+        ref.child("fileName/\(Media.removeFileExtension(file: (notificationArray[val]?.imageName ?? "Not available")))/SharedWithoutWatermark").childByAutoId().setValue(currentUser!)
         
         ref.child("userPicture/\(currentUser!)").child("fileSharedWithoutWatermark").childByAutoId().setValue((notificationArray[val]?.imageName ?? "Not available"))
         

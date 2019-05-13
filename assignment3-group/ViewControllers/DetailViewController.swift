@@ -85,10 +85,10 @@ class DetailViewController: UIViewController {
         }
         
         var isFound = false
-        database?.child("fileName/\(Media.removeFileExtension(file: fileName!))/owner").observeSingleEvent(of: .value){ snapshot in
+        database?.child("fileName/\(Media.removeFileExtension(file: fileName!))").observeSingleEvent(of: .value){ snapshot in
             if let val = snapshot.value as? [String: Any]{
-                for i in snapshot.childSnapshot(forPath: "additional").children {
-                    if let temp = (i as? DataSnapshot) as? String {
+                for i in snapshot.childSnapshot(forPath: "SharedWithoutWatermark").children {
+                    if let temp = (i as? DataSnapshot)?.value as? String {
                         print("Temp user is \(temp)")
                         if temp == currentUser! {
                             print("Temp user is \(temp), current user is \(currentUser!)")
@@ -99,8 +99,7 @@ class DetailViewController: UIViewController {
                 }
                 
                 if !isFound {
-                    (val["original"] as? String) ?? "No true owner"
-                    self.usernameButton.setTitle((val["original"] as? String) ?? "No true owner", for: .normal)
+                    self.usernameButton.setTitle((val["owner"] as? String) ?? "No true owner", for: .normal)
                 }
             }
         }
