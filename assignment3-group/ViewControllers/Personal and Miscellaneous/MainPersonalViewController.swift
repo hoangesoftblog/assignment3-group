@@ -33,6 +33,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var avtImageView: UIImageView!
     
    
+    @IBOutlet weak var settingButton: UIBarButtonItem!
     
     var choice = 0
     var ref2: DatabaseReference?
@@ -343,7 +344,21 @@ extension MainPersonalViewController: UICollectionViewDataSource{
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: fromPersonalToDetail, sender: (imageNames[indexPath.row], arrImages[indexPath.row]))
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == fromPersonalToDetail {
+            if let dest = segue.destination as? DetailViewController {
+                
+                if let (name, image) = sender as? (String, UIImage) {
+                    dest.image = image
+                    dest.fileName = name
+                }
+            }
+        }
+    }
 }
 
 //extension MainPersonalViewController : LayoutDelegate {

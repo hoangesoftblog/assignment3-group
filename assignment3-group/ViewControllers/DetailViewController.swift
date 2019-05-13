@@ -20,11 +20,12 @@ class DetailViewController: UIViewController {
     var database: DatabaseReference?
     var videoURL: URL?
     let selectPerson = "DetailToSelectPerson"
-    let goToPersonalPage = "goToPersonalPage"
+    let fromDetailToPersonal = "fromDetailToPersonal"
     
     @IBAction func openPersonalPage(_ sender: Any) {
-        performSegue(withIdentifier: goToPersonalPage, sender: usernameButton.currentTitle)
+        performSegue(withIdentifier: fromDetailToPersonal, sender: usernameButton.currentTitle)
     }
+    
     @IBOutlet weak var mainPic: UIImageView!
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var locationLabel: UILabel!
@@ -321,8 +322,9 @@ class DetailViewController: UIViewController {
                 }
             }
         }
-        else if segue.identifier == goToPersonalPage {
+        else if segue.identifier == fromDetailToPersonal {
             if let temp = segue.destination as? MainPersonalViewController {
+                
                 if let accessingUser = sender as? String{
                     temp.showingUser = accessingUser
                 }
@@ -330,16 +332,6 @@ class DetailViewController: UIViewController {
         }
     }
     
-    let backToLogin = "backToLogin"
-    @IBAction func logOut(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-            self.dismiss(animated: true, completion: nil)
-        }
-        catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-    }
     
 }
 
