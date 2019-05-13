@@ -26,11 +26,9 @@ class MainHomeViewController: UIViewController {
     
     let refreshControl = UIRefreshControl()
     @IBOutlet weak var imageCollection: UICollectionView!
-    @IBOutlet weak var reloadIndicatorView: UIActivityIndicatorView!
     
     @objc func refreshView(){
         print("\n\nrefresing view working\n\n")
-        reloadIndicatorView.startAnimating()
         imagePhoto.removeAll()
         fileName.removeAll()
         getDataOnce()
@@ -78,12 +76,16 @@ class MainHomeViewController: UIViewController {
                         }
                     }
                     
+                    if self.imagePhoto.count == self.fileName.count{
+                        self.refreshControl.endRefreshing()
+                    }
+                    
                     self.imageCollection.reloadData()
                 }
             }
             
             print("\n\nStop spinning\n\n")
-            self.reloadIndicatorView.stopAnimating()
+            
         }
     }
 }

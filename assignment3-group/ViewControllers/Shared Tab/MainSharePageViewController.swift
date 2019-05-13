@@ -28,11 +28,9 @@ class MainSharePageViewController: UIViewController {
     
     @objc func refreshView(){
         print("refresing view working")
-        reloadIndicatorView.startAnimating()
         imagePhoto.removeAll()
         fileName.removeAll()
         getDataOnce()
-        reloadIndicatorView.stopAnimating()
     }
 
     override func viewDidLoad() {
@@ -76,6 +74,10 @@ class MainSharePageViewController: UIViewController {
                                 print("image available")
                                 self.imagePhoto[i] = imageTemp
                             }
+                        }
+                        
+                        if self.imagePhoto.count == self.fileName.count{
+                            self.refreshControl.endRefreshing()
                         }
                         
                         self.imageCollection.reloadData()
