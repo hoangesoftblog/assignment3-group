@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="koL-S2-MRc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="koL-S2-MRc">
     <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -679,19 +679,19 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="79" translatesAutoresizingMaskIntoConstraints="NO" id="Vfy-NN-xSf">
-                                                    <rect key="frame" x="20" y="418" width="206" height="22"/>
+                                                    <rect key="frame" x="20" y="418" width="374" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU8-Z2-lei">
-                                                            <rect key="frame" x="0.0" y="0.0" width="16" height="22"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="74" height="24"/>
                                                             <state key="normal" image="Accept"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iap-q6-td5">
-                                                            <rect key="frame" x="95" y="0.0" width="16" height="22"/>
+                                                            <rect key="frame" x="153" y="0.0" width="63" height="24"/>
                                                             <state key="normal" image="Deny"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIV-Fg-es4">
-                                                            <rect key="frame" x="190" y="0.0" width="16" height="22"/>
+                                                            <rect key="frame" x="295" y="0.0" width="79" height="24"/>
                                                             <state key="normal" image="ContactPayment"/>
                                                         </button>
                                                     </subviews>
@@ -910,17 +910,6 @@
                                                     <action selector="pictureAction:" destination="593-Lz-Njb" eventType="touchUpInside" id="gNA-xH-Q1a"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWU-7O-I7T">
-                                                <rect key="frame" x="153" y="502" width="108" height="98"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="108" id="5x5-iy-pmu"/>
-                                                    <constraint firstAttribute="height" constant="98" id="6d3-ar-6vt"/>
-                                                </constraints>
-                                                <state key="normal" title="Log out"/>
-                                                <connections>
-                                                    <action selector="logOut:" destination="593-Lz-Njb" eventType="touchUpInside" id="p5x-UT-87k"/>
-                                                </connections>
-                                            </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQh-LB-ZYX" customClass="VideoPlayer" customModule="assignment3_group" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="20" width="374" height="193"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -953,11 +942,9 @@
                                             <constraint firstAttribute="height" constant="800" id="bep-rR-uXT"/>
                                             <constraint firstItem="LUz-HR-GvJ" firstAttribute="top" secondItem="3De-bG-1Cd" secondAttribute="bottom" constant="19" id="chT-tR-9zu"/>
                                             <constraint firstItem="UE3-Gu-loh" firstAttribute="leading" secondItem="cDM-vD-csP" secondAttribute="leading" constant="20" id="dXc-9R-bxL"/>
-                                            <constraint firstItem="wWU-7O-I7T" firstAttribute="centerX" secondItem="cDM-vD-csP" secondAttribute="centerX" id="hlY-7k-ll1"/>
                                             <constraint firstItem="yfg-r2-aWr" firstAttribute="leading" secondItem="cDM-vD-csP" secondAttribute="leading" constant="20" id="kTq-E7-1xx"/>
                                             <constraint firstItem="wMj-MJ-Shb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3De-bG-1Cd" secondAttribute="trailing" constant="8" symbolic="YES" id="kV8-VK-Xxx"/>
                                             <constraint firstItem="P2v-BT-zSQ" firstAttribute="bottom" secondItem="LUz-HR-GvJ" secondAttribute="bottom" id="mhD-0g-lei"/>
-                                            <constraint firstAttribute="bottom" secondItem="wWU-7O-I7T" secondAttribute="bottom" constant="200" id="tPh-QB-Zvw"/>
                                             <constraint firstItem="dQh-LB-ZYX" firstAttribute="top" secondItem="cDM-vD-csP" secondAttribute="top" constant="20" id="tsj-Sc-YuT"/>
                                         </constraints>
                                     </view>
@@ -970,11 +957,6 @@
                                     <constraint firstItem="cDM-vD-csP" firstAttribute="centerX" secondItem="TEA-pb-PU3" secondAttribute="centerX" id="zi1-nG-JTf"/>
                                 </constraints>
                             </scrollView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" text="" translatesAutoresizingMaskIntoConstraints="NO" id="YDr-Rs-yln">
-                                <rect key="frame" x="131" y="32" width="154" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1787,6 +1769,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <segue destination="AYT-TI-lax" kind="show" id="84C-Gs-f3k"/>
                         <segue destination="72n-FV-aPj" kind="show" id="Hc0-MQ-nYF"/>
                         <segue destination="1dQ-hQ-Wpc" kind="show" id="Fto-8t-FKr"/>
+                        <segue destination="593-Lz-Njb" kind="show" identifier="fromPersonalToDetail" id="xyI-wM-fN8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPl-z3-TTv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1831,23 +1814,23 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
     </scenes>
     <resources>
         <image name="Accept" width="74" height="24"/>
-        <image name="Camera" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="Camera" width="100" height="100"/>
         <image name="Camera-photo.svg" width="240" height="240"/>
         <image name="Contact" width="34" height="34"/>
         <image name="ContactPayment" width="79" height="24"/>
         <image name="Deny" width="63" height="24"/>
-        <image name="Facebook login" width="231" height="40"/>
-        <image name="Google login" width="231" height="40"/>
+        <image name="Facebook login" width="693" height="120"/>
+        <image name="Google login" width="693" height="120"/>
         <image name="Home" width="29" height="28"/>
         <image name="Image-1" width="34" height="22"/>
         <image name="Shared Symbol" width="31" height="30"/>
-        <image name="awesome" width="166.66667175292969" height="32"/>
-        <image name="loginButton" width="231" height="40"/>
+        <image name="awesome" width="500" height="96"/>
+        <image name="loginButton" width="693" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1ih-rv-tgV"/>
-        <segue reference="U9S-cE-gg1"/>
+        <segue reference="Aji-Dy-Rvo"/>
         <segue reference="4dA-6W-JLb"/>
-        <segue reference="cW4-b4-L4e"/>
+        <segue reference="xyI-wM-fN8"/>
     </inferredMetricsTieBreakers>
 </document>
