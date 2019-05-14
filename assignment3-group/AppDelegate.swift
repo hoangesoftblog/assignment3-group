@@ -12,6 +12,8 @@ import FirebaseUI
 import FBSDKCoreKit
 import FBSDKLoginKit
 
+let dummy = 0
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
