@@ -21,6 +21,7 @@ class DetailViewController: UIViewController {
     var videoURL: URL?
     let selectPerson = "DetailToSelectPerson"
     let goToPersonalPage = "goToPersonalPage"
+    var isShared = false
     
     @IBAction func openPersonalPage(_ sender: Any) {
         performSegue(withIdentifier: goToPersonalPage, sender: usernameButton.currentTitle)
@@ -100,6 +101,15 @@ class DetailViewController: UIViewController {
                 
                 if !isFound {
                     self.usernameButton.setTitle((val["owner"] as? String) ?? "No true owner", for: .normal)
+                    for i in snapshot.childSnapshot(forPath: "SharedWithWatermark").children {
+                        if let temp = (i as? DataSnapshot)?.value as? String {
+                            print("Temp user is \(temp)")
+                            if temp == currentUser! {
+                                print("Temp user is \(temp), current user is \(currentUser!)")
+                                self.isShared = true
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -173,6 +183,16 @@ class DetailViewController: UIViewController {
 
     @IBAction func pictureAction(_ sender: Any) {
         let action = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        
+        if isShared {
+            let removeFromShared = UIAlertAction(title: "Remove from shared tab", style: .default){ (_) in
+                ref.child("userPicture/\(currentUser!)/fileSharedWithWatermark").queryEqual(toValue: self.fileName!).ref.setValue(nil)
+                
+                ref.child("fileName/\(Media.removeFileExtension(file: self.fileName!))/SharedWithWatermark").queryEqual(toValue: currentUser!).ref.setValue(nil)
+            }
+            removeFromShared.setValue(UIColor.red, forKey: "titleTextColor")
+            action.addAction(removeFromShared)
+        }
         
         action.addAction(UIAlertAction(title: "Copy file link to clipboard", style: .default) { (_) in
             var workingFileName = (self.videoName == nil) ? self.fileName! : self.videoName!
@@ -297,6 +317,13 @@ class DetailViewController: UIViewController {
         
         action.addAction(temp)
         
+        if usernameButton.currentTitle != currentUser {
+            action.addAction(UIAlertAction(title: "Buy this photo", style: .default){ (_) in
+                
+            })
+        }
+        
+        
         action.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (_) in
             print("Return to normal")
         })
@@ -327,6 +354,17 @@ class DetailViewController: UIViewController {
                     temp.showingUser = accessingUser
                 }
             }
+        }
+    }
+    
+    let backToLogin = "backToLogin"
+    @IBAction func logOut(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            self.dismiss(animated: true, completion: nil)
+        }
+        catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
         }
     }
     

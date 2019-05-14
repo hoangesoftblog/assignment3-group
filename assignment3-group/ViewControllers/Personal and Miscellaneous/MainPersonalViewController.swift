@@ -42,6 +42,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     
     @IBOutlet weak var sideViewLeadingContraint: NSLayoutConstraint!
     
+    @IBOutlet weak var choiceOfColumns: UISegmentedControl!
     @IBAction func switchView(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -157,7 +158,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         //Get user's to create or access user's folder to store images
         //                let userID = Auth.auth().currentUser!.uid
         let tempUserID = "user01"
-        let fileref = storageRef.child("/\(tempUserID)/test")
+        let fileref = Storage.storage().reference().child("/\(tempUserID)/test")
         let image = uploadPhotoImageView.image!
         //get the PNG data for this image
         //        let data = image.pngData()
