@@ -188,6 +188,7 @@ extension MainPaymentViewController: UITableViewDataSource {
             if let dest = segue.destination as? MainPersonalViewController {
                 if let temp_sender = sender as? String {
                     dest.showingUser = temp_sender
+                    dest.isLeftBarAbleToShow = false
                 }
             }
         }

@@ -13,6 +13,8 @@ import Photos
 private let reuseIdentifier = "personalCollectionViewCell"
 
 class MainPersonalViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    var profilePic: UIImage?
     var isLeftBarAbleToShow = true
     var showingUser: String?
     let fromPersonalToDetail = "fromPersonalToDetail"
@@ -73,17 +75,6 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         sideView.layer.borderWidth = 0.25
         sideView.layer.borderColor = UIColor.lightGray.cgColor
         
-        
-        
-        
-//        if showingUser == nil {
-//            print("user is current user")
-//            usernameLabel.text = currentUser
-//        }
-//        else {
-//            print("user is showing user \(showingUser)")
-//            usernameLabel.text = showingUser
-//        }
         updateUI()
 //        collectionView.delegate = self
 //        collectionView.dataSource = self
@@ -93,7 +84,27 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
 //            layout.delegate = self as? LayoutDelegate
 //
 //        }
+        
+        getProfileImage()
+    }
     
+    func getProfileImage(){
+        ref.child("userPicture/\((showingUser == nil) ? currentUser! : showingUser!)/avtImage").observeSingleEvent(of: .value){ snapshot in
+            if let avt = snapshot.value as? String {
+                print("profile picture name is \(avt)")
+                storageRef.child(avt).getData(maxSize: INT64_MAX){ data, error in
+                    if error != nil {
+                        print("Error occurs: \(error?.localizedDescription)")
+                    }
+                    else if data != nil {
+                        if let imageTemp = UIImage(data: data!) {
+                            print("image available")
+                            self.profilePic = imageTemp
+                        }
+                    }
+                }
+            }
+        }
     }
     var imagePick = UIImagePickerController()
     
@@ -281,7 +292,8 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     @objc func removingSetting(sender: UITapGestureRecognizer? = nil){
         if menuShowing{
             sideViewLeadingContraint.constant = -200
-        }else{
+        }
+        else{
             sideViewLeadingContraint.constant = 0
         }
         
@@ -462,7 +474,7 @@ extension MainPersonalViewController{
                 headerView.uploadPhotoImageView.isHidden = true
             }
             
-            
+            headerView.avtImageView.image = profilePic
             
             headerView.layer.cornerRadius = headerView.avtImageView.frame.height / 2.0
             headerView.uploadPhotoImageView.layer.masksToBounds = true

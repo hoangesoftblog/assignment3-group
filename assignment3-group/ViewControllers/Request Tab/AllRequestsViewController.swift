@@ -110,6 +110,7 @@ extension AllRequestsViewController: UITableViewDataSource {
                 if let temp_sender = sender as? String {
                     print("sender is \(temp_sender)")
                     dest.showingUser = temp_sender
+                    dest.isLeftBarAbleToShow = false
                 }
             }
         }

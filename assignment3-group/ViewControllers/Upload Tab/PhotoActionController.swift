@@ -199,8 +199,6 @@ class PhotoActionController : UIViewController {
         let fileref2 = Storage.storage().reference().child("\(nameTime).mp4")
         fileref2.putFile(from: videoUrl!, metadata: meta, completion: { (meta, error) in
             if error == nil {
-
-                //                self.ref2?.child("userPicture/\(currentUser!)/fileOwned").setValue("\(curTime)")
                 print("uploaded video to storage")
                 
             } else {
@@ -244,7 +242,7 @@ class PhotoActionController : UIViewController {
         let imageData2 = imageThumb.jpegData(compressionQuality: 0.0)
         fileref.putData(imageData2!, metadata: meta, completion: { (meta, error) in
             if error == nil {
-                    //Upload database
+                    ref.child("userPicture/\(currentUser!)/")
             }
         })
     }
@@ -258,7 +256,9 @@ class PhotoActionController : UIViewController {
         let imageData = image!.jpegData(compressionQuality: 0.0)
         fileref.putData(imageData!, metadata: meta, completion: { (meta, error) in
             if error == nil {
-                //Upload database
+//                ref.child("userPicture/\(currentUser!)/fileOwned").childByAutoId().setValue("\(self.nameTime)")
+//
+//                ref.child("fileName/\(self.nameTime)/owner").setValue(currentUser!)
             }
         })
     }
@@ -271,7 +271,13 @@ class PhotoActionController : UIViewController {
         let imageData = imageWatermarked!.jpegData(compressionQuality: 0.0)
         fileref.putData(imageData!, metadata: meta, completion: { (meta, error) in
             if error == nil {
-                //Upload database
+//                ref.child("userPicture/\(currentUser!)/fileOwned").childByAutoId().setValue("\(self.nameTime)watermark")
+//
+//                ref.child("userPicture/\(currentUser!)/Public").childByAutoId().setValue("\(self.nameTime)watermark")
+//
+//                ref.child("fileName/\(self.nameTime)watermark/owner").setValue(currentUser!)
+//
+//                ref.child("PublicPicture").childByAutoId().setValue("\(self.nameTime)watermark")
             }
         })
     }
@@ -285,7 +291,10 @@ class PhotoActionController : UIViewController {
         let imageData = thumb!.jpegData(compressionQuality: 0.0)
         fileref.putData(imageData!, metadata: meta, completion: { (meta, error) in
             if error == nil {
-                //Upload database
+//                ref.child("userPicture/\(currentUser!)/fileOwned").childByAutoId().setValue("\(self.nameTime)thumbnail")
+//
+//                ref.child("fileName/\(self.nameTime)thumbnail/owner").setValue(currentUser!)
+                
             }
         })
     }
@@ -298,7 +307,13 @@ class PhotoActionController : UIViewController {
         let imageData = thumbWatermarked!.jpegData(compressionQuality: 0.0)
         fileref.putData(imageData!, metadata: meta, completion: { (meta, error) in
             if error == nil {
-                //Upload database
+//                ref.child("userPicture/\(currentUser!)/fileOwned").childByAutoId().setValue("\(self.nameTime)thumbnailwatermark")
+//
+//                ref.child("userPicture/\(currentUser!)/Public").childByAutoId().setValue("\(self.nameTime)thumbnailwatermark")
+//
+//                ref.child("fileName/\(self.nameTime)thumbnailwatermark/owner").setValue(currentUser!)
+//
+//                ref.child("PublicPicture").childByAutoId().setValue("\(self.nameTime)thumbnailwatermark")
             }
         })
     }
@@ -323,6 +338,41 @@ class PhotoActionController : UIViewController {
     }
     
     
+    @IBAction func proceedToUpload(_ sender: Any) {
+        if !privacySwitch.isOn {
+            if videoUrl != nil {
+                
+            }
+            else if image != nil {
+                
+            }
+            
+        }
+        
+        
+        if videoUrl != nil {
+            uploadVideo()
+            uploadThumb()
+            uploadThumbWatermark()
+            uploadVideoWatermark()
+            
+        }
+        else if image != nil {
+            uploadPhoto()
+            uploadWatermarkedPhoto()
+            
+        }
+        
+        uploadThumb()
+        uploadPhoto()
+        
+        if localSaveSwitch.isOn {
+            
+        }
+        else {
+            
+        }
+    }
     
     
     

@@ -48,6 +48,7 @@ class DetailViewController: UIViewController {
         if fileName!.contains("thumbnail") {
             mainPic.isHidden = true
             videoName = fileName!.replacingOccurrences(of: "thumbnail", with: "")
+            
             videoName! += ".mp4"
             
             let thumbnailHeight = (image?.size.height)!, thumbnailWidth = (image?.size.width)!
@@ -107,6 +108,23 @@ class DetailViewController: UIViewController {
                             if temp == currentUser! {
                                 print("Temp user is \(temp), current user is \(currentUser!)")
                                 self.isShared = true
+                            }
+                        }
+                    }
+                }
+                
+                self.database?.child("userPicture/\(self.usernameButton.currentTitle!)/avtImage").observeSingleEvent(of: .value){ snapshot in
+                    if let avt = snapshot.value as? String {
+                        print("profile picture name is \(avt)")
+                        storageRef.child(avt).getData(maxSize: INT64_MAX){ data, error in
+                            if error != nil {
+                                print("Error occurs: \(error?.localizedDescription)")
+                            }
+                            else if data != nil {
+                                if let imageTemp = UIImage(data: data!) {
+                                    print("image available")
+                                    self.profilePic.image = imageTemp
+                                }
                             }
                         }
                     }
@@ -220,10 +238,6 @@ class DetailViewController: UIViewController {
                 
             })
         }
-        else {
-            action.addAction(UIAlertAction(title: "Not the owner so no sharing", style: .default
-                , handler: nil))
-        }
         
         let downWithWatermark = UIAlertAction(title: "Download with watermark", style: .default) { (_) in
 //            let location = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(self.fileName!)
@@ -298,13 +312,24 @@ class DetailViewController: UIViewController {
             }
             
             else {
-                do {
-                    try self.image?.pngData()?.write(to: location)
+                let downloadTask = storageRef.child(self.fileName!).write(toFile: location) { url, error in
+                    print("URL to download is \(url?.path)")
+                    
+                    if error != nil {
+                        print("Error occurr \(error?.localizedDescription)")
+                    }
+                    else {
+                        print("URL download good")
+                    }
+                }
+                
+                downloadTask.observe(.success) { snapshot in
                     let tempAction = UIAlertController(title: "Download finished", message: "Image downloaded successfully, file is saved in Download folder", preferredStyle: .alert)
                     tempAction.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
                     self.present(tempAction, animated: true, completion: nil)
                 }
-                catch {
+                
+                downloadTask.observe(.failure) { snapshot in
                     let tempAction = UIAlertController(title: "Download failed", message: "Image downloaded failed, please download again", preferredStyle: .alert)
                     tempAction.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
                     self.present(tempAction, animated: true, completion: nil)
@@ -357,15 +382,15 @@ class DetailViewController: UIViewController {
                     temp.isLeftBarAbleToShow = false
                 }
             }
-        }else if segue.identifier == "DisplaySegue" {
-            if let temp = segue.destination as? DisplayViewController {
-                if let (image,fileName) = sender as? (UIImage?,String?) {
-                    temp.image = image
-                    temp.fileName = fileName
-                }
-            }
         }
+//        else if segue.identifier == "DisplaySegue" {
+//            if let temp = segue.destination as? DisplayViewController {
+//                if let (image,fileName) = sender as? (UIImage?,String?) {
+//                    temp.image = image
+//                    temp.fileName = fileName
+//                }
+//            }
+//        }
     }
-    
 }
 
