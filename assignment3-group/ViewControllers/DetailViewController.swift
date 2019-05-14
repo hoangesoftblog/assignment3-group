@@ -352,19 +352,9 @@ class DetailViewController: UIViewController {
             if let temp = segue.destination as? MainPersonalViewController {
                 if let accessingUser = sender as? String{
                     temp.showingUser = accessingUser
+                    temp.isLeftBarAbleToShow = false
                 }
             }
-        }
-    }
-    
-    let backToLogin = "backToLogin"
-    @IBAction func logOut(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-            self.dismiss(animated: true, completion: nil)
-        }
-        catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
         }
     }
     

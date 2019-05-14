@@ -13,6 +13,7 @@ import Photos
 private let reuseIdentifier = "personalCollectionViewCell"
 
 class MainPersonalViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    var isLeftBarAbleToShow = true
     var showingUser: String?
     let fromPersonalToDetail = "fromPersonalToDetail"
     let sectionInsets = UIEdgeInsets(top: 50.0,
@@ -64,7 +65,9 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
 
     @IBOutlet weak var sideView: UIView!
     
+//    @IBOutlet weak var removingSettingView: UIView!
     @IBOutlet weak var removingSettingView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sideView.layer.borderWidth = 0.25
@@ -95,6 +98,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     var imagePick = UIImagePickerController()
     
     @IBOutlet weak var uploadPhotoImageView: UIImageView!
+    @IBOutlet weak var thisClassNavigationBar: UINavigationBar!
     
     @IBAction func uploadPicAvt(_ sender: Any) {
         func takePhoto() {
@@ -173,7 +177,13 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        if isLeftBarAbleToShow {
+            navigationController?.setNavigationBarHidden(true, animated: false)
+        }
+        else {
+            thisClassNavigationBar.isHidden = true
+        }
+        
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
