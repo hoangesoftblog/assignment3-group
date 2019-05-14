@@ -161,23 +161,25 @@ class DetailViewController: UIViewController {
  
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        let imageView = tapGestureRecognizer.view as! UIImageView
-        let newImageView = UIImageView(image: imageView.image)
-                newImageView.frame = UIScreen.main.bounds
-                newImageView.backgroundColor = .black
-                newImageView.contentMode = .scaleAspectFit
-                newImageView.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(sender:)))
-                newImageView.addGestureRecognizer(tap)
-                self.view.addSubview(newImageView)
-                self.navigationController?.isNavigationBarHidden = true
-                self.tabBarController?.tabBar.isHidden = true
-            }
-    @objc func dismissFullscreenImage(sender: UITapGestureRecognizer) {
-                self.navigationController?.isNavigationBarHidden = false
-                self.tabBarController?.tabBar.isHidden = false
-        sender.view?.removeFromSuperview()
-            }
+        performSegue(withIdentifier: "DisplaySegue", sender: (mainPic.image,fileName))
+    }
+//        let imageView = tapGestureRecognizer.view as! UIImageView
+//        let newImageView = UIImageView(image: imageView.image)
+//                newImageView.frame = UIScreen.main.bounds
+//                newImageView.backgroundColor = .black
+//                newImageView.contentMode = .scaleAspectFit
+//                newImageView.isUserInteractionEnabled = true
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(sender:)))
+//                newImageView.addGestureRecognizer(tap)
+//                self.view.addSubview(newImageView)
+//                self.navigationController?.isNavigationBarHidden = true
+//                self.tabBarController?.tabBar.isHidden = true
+//            }
+//    @objc func dismissFullscreenImage(sender: UITapGestureRecognizer) {
+//                self.navigationController?.isNavigationBarHidden = false
+//                self.tabBarController?.tabBar.isHidden = false
+//        sender.view?.removeFromSuperview()
+//            }
 
     
 
@@ -352,6 +354,13 @@ class DetailViewController: UIViewController {
             if let temp = segue.destination as? MainPersonalViewController {
                 if let accessingUser = sender as? String{
                     temp.showingUser = accessingUser
+                }
+            }
+        }else if segue.identifier == "DisplaySegue" {
+            if let temp = segue.destination as? DisplayViewController {
+                if let (image,fileName) = sender as? (UIImage?,String?) {
+                    temp.image = image
+                    temp.fileName = fileName
                 }
             }
         }

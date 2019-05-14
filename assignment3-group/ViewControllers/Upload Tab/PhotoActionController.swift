@@ -143,6 +143,24 @@ class PhotoActionController : UIViewController {
         return resultImage!
     }
     
+//    
+//    func downloadPhoto(){
+//        storageRef.child(self.imageNames[i]).getData(maxSize: INT64_MAX){ data, error in
+//            print(self.imageNames[i], separator: "", terminator: " ")
+//            if error != nil {
+//                print("Error occurs")
+//            }
+//            else if data != nil {
+//                if let imageTemp = UIImage(data: data!) {
+//                    print("image available")
+//                    self.arrImages[i] = imageTemp
+//                }
+//            }
+//            
+//            self.collectionView.reloadData()
+//        }
+//    }
+    
     func videoWatermark(){
         let item2 = MediaItem(url: videoUrl!)
         let logoImage = UIImage(named: "awesome")
