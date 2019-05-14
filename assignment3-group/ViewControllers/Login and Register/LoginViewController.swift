@@ -21,8 +21,11 @@ class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDe
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult, error: Error!) {
         print("running")
 //        print(error.localizedDescription)
-        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-        print("credential: \(credential)")
+        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current()?.tokenString ?? "no")
+        //        if(credential != nil){
+//        print("credential: \(credential)")
+        getFBInfo()
+        getFBUserData()
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -98,6 +101,73 @@ class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDe
         }
     }
     
+
+    func getFBUserData()
+    {
+        let graphPath = "me"
+        let parameters = ["fields": "email"]
+        let completionHandler = { (connection: FBSDKGraphRequestConnection!, result: AnyObject!, error: NSError?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("This is result: \(result)")
+//                print(json["email"].stringValue)
+            }
+        }
+        let graphRequest = FBSDKGraphRequest(graphPath: graphPath, parameters: parameters)
+//        graphRequest!.startWithCompletionHandler(completionHandler)
+    }
+    
+    func getFBInfo(){
+        print("checking token")
+        if((FBSDKAccessToken.current()) != nil)
+        {
+            print("have token")
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "name, first_name, last_name, picture.type(large), email"]).start(completionHandler:
+                { (connection, result, error) -> Void in
+                    if (error == nil)
+                    {
+                        print(result)
+                        //everything works print the user data
+                        //                        print(result!)
+                        if let data = result as? NSDictionary
+                        {
+                            let firstName  = data.object(forKey: "first_name") as? String
+                            let lastName  = data.object(forKey: "last_name") as? String
+                            
+                            if let email = data.object(forKey: "email") as? String
+                            {
+                                print(email)
+                            }
+                            else
+                            {
+                                // If user have signup with mobile number you are not able to get their email address
+                                print("We are unable to access Facebook account details, please use other sign in methods.")
+                            }
+                        }
+                    }
+            })
+        }
+    }
+    
+    @IBAction func forgetPassword(_ sender: Any) {
+        let email = emailTextField.text
+        sendPasswordReset(withEmail: email!)
+    }
+    
+    func sendPasswordReset(withEmail email: String, _ callback: ((Error?) -> ())? = nil){
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            callback?(error)
+        }
+    }
+    
+    @IBAction func forgetPasswordClicked(_ sender: Any) {
+        performSegue(withIdentifier: "forgetPasswordSegue", sender: self)
+    }
+    @IBAction func goToRegister(_ sender: Any) {
+        print("Go to register view")
+        performSegue(withIdentifier: "RegisterSegue", sender: self)
+    }
     
     func goToMain(){
         print(currentUser ?? "Not have yet")

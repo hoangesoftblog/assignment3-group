@@ -11,25 +11,41 @@ import Firebase
 import Photos
 import MobileCoreServices
 import AVKit
+import Foundation
 //Upload images, video to firebase and store in model
 class MainUploadedViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    var displayActionsheet: Bool = true
     var imagePicker = UIImagePickerController()
 //    var imagestore
     override func viewDidLoad() {
         ref2 = Database.database().reference()
         super.viewDidLoad()
         
-        
+
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.display2()
+    func goToSegue(){
+        performSegue(withIdentifier: PhotoActionSegue, sender: imageView.image)
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        if displayActionsheet{
+            self.display2()
+        }
+        if choice == 0 {
+        print("YOLO!!!!!!!!1")
+        }
+        else{
+            choice = 0
+            displayActionsheet = true
+            goToSegue()
+        }
+    }
+    let photoEdit = "PhotoEdit"
     var choice = 0
     var ref2: DatabaseReference?
-    
+    let PhotoActionSegue = "PhotoActionSegue"
+    @IBOutlet weak var imageView2: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
     func takePhoto() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
@@ -42,6 +58,30 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
         }
         
     }
+    func saveImageToLocal() {
+        guard let image = imageView2.image else {
+            print ("here1")
+             return }
+        print("here2")
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    func saveVideoToLocal(url: URL){
+        UISaveVideoAtPathToSavedPhotosAlbum(url.path, self, #selector(video(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+    }
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -50,7 +90,16 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
             imagePicker.dismiss(animated: true, completion: nil)
             imageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
 //            imagestore = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-            uploadPhoto()
+//            uploadPhoto()
+            print("Tri map")
+            displayActionsheet = false
+            print("currently is in mainthread\(Thread.isMainThread)")
+//            performSegue(withIdentifier: photoEdit, sender: (Any).self)
+//            goToSegue()
+//            twoImageWatermark()
+//            imageTextWatermark()
+//            performSegue(withIdentifier: PhotoActionSegue, sender: imageView.image)
+        //    performSegue(withIdentifie, sender: <#T##Any?#>)
         }
         if(choice == 2){
             print("wawawa")
@@ -60,38 +109,25 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
                 let url = info[UIImagePickerController.InfoKey.mediaURL] as? URL,
                 UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(url.path)
                 else { return }
+            saveVideoToLocal(url: url)
             uploadVideo(url1: url )
             // Handle a movie capture
-            UISaveVideoAtPathToSavedPhotosAlbum(url.path, self, #selector(video(_:didFinishSavingWithError:contextInfo:)), nil)
+            
         }
+        
+        
     }
     func uploadVideo(url1: URL){
+        
         let meta = StorageMetadata()
         meta.contentType = "video"
         //Get user's to create or access user's folder to store images
         //                let userID = Auth.auth().currentUser!.uid
         var curTime = Date()
-//        var namevideo = String(curTime) + ".mp4"
-//        let fileref = Storage.storage().reference().child("/\(curTime)")
-        //        let image = imageView.image!
-        //get the PNG data for this image
-        //        let data = image.pngData()
-        //        let videoData = try Data(contentsOf: url   as URL)
-//        do {
-//            let videoData = try Data(contentsOf: url1    as URL)
-//            fileref.putData(videoData, metadata: meta, completion: { (meta, error) in
-//                if error == nil {
-//                    self.ref2?.child("Usershaha/account2/image/test2").setValue("filename")
-//                    print("updated")
-//
-//                }
-//            })
-//        } catch {
-//            print("unable to convert url to data")
-//        }
                 let fileref2 = Storage.storage().reference().child("\(curTime).mp4")
         fileref2.putFile(from: url1, metadata: meta, completion: { (meta, error) in
             if error == nil {
+                self.videoWatermark(url: url1)
 //                self.ref2?.child("userPicture/\(currentUser!)/fileOwned").setValue("\(curTime)")
                 print("uploaded video to storage")
                 self.getImageVideo(url1: url1, name: "\(curTime)")
@@ -115,21 +151,14 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
         
     }
     func downloadVideo(address: String){
-//        storageRef.child(address).getData(maxSize: INT64_MAX){ data, error in
-//            if error != nil {
-//                print("Error occurs. \(error?.localizedDescription)")
-//            }
-//            else if data != nil {
-//                playVideo(url1: data)
-//            }
-//        }
         storageRef.child("\(address).mp4").downloadURL { (urlx, error) in
             if urlx == nil {
                 print("Error occurs. \(error?.localizedDescription)")
             }
             else if urlx != nil {
                 print("link url: \(urlx)")
-                self.playVideo(url1: urlx!)
+//                self.videoWatermark(url: urlx!)
+//                self.playVideo(url1: urlx!)
             }
         }
     }
@@ -178,15 +207,11 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
         var curTime = Date()
         let meta = StorageMetadata()
         meta.contentType = "image/png"
-        //Get user's to create or access user's folder to store images
-        //                let userID = Auth.auth().currentUser!.uid
+
         let fileref = Storage.storage().reference().child("/\(curTime)")
-//                imageView.transform =  imageView.transform.rotated(by: CGFloat(M_PI_2))
+
         let image = imageView.image!
-        
-        //get the PNG data for this image
-        //        let data = image.pngData()
-//        let imageToUpload: UIImage = UIImage(cgImage: (self.imageView .image?.cgImage!)!, scale: self.imageView.image!.scale, orientation: .right)
+
 
         let imageData: Data = image.pngData()!
         let imageData2 = image.jpegData(compressionQuality: 0.0)
@@ -197,32 +222,106 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
         })
     }
     
+    
+    
+    
+    
     func randomString(length: Int) -> String {
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         return String((0..<length).map{ _ in letters.randomElement()! })
     }
     
-    func saveImage(imageName: String){
-        //create an instance of the FileManager
-        let fileManager = FileManager.default
-        //get the image path
-        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName)
-        //get the image we took with camera
-        let image = imageView.image!
-        //get the PNG data for this image
-        let data = image.pngData()
-        print(imagePath)
-        //store it in the document directory
-        fileManager.createFile(atPath: imagePath as String, contents: data, attributes: nil)
+
+    
+    func twoImageWatermark(){
+        print("running two iamge water mark")
+        let item = MediaItem(image: imageView.image!)
+        //        imgData = UIImage.pngData(UIImage(named: "Camera-photo.svg")!)()
+        let logoImage = UIImage(named: "awesome")
+        if(logoImage == nil) {
+            print("cannot file image")
+        }
+        let widthx = item.size.width / 5
+        let heighx = (widthx / logoImage!.size.width) * logoImage!.size.height
+        let firstElement = MediaElement(image: logoImage!)
+        firstElement.frame = CGRect(x: 0, y: 0, width: widthx, height: heighx)
+
+        let secondElement = MediaElement(image: logoImage!)
+        secondElement.frame = CGRect(x: 0, y: 300, width: widthx, height: heighx)
+        
+        item.add(elements: [firstElement, secondElement])
+        
+        let mediaProcessor = MediaProcessor()
+        mediaProcessor.processElements(item: item) { [weak self] (result, error) in
+            print("get result image")
+            self!.imageView2.image = result.image
+            self!.saveImageToLocal()
+        }
     }
     
-    @IBAction func savePhoto(_ sender: Any) {
-        //        let name = randomString(length: 10)
-        saveImage(imageName: "test")
+    func videoWatermark(url: URL){
+        
+            let item2 = MediaItem(url: url)
+            let logoImage = UIImage(named: "awesome")
+            
+            let firstElement = MediaElement(image: logoImage!)
+            firstElement.frame = CGRect(x: 0, y: item2!.size.height-20, width: logoImage!.size.width/2, height: logoImage!.size.height/2)
+            
+            let testStr = "Attributed Textaaaaaaaaaa"
+        let attributes = [ NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10) ]
+            let attrStr = NSAttributedString(string: testStr, attributes: attributes)
+        print("height and width")
+        print(item2!.size.height)
+        print(item2!.size.width)
+        print(testStr.characters.count)
+            let secondElement = MediaElement(text: attrStr)
+            secondElement.frame = CGRect(x: 0, y: -20, width: 500, height: 50)
+            
+        item2!.add(elements: [firstElement, secondElement])
+            print("checking control")
+            let mediaProcessor = MediaProcessor()
+        mediaProcessor.processVideoWithElements(item: item2!) { [weak self] (result, error) in
+            print(result)
+            print("wawawawawa")
+            self!.playVideo(url1: result.processedUrl!)
+            }
     }
+    
+    
+    func imageTextWatermark(){
+        let item = MediaItem(image: imageView.image!)
+        //        imgData = UIImage.pngData(UIImage(named: "Camera-photo.svg")!)()
+        let logoImage = UIImage(named: "awesome")
+        let widthx = item.size.width / 5
+        let heighx = (widthx / logoImage!.size.width) * logoImage!.size.height
+        let firstElement = MediaElement(image: logoImage!)
+        firstElement.frame = CGRect(x: 10, y: 0, width: widthx, height: heighx)
+        
+        let testStr = "\(String(describing: currentUser!)) Nguyen"
+        let attributes = [ NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 150) ]
+        let attrStr = NSAttributedString(string: testStr, attributes: attributes)
+        let width2 =    450 + testStr.characters.count*50
+        print(testStr.characters.count)
+        print(width2)
+        print(CGFloat(width2))
+        let secondElement = MediaElement(text: attrStr)
+        secondElement.frame = CGRect(x: 10, y: item.size.height-230, width: 450 + CGFloat(width2), height: 250)
+        
+        item.add(elements: [firstElement, secondElement])
+        
+        let mediaProcessor = MediaProcessor()
+        mediaProcessor.processElements(item: item) { [weak self] (result, error) in
+            self!.imageView2.image = result.image
+           self!.saveImageToLocal()
+        }
+    }
+    
+
     func record() {
         VideoHelper.startMediaBrowser(delegate: self, sourceType: .camera)
     }
+    
+    
     func display2(){
         let actionSheetControllerIOS8: UIAlertController = UIAlertController(title: "Please select", message: "Option to select", preferredStyle: .actionSheet)
         
@@ -236,6 +335,7 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
             self.takePhoto()
             print("Take a photo")
             self.choice = 1;
+//            self.performSegue(withIdentifier: self.photoEdit, sender: (Any).self)
         }
         actionSheetControllerIOS8.addAction(saveActionButton)
         
@@ -278,7 +378,16 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == PhotoActionSegue {
+            if let dest = segue.destination as? PhotoActionController {
+                if let image = sender as? (UIImage) {
+                   dest.image = image
+//                    dest.fileName = name
+                }
+            }
+        }
+    }
     
     /*
      // MARK: - Navigation

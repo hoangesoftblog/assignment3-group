@@ -24,27 +24,27 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     let goToAppearance = "goToAppearance"
     let goToStatistic = "goToStatistic"
     
-    @IBOutlet weak var usernameLabel: UILabel!
-    
-    @IBOutlet weak var jobLabel: UILabel!
-    
-    @IBOutlet weak var topView: UIView!
-    
-    @IBOutlet weak var avtImageView: UIImageView!
+//    @IBOutlet weak var usernameLabel: UILabel!
+//
+//    @IBOutlet weak var jobLabel: UILabel!
+//
+//    @IBOutlet weak var topView: UIView!
+//
+//    @IBOutlet weak var avtImageView: UIImageView!
     
    
-    @IBOutlet weak var settingButton: UIBarButtonItem!
     
     var choice = 0
     var ref2: DatabaseReference?
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var sideViewLeadingContraint: NSLayoutConstraint!
     
     @IBOutlet weak var choiceOfColumns: UISegmentedControl!
-    @IBAction func switchView(_ sender: Any) {
-        switch choiceOfColumns.selectedSegmentIndex {
+    @IBAction func switchView(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
         case 0:
             numberOfColumns = 1
         case 1:
@@ -59,23 +59,33 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     var menuShowing: Bool = false
     var imageNames = [String]()
     var arrImages = [Int: UIImage]()
-
     
+    let tap = UITapGestureRecognizer(target: self, action: #selector(removingSetting(sender:)))
+
+    @IBOutlet weak var sideView: UIView!
+    
+    @IBOutlet weak var removingSettingView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        if showingUser == nil {
-            print("user is current user")
-            usernameLabel.text = currentUser
-        }
-        else {
-            print("user is showing user \(showingUser)")
-            usernameLabel.text = showingUser
-        }
+        sideView.layer.borderWidth = 0.25
+        sideView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        
+        
+        
+//        if showingUser == nil {
+//            print("user is current user")
+//            usernameLabel.text = currentUser
+//        }
+//        else {
+//            print("user is showing user \(showingUser)")
+//            usernameLabel.text = showingUser
+//        }
         updateUI()
 //        collectionView.delegate = self
 //        collectionView.dataSource = self
         grabPhoto()
-        numberOfColumns = CGFloat( choiceOfColumns.selectedSegmentIndex + 1)
+//        numberOfColumns = CGFloat( choiceOfColumns.selectedSegmentIndex + 1)
 //        if let layout = collectionView?.collectionViewLayout as? CollectionViewPhotoLayout {
 //            layout.delegate = self as? LayoutDelegate
 //
@@ -110,31 +120,31 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         self.present(actionsheet, animated: true, completion: nil)
         
         
-        func imagePickerController(picker: UIImagePickerController,
-                                   didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            guard let image = info[.originalImage] as? UIImage else {
-                print("Error")
-                return
-            }
-            avtImageView.image = image
-            picker.dismiss(animated: true, completion: nil)
-            
-            
-            
-            
-            
-//            if(choice == 1){
-//                print("You choose upload photo from  ")
-//                imagePick.dismiss(animated: true, completion: nil)
-//                uploadPhotoImageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-//                uploadPhoto()
+//        func imagePickerController(picker: UIImagePickerController,
+//                                   didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//            guard let image = info[.originalImage] as? UIImage else {
+//                print("Error")
+//                return
 //            }
-//            if(choice == 2){
-//                print("You choose take phote")
-//                dismiss(animated: true, completion: nil)
-//                takePhoto()
-//            }
-        }
+//            avtImageView.image = image
+//            picker.dismiss(animated: true, completion: nil)
+//
+//
+//
+//
+//
+////            if(choice == 1){
+////                print("You choose upload photo from  ")
+////                imagePick.dismiss(animated: true, completion: nil)
+////                uploadPhotoImageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+////                uploadPhoto()
+////            }
+////            if(choice == 2){
+////                print("You choose take phote")
+////                dismiss(animated: true, completion: nil)
+////                takePhoto()
+////            }
+//        }
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
@@ -170,6 +180,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    
     func grabPhoto(){
 //        let iM = PHImageManager.default()
 //        let iMRequest = PHImageRequestOptions()
@@ -196,7 +207,8 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
 //            }
 //        }
         
-        ref.child("userPicture/\(usernameLabel.text!)/fileOwned").observeSingleEvent(of: .value){ snapshot in
+        var workingUser: String = (showingUser == nil) ? currentUser! : showingUser!
+        ref.child("userPicture/\(workingUser)/fileOwned").observeSingleEvent(of: .value){ snapshot in
             for i in snapshot.children {
                 if let i2 = (i as? DataSnapshot)?.value as? String {
                     self.imageNames.append(i2)
@@ -249,18 +261,36 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     
     func updateUI(){
         
-        avtImageView.layer.cornerRadius = avtImageView.frame.height / 2.0
-        avtImageView.layer.masksToBounds = true
-        uploadPhotoImageView.layer.cornerRadius = uploadPhotoImageView.frame.height/2
-        uploadPhotoImageView.layer.masksToBounds = true
+//        avtImageView.layer.cornerRadius = avtImageView.frame.height / 2.0
+//        avtImageView.layer.masksToBounds = true
+//        uploadPhotoImageView.layer.cornerRadius = uploadPhotoImageView.frame.height/2
+//        uploadPhotoImageView.layer.masksToBounds = true
+        
+    }
+    
+    @objc func removingSetting(sender: UITapGestureRecognizer? = nil){
+        if menuShowing{
+            sideViewLeadingContraint.constant = -200
+        }else{
+            sideViewLeadingContraint.constant = 0
+        }
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        menuShowing = !menuShowing
         
     }
     
     @IBAction func toggledTapped(_ sender: Any) {
         if menuShowing{
             sideViewLeadingContraint.constant = -200
+            removingSettingView.removeGestureRecognizer(tap)
+            
         }else{
             sideViewLeadingContraint.constant = 0
+            removingSettingView.addGestureRecognizer(tap)
         }
         
         UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions.curveEaseIn, animations: {
@@ -344,21 +374,7 @@ extension MainPersonalViewController: UICollectionViewDataSource{
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: fromPersonalToDetail, sender: (imageNames[indexPath.row], arrImages[indexPath.row]))
-    }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == fromPersonalToDetail {
-            if let dest = segue.destination as? DetailViewController {
-                
-                if let (name, image) = sender as? (String, UIImage) {
-                    dest.image = image
-                    dest.fileName = name
-                }
-            }
-        }
-    }
 }
 
 //extension MainPersonalViewController : LayoutDelegate {
@@ -403,4 +419,48 @@ extension MainPersonalViewController: UICollectionViewDelegateFlowLayout {
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
+}
+
+
+
+extension MainPersonalViewController{
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind{
+        case UICollectionView.elementKindSectionHeader:
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PersonalHeaderViewController", for: indexPath) as? PersonalHeaderViewController
+                else {
+                    fatalError("Invalid personal view type")
+            }
+            if showingUser == nil {
+                headerView.usernameLabel.text = currentUser
+                
+            } else{
+                headerView.usernameLabel.text = showingUser
+                headerView.uploadPhotoImageView.isHidden = true
+            }
+            
+            
+            
+            headerView.layer.cornerRadius = headerView.avtImageView.frame.height / 2.0
+            headerView.uploadPhotoImageView.layer.masksToBounds = true
+            headerView.uploadPhotoImageView.layer.cornerRadius = headerView.uploadPhotoImageView.frame.height/2
+            headerView.uploadPhotoImageView.layer.masksToBounds = true
+            
+            numberOfColumns = CGFloat(headerView.choiceOfColumns.selectedSegmentIndex+1)
+            headerView.choiceOfColumns.addTarget(self, action: #selector(switchView(_:)), for: .valueChanged)
+            
+            
+            return headerView
+            
+        default:
+            assert(false, "invalid element type")
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
 }
