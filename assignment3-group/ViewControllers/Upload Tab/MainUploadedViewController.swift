@@ -33,7 +33,6 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
             self.display2()
         }
         if choice == 0 {
-        print("YOLO!!!!!!!!1")
         }
         else{
             choice = 0
