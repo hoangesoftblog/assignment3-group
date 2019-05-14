@@ -330,16 +330,5 @@ class DetailViewController: UIViewController {
         }
     }
     
-    let backToLogin = "backToLogin"
-    @IBAction func logOut(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-            self.dismiss(animated: true, completion: nil)
-        }
-        catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-    }
-    
 }
 
