@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="koL-S2-MRc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="koL-S2-MRc">
     <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -740,7 +740,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="hK7-sQ-Wa4" id="YnS-TG-hWm"/>
-                        <segue destination="QjE-14-cD6" kind="show" identifier="fromPaymentToPersonal" id="U9S-cE-gg1"/>
+                        <segue destination="ZEU-52-lDK" kind="show" identifier="fromPaymentToPersonal" id="8vT-eQ-72h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gj6-yA-cga" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -992,7 +992,7 @@
                         <outlet property="usernameButton" destination="3De-bG-1Cd" id="M69-JS-Sye"/>
                         <outlet property="videoPlayer" destination="dQh-LB-ZYX" id="GAe-t7-prs"/>
                         <segue destination="vtd-Hn-me6" kind="show" identifier="DetailToSelectPerson" id="Kus-7E-hJ6"/>
-                        <segue destination="QjE-14-cD6" kind="show" identifier="goToPersonalPage" id="Aji-Dy-Rvo"/>
+                        <segue destination="ZEU-52-lDK" kind="show" identifier="goToPersonalPage" id="ZOf-Cq-0sP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mCT-58-gJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1786,6 +1786,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <segue destination="AYT-TI-lax" kind="show" id="84C-Gs-f3k"/>
                         <segue destination="72n-FV-aPj" kind="show" id="Hc0-MQ-nYF"/>
                         <segue destination="1dQ-hQ-Wpc" kind="show" id="Fto-8t-FKr"/>
+                        <segue destination="593-Lz-Njb" kind="show" identifier="fromPersonalToDetail" id="FDl-z5-p9H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPl-z3-TTv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1970,23 +1971,22 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
     </scenes>
     <resources>
         <image name="Accept" width="74" height="24"/>
-        <image name="Camera" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="Camera" width="100" height="100"/>
         <image name="Camera-photo.svg" width="240" height="240"/>
         <image name="Contact" width="34" height="34"/>
         <image name="ContactPayment" width="79" height="24"/>
         <image name="Deny" width="63" height="24"/>
-        <image name="Facebook login" width="231" height="40"/>
-        <image name="Google login" width="231" height="40"/>
+        <image name="Facebook login" width="693" height="120"/>
+        <image name="Google login" width="693" height="120"/>
         <image name="Home" width="29" height="28"/>
         <image name="Image-1" width="34" height="22"/>
         <image name="Shared Symbol" width="31" height="30"/>
-        <image name="awesome" width="166.66667175292969" height="32"/>
-        <image name="loginButton" width="231" height="40"/>
+        <image name="awesome" width="500" height="96"/>
+        <image name="loginButton" width="693" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1ih-rv-tgV"/>
-        <segue reference="Aji-Dy-Rvo"/>
+        <segue reference="8vT-eQ-72h"/>
         <segue reference="4dA-6W-JLb"/>
-        <segue reference="cW4-b4-L4e"/>
+        <segue reference="FDl-z5-p9H"/>
     </inferredMetricsTieBreakers>
 </document>
