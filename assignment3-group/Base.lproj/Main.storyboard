@@ -740,7 +740,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="hK7-sQ-Wa4" id="YnS-TG-hWm"/>
-                        <segue destination="QjE-14-cD6" kind="show" identifier="fromPaymentToPersonal" id="U9S-cE-gg1"/>
+                        <segue destination="ZEU-52-lDK" kind="show" identifier="fromPaymentToPersonal" id="8vT-eQ-72h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gj6-yA-cga" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -992,7 +992,7 @@
                         <outlet property="usernameButton" destination="3De-bG-1Cd" id="M69-JS-Sye"/>
                         <outlet property="videoPlayer" destination="dQh-LB-ZYX" id="GAe-t7-prs"/>
                         <segue destination="vtd-Hn-me6" kind="show" identifier="DetailToSelectPerson" id="Kus-7E-hJ6"/>
-                        <segue destination="QjE-14-cD6" kind="show" identifier="goToPersonalPage" id="Aji-Dy-Rvo"/>
+                        <segue destination="ZEU-52-lDK" kind="show" identifier="goToPersonalPage" id="ZOf-Cq-0sP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mCT-58-gJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1786,6 +1786,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <segue destination="AYT-TI-lax" kind="show" id="84C-Gs-f3k"/>
                         <segue destination="72n-FV-aPj" kind="show" id="Hc0-MQ-nYF"/>
                         <segue destination="1dQ-hQ-Wpc" kind="show" id="Fto-8t-FKr"/>
+                        <segue destination="593-Lz-Njb" kind="show" identifier="fromPersonalToDetail" id="FDl-z5-p9H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPl-z3-TTv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1984,9 +1985,12 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
         <image name="loginButton" width="231" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
+        
         <segue reference="1ih-rv-tgV"/>
         <segue reference="Aji-Dy-Rvo"/>
+        <segue reference="8vT-eQ-72h"/>
+
         <segue reference="4dA-6W-JLb"/>
-        <segue reference="cW4-b4-L4e"/>
+        <segue reference="FDl-z5-p9H"/>
     </inferredMetricsTieBreakers>
 </document>
