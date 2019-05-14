@@ -104,7 +104,10 @@ class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDe
         }
     }
     
-
+    @IBAction func registerClicked(_ sender: Any) {
+        performSegue(withIdentifier: "registerSegue", sender: self)
+    }
+    
     func getFBUserData()
     {
         let graphPath = "me"

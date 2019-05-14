@@ -109,6 +109,9 @@ class RegisterViewController: UIViewController, FUIAuthDelegate{
         }
     }
     
+    @IBAction func backClicked(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         if error == nil {
             print("log in with Google Acccount")
