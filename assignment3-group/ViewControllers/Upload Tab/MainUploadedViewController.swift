@@ -24,26 +24,45 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
 
         // Do any additional setup after loading the view.
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == PhotoActionSegue {
+            if let dest = segue.destination as? PhotoActionController {
+                if let (url , image) = sender as? (URL?, UIImage?) {
+                    dest.videoUrl = url
+                    dest.image = image
+                    
+                }
+            }
+        }
+    }
     func goToSegue(){
-        performSegue(withIdentifier: PhotoActionSegue, sender: imageView.image)
+        performSegue(withIdentifier: PhotoActionSegue, sender: (urlToSend , imageToSend))
     }
     override func viewDidAppear(_ animated: Bool) {
         if displayActionsheet{
             self.display2()
         }
         if choice == 0 {
+            imageToSend = nil
+            urlToSend = nil
         }
-        else{
+        else {
             choice = 0
             displayActionsheet = true
+            print(imageToSend)
             goToSegue()
         }
     }
+    
+    var urlToSend : URL?
+    var urlTemp: URL?
+    var imageTemp: UIImage?
     let photoEdit = "PhotoEdit"
     var choice = 0
     var ref2: DatabaseReference?
     let PhotoActionSegue = "PhotoActionSegue"
+    let VideoActionSegue = "VideoActionSegue"
+    var imageToSend : UIImage?
     @IBOutlet weak var imageView2: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
     func takePhoto() {
@@ -87,7 +106,7 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
         if(choice == 1){
             print("here")
             imagePicker.dismiss(animated: true, completion: nil)
-            imageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+            imageToSend = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
 //            imagestore = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
 //            uploadPhoto()
             print("Tri map")
@@ -108,8 +127,12 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
                 let url = info[UIImagePickerController.InfoKey.mediaURL] as? URL,
                 UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(url.path)
                 else { return }
-            saveVideoToLocal(url: url)
-            uploadVideo(url1: url )
+            
+            displayActionsheet = false
+            urlToSend = url
+            //saveVideoToLocal(url: url)
+//            performSegue(withIdentifier: VideoActionSegue, sender: url)
+//            uploadVideo(url1: url )
             // Handle a movie capture
             
         }
@@ -377,16 +400,17 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == PhotoActionSegue {
-            if let dest = segue.destination as? PhotoActionController {
-                if let image = sender as? (UIImage) {
-                   dest.image = image
-//                    dest.fileName = name
-                }
-            }
-        }
-    }
+ 
+        
+//        if segue.identifier == VideoActionSegue {
+//            if let dest = segue.destination as? PhotoActionController {
+//                if let videourl = sender as? (URL) {
+//                    dest.videoUrl = videourl
+//                    //                    dest.fileName = name
+//                }
+//            }
+//        }
+ //   }
     
     /*
      // MARK: - Navigation
