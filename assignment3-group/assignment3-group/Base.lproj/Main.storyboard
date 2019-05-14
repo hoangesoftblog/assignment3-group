@@ -241,6 +241,49 @@
             </objects>
             <point key="canvasLocation" x="-3206" y="-62"/>
         </scene>
+        <!--Forget Password Controller-->
+        <scene sceneID="r88-d7-RCJ">
+            <objects>
+                <viewController id="WPI-Lt-rFn" customClass="ForgetPasswordController" customModule="assignment3_group" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9S6-MS-PSI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="travisvang1991@gmail.com" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kpZ-ag-Ul3">
+                                <rect key="frame" x="20" y="182" width="374" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwR-vC-46o">
+                                <rect key="frame" x="189" y="305" width="36" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="sendToEmail:" destination="WPI-Lt-rFn" eventType="touchUpInside" id="sr7-1m-4Ta"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrf-Lo-T6h">
+                                <rect key="frame" x="20" y="88" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="backToLogin:" destination="WPI-Lt-rFn" eventType="touchUpInside" id="Cel-pS-UVs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="gi1-cf-26P"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="kpZ-ag-Ul3" id="TNn-nP-D1i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TdK-uD-ocC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4804.347826086957" y="-58.258928571428569"/>
+        </scene>
         <!--Tutorial Collection View Controller-->
         <scene sceneID="p3v-RK-EKD">
             <objects>
@@ -386,6 +429,15 @@
                                     <action selector="facebookTapped:" destination="koL-S2-MRc" eventType="touchUpInside" id="apN-nw-woW"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzo-oE-wmd">
+                                <rect key="frame" x="250" y="476" width="123" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Forget Password?"/>
+                                <connections>
+                                    <action selector="forgetPassword:" destination="koL-S2-MRc" eventType="touchUpInside" id="mcy-ba-j8r"/>
+                                    <action selector="forgetPasswordClicked:" destination="koL-S2-MRc" eventType="touchUpInside" id="NUP-fl-Kmu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -407,11 +459,12 @@
                         <outlet property="passwordTextField" destination="rmi-4T-siF" id="yBG-un-9MF"/>
                         <segue destination="sPp-vF-xCq" kind="show" identifier="goToMain" id="4dA-6W-JLb"/>
                         <segue destination="exB-j1-V8f" kind="show" identifier="enterUsername" id="LMY-2X-IbD"/>
+                        <segue destination="WPI-Lt-rFn" kind="show" identifier="ForgetPassword" id="dSk-VD-xef"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="emN-K1-bnn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3978" y="-1639"/>
+            <point key="canvasLocation" x="-3978.2608695652175" y="-1639.2857142857142"/>
         </scene>
         <!--Enter Username View Controller-->
         <scene sceneID="giT-re-beT">

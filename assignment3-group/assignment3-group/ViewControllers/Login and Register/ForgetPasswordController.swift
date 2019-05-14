@@ -18,13 +18,20 @@ class ForgetPasswordController : UIViewController {
         print("went to forget")
     }
 
-    @IBOutlet weak var emailTextField: UITextField!
+
+    @IBAction func backToLogin(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
-    @IBAction func send(_ sender: Any) {
+    @IBAction func sendToEmail(_ sender: Any) {
         let email = emailTextField.text
         print(email)
         sendPasswordReset(withEmail: email!)
     }
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    
+
 
     
     func sendPasswordReset(withEmail email: String, _ callback: ((Error?) -> ())? = nil){
