@@ -746,15 +746,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="441.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtA-p8-q6T">
-                                                    <rect key="frame" x="25" y="21" width="369" height="36"/>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtA-p8-q6T">
+                                                    <rect key="frame" x="93" y="21" width="300" height="36"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
                                                     <state key="normal" title="User">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="sent you a request to share this photo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69s-HQ-kHg">
-                                                    <rect key="frame" x="25" y="65" width="369" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sent you a request to share this photo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69s-HQ-kHg">
+                                                    <rect key="frame" x="25" y="65" width="290.66666666666669" height="23.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <color key="textColor" red="0.9137254901960784" green="0.23529411764705882" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -787,14 +787,20 @@
                                                         </button>
                                                     </subviews>
                                                 </stackView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uh1-DR-MWK">
+                                                    <rect key="frame" x="20" y="12" width="53" height="45"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="UtA-p8-q6T" firstAttribute="leading" secondItem="f8A-xJ-svT" secondAttribute="leadingMargin" constant="5" id="0QN-xu-efW"/>
+                                                <constraint firstItem="uh1-DR-MWK" firstAttribute="top" secondItem="f8A-xJ-svT" secondAttribute="topMargin" constant="1" id="9wa-k8-dJ2"/>
                                                 <constraint firstItem="UtA-p8-q6T" firstAttribute="top" secondItem="f8A-xJ-svT" secondAttribute="topMargin" constant="10" id="CHZ-DK-gAG"/>
+                                                <constraint firstItem="UtA-p8-q6T" firstAttribute="leading" secondItem="uh1-DR-MWK" secondAttribute="trailing" constant="20" id="GrX-Sz-FpY"/>
                                                 <constraint firstItem="69s-HQ-kHg" firstAttribute="leading" secondItem="f8A-xJ-svT" secondAttribute="leadingMargin" constant="5" id="IR3-fn-oUo"/>
+                                                <constraint firstItem="uh1-DR-MWK" firstAttribute="leading" secondItem="f8A-xJ-svT" secondAttribute="leadingMargin" id="Qx2-TL-c2k"/>
                                                 <constraint firstItem="69s-HQ-kHg" firstAttribute="top" secondItem="UtA-p8-q6T" secondAttribute="bottom" constant="8" id="YxQ-UK-OE9"/>
                                                 <constraint firstItem="JsI-QT-myG" firstAttribute="top" secondItem="69s-HQ-kHg" secondAttribute="bottom" constant="8" id="liB-L5-yCl"/>
                                                 <constraint firstItem="JsI-QT-myG" firstAttribute="leading" secondItem="f8A-xJ-svT" secondAttribute="leadingMargin" constant="5" id="nlf-61-9QC"/>
+                                                <constraint firstItem="69s-HQ-kHg" firstAttribute="top" secondItem="uh1-DR-MWK" secondAttribute="bottom" constant="8" id="uNG-vi-VCO"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -802,6 +808,7 @@
                                             <outlet property="contactButton" destination="eIV-Fg-es4" id="R3w-Iq-7sd"/>
                                             <outlet property="denyButton" destination="iap-q6-td5" id="Koq-Vh-BSd"/>
                                             <outlet property="photo" destination="f8d-b7-Dcg" id="0by-zD-0Wd"/>
+                                            <outlet property="profilePicture" destination="uh1-DR-MWK" id="6Cq-Sp-Fdw"/>
                                             <outlet property="sendRequestLabel" destination="69s-HQ-kHg" id="SWi-kO-vQm"/>
                                             <outlet property="timeLabel" destination="JsI-QT-myG" id="XGa-no-lNy"/>
                                             <outlet property="usernameButton" destination="UtA-p8-q6T" id="Tpw-OW-Hd1"/>

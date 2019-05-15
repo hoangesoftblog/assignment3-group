@@ -14,12 +14,14 @@ class Notif {
     var image: UIImage?
     var time: String?
     var imageName: String?
+    var avtImage: UIImage?
     
-    init(sender: String, imageName: String, image: UIImage?, time: String) {
+    init(sender: String, imageName: String, image: UIImage?, time: String, avtImage: UIImage?) {
         self.sender = sender
         self.image = image
         self.time = time
         self.imageName = imageName
+        self.avtImage = avtImage
     }
 }
 
@@ -53,6 +55,7 @@ class MainPaymentViewController: UIViewController,UITableViewDelegate {
             self.tableView.reloadData()
             
             for i in 0..<temp.count {
+                var avt: UIImage?
                 if let val = temp[i].value as? [String: String]{
                     print("Getting on get picture")
                     storageRef.child(val["image"] ?? "No filename").getData(maxSize: INT64_MAX){ data, error in
@@ -63,10 +66,29 @@ class MainPaymentViewController: UIViewController,UITableViewDelegate {
                             if let imageTemp = UIImage(data: data!) {
                                 print("image in payment available")
                                 tempPic = imageTemp
-                                
                             }
                         }
-                        self.notificationArray[i] = Notif(sender: val["sender"] ?? "No sender", imageName: val["image"] ?? "No filename", image: tempPic, time: val["time"] ?? "No time")
+                        
+                        ref.child("userPicture/\(val["sender"]!)/avtImage" ?? "No picture").observeSingleEvent(of: .value){ snapshot in
+                            print("\nsnapshot is \(snapshot), ref is \(snapshot.ref)\n")
+                            if let avtFileName = snapshot.value as? String {
+                                print("Can get the value \(avtFileName)")
+                                storageRef.child(avtFileName ).getData(maxSize: INT64_MAX){ data, error in
+                                    if error != nil {
+                                        print("Error occurs")
+                                    }
+                                    else if data != nil {
+                                        if let imageTemp = UIImage(data: data!) {
+                                            print("avt image in payment available")
+                                            avt = imageTemp
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        self.notificationArray[i] = Notif(sender: val["sender"] ?? "No sender", imageName: val["image"] ?? "No filename", image: tempPic, time: val["time"] ?? "No time", avtImage: avt)
                         self.tableView.reloadData()
                     }
                 }
@@ -170,6 +192,8 @@ extension MainPaymentViewController: UITableViewDataSource {
                 
                 customCell.contactButton.accessibilityIdentifier = notificationArray[indexPath.row]?.sender
                 customCell.contactButton.addTarget(self, action: #selector(contactOwner(sender:)), for: .touchUpInside)
+                
+                customCell.profilePicture.image = notificationArray[indexPath.row]?.avtImage
                 return customCell
             }            
             

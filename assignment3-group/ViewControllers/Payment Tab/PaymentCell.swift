@@ -12,7 +12,8 @@ class PaymentCell: UITableViewCell {
 
     @IBOutlet weak var usernameButton: UIButton!
     @IBOutlet weak var sendRequestLabel: UILabel!
-
+    @IBOutlet weak var profilePicture: UIImageView!
+    
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     

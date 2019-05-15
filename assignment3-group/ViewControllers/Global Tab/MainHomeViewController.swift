@@ -63,7 +63,7 @@ class MainHomeViewController: UIViewController {
             
             self.imageCollection.reloadData()
             
-            for i in 0..<self.fileName.count {
+            for i in (self.fileName.count-1)...0 {
                 storageRef.child(self.fileName[i]).getData(maxSize: INT64_MAX){ data, error in
                     print(self.fileName[i], separator: "", terminator: " ")
                     if error != nil {

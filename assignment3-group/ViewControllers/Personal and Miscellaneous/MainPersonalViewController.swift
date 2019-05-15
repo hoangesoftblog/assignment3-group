@@ -39,6 +39,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     
     var choice = 0
     var ref2: DatabaseReference?
+    var isNewest = false
     
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -61,7 +62,8 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     
     var menuShowing: Bool = false
     var imageNames = [String]()
-    var arrImages = [Int: UIImage]()
+    var originalArrImages = [Int: UIImage]()
+    var displayArrImage = [UIImage]()
     
     let tap = UITapGestureRecognizer(target: self, action: #selector(removingSetting(sender:)))
 
@@ -238,7 +240,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         
             self.collectionView.reloadData()
             
-            for i in 0..<self.imageNames.count {
+            for i in (self.imageNames.count-1)...0{
                 storageRef.child(self.imageNames[i]).getData(maxSize: INT64_MAX){ data, error in
                     print(self.imageNames[i], separator: "", terminator: " ")
                     if error != nil {
@@ -247,10 +249,12 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
                     else if data != nil {
                         if let imageTemp = UIImage(data: data!) {
                             print("image available")
-                            self.arrImages[i] = imageTemp
+                            self.originalArrImages[i] = imageTemp
                         }
                     }
-                    
+                    if self.imageNames.count == self.originalArrImages.count {
+                        self.displayArrImage = Array(self.originalArrImages.values)
+                    }
                     self.collectionView.reloadData()
                 }
             }
@@ -378,17 +382,17 @@ extension MainPersonalViewController: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("\(arrImages.count) picture found")
-        return arrImages.count
+        print("\(originalArrImages.count) picture found")
+        return originalArrImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print("Cell for item at")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         if let customCell = cell as? PhotoCollectionViewCell {
-            if indexPath.row < arrImages.count {
+            if indexPath.row < originalArrImages.count {
                 print("customCell available")
-                customCell.imageViewInCell.image = arrImages[indexPath.row]
+                customCell.imageViewInCell.image = originalArrImages[indexPath.row]
                 return customCell
             }
         }
@@ -397,7 +401,7 @@ extension MainPersonalViewController: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: fromPersonalToDetail, sender: (imageNames[indexPath.row], arrImages[indexPath.row]))
+        performSegue(withIdentifier: fromPersonalToDetail, sender: (imageNames[indexPath.row], originalArrImages[indexPath.row]))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -431,10 +435,10 @@ extension MainPersonalViewController: UICollectionViewDelegateFlowLayout {
         
         //print("IndexPath row is \(indexPath.row)")
         //print("imagePhoto has \(imagePhoto.count)\n")
-        if indexPath.row < arrImages.count && arrImages[indexPath.row] != nil {
+        if indexPath.row < originalArrImages.count && originalArrImages[indexPath.row] != nil {
             //print("\(photoHeight)\t\(photoWidth)")
             
-            return CGSize(width: widthPerItem, height: widthPerItem * ((arrImages[indexPath.row]?.size.height)! / (arrImages[indexPath.row]?.size.width)!))
+            return CGSize(width: widthPerItem, height: widthPerItem * ((originalArrImages[indexPath.row]?.size.height)! / (originalArrImages[indexPath.row]?.size.width)!))
         }
         else {
             return CGSize(width: widthPerItem, height: widthPerItem)
@@ -459,6 +463,16 @@ extension MainPersonalViewController: UICollectionViewDelegateFlowLayout {
 
 
 extension MainPersonalViewController{
+    @objc func sorting() {
+        let actionSheet = UIAlertController(title: "Sort by", message: nil, preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Newest", style: .default){ (_) in
+            if self.isNewest {
+                self.originalArrImages.reversed()
+            }
+        })
+    }
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind{
         case UICollectionView.elementKindSectionHeader:
