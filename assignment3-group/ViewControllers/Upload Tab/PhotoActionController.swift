@@ -117,6 +117,8 @@ class PhotoActionController : UIViewController {
         let item = MediaItem(image: imageTemp)
         //        imgData = UIImage.pngData(UIImage(named: "Camera-photo.svg")!)()
         let logoImage = UIImage(named: "awesome")
+//        print("width:\(logoImage!.size.width)")
+//        print("height:\(logoImage!.size.height)")
         let widthx = item.size.width / 5
         let heighx = (widthx / logoImage!.size.width) * logoImage!.size.height
         let firstElement = MediaElement(image: logoImage!)

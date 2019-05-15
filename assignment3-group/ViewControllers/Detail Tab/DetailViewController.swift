@@ -411,14 +411,14 @@ class DetailViewController: UIViewController {
                 }
             }
         }
-//        else if segue.identifier == "DisplaySegue" {
-//            if let temp = segue.destination as? DisplayViewController {
-//                if let (image,fileName) = sender as? (UIImage?,String?) {
-//                    temp.image = image
-//                    temp.fileName = fileName
-//                }
-//            }
-//        }
+        else if segue.identifier == "DisplaySegue" {
+            if let temp = segue.destination as? DisplayViewController {
+                if let (image,fileName) = sender as? (UIImage?,String?) {
+                    temp.image = image
+                    temp.fileName = fileName
+                }
+            }
+        }
     }
 }
 
