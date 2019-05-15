@@ -27,7 +27,9 @@ class PersonalHeaderViewController: UICollectionReusableView {
     
     @IBOutlet weak var sortButton: UIButton!
     
-    
+    func changAvatar(image:UIImage){
+        avtImageView.image = image
+    }
     
     
 }

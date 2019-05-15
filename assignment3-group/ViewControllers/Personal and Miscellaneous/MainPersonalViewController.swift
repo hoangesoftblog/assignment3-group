@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 import Photos
 import FBSDKLoginKit
-
 private let reuseIdentifier = "personalCollectionViewCell"
 
 class MainPersonalViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
@@ -27,7 +26,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     let goToAccountSetting = "goToAccountSetting"
     let goToAppearance = "goToAppearance"
     let goToStatistic = "goToStatistic"
-    
+    var collectionV : PersonalHeaderViewController?
 //    @IBOutlet weak var usernameLabel: UILabel!
 //
 //    @IBOutlet weak var jobLabel: UILabel!
@@ -64,6 +63,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     var menuShowing: Bool = false
     var imageNames = [String]()
     var originalArrImages = [Int: UIImage]()
+    var index : IndexPath?
     
     let tap = UITapGestureRecognizer(target: self, action: #selector(removingSetting(sender:)))
 
@@ -87,27 +87,27 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
 //
 //        }
         
-        getProfileImage()
+ //       getProfileImage()
     }
     
-    func getProfileImage(){
-        ref.child("userPicture/\((showingUser == nil) ? currentUser! : showingUser!)/avtImage").observeSingleEvent(of: .value){ snapshot in
-            if let avt = snapshot.value as? String {
-                print("profile picture name is \(avt)")
-                storageRef.child(avt).getData(maxSize: INT64_MAX){ data, error in
-                    if error != nil {
-                        print("Error occurs: \(error?.localizedDescription)")
-                    }
-                    else if data != nil {
-                        if let imageTemp = UIImage(data: data!) {
-                            print("image available")
-                            self.profilePic = imageTemp
-                        }
-                    }
-                }
-            }
-        }
-    }
+//    func getProfileImage(){
+//        ref.child("userPicture/\((showingUser == nil) ? currentUser! : showingUser!)/avtImage").observeSingleEvent(of: .value){ snapshot in
+//            if let avt = snapshot.value as? String {
+//                print("profile picture name is \(avt)")
+//                storageRef.child(avt).getData(maxSize: INT64_MAX){ data, error in
+//                    if error != nil {
+//                        print("Error occurs: \(error?.localizedDescription)")
+//                    }
+//                    else if data != nil {
+//                        if let imageTemp = UIImage(data: data!) {
+//                            print("image available")
+//                            self.profilePic = imageTemp
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
     
     func printArray(array: [String]) {
         print("\n\n\n\nThis is content of array")
@@ -192,38 +192,36 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var thisClassNavigationBar: UINavigationBar!
     
     @IBAction func uploadPicAvt(_ sender: Any) {
-        func takePhoto() {
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
-                
-                imagePick.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
-                imagePick.sourceType = UIImagePickerController.SourceType.camera
-                imagePick.allowsEditing = false
-                self.present(imagePick, animated: true, completion: nil)
-                print("Here: \(String(describing: uploadPhotoImageView))")
-            }
-            
-        }
-        
+//        func takePhoto() {
+//            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+//
+//                imagePick.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+//                imagePick.delegate = self
+//                imagePick.sourceType = UIImagePickerController.SourceType.camera
+//                imagePick.allowsEditing = false
+//                self.present(imagePick, animated: true, completion: nil)
+//                print("Here: \(String(describing: uploadPhotoImageView))")
+//            }
+//
+//        }
+//        imagePick.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
         let actionsheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle:.actionSheet)
         actionsheet.addAction(UIAlertAction(title: "Camera", style: .default, handler:{ (action:UIAlertAction) in self.imagePick.sourceType = .camera
-            self.present(self.imagePick, animated: true, completion: nil)
+            self.takePhoto()
+//            self.present(self.imagePick, animated: true, completion: nil)
         }))
         actionsheet.addAction(UIAlertAction(title: "Photo library", style: .default, handler: {(action:UIAlertAction) in self.imagePick.sourceType = .photoLibrary
-            self.present(self.imagePick, animated: true, completion: nil)
+//            self.imagePick.delegate = self
+            self.startPhotoBrowser(delegate: self, sourceType: .photoLibrary)
+            
+//            self.present(self.imagePick, animated: true, completion: nil)
+            
         }))
         actionsheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(actionsheet, animated: true, completion: nil)
         
         
-//        func imagePickerController(picker: UIImagePickerController,
-//                                   didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//            guard let image = info[.originalImage] as? UIImage else {
-//                print("Error")
-//                return
-//            }
-//            avtImageView.image = image
-//            picker.dismiss(animated: true, completion: nil)
-//
+        
 //
 //
 //
@@ -245,6 +243,48 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         picker.dismiss(animated: true, completion: nil)
         
     }
+    
+    
+    
+    func startPhotoBrowser(delegate: UIViewController & UINavigationControllerDelegate & UIImagePickerControllerDelegate, sourceType: UIImagePickerController.SourceType) {
+        guard UIImagePickerController.isSourceTypeAvailable(sourceType) else { return }
+        
+        let mediaUI = UIImagePickerController()
+        mediaUI.sourceType = .photoLibrary
+        //        mediaUI.type
+        //        mediaTypes = [kUTTypePNG as String]
+        mediaUI.allowsEditing = true
+        mediaUI.delegate = delegate
+        delegate.present(mediaUI, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+            print("here")
+            dismiss(animated: true, completion: nil)
+        var imageToSend = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
+            //            imagestore = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+            //            uploadPhoto()
+
+        collectionV!.changAvatar(image: imageToSend)
+//        dismiss(animated: true, completion: nil)
+        
+        
+        
+    }
+    func takePhoto() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+            var imagePicker = UIImagePickerController()
+            imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+            //            print("Here: \(String(describing: imageView))")
+        }
+        
+    }
+    
     func uploadPhoto(){
         let gameKey = ref2?.child("Usershaha/account2").key
         let filename = "\(gameKey).png"
@@ -560,20 +600,24 @@ extension MainPersonalViewController{
                 else {
                     fatalError("Invalid personal view type")
             }
+            collectionV = headerView
+            
+            index = indexPath
             if showingUser == nil {
                 headerView.usernameLabel.text = currentUser
+
                 
             } else{
                 headerView.usernameLabel.text = showingUser
                 headerView.uploadPhotoImageView.isHidden = true
             }
             
-            if profilePic == nil {
-                print("Sorry it's nil")
-            }
-            headerView.avtImageView.image = profilePic
+//            if profilePic == nil {
+//                print("Sorry it's nil")
+//            }
+//            headerView.avtImageView.image = profilePic
             
-            headerView.layer.cornerRadius = headerView.avtImageView.frame.height / 2.0
+            headerView.avtImageView.layer.cornerRadius = headerView.avtImageView.frame.height / 2.0
             headerView.uploadPhotoImageView.layer.masksToBounds = true
             headerView.uploadPhotoImageView.layer.cornerRadius = headerView.uploadPhotoImageView.frame.height/2
             headerView.uploadPhotoImageView.layer.masksToBounds = true
@@ -592,7 +636,20 @@ extension MainPersonalViewController{
     
     
     
-    
+    func imagePickerController(picker: UIImagePickerControllerDelegate,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("Aaaaaaaaa")
+        guard let image = info[.originalImage] as? UIImage else {
+            print("Error")
+            return
+        }
+        
+//        let avatarChange = collectionV?.dequeueReusableCell(withReuseIdentifier: "PersonalHeaderViewController", for: index!) as? PersonalHeaderViewController
+//        avatarChange?.changAvatar(image: image)
+        print(image)
+        collectionV!.changAvatar(image: image)
+        dismiss(animated: true, completion: nil)
+    }
     
     
     

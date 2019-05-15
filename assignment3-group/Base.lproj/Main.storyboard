@@ -989,6 +989,7 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="bHe-PK-CEU" id="Aas-st-EQt"/>
+                        <segue destination="593-Lz-Njb" kind="show" identifier="BackToDetail" id="dY2-80-QIw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mcd-zM-bDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1004,7 +1005,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEA-pb-PU3">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDM-vD-csP" userLabel="contentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
@@ -1109,6 +1110,7 @@
                         <outlet property="videoPlayer" destination="dQh-LB-ZYX" id="GAe-t7-prs"/>
                         <segue destination="vtd-Hn-me6" kind="show" identifier="DetailToSelectPerson" id="Kus-7E-hJ6"/>
                         <segue destination="ZEU-52-lDK" kind="show" identifier="goToPersonalPage" id="rD6-wP-7sS"/>
+                        <segue destination="JAW-0V-Tf1" kind="show" identifier="DisplaySegue" id="hRy-FB-vok"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mCT-58-gJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1477,25 +1479,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="awesome" translatesAutoresizingMaskIntoConstraints="NO" id="EgV-Tf-pxU">
-                                <rect key="frame" x="103.66666666666669" y="118" width="207" height="40"/>
+                                <rect key="frame" x="103.66666666666669" y="74" width="207" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="leK-yH-2pt"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbC-oY-DHd">
-                                <rect key="frame" x="20" y="486.66666666666669" width="52" height="25"/>
+                                <rect key="frame" x="20" y="442.66666666666669" width="52" height="25"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AwesomePhotos Team." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYf-FT-Dsi">
-                                <rect key="frame" x="20" y="531.66666666666663" width="191" height="25"/>
+                                <rect key="frame" x="20" y="487.66666666666669" width="191" height="25.000000000000057"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5i-8N-YWQ">
-                                <rect key="frame" x="20" y="178.00000000000003" width="374" height="268.66666666666674"/>
+                                <rect key="frame" x="20" y="134.00000000000003" width="374" height="268.66666666666674"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-9"/>
                                 <string key="text">Created by RMIT students having a passion for photography.
@@ -1538,7 +1540,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zvf-E2-xnh" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="20" y="200" width="374" height="374"/>
+                                <rect key="frame" x="20" y="156" width="374" height="374"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxj-ph-Eod" customClass="PieChartView" customModule="Charts">
                                         <rect key="frame" x="67" y="67" width="240" height="240"/>
@@ -1567,7 +1569,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memory Used" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fP1-3C-O8a">
-                                <rect key="frame" x="111" y="114" width="193" height="41"/>
+                                <rect key="frame" x="111" y="70" width="193" height="41"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
                                 <color key="textColor" red="0.9137254901960784" green="0.23529411764705882" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1629,7 +1631,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SO6-Mg-JqS">
-                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem id="DfN-yY-rWK">
                                         <barButtonItem key="leftBarButtonItem" image="Contact" id="YFg-8E-RzB">
@@ -1706,7 +1708,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dQg-x9-TuM">
+                                                <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dQg-x9-TuM">
                                                     <rect key="frame" x="151" y="123.33333333333331" width="100" height="100"/>
                                                     <color key="backgroundColor" red="1" green="0.17301860080000001" blue="0.1373886882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
@@ -1781,7 +1783,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sh-c4-Ii9" userLabel="sideView">
-                                <rect key="frame" x="-200" y="132" width="200" height="681"/>
+                                <rect key="frame" x="-200" y="88" width="200" height="774"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="namtranx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kON-cT-5PK">
                                         <rect key="frame" x="22" y="18" width="156" height="20"/>
@@ -1900,11 +1902,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <action selector="appearanceTapped:" destination="ZEU-52-lDK" id="jxN-lB-dBH"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="arc-v6-YZ8" userLabel="staticTap">
-                    <connections>
-                        <action selector="staticTapped:" destination="ZEU-52-lDK" id="OvT-ss-Lik"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="arc-v6-YZ8" userLabel="staticTap"/>
                 <tapGestureRecognizer id="NUk-kL-jVq" userLabel="aboutTap">
                     <connections>
                         <action selector="aboutTapped:" destination="ZEU-52-lDK" id="1WR-5l-yvF"/>
@@ -1915,11 +1913,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <action selector="logoutTapped:" destination="ZEU-52-lDK" id="HWM-6k-IRv"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="BAd-BD-Zam" userLabel="editTap">
-                    <connections>
-                        <action selector="editTapped:" destination="ZEU-52-lDK" id="zev-P1-pbz"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="BAd-BD-Zam" userLabel="editTap"/>
                 <tapGestureRecognizer id="aqn-9o-VBC" userLabel="takePictureAvt">
                     <connections>
                         <action selector="uploadPicAvt:" destination="ZEU-52-lDK" id="JmB-iG-7jy"/>
@@ -2097,7 +2091,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ai0-oF-DMh"/>
-        <segue reference="1ih-rv-tgV"/>
+        <segue reference="rD6-wP-7sS"/>
         <segue reference="4dA-6W-JLb"/>
         <segue reference="xyI-wM-fN8"/>
     </inferredMetricsTieBreakers>
