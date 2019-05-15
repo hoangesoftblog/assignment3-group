@@ -70,6 +70,7 @@
 		88D0C2F52286ACFF0096A51E /* PhotoCollecionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D0C2EF2286ACFF0096A51E /* PhotoCollecionViewCell.swift */; };
 		8B00D552228A924F00D19B5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B00D550228A924F00D19B5C /* Main.storyboard */; };
 		8B243BE62282E8CF00001419 /* AllRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B243BE52282E8CF00001419 /* AllRequestsViewController.swift */; };
+		8BFB7625228C7890009CEF57 /* AccountInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFB7624228C7890009CEF57 /* AccountInfoViewController.swift */; };
 		AC48B2B618378B7059AFFC30 /* Pods_assignment3_group.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDBA3F323894B8D270B4ABF2 /* Pods_assignment3_group.framework */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +142,7 @@
 		88D0C2EF2286ACFF0096A51E /* PhotoCollecionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollecionViewCell.swift; sourceTree = "<group>"; };
 		8B00D551228A924F00D19B5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "assignment3-group/Base.lproj/Main.storyboard"; sourceTree = SOURCE_ROOT; };
 		8B243BE52282E8CF00001419 /* AllRequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllRequestsViewController.swift; sourceTree = "<group>"; };
+		8BFB7624228C7890009CEF57 /* AccountInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoViewController.swift; sourceTree = "<group>"; };
 		BDBA3F323894B8D270B4ABF2 /* Pods_assignment3_group.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_assignment3_group.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -171,6 +173,7 @@
 				8877A7712270CE060003E08E /* TutorialCollectionViewCell.swift */,
 				664BFF4A228AF89D003FFFF8 /* Detail Tab */,
 				8877A76F2270CE060003E08E /* TutorialCollectionViewController.swift */,
+				8BFB7624228C7890009CEF57 /* AccountInfoViewController.swift */,
 				8877A7702270CE060003E08E /* WelcomeViewController.swift */,
 				8877A7512270B4490003E08E /* HomeViewController.swift */,
 				8877A7502270B4490003E08E /* WaterMarlkViewController.swift */,
@@ -615,6 +618,7 @@
 				664BFF3222899EDA003FFFF8 /* MediaVideoProcessor.swift in Sources */,
 				671682A4227C3F4F0004AC55 /* MainHomeViewController.swift in Sources */,
 				8877A7562270B4490003E08E /* RegisterViewController.swift in Sources */,
+				8BFB7625228C7890009CEF57 /* AccountInfoViewController.swift in Sources */,
 				8877A7582270B4490003E08E /* WaterMarlkViewController.swift in Sources */,
 				88D0C2F52286ACFF0096A51E /* PhotoCollecionViewCell.swift in Sources */,
 				664BFF3F22899EDA003FFFF8 /* Assets.swift in Sources */,
@@ -771,13 +775,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CQMXW54F8T;
+				DEVELOPMENT_TEAM = 8322SXK7YL;
 				INFOPLIST_FILE = "assignment3-group/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "rmit.assignment3xx-groupxx";
+				PRODUCT_BUNDLE_IDENTIFIER = "rmit.assignment3x-groupx";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -790,13 +794,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CQMXW54F8T;
+				DEVELOPMENT_TEAM = 8322SXK7YL;
 				INFOPLIST_FILE = "assignment3-group/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "rmit.assignment3xx-groupxx";
+				PRODUCT_BUNDLE_IDENTIFIER = "rmit.assignment3x-groupx";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

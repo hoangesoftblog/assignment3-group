@@ -27,68 +27,97 @@ class AllRequestsViewController: UIViewController,UITableViewDelegate {
     let reuseIdentifier = "CellRequest"
     let fromRequestToPersonal = "fromRequestToPersonal"
     var temp: CGFloat = 0
+    let refreshControl = UIRefreshControl()
+    var requestDataSnapshot = [DataSnapshot]()
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem?.title = ""
 //        navigationItem.rightBarButtonItem?.isEnabled = false
-        var temp = [DataSnapshot]()
+        
         print("View did load cua request")
+        getDataOnce()
+        
+        if #available(iOS 10.0, *) {
+            self.tableView.refreshControl = refreshControl
+        } else {
+            self.tableView.addSubview(refreshControl)
+        }
+        
+        
+    }
+    
+    @objc func refreshView(){
+        print("\n\nrefresing view working\n\n")
+        requestDataSnapshot.removeAll()
+        requestArray.removeAll()
+        getDataOnce()
+    }
+    
+    func getDataOnce(){
         ref.child("userPicture/\(currentUser!)/RequestISentSomeone").observeSingleEvent(of: .value){ snapshot in
             var tempPic: UIImage?
             for i in snapshot.children {
                 if let i2 = i as? DataSnapshot{
                     print("value of i2 is: ")
                     print(i2.value)
-                    temp.append(i2)
+                    self.requestDataSnapshot.append(i2)
                 }
             }
             
             self.tableView.reloadData()
             
-            for i in 0..<temp.count {
-                var avt: UIImage?
-                if let val = temp[i].value as? [String: String]{
-                    print("Getting on get picture")
-                    storageRef.child(val["image"] ?? "No filename").getData(maxSize: INT64_MAX){ data, error in
-                        if error != nil {
-                            print("Error occurs")
-                        }
-                        else if data != nil {
-                            if let imageTemp = UIImage(data: data!) {
-                                print("image in payment available")
-                                tempPic = imageTemp
-                                
+            let value = self.requestDataSnapshot.count
+            if value >= 0 {
+                for i in 0..<self.requestDataSnapshot.count {
+                    if let val = self.requestDataSnapshot[i].value as? [String: String]{
+                        print("Getting on get picture")
+                        storageRef.child(val["image"] ?? "No filename").getData(maxSize: INT64_MAX){ data, error in
+                            if error != nil {
+                                print("Error occurs")
                             }
-                        }
-                        
-                        ref.child("userPicture/\(val["owner"]!)/avtImage" ?? "No picture").observeSingleEvent(of: .value){ snapshot in
-                            print("\nsnapshot is \(snapshot), ref is \(snapshot.ref)\n")
-                            if let avtFileName = snapshot.value as? String {
-                                print("Can get the value \(avtFileName)")
-                                storageRef.child(avtFileName ).getData(maxSize: INT64_MAX){ data, error in
-                                    if error != nil {
-                                        print("Error occurs")
-                                    }
-                                    else if data != nil {
-                                        if let imageTemp = UIImage(data: data!) {
-                                            print("avt image in payment available")
-                                            self.requestArray[i] = Request(owner: val["owner"] ?? "No owner", image: tempPic, imageName: val["image"] ?? "No image", profilePic: imageTemp)
-                                            self.tableView.reloadData()
+                            else if data != nil {
+                                if let imageTemp = UIImage(data: data!) {
+                                    print("image in payment available")
+                                    tempPic = imageTemp
+                                    
+                                }
+                            }
+                            
+                            ref.child("userPicture/\(val["owner"]!)/avtImage" ?? "No picture").observeSingleEvent(of: .value){ snapshot in
+                                print("\nsnapshot is \(snapshot), ref is \(snapshot.ref)\n")
+                                if let avtFileName = snapshot.value as? String {
+                                    print("Can get the value \(avtFileName)")
+                                    storageRef.child(avtFileName ).getData(maxSize: INT64_MAX){ data, error in
+                                        if error != nil {
+                                            print("Error occurs")
+                                        }
+                                        else if data != nil {
+                                            if let imageTemp = UIImage(data: data!) {
+                                                print("avt image in payment available")
+                                                self.requestArray[value - i] = Request(owner: val["owner"] ?? "No owner", image: tempPic, imageName: val["image"] ?? "No image", profilePic: imageTemp)
+                                                self.tableView.reloadData()
+                                                if self.requestDataSnapshot.count == self.requestArray.count {
+                                                    self.refreshControl.endRefreshing()
+                                                }
+                                            }
                                         }
                                     }
                                 }
                             }
+                            
                         }
-                        
-                        
                     }
                 }
             }
+            else {
+                self.refreshControl.endRefreshing()
+            }
         }
+
     }
     
-    @IBOutlet weak var tableView: UITableView!
 }
 
 extension AllRequestsViewController: UITableViewDataSource {

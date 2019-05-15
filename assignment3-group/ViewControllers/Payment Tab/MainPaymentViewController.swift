@@ -31,13 +31,35 @@ class MainPaymentViewController: UIViewController, UITableViewDelegate {
     var temp : CGFloat = 0
     @IBOutlet weak var tableView: UITableView!
     var notificationArray = [Int: Notif]()
+    var paymentDataSnapshot = [DataSnapshot]()
+    let refreshControl = UIRefreshControl()
+    
+    @objc func refreshView(){
+        print("\n\nrefresing view working\n\n")
+        paymentDataSnapshot.removeAll()
+        notificationArray.removeAll()
+        getDataOnce()
+    }
     
     override func viewDidLoad() {
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 400
-        var temp = [DataSnapshot]()
+        getDataOnce()
         super.viewDidLoad()
+        
+        if #available(iOS 10.0, *) {
+            self.tableView.refreshControl = refreshControl
+        } else {
+            self.tableView.addSubview(refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "Reloading")
+
         print("Current user \(currentUser)")
+    }
+    
+    func getDataOnce() {
         ref.child("userPicture/\(currentUser!)/requestSomeoneSentMe").observeSingleEvent(of: .value){ snapshot in
             var tempPic: UIImage?
             print("On first completion")
@@ -47,56 +69,59 @@ class MainPaymentViewController: UIViewController, UITableViewDelegate {
                 if let i2 = i as? DataSnapshot{
                     print("value of i2 is: ")
                     print(i2.value)
-                    temp.append(i2)
+                    self.paymentDataSnapshot.append(i2)
                 }
             }
             
-            print("Reload data 1st, temp has \(temp.count)")
+            print("Reload data 1st, temp has \(self.paymentDataSnapshot.count)")
             self.tableView.reloadData()
             
-            for i in 0..<temp.count {
-                var avt: UIImage?
-                if let val = temp[i].value as? [String: String]{
-                    print("Getting on get picture")
-                    storageRef.child(val["image"] ?? "No filename").getData(maxSize: INT64_MAX){ data, error in
-                        if error != nil {
-                            print("Error occurs")
-                        }
-                        else if data != nil {
-                            if let imageTemp = UIImage(data: data!) {
-                                print("image in payment available")
-                                tempPic = imageTemp
+            let value = self.paymentDataSnapshot.count - 1
+            if value >= 0{
+                for i in 0..<self.paymentDataSnapshot.count {
+                    if let val = self.paymentDataSnapshot[i].value as? [String: String]{
+                        print("Getting on get picture")
+                        storageRef.child(val["image"] ?? "No filename").getData(maxSize: INT64_MAX){ data, error in
+                            if error != nil {
+                                print("Error occurs")
                             }
-                        }
-                        
-                        ref.child("userPicture/\(val["sender"]!)/avtImage" ?? "No picture").observeSingleEvent(of: .value){ snapshot in
-                            print("\nsnapshot is \(snapshot), ref is \(snapshot.ref)\n")
-                            if let avtFileName = snapshot.value as? String {
-                                print("Can get the value \(avtFileName)")
-                                storageRef.child(avtFileName ).getData(maxSize: INT64_MAX){ data, error in
-                                    if error != nil {
-                                        print("Error occurs")
-                                    }
-                                    else if data != nil {
-                                        if let imageTemp = UIImage(data: data!) {
-                                            print("avt image in payment available")
-                                            self.notificationArray[i] = Notif(sender: val["sender"] ?? "No sender", imageName: val["image"] ?? "No filename", image: tempPic, time: val["time"] ?? "No time", avtImage: imageTemp)
-                                            self.tableView.reloadData()
-                                            
+                            else if data != nil {
+                                if let imageTemp = UIImage(data: data!) {
+                                    print("image in payment available")
+                                    tempPic = imageTemp
+                                }
+                            }
+                            
+                            ref.child("userPicture/\(val["sender"]!)/avtImage" ?? "No picture").observeSingleEvent(of: .value){ snapshot in
+                                print("\nsnapshot is \(snapshot), ref is \(snapshot.ref)\n")
+                                if let avtFileName = snapshot.value as? String {
+                                    print("Can get the value \(avtFileName)")
+                                    storageRef.child(avtFileName ).getData(maxSize: INT64_MAX){ data, error in
+                                        if error != nil {
+                                            print("Error occurs")
+                                        }
+                                        else if data != nil {
+                                            if let imageTemp = UIImage(data: data!) {
+                                                print("avt image in payment available")
+                                                self.notificationArray[value - i] = Notif(sender: val["sender"] ?? "No sender", imageName: val["image"] ?? "No filename", image: tempPic, time: val["time"] ?? "No time", avtImage: imageTemp)
+                                                self.tableView.reloadData()
+                                                if self.paymentDataSnapshot.count == self.notificationArray.count {
+                                                    self.refreshControl.endRefreshing()
+                                                }
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
-                        
-                        
                     }
                 }
-            
             }
             
+            else {
+                self.refreshControl.endRefreshing()
+            }
         }
-        
     }
 }
 
@@ -136,6 +161,8 @@ extension MainPaymentViewController: UITableViewDataSource {
         }
         print("There are \(self.tableView.numberOfRows(inSection: 0)) table row after pressing button")
         
+        paymentDataSnapshot[self.paymentDataSnapshot.count - 1 - val].ref.setValue(nil)
+        
     }
     
     @objc func acceptPic(sender: UIButton){
@@ -144,8 +171,6 @@ extension MainPaymentViewController: UITableViewDataSource {
         ref.child("fileName/\(Media.removeFileExtension(file: (notificationArray[val]?.imageName ?? "Not available")))/SharedWithoutWatermark").childByAutoId().setValue(currentUser!)
         
         ref.child("userPicture/\(notificationArray[val]?.sender)").child("fileSharedWithoutWatermark").childByAutoId().setValue((notificationArray[val]?.imageName ?? "Not available"))
-        
-        ref.child("userPicture")
         
         denyPic(sender: sender)
     }

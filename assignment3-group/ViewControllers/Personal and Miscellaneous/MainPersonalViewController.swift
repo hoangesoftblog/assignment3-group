@@ -83,15 +83,23 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         self.collectionView.reloadData()
     }
     
-    var menuShowing: Bool = false
+    var menuShowing: Bool = true
     var imageNames = [String]()
     var originalArrImages = [Int: UIImage]()
     var index : IndexPath?
     
     let tap = UITapGestureRecognizer(target: self, action: #selector(removingSetting(sender:)))
-
+    
+    let editAccountInfo = "editAccountInfo"
+    
     @IBOutlet weak var sideView: UIView!
     @IBOutlet weak var usernameLabelSideView: UILabel!
+    
+    @IBAction func goToEditAccountInfo(_ sender: Any) {
+        removingSetting()
+        performSegue(withIdentifier: editAccountInfo, sender: self)
+    }
+    
     
 //    @IBOutlet weak var removingSettingView: UIView!
     @IBOutlet weak var removingSettingView: UIView!
@@ -122,6 +130,9 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         imageView.image = #imageLiteral(resourceName: "awesome")
         navigationItem.titleView = imageView
         
+
+        usernameLabelSideView.text = (showingUser == nil) ? currentUser! : showingUser!
+
         
         updateUI()
 //        collectionView.delegate = self
@@ -138,7 +149,6 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
     func loadTotalFileUsed(){
-        
         ref.child("userPicture/\(currentUser!)/fileOwned").observeSingleEvent(of: .value){ snapshot in
             var isVideo = false
             var workingFile = String()
@@ -425,11 +435,19 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        menuShowing = true
+        removingSetting()
         if isLeftBarAbleToShow {
             navigationController?.setNavigationBarHidden(true, animated: false)
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 23))
+            imageView.image = #imageLiteral(resourceName: "awesome")
+            thisClassNavigationBar.topItem!.titleView = imageView
         }
         else {
             thisClassNavigationBar.isHidden = true
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 23))
+            imageView.image = #imageLiteral(resourceName: "awesome")
+            navigationItem.titleView = imageView
         }
         
     }
@@ -455,6 +473,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
 //
     override func viewDidDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
+        removingSetting()
         super.viewDidDisappear(animated)
     }
     
@@ -757,6 +776,7 @@ extension MainPersonalViewController{
             } else{
                 headerView.usernameLabel.text = showingUser
                 headerView.uploadPhotoImageView.isHidden = true
+                headerView.changeBackgroundBt.isHidden = true
             }
             
 //            if profilePic == nil {

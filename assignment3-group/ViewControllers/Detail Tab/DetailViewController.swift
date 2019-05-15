@@ -38,6 +38,9 @@ class DetailViewController: UIViewController {
         print("\n\n\n\n\n\n\n\n\n\n")
         database = Database.database().reference()
         super.viewDidLoad()
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 23))
+        imageView.image = #imageLiteral(resourceName: "awesome")
+        navigationItem.titleView = imageView
         
         
         let imagetappedGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))

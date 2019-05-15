@@ -26,11 +26,14 @@ class PersonalHeaderViewController: UICollectionReusableView {
     
     @IBOutlet weak var uploadPhotoImageView: UIImageView!
     
+    @IBOutlet weak var changeBackgroundBt: UIButton!
+    
     @IBOutlet weak var sortButton: UIButton!
     
     func changAvatar(image:UIImage){
         avtImageView.image = image
-    }   
+    }
+    
     func changeBackground(image:UIImage){
         let backgroundImage = UIImageView(frame: topView.bounds)
         backgroundImage.image = image

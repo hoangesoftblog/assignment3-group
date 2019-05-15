@@ -1786,6 +1786,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                     </constraints>
                                     <connections>
                                         <outlet property="avtImageView" destination="dQg-x9-TuM" id="MG9-GT-aZE"/>
+                                        <outlet property="changeBackgroundBt" destination="xNn-Bg-aHT" id="0Zi-aM-pJO"/>
                                         <outlet property="choiceOfColumns" destination="h8m-7G-ra8" id="1D6-04-g6h"/>
                                         <outlet property="jobLabel" destination="12p-7w-hl5" id="kVT-AR-NwW"/>
                                         <outlet property="sortButton" destination="4XZ-kH-gWH" id="YUf-Fs-zMb"/>
@@ -1802,11 +1803,15 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sh-c4-Ii9" userLabel="sideView">
                                 <rect key="frame" x="-200" y="132" width="200" height="681"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="namtranx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kON-cT-5PK">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="namtranx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kON-cT-5PK">
                                         <rect key="frame" x="22" y="18" width="156" height="20"/>
+                                        <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Xmh-6a-SKD" appends="YES" id="Vhf-HI-P6c"/>
+                                        </connections>
                                     </label>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account setttings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBI-yS-ksP">
                                         <rect key="frame" x="22" y="74" width="135" height="21"/>
@@ -1885,6 +1890,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="5sh-c4-Ii9" firstAttribute="leading" secondItem="QN6-jc-keH" secondAttribute="leading" constant="-200" id="1rv-TV-nAa"/>
                             <constraint firstItem="SO6-Mg-JqS" firstAttribute="leading" secondItem="TDM-UE-MhO" secondAttribute="leading" id="7Lu-cX-qcY"/>
@@ -1907,6 +1913,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <segue destination="72n-FV-aPj" kind="show" id="Hc0-MQ-nYF"/>
                         <segue destination="1dQ-hQ-Wpc" kind="show" id="Fto-8t-FKr"/>
                         <segue destination="593-Lz-Njb" kind="show" identifier="fromPersonalToDetail" id="xyI-wM-fN8"/>
+                        <segue destination="omx-E5-ugD" kind="show" identifier="editAccountInfo" id="Vqu-5j-ViC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPl-z3-TTv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1937,8 +1944,28 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <action selector="uploadPicAvt:" destination="ZEU-52-lDK" id="JmB-iG-7jy"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="Xmh-6a-SKD" userLabel="goToAccountInfo">
+                    <connections>
+                        <action selector="goToEditAccountInfo:" destination="ZEU-52-lDK" id="W9h-gR-VXc"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-30.434782608695656" y="-806.25"/>
+        </scene>
+        <!--Account Info View Controller-->
+        <scene sceneID="iHe-L9-vXv">
+            <objects>
+                <viewController id="omx-E5-ugD" customClass="AccountInfoViewController" customModule="assignment3_group" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rdx-js-ta9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="WX3-b3-vyl"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fKu-k7-Q4q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="789" y="-808"/>
         </scene>
         <!--Photo Action Controller-->
         <scene sceneID="9dz-Cc-ZwO">
@@ -2109,8 +2136,8 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ai0-oF-DMh"/>
-        <segue reference="55c-uu-KG9"/>
-        <segue reference="4dA-6W-JLb"/>
+        <segue reference="8Fu-od-Qx6"/>
+        <segue reference="Cba-QY-Zxx"/>
         <segue reference="xyI-wM-fN8"/>
     </inferredMetricsTieBreakers>
 </document>
