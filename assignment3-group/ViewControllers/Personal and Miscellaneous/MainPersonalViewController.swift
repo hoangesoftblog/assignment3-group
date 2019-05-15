@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Photos
+import FBSDKLoginKit
 
 private let reuseIdentifier = "personalCollectionViewCell"
 
@@ -398,6 +399,8 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     @IBAction func logoutTapped(_ sender: UITapGestureRecognizer) {
         do {
             try Auth.auth().signOut()
+            let loginManager = FBSDKLoginManager()
+            loginManager.logOut()
             self.dismiss(animated: true, completion: nil)
         }
         catch let signOutError as NSError {
