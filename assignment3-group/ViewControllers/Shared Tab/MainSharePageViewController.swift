@@ -86,6 +86,10 @@ class MainSharePageViewController: UIViewController {
                         }
                     }
                 }
+                else {
+                    self.refreshControl.endRefreshing()
+                }
+
             }
         }
     }

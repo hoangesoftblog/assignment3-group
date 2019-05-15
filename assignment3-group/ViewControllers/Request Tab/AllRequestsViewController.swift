@@ -12,11 +12,13 @@ class Request {
     var owner: String?
     var imageName: String?
     var image: UIImage?
+    var profilePic: UIImage?
     
-    init(owner: String, image: UIImage?, imageName: String?) {
+    init(owner: String, image: UIImage?, imageName: String?, profilePic: UIImage?) {
         self.image = image
         self.imageName = imageName
         self.owner = owner
+        self.profilePic = profilePic
     }
 }
 
@@ -45,6 +47,7 @@ class AllRequestsViewController: UIViewController,UITableViewDelegate {
             self.tableView.reloadData()
             
             for i in 0..<temp.count {
+                var avt: UIImage?
                 if let val = temp[i].value as? [String: String]{
                     print("Getting on get picture")
                     storageRef.child(val["image"] ?? "No filename").getData(maxSize: INT64_MAX){ data, error in
@@ -58,8 +61,27 @@ class AllRequestsViewController: UIViewController,UITableViewDelegate {
                                 
                             }
                         }
-                        self.requestArray[i] = Request(owner: val["owner"] ?? "No owner", image: tempPic, imageName: val["image"] ?? "No image")
-                        self.tableView.reloadData()
+                        
+                        ref.child("userPicture/\(val["owner"]!)/avtImage" ?? "No picture").observeSingleEvent(of: .value){ snapshot in
+                            print("\nsnapshot is \(snapshot), ref is \(snapshot.ref)\n")
+                            if let avtFileName = snapshot.value as? String {
+                                print("Can get the value \(avtFileName)")
+                                storageRef.child(avtFileName ).getData(maxSize: INT64_MAX){ data, error in
+                                    if error != nil {
+                                        print("Error occurs")
+                                    }
+                                    else if data != nil {
+                                        if let imageTemp = UIImage(data: data!) {
+                                            print("avt image in payment available")
+                                            self.requestArray[i] = Request(owner: val["owner"] ?? "No owner", image: tempPic, imageName: val["image"] ?? "No image", profilePic: imageTemp)
+                                            self.tableView.reloadData()
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        
                     }
                 }
             }
@@ -94,6 +116,9 @@ extension AllRequestsViewController: UITableViewDataSource {
                 customCell.usernameButton.setTitle(requestArray[indexPath.row]?.owner, for: .normal)
                 customCell.usernameButton.addTarget(self, action: #selector(goToSender(sender:)), for: .touchUpInside)
                 
+                
+                print("Profile in Request is nil or not: \(requestArray[indexPath.row]?.profilePic == nil)")
+                customCell.profilePic.image = requestArray[indexPath.row]?.profilePic
     
                 return customCell
             }

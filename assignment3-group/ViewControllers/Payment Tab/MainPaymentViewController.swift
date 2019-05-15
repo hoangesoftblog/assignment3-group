@@ -33,6 +33,7 @@ class MainPaymentViewController: UIViewController,UITableViewDelegate {
     var notificationArray = [Int: Notif]()
     
     override func viewDidLoad() {
+        navigationItem.title = "Buy notification"
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 400
         var temp = [DataSnapshot]()
@@ -80,7 +81,8 @@ class MainPaymentViewController: UIViewController,UITableViewDelegate {
                                     else if data != nil {
                                         if let imageTemp = UIImage(data: data!) {
                                             print("avt image in payment available")
-                                            avt = imageTemp
+                                            self.notificationArray[i] = Notif(sender: val["sender"] ?? "No sender", imageName: val["image"] ?? "No filename", image: tempPic, time: val["time"] ?? "No time", avtImage: imageTemp)
+                                            self.tableView.reloadData()
                                             
                                         }
                                     }
@@ -88,8 +90,7 @@ class MainPaymentViewController: UIViewController,UITableViewDelegate {
                             }
                         }
                         
-                        self.notificationArray[i] = Notif(sender: val["sender"] ?? "No sender", imageName: val["image"] ?? "No filename", image: tempPic, time: val["time"] ?? "No time", avtImage: avt)
-                        self.tableView.reloadData()
+                        
                     }
                 }
             
@@ -192,6 +193,7 @@ extension MainPaymentViewController: UITableViewDataSource {
                 
                 customCell.contactButton.accessibilityIdentifier = notificationArray[indexPath.row]?.sender
                 customCell.contactButton.addTarget(self, action: #selector(contactOwner(sender:)), for: .touchUpInside)
+                
                 
                 customCell.profilePicture.image = notificationArray[indexPath.row]?.avtImage
                 return customCell

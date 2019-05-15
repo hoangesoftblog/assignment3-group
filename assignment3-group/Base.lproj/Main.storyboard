@@ -789,18 +789,19 @@
                                                 </stackView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uh1-DR-MWK">
                                                     <rect key="frame" x="20" y="12" width="53" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="53" id="Qmm-gD-dtX"/>
+                                                        <constraint firstAttribute="height" constant="45" id="a7S-nv-Ojn"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="uh1-DR-MWK" firstAttribute="top" secondItem="f8A-xJ-svT" secondAttribute="topMargin" constant="1" id="9wa-k8-dJ2"/>
                                                 <constraint firstItem="UtA-p8-q6T" firstAttribute="top" secondItem="f8A-xJ-svT" secondAttribute="topMargin" constant="10" id="CHZ-DK-gAG"/>
-                                                <constraint firstItem="UtA-p8-q6T" firstAttribute="leading" secondItem="uh1-DR-MWK" secondAttribute="trailing" constant="20" id="GrX-Sz-FpY"/>
                                                 <constraint firstItem="69s-HQ-kHg" firstAttribute="leading" secondItem="f8A-xJ-svT" secondAttribute="leadingMargin" constant="5" id="IR3-fn-oUo"/>
-                                                <constraint firstItem="uh1-DR-MWK" firstAttribute="leading" secondItem="f8A-xJ-svT" secondAttribute="leadingMargin" id="Qx2-TL-c2k"/>
                                                 <constraint firstItem="69s-HQ-kHg" firstAttribute="top" secondItem="UtA-p8-q6T" secondAttribute="bottom" constant="8" id="YxQ-UK-OE9"/>
+                                                <constraint firstItem="UtA-p8-q6T" firstAttribute="leading" secondItem="uh1-DR-MWK" secondAttribute="trailing" constant="20" id="ayq-nL-AoP"/>
                                                 <constraint firstItem="JsI-QT-myG" firstAttribute="top" secondItem="69s-HQ-kHg" secondAttribute="bottom" constant="8" id="liB-L5-yCl"/>
                                                 <constraint firstItem="JsI-QT-myG" firstAttribute="leading" secondItem="f8A-xJ-svT" secondAttribute="leadingMargin" constant="5" id="nlf-61-9QC"/>
-                                                <constraint firstItem="69s-HQ-kHg" firstAttribute="top" secondItem="uh1-DR-MWK" secondAttribute="bottom" constant="8" id="uNG-vi-VCO"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1249,8 +1250,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="441.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrB-ua-6sG">
-                                                    <rect key="frame" x="25" y="21" width="369" height="36"/>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrB-ua-6sG">
+                                                    <rect key="frame" x="98" y="21" width="296" height="36"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
                                                     <state key="normal" title="User">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1262,8 +1263,8 @@
                                                     <color key="textColor" red="0.91372549020000005" green="0.23529411759999999" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NH2-Ga-ocF">
-                                                    <rect key="frame" x="25" y="96" width="369" height="23"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NH2-Ga-ocF">
+                                                    <rect key="frame" x="24.999999999999996" y="97" width="38.666666666666657" height="23"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1272,18 +1273,26 @@
                                                     <rect key="frame" x="20" y="138" width="374" height="267"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hbQ-Ma-7zE">
+                                                    <rect key="frame" x="20" y="12" width="55" height="56"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="56" id="qO5-If-Xba"/>
+                                                        <constraint firstAttribute="width" constant="55" id="wgh-yT-1Ec"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="NH2-Ga-ocF" firstAttribute="top" secondItem="Qhw-wu-gSF" secondAttribute="bottom" constant="8" id="OP6-r6-YXf"/>
+                                                <constraint firstItem="FrB-ua-6sG" firstAttribute="leading" secondItem="hbQ-Ma-7zE" secondAttribute="trailing" constant="23" id="Qdb-wD-Sxp"/>
                                                 <constraint firstItem="NH2-Ga-ocF" firstAttribute="leading" secondItem="jJL-9P-S67" secondAttribute="leadingMargin" constant="5" id="dPD-Hn-SOK"/>
                                                 <constraint firstItem="FrB-ua-6sG" firstAttribute="top" secondItem="jJL-9P-S67" secondAttribute="topMargin" constant="10" id="l8n-zL-52g"/>
                                                 <constraint firstItem="Qhw-wu-gSF" firstAttribute="top" secondItem="FrB-ua-6sG" secondAttribute="bottom" constant="8" id="mBY-DN-ezo"/>
-                                                <constraint firstItem="FrB-ua-6sG" firstAttribute="leading" secondItem="jJL-9P-S67" secondAttribute="leadingMargin" constant="5" id="oXj-g7-nrP"/>
                                                 <constraint firstItem="Qhw-wu-gSF" firstAttribute="leading" secondItem="jJL-9P-S67" secondAttribute="leadingMargin" constant="5" id="sfc-6n-e9L"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="photo" destination="owd-bu-Ly8" id="ikH-na-Mo0"/>
+                                            <outlet property="profilePic" destination="hbQ-Ma-7zE" id="JVf-ya-eiT"/>
                                             <outlet property="requestLabel" destination="Qhw-wu-gSF" id="ztZ-Hb-upy"/>
                                             <outlet property="usernameButton" destination="FrB-ua-6sG" id="Ba2-iU-7EE"/>
                                         </connections>
@@ -1885,6 +1894,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <outlet property="sideView" destination="5sh-c4-Ii9" id="8tx-zf-xRO"/>
                         <outlet property="sideViewLeadingContraint" destination="1rv-TV-nAa" id="zhK-I9-EDW"/>
                         <outlet property="thisClassNavigationBar" destination="SO6-Mg-JqS" id="Z7j-tD-u2G"/>
+                        <outlet property="usernameLabelSideView" destination="kON-cT-5PK" id="SUq-Ym-e0m"/>
                         <segue destination="AYT-TI-lax" kind="show" id="84C-Gs-f3k"/>
                         <segue destination="72n-FV-aPj" kind="show" id="Hc0-MQ-nYF"/>
                         <segue destination="1dQ-hQ-Wpc" kind="show" id="Fto-8t-FKr"/>

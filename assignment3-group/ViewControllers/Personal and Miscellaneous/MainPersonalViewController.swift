@@ -26,7 +26,12 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     let goToAccountSetting = "goToAccountSetting"
     let goToAppearance = "goToAppearance"
     let goToStatistic = "goToStatistic"
+
     var collectionV : PersonalHeaderViewController?
+
+    let refreshControl = UIRefreshControl()
+    
+
 //    @IBOutlet weak var usernameLabel: UILabel!
 //
 //    @IBOutlet weak var jobLabel: UILabel!
@@ -46,7 +51,6 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     
     @IBOutlet weak var sideViewLeadingContraint: NSLayoutConstraint!
     
-    @IBOutlet weak var choiceOfColumns: UISegmentedControl!
     @IBAction func switchView(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -68,14 +72,31 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     let tap = UITapGestureRecognizer(target: self, action: #selector(removingSetting(sender:)))
 
     @IBOutlet weak var sideView: UIView!
+    @IBOutlet weak var usernameLabelSideView: UILabel!
     
 //    @IBOutlet weak var removingSettingView: UIView!
     @IBOutlet weak var removingSettingView: UIView!
+    
+    @objc func refreshView(){
+        print("\n\nrefresing view working\n\n")
+        originalArrImages.removeAll()
+        imageNames.removeAll()
+        grabPhoto()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sideView.layer.borderWidth = 0.25
         sideView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        if #available(iOS 10.0, *) {
+            self.collectionView.refreshControl = refreshControl
+        } else {
+            self.collectionView.addSubview(refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "Reloading")
         
         updateUI()
 //        collectionView.delegate = self
@@ -119,71 +140,76 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
     func grabPhoto(){
-        //        if showingUser == nil {
-        ref.child("userPicture/\(currentUser!)/fileOwned").observeSingleEvent(of: .value){ snapshot in
-            for i in snapshot.children {
-                if let i2 = (i as? DataSnapshot)?.value as? String {
-                    self.imageNames.append(i2)
+        if showingUser == nil {
+            ref.child("userPicture/\(currentUser!)/fileOwned").observeSingleEvent(of: .value){ snapshot in
+                for i in snapshot.children {
+                    if let i2 = (i as? DataSnapshot)?.value as? String {
+                        self.imageNames.append(i2)
+                    }
                 }
-            }
-            
-            self.printArray(array: self.imageNames)
-            self.collectionView.reloadData()
-            
-            let val = self.imageNames.count - 1
-            print("Val before run: \(val)")
-            if val >= 0 {
-                for i in 0...val{
-                    storageRef.child(self.imageNames[i]).getData(maxSize: INT64_MAX){ data, error in
-                        print("\nCurrently getting image: \(self.imageNames[i]) \n")
-                        if error != nil {
-                            print("\n\(self.imageNames[i]) error occur\n")
-                        }
-                        else if data != nil {
-                            if let imageTemp = UIImage(data: data!) {
-                                print("\n\(self.imageNames[i]) image is available\n")
-                                self.originalArrImages[val - i] = imageTemp
+                
+                self.printArray(array: self.imageNames)
+                self.collectionView.reloadData()
+                
+                let val = self.imageNames.count - 1
+                print("Val before run: \(val)")
+                if val >= 0 {
+                    for i in 0...val{
+                        storageRef.child(self.imageNames[i]).getData(maxSize: INT64_MAX){ data, error in
+                            print("\nCurrently getting image: \(self.imageNames[i]) \n")
+                            if error != nil {
+                                print("\n\(self.imageNames[i]) error occur\n")
+                            }
+                            else if data != nil {
+                                if let imageTemp = UIImage(data: data!) {
+                                    print("\n\(self.imageNames[i]) image is available\n")
+                                    self.originalArrImages[val - i] = imageTemp
+                                }
+                            }
+                            
+                            self.collectionView.reloadData()
+                            if self.originalArrImages.count == self.imageNames.count{
+                                self.refreshControl.endRefreshing()
                             }
                         }
-                        
-                        self.collectionView.reloadData()
+                    }
+                }
+                else {
+                    self.refreshControl.endRefreshing()
+                }
+            }
+        }
+        else {
+            ref.child("userPicture/\(showingUser!)/Public").observeSingleEvent(of: .value){ snapshot in
+                for i in snapshot.children {
+                    if let i2 = (i as? DataSnapshot)?.value as? String {
+                        self.imageNames.append(i2)
+                    }
+                }
+
+                self.collectionView.reloadData()
+
+                let val = self.imageNames.count - 1
+                if val >= 0 {
+                    for i in 0...val{
+                        storageRef.child(self.imageNames[i]).getData(maxSize: INT64_MAX){ data, error in
+                            print(self.imageNames[i], separator: "", terminator: " ")
+                            if error != nil {
+                                print("Error occurs")
+                            }
+                            else if data != nil {
+                                if let imageTemp = UIImage(data: data!) {
+                                    print("image available")
+                                    self.originalArrImages[val - i] = imageTemp
+                                }
+                            }
+
+                            self.collectionView.reloadData()
+                        }
                     }
                 }
             }
         }
-        //       }
-        
-        //        else {
-        //            ref.child("userPicture/\(showingUser!)/Public").observeSingleEvent(of: .value){ snapshot in
-        //                for i in snapshot.children {
-        //                    if let i2 = (i as? DataSnapshot)?.value as? String {
-        //                        self.imageNames.append(i2)
-        //                    }
-        //                }
-        //
-        //                self.collectionView.reloadData()
-        //
-        //                let val = self.imageNames.count - 1
-        //                if val >= 0 {
-        //                    for i in 0...val{
-        //                        storageRef.child(self.imageNames[i]).getData(maxSize: INT64_MAX){ data, error in
-        //                            print(self.imageNames[i], separator: "", terminator: " ")
-        //                            if error != nil {
-        //                                print("Error occurs")
-        //                            }
-        //                            else if data != nil {
-        //                                if let imageTemp = UIImage(data: data!) {
-        //                                    print("image available")
-        //                                    self.originalArrImages[val - i] = imageTemp
-        //                                }
-        //                            }
-        //
-        //                            self.collectionView.reloadData()
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }
     }
     
     var imagePick = UIImagePickerController()
@@ -317,8 +343,8 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         
     }
     override func viewDidDisappear(_ animated: Bool) {
+        sideView.isHidden = true
         super.viewDidDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     
@@ -385,9 +411,11 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     
     @objc func removingSetting(sender: UITapGestureRecognizer? = nil){
         if menuShowing{
+            sideView.isHidden = true
             sideViewLeadingContraint.constant = -200
         }
         else{
+            sideView.isHidden = false
             sideViewLeadingContraint.constant = 0
         }
         
@@ -401,10 +429,14 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     
     @IBAction func toggledTapped(_ sender: Any) {
         if menuShowing{
+            
+            sideView.isHidden = true
             sideViewLeadingContraint.constant = -200
             removingSettingView.removeGestureRecognizer(tap)
             
-        }else{
+        }
+        else{
+            sideView.isHidden = false
             sideViewLeadingContraint.constant = 0
             removingSettingView.addGestureRecognizer(tap)
         }

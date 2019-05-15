@@ -12,6 +12,7 @@ class RequestCell: UITableViewCell {
     @IBOutlet weak var usernameButton: UIButton!
     @IBOutlet weak var requestLabel: UILabel!
     @IBOutlet weak var photo: UIImageView!
+    @IBOutlet weak var profilePic: UIImageView!
     
     
     override func awakeFromNib() {
