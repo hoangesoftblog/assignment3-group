@@ -252,10 +252,35 @@ class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDe
                 if (result?.isCancelled)!{
                     return
                 }
-                if(fbloginresult.grantedPermissions.contains("email"))
-                {
-                    self.getFBUserData2()
+                let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current()?.tokenString ?? "no")
+                //        if(credential != nil){
+                //        print("credential: \(credential)")
+                self.getFBInfo()
+                self.getFBUserData()
+                Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        return
+                    }
+                    print(credential)
+                    ref.child("IDToUser").observeSingleEvent(of: .value){ snapshot in
+                        if snapshot.hasChild(Auth.auth().currentUser!.uid) {
+                            currentUser = snapshot.childSnapshot(forPath: Auth.auth().currentUser!.uid).value as? String
+                            self.goToMain()
+                        }
+                        else {
+                            self.performSegue(withIdentifier: self.enterUsername, sender: self)
+                        }
+                    }
+                    
+                    
+                    // User is signed in
+                    // ...
                 }
+//                if(fbloginresult.grantedPermissions.contains("email"))
+//                {
+//                    self.getFBUserData2()
+//                }
             }
         }
     }

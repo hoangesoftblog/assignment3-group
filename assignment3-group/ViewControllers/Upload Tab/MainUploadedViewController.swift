@@ -103,9 +103,9 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if(choice == 1){
+        if(choice == 1 || choice == 4){
             print("here")
-            imagePicker.dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
             imageToSend = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
 //            imagestore = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
 //            uploadPhoto()
@@ -119,7 +119,7 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
 //            performSegue(withIdentifier: PhotoActionSegue, sender: imageView.image)
         //    performSegue(withIdentifie, sender: <#T##Any?#>)
         }
-        if(choice == 2){
+        if(choice == 2 || choice == 3){
             print("wawawa")
             dismiss(animated: true, completion: nil)
             guard let mediaType = info[UIImagePickerController.InfoKey.mediaType] as? String,
@@ -343,6 +343,28 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
         VideoHelper.startMediaBrowser(delegate: self, sourceType: .camera)
     }
     
+    func startMediaBrowser(delegate: UIViewController & UINavigationControllerDelegate & UIImagePickerControllerDelegate, sourceType: UIImagePickerController.SourceType) {
+        guard UIImagePickerController.isSourceTypeAvailable(sourceType) else { return }
+        
+        let mediaUI = UIImagePickerController()
+        mediaUI.sourceType = sourceType
+        mediaUI.mediaTypes = [kUTTypeMovie as String]
+        mediaUI.allowsEditing = true
+        mediaUI.delegate = delegate
+        delegate.present(mediaUI, animated: true, completion: nil)
+    }
+    
+    func startPhotoBrowser(delegate: UIViewController & UINavigationControllerDelegate & UIImagePickerControllerDelegate, sourceType: UIImagePickerController.SourceType) {
+        guard UIImagePickerController.isSourceTypeAvailable(sourceType) else { return }
+        
+        let mediaUI = UIImagePickerController()
+        mediaUI.sourceType = .photoLibrary
+        //        mediaUI.type
+        //        mediaTypes = [kUTTypePNG as String]
+        mediaUI.allowsEditing = true
+        mediaUI.delegate = delegate
+        delegate.present(mediaUI, animated: true, completion: nil)
+    }
     
     func display2(){
         let actionSheetControllerIOS8: UIAlertController = UIAlertController(title: "Please select", message: "Option to select", preferredStyle: .actionSheet)
@@ -357,7 +379,7 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
             self.takePhoto()
             print("Take a photo")
             self.choice = 1;
-//            self.performSegue(withIdentifier: self.photoEdit, sender: (Any).self)
+            //            self.performSegue(withIdentifier: self.photoEdit, sender: (Any).self)
         }
         actionSheetControllerIOS8.addAction(saveActionButton)
         
@@ -367,6 +389,25 @@ class MainUploadedViewController: UIViewController, UIImagePickerControllerDeleg
             self.record()
         }
         actionSheetControllerIOS8.addAction(deleteActionButton)
+        
+        let importVideo = UIAlertAction(title: "Import Video from Library", style: .default)
+        { _ in
+            print("import video")
+            self.choice = 3;
+            self.startMediaBrowser(delegate: self, sourceType: .savedPhotosAlbum)
+            //            self.performSegue(withIdentifier: self.photoEdit, sender: (Any).self)
+        }
+        actionSheetControllerIOS8.addAction(importVideo)
+        
+        let importPhoto = UIAlertAction(title: "Import Photo from Library", style: .default)
+        { _ in
+            print("import photo")
+            self.choice = 4;
+            self.startPhotoBrowser(delegate: self, sourceType: .photoLibrary)
+            //            self.performSegue(withIdentifier: self.photoEdit, sender: (Any).self)
+        }
+        actionSheetControllerIOS8.addAction(importPhoto)
+        
         self.present(actionSheetControllerIOS8, animated: true, completion: nil)
     }
     func displayActionSheet(){
