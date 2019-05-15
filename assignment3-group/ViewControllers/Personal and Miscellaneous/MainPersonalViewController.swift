@@ -136,77 +136,76 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
     func grabPhoto(){
-        //        if showingUser == nil {
-        ref.child("userPicture/\(currentUser!)/fileOwned").observeSingleEvent(of: .value){ snapshot in
-            for i in snapshot.children {
-                if let i2 = (i as? DataSnapshot)?.value as? String {
-                    self.imageNames.append(i2)
+        if showingUser == nil {
+            ref.child("userPicture/\(currentUser!)/fileOwned").observeSingleEvent(of: .value){ snapshot in
+                for i in snapshot.children {
+                    if let i2 = (i as? DataSnapshot)?.value as? String {
+                        self.imageNames.append(i2)
+                    }
                 }
-            }
-            
-            self.printArray(array: self.imageNames)
-            self.collectionView.reloadData()
-            
-            let val = self.imageNames.count - 1
-            print("Val before run: \(val)")
-            if val >= 0 {
-                for i in 0...val{
-                    storageRef.child(self.imageNames[i]).getData(maxSize: INT64_MAX){ data, error in
-                        print("\nCurrently getting image: \(self.imageNames[i]) \n")
-                        if error != nil {
-                            print("\n\(self.imageNames[i]) error occur\n")
-                        }
-                        else if data != nil {
-                            if let imageTemp = UIImage(data: data!) {
-                                print("\n\(self.imageNames[i]) image is available\n")
-                                self.originalArrImages[val - i] = imageTemp
+                
+                self.printArray(array: self.imageNames)
+                self.collectionView.reloadData()
+                
+                let val = self.imageNames.count - 1
+                print("Val before run: \(val)")
+                if val >= 0 {
+                    for i in 0...val{
+                        storageRef.child(self.imageNames[i]).getData(maxSize: INT64_MAX){ data, error in
+                            print("\nCurrently getting image: \(self.imageNames[i]) \n")
+                            if error != nil {
+                                print("\n\(self.imageNames[i]) error occur\n")
+                            }
+                            else if data != nil {
+                                if let imageTemp = UIImage(data: data!) {
+                                    print("\n\(self.imageNames[i]) image is available\n")
+                                    self.originalArrImages[val - i] = imageTemp
+                                }
+                            }
+                            
+                            self.collectionView.reloadData()
+                            if self.originalArrImages.count == self.imageNames.count{
+                                self.refreshControl.endRefreshing()
                             }
                         }
-                        
-                        self.collectionView.reloadData()
-                        if self.originalArrImages.count == self.imageNames.count{
-                            self.refreshControl.endRefreshing()
+                    }
+                }
+                else {
+                    self.refreshControl.endRefreshing()
+                }
+            }
+        }
+        else {
+            ref.child("userPicture/\(showingUser!)/Public").observeSingleEvent(of: .value){ snapshot in
+                for i in snapshot.children {
+                    if let i2 = (i as? DataSnapshot)?.value as? String {
+                        self.imageNames.append(i2)
+                    }
+                }
+
+                self.collectionView.reloadData()
+
+                let val = self.imageNames.count - 1
+                if val >= 0 {
+                    for i in 0...val{
+                        storageRef.child(self.imageNames[i]).getData(maxSize: INT64_MAX){ data, error in
+                            print(self.imageNames[i], separator: "", terminator: " ")
+                            if error != nil {
+                                print("Error occurs")
+                            }
+                            else if data != nil {
+                                if let imageTemp = UIImage(data: data!) {
+                                    print("image available")
+                                    self.originalArrImages[val - i] = imageTemp
+                                }
+                            }
+
+                            self.collectionView.reloadData()
                         }
                     }
                 }
             }
-            else {
-                self.refreshControl.endRefreshing()
-            }
         }
-        //       }
-        
-        //        else {
-        //            ref.child("userPicture/\(showingUser!)/Public").observeSingleEvent(of: .value){ snapshot in
-        //                for i in snapshot.children {
-        //                    if let i2 = (i as? DataSnapshot)?.value as? String {
-        //                        self.imageNames.append(i2)
-        //                    }
-        //                }
-        //
-        //                self.collectionView.reloadData()
-        //
-        //                let val = self.imageNames.count - 1
-        //                if val >= 0 {
-        //                    for i in 0...val{
-        //                        storageRef.child(self.imageNames[i]).getData(maxSize: INT64_MAX){ data, error in
-        //                            print(self.imageNames[i], separator: "", terminator: " ")
-        //                            if error != nil {
-        //                                print("Error occurs")
-        //                            }
-        //                            else if data != nil {
-        //                                if let imageTemp = UIImage(data: data!) {
-        //                                    print("image available")
-        //                                    self.originalArrImages[val - i] = imageTemp
-        //                                }
-        //                            }
-        //
-        //                            self.collectionView.reloadData()
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }
     }
     
     var imagePick = UIImagePickerController()

@@ -55,9 +55,14 @@ class MainHomeViewController: UIViewController {
     }
     
     func loadTotalFileUsed(){
+        
         ref.child("userPicture/\(currentUser!)/fileOwned").observeSingleEvent(of: .value){ snapshot in
+            print(snapshot.value)
             for i in snapshot.children {
+                print("Inside first loop")
                 if let i2 = (i as? DataSnapshot)?.value as? String {
+                    print("Inside second loop, i2 is \(i2)")
+                    
                     storageRef.child(i2).getMetadata{ metadata, error in
                         if error != nil {
                             print("file name \(i2) get metadata error \(error?.localizedDescription)")
@@ -67,6 +72,9 @@ class MainHomeViewController: UIViewController {
                         }
                         print("file name \(i2) has the size of \(metadata?.size)")
                     }
+                }
+                else {
+                    print("Invalid path")
                 }
             }
         }
