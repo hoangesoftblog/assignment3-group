@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import Firebase
 
 extension UIColor{
     convenience init (red: Int, green: Int, blue: Int){
@@ -18,9 +19,9 @@ extension UIColor{
     }
 }
 // Memory is in MB
-var memoryPhoto : Double = 23
-var memoryVideo : Double = 4
-var memoryAllowed : Double = 100
+var memoryPhoto : Double = 0
+var memoryVideo : Double = 0
+var memoryAllowed : Double = 50 * 1024 * 1024
 var memoryUsed : Double = memoryPhoto + memoryVideo
 var memoryLeft : Double = memoryAllowed - memoryUsed
 
@@ -44,13 +45,33 @@ class StatisticsViewController: UIViewController {
     var separateMemoryDataEntries = [PieChartDataEntry]()
     
     
-    
+    func loadTotalFileUsed(){
+        
+            ref.child("userPicture/\(currentUser!)/fileOwned").observeSingleEvent(of: .value){ snapshot in
+            for i in snapshot.children {
+                if let i2 = (i as? DataSnapshot)?.value as? String {
+                    let workingFile = (i2.contains("thumbnail")) ? (i2.replacingOccurrences(of: "thumbnail", with: "") + ".mp4") : i2
+                    storageRef.child(workingFile).getMetadata{ metadata, error in
+                        if error != nil {
+                            print("file name \(workingFile) get metadata error \(error?.localizedDescription)")
+                        }
+                        else {
+                            print("file name \(workingFile) has the size of \(metadata?.size)")
+                        }
+                    }
+                }
+                else {
+                    print("Invalid path")
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-       
+        
         totalMemoryPieChart.animate(xAxisDuration: 1, yAxisDuration: 1)
         separateMemoryPieChart.animate(xAxisDuration: 1, yAxisDuration: 1)
         
