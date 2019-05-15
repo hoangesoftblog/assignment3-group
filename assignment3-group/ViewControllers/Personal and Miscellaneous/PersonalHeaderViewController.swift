@@ -12,6 +12,7 @@ class PersonalHeaderViewController: UICollectionReusableView {
     
     @IBOutlet weak var topView: UIView!
     
+  
     
     @IBOutlet weak var usernameLabel: UILabel!
     
@@ -29,7 +30,14 @@ class PersonalHeaderViewController: UICollectionReusableView {
     
     func changAvatar(image:UIImage){
         avtImageView.image = image
+    }   
+    func changeBackground(image:UIImage){
+        let backgroundImage = UIImageView(frame: topView.bounds)
+        backgroundImage.image = image
+        backgroundImage.contentMode = .scaleToFill
+        topView.insertSubview(backgroundImage, at: 0)
     }
-    
+//    @IBOutlet weak var backGroundButton: UIButton!
+//
     
 }

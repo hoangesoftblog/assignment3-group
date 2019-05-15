@@ -14,6 +14,25 @@ private let reuseIdentifier = "personalCollectionViewCell"
 
 class MainPersonalViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
+    @IBAction func changeBackground(_ sender: Any) {
+        print("testing")
+        choicex = 2
+        let actionsheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle:.actionSheet)
+        actionsheet.addAction(UIAlertAction(title: "Camera", style: .default, handler:{ (action:UIAlertAction) in self.imagePick.sourceType = .camera
+            self.takePhoto()
+            //            self.present(self.imagePick, animated: true, completion: nil)
+        }))
+        actionsheet.addAction(UIAlertAction(title: "Photo library", style: .default, handler: {(action:UIAlertAction) in self.imagePick.sourceType = .photoLibrary
+            //            self.imagePick.delegate = self
+            self.startPhotoBrowser(delegate: self, sourceType: .photoLibrary)
+            
+            //            self.present(self.imagePick, animated: true, completion: nil)
+            
+        }))
+        actionsheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(actionsheet, animated: true, completion: nil)
+    }
+    
     var profilePic: UIImage?
     var isLeftBarAbleToShow = true
     var showingUser: String?
@@ -76,7 +95,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     
 //    @IBOutlet weak var removingSettingView: UIView!
     @IBOutlet weak var removingSettingView: UIView!
-    
+
     @objc func refreshView(){
         print("\n\nrefresing view working\n\n")
         originalArrImages.removeAll()
@@ -86,6 +105,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         sideView.layer.borderWidth = 0.25
         sideView.layer.borderColor = UIColor.lightGray.cgColor
         
@@ -256,9 +276,31 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
     var imagePick = UIImagePickerController()
-    
+    var choicex : Int?
     @IBOutlet weak var uploadPhotoImageView: UIImageView!
+    
+    
     @IBOutlet weak var thisClassNavigationBar: UINavigationBar!
+    
+    @IBAction func uploadBackGround(_ sender: Any) {
+        print("testing")
+        choicex = 2
+        let actionsheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle:.actionSheet)
+        actionsheet.addAction(UIAlertAction(title: "Camera", style: .default, handler:{ (action:UIAlertAction) in self.imagePick.sourceType = .camera
+            self.takePhoto()
+            //            self.present(self.imagePick, animated: true, completion: nil)
+        }))
+        actionsheet.addAction(UIAlertAction(title: "Photo library", style: .default, handler: {(action:UIAlertAction) in self.imagePick.sourceType = .photoLibrary
+            //            self.imagePick.delegate = self
+            self.startPhotoBrowser(delegate: self, sourceType: .photoLibrary)
+            
+            //            self.present(self.imagePick, animated: true, completion: nil)
+            
+        }))
+        actionsheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(actionsheet, animated: true, completion: nil)
+    }
+    
     
     @IBAction func uploadPicAvt(_ sender: Any) {
 //        func takePhoto() {
@@ -274,6 +316,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
 //
 //        }
 //        imagePick.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        choicex = 1
         let actionsheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle:.actionSheet)
         actionsheet.addAction(UIAlertAction(title: "Camera", style: .default, handler:{ (action:UIAlertAction) in self.imagePick.sourceType = .camera
             self.takePhoto()
@@ -335,8 +378,13 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         var imageToSend = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
             //            imagestore = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
             //            uploadPhoto()
-
-        collectionV!.changAvatar(image: imageToSend)
+        if(choicex == 1){
+            collectionV!.changAvatar(image: imageToSend)
+        } else if (choicex == 2){
+            
+            collectionV!.changeBackground(image: imageToSend)
+        }
+        
 //        dismiss(animated: true, completion: nil)
         
         
@@ -385,6 +433,26 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         }
         
     }
+    
+//    @objc func backgroundChange(sender:UITapGestureRecognizer){
+//        print("testing")
+//        choicex = 2
+//        let actionsheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle:.actionSheet)
+//        actionsheet.addAction(UIAlertAction(title: "Camera", style: .default, handler:{ (action:UIAlertAction) in self.imagePick.sourceType = .camera
+//            self.takePhoto()
+//            //            self.present(self.imagePick, animated: true, completion: nil)
+//        }))
+//        actionsheet.addAction(UIAlertAction(title: "Photo library", style: .default, handler: {(action:UIAlertAction) in self.imagePick.sourceType = .photoLibrary
+//            //            self.imagePick.delegate = self
+//            self.startPhotoBrowser(delegate: self, sourceType: .photoLibrary)
+//
+//            //            self.present(self.imagePick, animated: true, completion: nil)
+//
+//        }))
+//        actionsheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//        self.present(actionsheet, animated: true, completion: nil)
+//    }
+//
     override func viewDidDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
         super.viewDidDisappear(animated)
@@ -730,6 +798,6 @@ extension MainPersonalViewController{
         dismiss(animated: true, completion: nil)
     }
     
-    
-    
 }
+
+

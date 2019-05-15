@@ -1750,6 +1750,14 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                                         </attributedString>
                                                     </state>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNn-Bg-aHT">
+                                                    <rect key="frame" x="274" y="193" width="140" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Change Background"/>
+                                                    <connections>
+                                                        <action selector="changeBackground:" destination="ZEU-52-lDK" eventType="touchUpInside" id="zpi-0e-zlC"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
