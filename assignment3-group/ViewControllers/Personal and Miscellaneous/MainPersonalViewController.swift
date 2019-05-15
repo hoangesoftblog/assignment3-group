@@ -128,27 +128,65 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
 //
 //        }
         
- //       getProfileImage()
+        getProfileImage()
+        loadTotalFileUsed()
     }
     
-//    func getProfileImage(){
-//        ref.child("userPicture/\((showingUser == nil) ? currentUser! : showingUser!)/avtImage").observeSingleEvent(of: .value){ snapshot in
-//            if let avt = snapshot.value as? String {
-//                print("profile picture name is \(avt)")
-//                storageRef.child(avt).getData(maxSize: INT64_MAX){ data, error in
-//                    if error != nil {
-//                        print("Error occurs: \(error?.localizedDescription)")
-//                    }
-//                    else if data != nil {
-//                        if let imageTemp = UIImage(data: data!) {
-//                            print("image available")
-//                            self.profilePic = imageTemp
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
+    func loadTotalFileUsed(){
+        
+        ref.child("userPicture/\(currentUser!)/fileOwned").observeSingleEvent(of: .value){ snapshot in
+            var isVideo = false
+            var workingFile = String()
+            for i in snapshot.children {
+                if let i2 = (i as? DataSnapshot)?.value as? String {
+                    if i2.contains("thumbnail"){
+                        workingFile = i2.replacingOccurrences(of: "thumbnail", with: "") + ".mp4"
+                        isVideo = true
+                    }
+                    else {
+                        workingFile = i2
+                        isVideo = false
+                    }
+                    storageRef.child(workingFile).getMetadata{ metadata, error in
+                        if error != nil {
+                            print("file name \(workingFile) get metadata error \(error?.localizedDescription)")
+                        }
+                        else {
+                            print("file name \(workingFile) has the size of \(metadata?.size)")
+                            if isVideo {
+                                memoryVideo += Double(metadata!.size)
+                            }
+                            else {
+                                memoryPhoto += Double(metadata!.size)
+                            }
+                        }
+                    }
+                }
+                else {
+                    print("Invalid path")
+                }
+            }
+        }
+    }
+    
+    func getProfileImage(){
+        ref.child("userPicture/\((showingUser == nil) ? currentUser! : showingUser!)/avtImage").observeSingleEvent(of: .value){ snapshot in
+            if let avt = snapshot.value as? String {
+                print("profile picture name is \(avt)")
+                storageRef.child(avt).getData(maxSize: INT64_MAX){ data, error in
+                    if error != nil {
+                        print("Error occurs: \(error?.localizedDescription)")
+                    }
+                    else if data != nil {
+                        if let imageTemp = UIImage(data: data!) {
+                            print("image available")
+                            self.profilePic = imageTemp
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     func printArray(array: [String]) {
         print("\n\n\n\nThis is content of array")

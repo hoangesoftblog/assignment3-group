@@ -43,7 +43,6 @@ class MainHomeViewController: UIViewController {
         
         refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
         refreshControl.attributedTitle = NSAttributedString(string: "Reloading")
-        loadTotalFileUsed()
     }
     
     @objc func refreshView(){
@@ -54,31 +53,7 @@ class MainHomeViewController: UIViewController {
         
     }
     
-    func loadTotalFileUsed(){
-        
-        ref.child("userPicture/\(currentUser!)/fileOwned").observeSingleEvent(of: .value){ snapshot in
-            print(snapshot.value)
-            for i in snapshot.children {
-                print("Inside first loop")
-                if let i2 = (i as? DataSnapshot)?.value as? String {
-                    print("Inside second loop, i2 is \(i2)")
-                    
-                    storageRef.child(i2).getMetadata{ metadata, error in
-                        if error != nil {
-                            print("file name \(i2) get metadata error \(error?.localizedDescription)")
-                        }
-                        else {
-                            print("file name \(i2) has the size of \(metadata?.size)")
-                        }
-                        print("file name \(i2) has the size of \(metadata?.size)")
-                    }
-                }
-                else {
-                    print("Invalid path")
-                }
-            }
-        }
-    }
+    
     
     //get data of all images from firebase
     func getDataOnce(){
