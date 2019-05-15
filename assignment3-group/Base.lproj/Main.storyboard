@@ -1892,6 +1892,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <outlet property="sideView" destination="5sh-c4-Ii9" id="8tx-zf-xRO"/>
                         <outlet property="sideViewLeadingContraint" destination="1rv-TV-nAa" id="zhK-I9-EDW"/>
                         <outlet property="thisClassNavigationBar" destination="SO6-Mg-JqS" id="Z7j-tD-u2G"/>
+                        <outlet property="usernameLabelSideView" destination="kON-cT-5PK" id="SUq-Ym-e0m"/>
                         <segue destination="AYT-TI-lax" kind="show" id="84C-Gs-f3k"/>
                         <segue destination="72n-FV-aPj" kind="show" id="Hc0-MQ-nYF"/>
                         <segue destination="1dQ-hQ-Wpc" kind="show" id="Fto-8t-FKr"/>

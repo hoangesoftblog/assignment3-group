@@ -241,13 +241,13 @@ class DetailViewController: UIViewController {
             
             let deleteFile = UIAlertAction(title: "Delete \(((self.fileName?.contains("thumbnail"))! ? "video" : "photo"))", style: .default){ (_) in
                 if self.isAnotherOwner {
-                    ref.child("fileName/\(self.fileName!)/SharedWithOutWatermark").queryEqual(toValue: self.usernameButton.currentTitle!).ref.setValue(nil)
+                    ref.child("fileName/\(Media.removeFileExtension(file: self.fileName!))/SharedWithOutWatermark").queryEqual(toValue: self.usernameButton.currentTitle!).ref.setValue(nil)
                     
                     ref.child("userPicture/\(self.usernameButton.currentTitle!)/fileSharedWithoutWatermark").queryEqual(toValue: self.fileName!).ref.setValue(nil)
                 }
                 
                 else {
-                    ref.child("fileName/\(self.fileName!)/owner").queryEqual(toValue: self.usernameButton.currentTitle!).ref.setValue(nil)
+                    ref.child("fileName/\(Media.removeFileExtension(file: self.fileName!))/owner").queryEqual(toValue: self.usernameButton.currentTitle!).ref.setValue(nil)
                     
                     ref.child("userPicture/\(self.usernameButton.currentTitle!)/fileOwned").queryEqual(toValue: self.fileName!).ref.setValue(nil)
                 }

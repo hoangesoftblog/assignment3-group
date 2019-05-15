@@ -33,6 +33,7 @@ class MainPaymentViewController: UIViewController,UITableViewDelegate {
     var notificationArray = [Int: Notif]()
     
     override func viewDidLoad() {
+        navigationItem.title = "Buy notification"
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 400
         var temp = [DataSnapshot]()

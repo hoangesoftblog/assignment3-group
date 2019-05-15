@@ -27,15 +27,8 @@ class MainHomeViewController: UIViewController {
     let refreshControl = UIRefreshControl()
     @IBOutlet weak var imageCollection: UICollectionView!
     
-    @objc func refreshView(){
-        print("\n\nrefresing view working\n\n")
-        imagePhoto.removeAll()
-        fileName.removeAll()
-        getDataOnce()
-        
-    }
-    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         getDataOnce()
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 23))
@@ -50,6 +43,33 @@ class MainHomeViewController: UIViewController {
         
         refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
         refreshControl.attributedTitle = NSAttributedString(string: "Reloading")
+        loadTotalFileUsed()
+    }
+    
+    @objc func refreshView(){
+        print("\n\nrefresing view working\n\n")
+        imagePhoto.removeAll()
+        fileName.removeAll()
+        getDataOnce()
+        
+    }
+    
+    func loadTotalFileUsed(){
+        ref.child("userPicture/\(currentUser!)/fileOwned").observeSingleEvent(of: .value){ snapshot in
+            for i in snapshot.children {
+                if let i2 = (i as? DataSnapshot)?.value as? String {
+                    storageRef.child(i2).getMetadata{ metadata, error in
+                        if error != nil {
+                            print("file name \(i2) get metadata error \(error?.localizedDescription)")
+                        }
+                        else {
+                            print("file name \(i2) has the size of \(metadata?.size)")
+                        }
+                        print("file name \(i2) has the size of \(metadata?.size)")
+                    }
+                }
+            }
+        }
     }
     
     //get data of all images from firebase
@@ -86,6 +106,10 @@ class MainHomeViewController: UIViewController {
                     }
                 }
             }
+            else {
+                self.refreshControl.endRefreshing()
+            }
+
             
             
             

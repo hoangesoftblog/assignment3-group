@@ -393,7 +393,7 @@ class PhotoActionController : UIViewController {
             if videoUrl != nil {
                 ref.child("userPicture/\(currentUser!)/Public").childByAutoId().setValue("\(self.nameTime)thumbnailwatermark")
                 ref.child("fileName/\(self.nameTime)thumbnailwatermark/owner").setValue(currentUser!)
-                ref.child("PublicPicture").childByAutoId().setValue("\(self.nameTime)thumbnailwatermark")
+                ref.child("publicPicture").childByAutoId().setValue("\(self.nameTime)thumbnailwatermark")
             }
             else if image != nil {
                 ref.child("userPicture/\(currentUser!)/Public").childByAutoId().setValue("\(self.nameTime)watermark")

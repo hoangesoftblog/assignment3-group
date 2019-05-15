@@ -48,7 +48,6 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     
     @IBOutlet weak var sideViewLeadingContraint: NSLayoutConstraint!
     
-    @IBOutlet weak var choiceOfColumns: UISegmentedControl!
     @IBAction func switchView(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -69,6 +68,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     let tap = UITapGestureRecognizer(target: self, action: #selector(removingSetting(sender:)))
 
     @IBOutlet weak var sideView: UIView!
+    @IBOutlet weak var usernameLabelSideView: UILabel!
     
 //    @IBOutlet weak var removingSettingView: UIView!
     @IBOutlet weak var removingSettingView: UIView!
@@ -169,6 +169,9 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
                         }
                     }
                 }
+            }
+            else {
+                self.refreshControl.endRefreshing()
             }
         }
         //       }
@@ -297,8 +300,8 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         
     }
     override func viewDidDisappear(_ animated: Bool) {
+        sideView.isHidden = true
         super.viewDidDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     
@@ -365,9 +368,11 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     
     @objc func removingSetting(sender: UITapGestureRecognizer? = nil){
         if menuShowing{
+            sideView.isHidden = true
             sideViewLeadingContraint.constant = -200
         }
         else{
+            sideView.isHidden = false
             sideViewLeadingContraint.constant = 0
         }
         
@@ -381,10 +386,14 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     
     @IBAction func toggledTapped(_ sender: Any) {
         if menuShowing{
+            
+            sideView.isHidden = true
             sideViewLeadingContraint.constant = -200
             removingSettingView.removeGestureRecognizer(tap)
             
-        }else{
+        }
+        else{
+            sideView.isHidden = false
             sideViewLeadingContraint.constant = 0
             removingSettingView.addGestureRecognizer(tap)
         }
