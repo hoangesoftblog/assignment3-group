@@ -12,6 +12,7 @@ import AVKit
 
 class DetailViewController: UIViewController {
     
+    var isAnotherOwner = false
     var fileName: String?
     var insetLeft: CGFloat = 20
     var insetTop: CGFloat = 20
@@ -87,7 +88,6 @@ class DetailViewController: UIViewController {
             mainPic.image = image
         }
         
-        var isFound = false
         database?.child("fileName/\(Media.removeFileExtension(file: fileName!))").observeSingleEvent(of: .value){ snapshot in
             if let val = snapshot.value as? [String: Any]{
                 for i in snapshot.childSnapshot(forPath: "SharedWithoutWatermark").children {
@@ -96,12 +96,12 @@ class DetailViewController: UIViewController {
                         if temp == currentUser! {
                             print("Temp user is \(temp), current user is \(currentUser!)")
                             self.usernameButton.setTitle(temp, for: .normal)
-                            isFound = true
+                            self.isAnotherOwner = true
                         }
                     }
                 }
                 
-                if !isFound {
+                if !self.isAnotherOwner {
                     self.usernameButton.setTitle((val["owner"] as? String) ?? "No true owner", for: .normal)
                     for i in snapshot.childSnapshot(forPath: "SharedWithWatermark").children {
                         if let temp = (i as? DataSnapshot)?.value as? String {
@@ -238,56 +238,55 @@ class DetailViewController: UIViewController {
                 self.performSegue(withIdentifier: self.selectPerson, sender: (self.usernameButton.currentTitle, self.fileName!))
                 
             })
+            
+            let deleteFile = UIAlertAction(title: "Delete \(((self.fileName?.contains("thumbnail"))! ? "video" : "photo"))", style: .default){ (_) in
+                if self.isAnotherOwner {
+                    ref.child("fileName/\(self.fileName!)/SharedWithOutWatermark").queryEqual(toValue: self.usernameButton.currentTitle!).ref.setValue(nil)
+                    
+                    ref.child("userPicture/\(self.usernameButton.currentTitle!)/fileSharedWithoutWatermark").queryEqual(toValue: self.fileName!).ref.setValue(nil)
+                }
+                
+                else {
+                    ref.child("fileName/\(self.fileName!)/owner").queryEqual(toValue: self.usernameButton.currentTitle!).ref.setValue(nil)
+                    
+                    ref.child("userPicture/\(self.usernameButton.currentTitle!)/fileOwned").queryEqual(toValue: self.fileName!).ref.setValue(nil)
+                }
+                
+                self.dismiss(animated: true, completion: nil)
+            }
+            
+            deleteFile.setValue(UIColor.red, forKey: "titleTextColor")
+            action.addAction(deleteFile)
         }
         
         let downWithWatermark = UIAlertAction(title: "Download with watermark", style: .default) { (_) in
-//            let location = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(self.fileName!)
-//            if (self.fileName?.contains("thumbnail"))! {
-//                let downloadTask = storageRef.child(self.videoName!).write(toFile: location) { url, error in
-//                    print("URL to download is \(url?.path)")
-//
-//                    if error != nil {
-//                        print("Error occurr \(error?.localizedDescription)")
-//                    }
-//                    else {
-//                        print("URL download good")
-//                    }
-//                }
-//
-//                downloadTask.observe(.success) { snapshot in
-//                    let tempAction = UIAlertController(title: "Download finished", message: "Video downloaded successfully, file is saved in Download folder", preferredStyle: .alert)
-//                    tempAction.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-//                    self.present(tempAction, animated: true, completion: nil)
-//                }
-//
-//                downloadTask.observe(.failure) { snapshot in
-//                    let tempAction = UIAlertController(title: "Download failed", message: "Video downloaded failed, please download again", preferredStyle: .alert)
-//                    tempAction.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-//                    self.present(tempAction, animated: true, completion: nil)
-//                }
-//            }
-//
-//            else {
-//                do {
-//                    try self.image?.pngData()?.write(to: location)
-//                    let tempAction = UIAlertController(title: "Download finished", message: "Image downloaded successfully, file is saved in Download folder", preferredStyle: .alert)
-//                    tempAction.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-//                }
-//                catch {
-//                    let tempAction = UIAlertController(title: "Download failed", message: "Image downloaded failed, please download again", preferredStyle: .alert)
-//                    tempAction.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-//                }
-//
-//            }
-            let tempAction = UIAlertController(title: "Not available", message: "Not configured yet", preferredStyle: .alert)
-            tempAction.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-            self.present(tempAction, animated: true, completion: nil)
-        }
-        action.addAction(downWithWatermark)
-        
-        let temp = UIAlertAction(title: "Download without watermark", style: .default){ _ in
             let location = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(self.fileName!)
             if (self.fileName?.contains("thumbnail"))! {
+                let downloadTask = storageRef.child(self.videoName!).write(toFile: location) { url, error in
+                    print("URL to download is \(url?.path)")
+
+                    if error != nil {
+                        print("Error occurr \(error?.localizedDescription)")
+                    }
+                    else {
+                        print("URL download good")
+                    }
+                }
+
+                downloadTask.observe(.success) { snapshot in
+                    let tempAction = UIAlertController(title: "Download finished", message: "Video downloaded successfully, file is saved in Download folder", preferredStyle: .alert)
+                    tempAction.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                    self.present(tempAction, animated: true, completion: nil)
+                }
+
+                downloadTask.observe(.failure) { snapshot in
+                    let tempAction = UIAlertController(title: "Download failed", message: "Video downloaded failed, please download again", preferredStyle: .alert)
+                    tempAction.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                    self.present(tempAction, animated: true, completion: nil)
+                }
+            }
+
+            else {
                 let downloadTask = storageRef.child(self.videoName!).write(toFile: location) { url, error in
                     print("URL to download is \(url?.path)")
                     
@@ -311,12 +310,47 @@ class DetailViewController: UIViewController {
                     self.present(tempAction, animated: true, completion: nil)
                 }
             }
-            
-            else {
-                let downloadTask = storageRef.child(self.fileName!).write(toFile: location) { url, error in
+        }
+        action.addAction(downWithWatermark)
+        
+        
+        
+        
+        
+        let temp = UIAlertAction(title: "Download without watermark", style: .default){ _ in
+            let location = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(self.fileName!)
+            if (self.fileName?.contains("thumbnail"))! {
+                let downloadingFile = ((self.videoName?.contains("watermark"))!) ? self.videoName?.replacingOccurrences(of: "watermark", with: "") : self.videoName!
+                
+                let downloadTask = storageRef.child(downloadingFile!).write(toFile: location) { url, error in
                     print("URL to download is \(url?.path)")
                     
                     if error != nil {
+                        let tempAction = UIAlertController(title: "Download failed", message: "\(error!.localizedDescription)", preferredStyle: .alert)
+                        tempAction.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                        self.present(tempAction, animated: true, completion: nil)
+                    }
+                    else {
+                        print("URL download good")
+                    }
+                }
+                
+                downloadTask.observe(.success) { snapshot in
+                    let tempAction = UIAlertController(title: "Download finished", message: "Video downloaded successfully, file is saved in Download folder", preferredStyle: .alert)
+                    tempAction.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                    self.present(tempAction, animated: true, completion: nil)
+                }
+            }
+            
+            else {
+                let downloadingFile = ((self.fileName?.contains("watermark"))!) ? self.fileName?.replacingOccurrences(of: "watermark", with: "") : self.fileName!
+                let downloadTask = storageRef.child(downloadingFile!).write(toFile: location) { url, error in
+                    print("URL to download is \(url?.path)")
+                    
+                    if error != nil {
+                        let tempAction = UIAlertController(title: "Download failed", message: "\(error!.localizedDescription)", preferredStyle: .alert)
+                        tempAction.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                        self.present(tempAction, animated: true, completion: nil)
                         print("Error occurr \(error?.localizedDescription)")
                     }
                     else {
@@ -329,13 +363,6 @@ class DetailViewController: UIViewController {
                     tempAction.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
                     self.present(tempAction, animated: true, completion: nil)
                 }
-                
-                downloadTask.observe(.failure) { snapshot in
-                    let tempAction = UIAlertController(title: "Download failed", message: "Image downloaded failed, please download again", preferredStyle: .alert)
-                    tempAction.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-                    self.present(tempAction, animated: true, completion: nil)
-                }
-                
             }
         }
         

@@ -87,7 +87,7 @@ class MainHomeViewController: UIViewController {
                 }
             }
             
-            print("\n\nStop spinning\n\n")
+            
             
         }
     }

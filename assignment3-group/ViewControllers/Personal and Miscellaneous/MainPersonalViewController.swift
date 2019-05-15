@@ -26,6 +26,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     let goToAccountSetting = "goToAccountSetting"
     let goToAppearance = "goToAppearance"
     let goToStatistic = "goToStatistic"
+    let refreshControl = UIRefreshControl()
     
 //    @IBOutlet weak var usernameLabel: UILabel!
 //
@@ -71,10 +72,26 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
 //    @IBOutlet weak var removingSettingView: UIView!
     @IBOutlet weak var removingSettingView: UIView!
     
+    @objc func refreshView(){
+        print("\n\nrefresing view working\n\n")
+        originalArrImages.removeAll()
+        imageNames.removeAll()
+        grabPhoto()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sideView.layer.borderWidth = 0.25
         sideView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        if #available(iOS 10.0, *) {
+            self.collectionView.refreshControl = refreshControl
+        } else {
+            self.collectionView.addSubview(refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "Reloading")
         
         updateUI()
 //        collectionView.delegate = self
@@ -146,6 +163,9 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
                         }
                         
                         self.collectionView.reloadData()
+                        if self.originalArrImages.count == self.imageNames.count{
+                            self.refreshControl.endRefreshing()
+                        }
                     }
                 }
             }
