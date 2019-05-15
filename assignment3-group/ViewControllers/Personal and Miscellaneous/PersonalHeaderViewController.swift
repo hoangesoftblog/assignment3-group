@@ -25,6 +25,8 @@ class PersonalHeaderViewController: UICollectionReusableView {
     
     @IBOutlet weak var uploadPhotoImageView: UIImageView!
     
+    @IBOutlet weak var sortButton: UIButton!
+    
     
     
     

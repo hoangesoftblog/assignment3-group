@@ -63,24 +63,27 @@ class MainHomeViewController: UIViewController {
             
             self.imageCollection.reloadData()
             
-            for i in (self.fileName.count-1)...0 {
-                storageRef.child(self.fileName[i]).getData(maxSize: INT64_MAX){ data, error in
-                    print(self.fileName[i], separator: "", terminator: " ")
-                    if error != nil {
-                        print("Error occurs")
-                    }
-                    else if data != nil {
-                        if let imageTemp = UIImage(data: data!) {
-                            print("image available")
-                            self.imagePhoto[i] = imageTemp
+            let val = self.fileName.count - 1
+            if val >= 0 {
+                for i in 0...val {
+                    storageRef.child(self.fileName[i]).getData(maxSize: INT64_MAX){ data, error in
+                        print(self.fileName[i], separator: "", terminator: " ")
+                        if error != nil {
+                            print("Error occurs")
                         }
+                        else if data != nil {
+                            if let imageTemp = UIImage(data: data!) {
+                                print("image available")
+                                self.imagePhoto[val - i] = imageTemp
+                            }
+                        }
+                        
+                        if self.imagePhoto.count == self.fileName.count{
+                            self.refreshControl.endRefreshing()
+                        }
+                        
+                        self.imageCollection.reloadData()
                     }
-                    
-                    if self.imagePhoto.count == self.fileName.count{
-                        self.refreshControl.endRefreshing()
-                    }
-                    
-                    self.imageCollection.reloadData()
                 }
             }
             
@@ -131,8 +134,8 @@ extension MainHomeViewController: UICollectionViewDataSource {
 
 extension MainHomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //print("image choosen is \(imageNames[indexPath.row])")
-        performSegue(withIdentifier: PublicToDetail, sender: (fileName[indexPath.row], imagePhoto[indexPath.row]))
+        print("image choosen is \(fileName[indexPath.row])")
+        performSegue(withIdentifier: PublicToDetail, sender: (fileName[fileName.count - 1 - indexPath.row], imagePhoto[indexPath.row]))
     }
 }
 

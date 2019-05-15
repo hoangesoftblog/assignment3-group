@@ -64,21 +64,21 @@ class PhotoActionController : UIViewController {
         if(image != nil){
             textSize = 150
             txtPosition = 200
-            uploadPhoto()
-            saveImageToLocal()
+//            uploadPhoto()
+//            saveImageToLocal()
             imageWatermarked = imageTextWatermark(imageTemp: image!)
             imageLarge.image = imageWatermarked
-            uploadWatermarkedPhoto()
+ //           uploadWatermarkedPhoto()
         }
         if(videoUrl != nil){
             textSize = 20
             txtPosition = 37
-            saveVideoToLocal()
+//            saveVideoToLocal()
             videoWatermark()
             getImageVideo()
-            uploadThumb()
-            uploadThumbWatermark()
-            uploadVideo()
+//            uploadThumb()
+//            uploadThumbWatermark()
+//            uploadVideo()
 //            uploadVideoWatermark()
         }
     }
@@ -190,6 +190,64 @@ class PhotoActionController : UIViewController {
         }
     }
     
+    func getImageVideo(){
+        let asset = AVURLAsset(url: videoUrl!)
+        let imgGenerator = AVAssetImageGenerator(asset: asset)
+        do {
+            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(value: 0, timescale: 1), actualTime: nil)
+            // !! check the error before proceeding
+            let uiImage = UIImage(cgImage: cgImage)
+            //            let imageViewX = UIImageView(image: uiImage)
+            imageView.image = uiImage
+            thumb = uiImage
+            thumbWatermarked = imageTextWatermark(imageTemp: thumb!)
+            print("done")
+            //            uploadThumbnail(image: uiImage, name: name2)
+        }
+        catch {
+            print("error")
+        }
+    }
+    
+    func uploadThumbnail(imageThumb: UIImage){
+        let meta = StorageMetadata()
+        meta.contentType = "image/png"
+        let fileref = Storage.storage().reference().child("/\(nameTime)thumbnail")
+        //                imageView.transform =  imageView.transform.rotated(by: CGFloat(M_PI_2))
+        //    let image = imageView.image!
+        
+        //get the PNG data for this image
+        //        let data = image.pngData()
+        //        let imageToUpload: UIImage = UIImage(cgImage: (self.imageView .image?.cgImage!)!, scale: self.imageView.image!.scale, orientation: .right)
+        
+        //    let imageData: Data = imageThumb.pngData()!
+        let imageData2 = imageThumb.jpegData(compressionQuality: 0.0)
+        fileref.putData(imageData2!, metadata: meta, completion: { (meta, error) in
+            if error == nil {
+                ref.child("userPicture/\(currentUser!)/")
+            }
+        })
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //All function related to VIDEOS
     func uploadVideo(){
         
         let meta = StorageMetadata()
@@ -227,61 +285,6 @@ class PhotoActionController : UIViewController {
         //        self.playVideo(url1: url1)
     }
     
-    func uploadThumbnail(imageThumb: UIImage){
-        let meta = StorageMetadata()
-        meta.contentType = "image/png"
-        let fileref = Storage.storage().reference().child("/\(nameTime)thumbnail")
-        //                imageView.transform =  imageView.transform.rotated(by: CGFloat(M_PI_2))
-    //    let image = imageView.image!
-        
-        //get the PNG data for this image
-        //        let data = image.pngData()
-        //        let imageToUpload: UIImage = UIImage(cgImage: (self.imageView .image?.cgImage!)!, scale: self.imageView.image!.scale, orientation: .right)
-        
-    //    let imageData: Data = imageThumb.pngData()!
-        let imageData2 = imageThumb.jpegData(compressionQuality: 0.0)
-        fileref.putData(imageData2!, metadata: meta, completion: { (meta, error) in
-            if error == nil {
-                    ref.child("userPicture/\(currentUser!)/")
-            }
-        })
-    }
-    
-    func uploadPhoto(){
-        let meta = StorageMetadata()
-        meta.contentType = "image/png"
-        
-        let fileref = Storage.storage().reference().child("/\(nameTime)")
-        
-        let imageData = image!.jpegData(compressionQuality: 0.0)
-        fileref.putData(imageData!, metadata: meta, completion: { (meta, error) in
-            if error == nil {
-//                ref.child("userPicture/\(currentUser!)/fileOwned").childByAutoId().setValue("\(self.nameTime)")
-//
-//                ref.child("fileName/\(self.nameTime)/owner").setValue(currentUser!)
-            }
-        })
-    }
-    func uploadWatermarkedPhoto(){
-        let meta = StorageMetadata()
-        meta.contentType = "image/png"
-        
-        let fileref = Storage.storage().reference().child("/\(nameTime)watermark")
-        
-        let imageData = imageWatermarked!.jpegData(compressionQuality: 0.0)
-        fileref.putData(imageData!, metadata: meta, completion: { (meta, error) in
-            if error == nil {
-//                ref.child("userPicture/\(currentUser!)/fileOwned").childByAutoId().setValue("\(self.nameTime)watermark")
-//
-//                ref.child("userPicture/\(currentUser!)/Public").childByAutoId().setValue("\(self.nameTime)watermark")
-//
-//                ref.child("fileName/\(self.nameTime)watermark/owner").setValue(currentUser!)
-//
-//                ref.child("PublicPicture").childByAutoId().setValue("\(self.nameTime)watermark")
-            }
-        })
-    }
-    
     func uploadThumb(){
         let meta = StorageMetadata()
         meta.contentType = "image/png"
@@ -291,9 +294,9 @@ class PhotoActionController : UIViewController {
         let imageData = thumb!.jpegData(compressionQuality: 0.0)
         fileref.putData(imageData!, metadata: meta, completion: { (meta, error) in
             if error == nil {
-//                ref.child("userPicture/\(currentUser!)/fileOwned").childByAutoId().setValue("\(self.nameTime)thumbnail")
-//
-//                ref.child("fileName/\(self.nameTime)thumbnail/owner").setValue(currentUser!)
+                //                ref.child("userPicture/\(currentUser!)/fileOwned").childByAutoId().setValue("\(self.nameTime)thumbnail")
+                //
+                //                ref.child("fileName/\(self.nameTime)thumbnail/owner").setValue(currentUser!)
                 
             }
         })
@@ -307,48 +310,97 @@ class PhotoActionController : UIViewController {
         let imageData = thumbWatermarked!.jpegData(compressionQuality: 0.0)
         fileref.putData(imageData!, metadata: meta, completion: { (meta, error) in
             if error == nil {
-//                ref.child("userPicture/\(currentUser!)/fileOwned").childByAutoId().setValue("\(self.nameTime)thumbnailwatermark")
-//
-//                ref.child("userPicture/\(currentUser!)/Public").childByAutoId().setValue("\(self.nameTime)thumbnailwatermark")
-//
-//                ref.child("fileName/\(self.nameTime)thumbnailwatermark/owner").setValue(currentUser!)
-//
-//                ref.child("PublicPicture").childByAutoId().setValue("\(self.nameTime)thumbnailwatermark")
+                //                ref.child("userPicture/\(currentUser!)/fileOwned").childByAutoId().setValue("\(self.nameTime)thumbnailwatermark")
+                //
+                //                ref.child("userPicture/\(currentUser!)/Public").childByAutoId().setValue("\(self.nameTime)thumbnailwatermark")
+                //
+                //                ref.child("fileName/\(self.nameTime)thumbnailwatermark/owner").setValue(currentUser!)
+                //
+                //                ref.child("PublicPicture").childByAutoId().setValue("\(self.nameTime)thumbnailwatermark")
             }
         })
     }
     
-    func getImageVideo(){
-        let asset = AVURLAsset(url: videoUrl!)
-        let imgGenerator = AVAssetImageGenerator(asset: asset)
-        do {
-            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(value: 0, timescale: 1), actualTime: nil)
-            // !! check the error before proceeding
-            let uiImage = UIImage(cgImage: cgImage)
-            //            let imageViewX = UIImageView(image: uiImage)
-            imageView.image = uiImage
-            thumb = uiImage
-            thumbWatermarked = imageTextWatermark(imageTemp: thumb!)
-            print("done")
-//            uploadThumbnail(image: uiImage, name: name2)
-        }
-        catch {
-            print("error")
-        }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //All function related to PHOTOS
+    func uploadPhoto(){
+        let meta = StorageMetadata()
+        meta.contentType = "image/png"
+        
+        let fileref = Storage.storage().reference().child("/\(nameTime)")
+        
+        let imageData = image!.jpegData(compressionQuality: 0.0)
+        fileref.putData(imageData!, metadata: meta, completion: { (meta, error) in
+            if error == nil {
+                //                ref.child("userPicture/\(currentUser!)/fileOwned").childByAutoId().setValue("\(self.nameTime)")
+                //
+                //                ref.child("fileName/\(self.nameTime)/owner").setValue(currentUser!)
+            }
+        })
+    }
+    
+    func uploadWatermarkedPhoto(){
+        let meta = StorageMetadata()
+        meta.contentType = "image/png"
+        
+        let fileref = Storage.storage().reference().child("/\(nameTime)watermark")
+        
+        let imageData = imageWatermarked!.jpegData(compressionQuality: 0.0)
+        fileref.putData(imageData!, metadata: meta, completion: { (meta, error) in
+            if error == nil {
+//
+//                ref.child("userPicture/\(currentUser!)/Public").childByAutoId().setValue("\(self.nameTime)watermark")
+//
+//                ref.child("fileName/\(self.nameTime)watermark/owner").setValue(currentUser!)
+//
+//                ref.child("PublicPicture").childByAutoId().setValue("\(self.nameTime)watermark")
+            }
+        })
     }
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @IBAction func proceedToUpload(_ sender: Any) {
-        if !privacySwitch.isOn {
+        //Privacy on means PUBLIC
+        if privacySwitch.isOn {
+            //Add node about the file with watermark
+            
             if videoUrl != nil {
-                
+                ref.child("userPicture/\(currentUser!)/Public").childByAutoId().setValue("\(self.nameTime)thumbnailwatermark")
+                ref.child("fileName/\(self.nameTime)thumbnailwatermark/owner").setValue(currentUser!)
+                ref.child("PublicPicture").childByAutoId().setValue("\(self.nameTime)thumbnailwatermark")
             }
             else if image != nil {
-                
+                ref.child("userPicture/\(currentUser!)/Public").childByAutoId().setValue("\(self.nameTime)watermark")
+                ref.child("fileName/\(self.nameTime)watermark/owner").setValue(currentUser!)
+                ref.child("publicPicture").childByAutoId().setValue("\(self.nameTime)watermark")
             }
-            
         }
-        
         
         if videoUrl != nil {
             uploadVideo()
@@ -356,21 +408,26 @@ class PhotoActionController : UIViewController {
             uploadThumbWatermark()
             uploadVideoWatermark()
             
+            //Add node about file without watermark
+            ref.child("userPicture/\(currentUser!)/fileOwned").childByAutoId().setValue("\(self.nameTime)thumbnail")
+            ref.child("fileName/\(self.nameTime)thumbnail/owner").setValue(currentUser!)
         }
         else if image != nil {
             uploadPhoto()
             uploadWatermarkedPhoto()
-            
+           
+            //Add node about the file without watermark
+            ref.child("userPicture/\(currentUser!)/fileOwned").childByAutoId().setValue("\(self.nameTime)")
+            ref.child("fileName/\(self.nameTime)/owner").setValue(currentUser!)
         }
-        
-        uploadThumb()
-        uploadPhoto()
         
         if localSaveSwitch.isOn {
-            
-        }
-        else {
-            
+            if videoUrl == nil {
+                saveImageToLocal()
+            }
+            else if image == nil {
+                saveVideoToLocal()
+            }
         }
     }
     

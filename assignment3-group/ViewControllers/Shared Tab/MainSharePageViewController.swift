@@ -63,24 +63,27 @@ class MainSharePageViewController: UIViewController {
                 
                 self.imageCollection.reloadData()
                 
-                for i in 0..<self.fileName.count {
-                    storageRef.child(self.fileName[i]).getData(maxSize: INT64_MAX){ data, error in
-                        print(self.fileName[i], separator: "", terminator: " ")
-                        if error != nil {
-                            print("Error occurs")
-                        }
-                        else if data != nil {
-                            if let imageTemp = UIImage(data: data!) {
-                                print("image available")
-                                self.imagePhoto[i] = imageTemp
+                let val = self.fileName.count - 1
+                if val >= 0 {
+                    for i in 0...val {
+                        storageRef.child(self.fileName[i]).getData(maxSize: INT64_MAX){ data, error in
+                            print(self.fileName[i], separator: "", terminator: " ")
+                            if error != nil {
+                                print("Error occurs")
                             }
+                            else if data != nil {
+                                if let imageTemp = UIImage(data: data!) {
+                                    print("image available")
+                                    self.imagePhoto[val - i] = imageTemp
+                                }
+                            }
+                            
+                            if self.imagePhoto.count == self.fileName.count{
+                                self.refreshControl.endRefreshing()
+                            }
+                            
+                            self.imageCollection.reloadData()
                         }
-                        
-                        if self.imagePhoto.count == self.fileName.count{
-                            self.refreshControl.endRefreshing()
-                        }
-                        
-                        self.imageCollection.reloadData()
                     }
                 }
             }
@@ -105,7 +108,7 @@ extension MainSharePageViewController: UICollectionViewDataSource {
             
             if let photoViewCell = cell as? SharedPhotoViewCell {
                 if indexPath.row < imagePhoto.count{
-                    photoViewCell.imageView.image = imagePhoto[indexPath.row] as? UIImage
+                    photoViewCell.imageView.image = imagePhoto[indexPath.row]
                     return photoViewCell
                 }
             }
@@ -117,7 +120,7 @@ extension MainSharePageViewController: UICollectionViewDataSource {
             
             if let videoViewCell = cell as? SharedVideoCell {
                 if indexPath.row < imagePhoto.count{
-                    videoViewCell.thumbnailView.image = imagePhoto[indexPath.row] as? UIImage
+                    videoViewCell.thumbnailView.image = imagePhoto[indexPath.row]
                     return videoViewCell
                 }
             }
@@ -129,7 +132,7 @@ extension MainSharePageViewController: UICollectionViewDataSource {
 
 extension MainSharePageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: SharedToDetail, sender: (fileName[indexPath.row], imagePhoto[indexPath.row]))
+        performSegue(withIdentifier: SharedToDetail, sender: (fileName[fileName.count - 1 - indexPath.row], imagePhoto[indexPath.row]))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

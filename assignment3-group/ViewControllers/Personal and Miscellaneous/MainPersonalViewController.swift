@@ -39,7 +39,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     
     var choice = 0
     var ref2: DatabaseReference?
-    var isNewest = false
+    var isNewest = true
     
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -63,7 +63,6 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     var menuShowing: Bool = false
     var imageNames = [String]()
     var originalArrImages = [Int: UIImage]()
-    var displayArrImage = [UIImage]()
     
     let tap = UITapGestureRecognizer(target: self, action: #selector(removingSetting(sender:)))
 
@@ -108,6 +107,84 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
             }
         }
     }
+    
+    func printArray(array: [String]) {
+        print("\n\n\n\nThis is content of array")
+        for i in array {
+            print(i)
+        }
+        
+        print("End of array\n\n\n")
+    }
+    
+    func grabPhoto(){
+        //        if showingUser == nil {
+        ref.child("userPicture/\(currentUser!)/fileOwned").observeSingleEvent(of: .value){ snapshot in
+            for i in snapshot.children {
+                if let i2 = (i as? DataSnapshot)?.value as? String {
+                    self.imageNames.append(i2)
+                }
+            }
+            
+            self.printArray(array: self.imageNames)
+            self.collectionView.reloadData()
+            
+            let val = self.imageNames.count - 1
+            print("Val before run: \(val)")
+            if val >= 0 {
+                for i in 0...val{
+                    storageRef.child(self.imageNames[i]).getData(maxSize: INT64_MAX){ data, error in
+                        print("\nCurrently getting image: \(self.imageNames[i]) \n")
+                        if error != nil {
+                            print("\n\(self.imageNames[i]) error occur\n")
+                        }
+                        else if data != nil {
+                            if let imageTemp = UIImage(data: data!) {
+                                print("\n\(self.imageNames[i]) image is available\n")
+                                self.originalArrImages[val - i] = imageTemp
+                            }
+                        }
+                        
+                        self.collectionView.reloadData()
+                    }
+                }
+            }
+        }
+        //       }
+        
+        //        else {
+        //            ref.child("userPicture/\(showingUser!)/Public").observeSingleEvent(of: .value){ snapshot in
+        //                for i in snapshot.children {
+        //                    if let i2 = (i as? DataSnapshot)?.value as? String {
+        //                        self.imageNames.append(i2)
+        //                    }
+        //                }
+        //
+        //                self.collectionView.reloadData()
+        //
+        //                let val = self.imageNames.count - 1
+        //                if val >= 0 {
+        //                    for i in 0...val{
+        //                        storageRef.child(self.imageNames[i]).getData(maxSize: INT64_MAX){ data, error in
+        //                            print(self.imageNames[i], separator: "", terminator: " ")
+        //                            if error != nil {
+        //                                print("Error occurs")
+        //                            }
+        //                            else if data != nil {
+        //                                if let imageTemp = UIImage(data: data!) {
+        //                                    print("image available")
+        //                                    self.originalArrImages[val - i] = imageTemp
+        //                                }
+        //                            }
+        //
+        //                            self.collectionView.reloadData()
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+    }
+    
     var imagePick = UIImagePickerController()
     
     @IBOutlet weak var uploadPhotoImageView: UIImageView!
@@ -204,62 +281,34 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
     
-    func grabPhoto(){
-//        let iM = PHImageManager.default()
-//        let iMRequest = PHImageRequestOptions()
-//        iMRequest.isSynchronous = true
-//        iMRequest.deliveryMode = .highQualityFormat
-//
-//        let fetchOptions = PHFetchOptions()
-//
-//        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-//
-//        if let fetchResult : PHFetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions) {
-//            if fetchResult.count > 0  {
-//                for i in 0..<fetchResult.count {
-//                    iM.requestImage(for: fetchResult.object(at: i) , targetSize: CGSize(width: 200, height: 200), contentMode: .aspectFill, options: iMRequest, resultHandler: {
-//                        image , error in
-//
-//                        self.arrImages.append(image!)
-//                    })
-//                }
-//            }
-//            else {
-//                print("You dont have photo")
-//                self.collectionView.reloadData()
-//            }
-//        }
-        
-        var workingUser: String = (showingUser == nil) ? currentUser! : showingUser!
-        ref.child("userPicture/\(workingUser)/fileOwned").observeSingleEvent(of: .value){ snapshot in
-            for i in snapshot.children {
-                if let i2 = (i as? DataSnapshot)?.value as? String {
-                    self.imageNames.append(i2)
-                }
-            }
-        
-            self.collectionView.reloadData()
-            
-            for i in (self.imageNames.count-1)...0{
-                storageRef.child(self.imageNames[i]).getData(maxSize: INT64_MAX){ data, error in
-                    print(self.imageNames[i], separator: "", terminator: " ")
-                    if error != nil {
-                        print("Error occurs")
-                    }
-                    else if data != nil {
-                        if let imageTemp = UIImage(data: data!) {
-                            print("image available")
-                            self.originalArrImages[i] = imageTemp
-                        }
-                    }
-                    if self.imageNames.count == self.originalArrImages.count {
-                        self.displayArrImage = Array(self.originalArrImages.values)
-                    }
-                    self.collectionView.reloadData()
-                }
-            }
-        }
+    
+    func grabPhotoFromLibrary(){
+        //        let iM = PHImageManager.default()
+        //        let iMRequest = PHImageRequestOptions()
+        //        iMRequest.isSynchronous = true
+        //        iMRequest.deliveryMode = .highQualityFormat
+        //
+        //        let fetchOptions = PHFetchOptions()
+        //
+        //        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        //
+        //        if let fetchResult : PHFetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions) {
+        //            if fetchResult.count > 0  {
+        //                for i in 0..<fetchResult.count {
+        //                    iM.requestImage(for: fetchResult.object(at: i) , targetSize: CGSize(width: 200, height: 200), contentMode: .aspectFill, options: iMRequest, resultHandler: {
+        //                        image , error in
+        //
+        //                        self.arrImages.append(image!)
+        //                    })
+        //                }
+        //            }
+        //            else {
+        //                print("You dont have photo")
+        //                self.collectionView.reloadData()
+        //            }
+        //        }
     }
+    
     
 //    func getImagesOfUser(){
 //        let userID = Auth.auth().currentUser?.uid
@@ -392,7 +441,13 @@ extension MainPersonalViewController: UICollectionViewDataSource{
         if let customCell = cell as? PhotoCollectionViewCell {
             if indexPath.row < originalArrImages.count {
                 print("customCell available")
-                customCell.imageViewInCell.image = originalArrImages[indexPath.row]
+                if !isNewest {
+                    customCell.imageViewInCell.image = originalArrImages[originalArrImages.count - 1 - indexPath.row]
+                }
+                else {
+                    customCell.imageViewInCell.image = originalArrImages[indexPath.row]
+                }
+                
                 return customCell
             }
         }
@@ -401,7 +456,12 @@ extension MainPersonalViewController: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: fromPersonalToDetail, sender: (imageNames[indexPath.row], originalArrImages[indexPath.row]))
+        if isNewest {
+            performSegue(withIdentifier: fromPersonalToDetail, sender: (imageNames[originalArrImages.count - 1 - indexPath.row], originalArrImages[indexPath.row]))
+        }
+        else {
+            performSegue(withIdentifier: fromPersonalToDetail, sender: (imageNames[indexPath.row], originalArrImages[originalArrImages.count - 1 - indexPath.row]))
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -463,14 +523,31 @@ extension MainPersonalViewController: UICollectionViewDelegateFlowLayout {
 
 
 extension MainPersonalViewController{
-    @objc func sorting() {
+    
+    @objc func sorting(_ sender: UIButton) {
+        print("Sorting")
+        
         let actionSheet = UIAlertController(title: "Sort by", message: nil, preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: "Newest", style: .default){ (_) in
-            if self.isNewest {
-                self.originalArrImages.reversed()
+            print("Selecting newest")
+            if !self.isNewest {
+                self.isNewest = true
+                self.collectionView.reloadData()
             }
         })
+        
+        actionSheet.addAction(UIAlertAction(title: "Oldest", style: .default){ (_) in
+            if self.isNewest {
+                print("Selecting oldest")
+                self.isNewest = false
+                self.collectionView.reloadData()
+            }
+        })
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(actionSheet, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -488,6 +565,9 @@ extension MainPersonalViewController{
                 headerView.uploadPhotoImageView.isHidden = true
             }
             
+            if profilePic == nil {
+                print("Sorry it's nil")
+            }
             headerView.avtImageView.image = profilePic
             
             headerView.layer.cornerRadius = headerView.avtImageView.frame.height / 2.0
@@ -498,6 +578,7 @@ extension MainPersonalViewController{
             numberOfColumns = CGFloat(headerView.choiceOfColumns.selectedSegmentIndex+1)
             headerView.choiceOfColumns.addTarget(self, action: #selector(switchView(_:)), for: .valueChanged)
             
+            headerView.sortButton.addTarget(self, action: #selector(sorting(_:)), for: .touchUpInside)
             
             return headerView
             

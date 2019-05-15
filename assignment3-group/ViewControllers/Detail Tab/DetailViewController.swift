@@ -34,6 +34,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var videoPlayer: VideoPlayer!
     
     override func viewDidLoad() {
+        print("\n\n\n\n\n\n\n\n\n\n")
         database = Database.database().reference()
         super.viewDidLoad()
         
