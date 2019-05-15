@@ -112,28 +112,28 @@ extension MainHomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if (!fileName[indexPath.row].contains("thumbnail")) {
-            let cell = imageCollection.dequeueReusableCell(withReuseIdentifier: pictureCellReuse, for: indexPath)
-            
-            if let photoViewCell = cell as? PhotoViewCell {
-                if indexPath.row < imagePhoto.count{
-                    photoViewCell.imageView.image = imagePhoto[indexPath.row] as? UIImage
+        
+        let cell = imageCollection.dequeueReusableCell(withReuseIdentifier: pictureCellReuse, for: indexPath)
+        
+        if indexPath.row < imagePhoto.count {
+            if !(self.fileName[indexPath.row].contains("thumbnail")) {
+                if let photoViewCell = cell as? PhotoViewCell {
+                    photoViewCell.imageView.image = imagePhoto[indexPath.row]
                     return photoViewCell
                 }
+                return cell
             }
-            
-            return cell
+            else {
+                if let videoViewCell = cell as? VideoViewCell {
+                    videoViewCell.thumbnailView.image = imagePhoto[indexPath.row]
+                    return videoViewCell
+                    
+                }
+                
+                return cell
+            }
         }
         else {
-            let cell = imageCollection.dequeueReusableCell(withReuseIdentifier: videoCellReuse, for: indexPath)
-            
-            if let videoViewCell = cell as? VideoViewCell {
-                if indexPath.row < imagePhoto.count{
-                    videoViewCell.thumbnailView.image = imagePhoto[indexPath.row] as? UIImage
-                    return videoViewCell
-                }
-            }
-            
             return cell
         }
     }

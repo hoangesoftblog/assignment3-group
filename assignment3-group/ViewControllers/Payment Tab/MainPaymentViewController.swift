@@ -25,7 +25,7 @@ class Notif {
     }
 }
 
-class MainPaymentViewController: UIViewController,UITableViewDelegate {
+class MainPaymentViewController: UIViewController, UITableViewDelegate {
     let reuseIdentifier = "Cell"
     let goToPersonal = "fromPaymentToPersonal"
     var temp : CGFloat = 0
@@ -33,7 +33,6 @@ class MainPaymentViewController: UIViewController,UITableViewDelegate {
     var notificationArray = [Int: Notif]()
     
     override func viewDidLoad() {
-        navigationItem.title = "Buy notification"
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 400
         var temp = [DataSnapshot]()
@@ -144,7 +143,9 @@ extension MainPaymentViewController: UITableViewDataSource {
         
         ref.child("fileName/\(Media.removeFileExtension(file: (notificationArray[val]?.imageName ?? "Not available")))/SharedWithoutWatermark").childByAutoId().setValue(currentUser!)
         
-        ref.child("userPicture/\(currentUser!)").child("fileSharedWithoutWatermark").childByAutoId().setValue((notificationArray[val]?.imageName ?? "Not available"))
+        ref.child("userPicture/\(notificationArray[val]?.sender)").child("fileSharedWithoutWatermark").childByAutoId().setValue((notificationArray[val]?.imageName ?? "Not available"))
+        
+        ref.child("userPicture")
         
         denyPic(sender: sender)
     }

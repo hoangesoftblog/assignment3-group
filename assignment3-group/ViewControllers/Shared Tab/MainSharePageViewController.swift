@@ -107,28 +107,28 @@ extension MainSharePageViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if (!fileName[indexPath.row].contains("thumbnail")) {
-            let cell = imageCollection.dequeueReusableCell(withReuseIdentifier: photoCellReuse, for: indexPath)
-            
-            if let photoViewCell = cell as? SharedPhotoViewCell {
-                if indexPath.row < imagePhoto.count{
+        let cell = imageCollection.dequeueReusableCell(withReuseIdentifier: photoCellReuse, for: indexPath)
+        
+        if indexPath.row < imagePhoto.count {
+            if !(fileName[indexPath.row].contains("thumbnail")) {
+                if let photoViewCell = cell as? SharedPhotoViewCell {
                     photoViewCell.imageView.image = imagePhoto[indexPath.row]
                     return photoViewCell
                 }
+                
+                return cell
             }
-            
-            return cell
-        }
-        else {
-            let cell = imageCollection.dequeueReusableCell(withReuseIdentifier: videoCellReuse, for: indexPath)
-            
-            if let videoViewCell = cell as? SharedVideoCell {
-                if indexPath.row < imagePhoto.count{
+            else {
+                if let videoViewCell = cell as? SharedVideoCell {
                     videoViewCell.thumbnailView.image = imagePhoto[indexPath.row]
                     return videoViewCell
                 }
+                
+                return cell
             }
-            
+        }
+        
+        else {
             return cell
         }
     }

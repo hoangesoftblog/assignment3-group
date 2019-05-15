@@ -98,6 +98,11 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
         refreshControl.attributedTitle = NSAttributedString(string: "Reloading")
         
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 23))
+        imageView.image = #imageLiteral(resourceName: "awesome")
+        navigationItem.titleView = imageView
+        
+        
         updateUI()
 //        collectionView.delegate = self
 //        collectionView.dataSource = self
@@ -381,7 +386,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         
     }
     override func viewDidDisappear(_ animated: Bool) {
-        sideView.isHidden = true
+        navigationController?.setNavigationBarHidden(false, animated: false)
         super.viewDidDisappear(animated)
     }
     
@@ -551,6 +556,8 @@ extension MainPersonalViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print("Cell for item at")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        
+        
         if let customCell = cell as? PhotoCollectionViewCell {
             if indexPath.row < originalArrImages.count {
                 print("customCell available")
@@ -563,6 +570,8 @@ extension MainPersonalViewController: UICollectionViewDataSource{
                 
                 return customCell
             }
+            return cell
+            
         }
         
         return cell
