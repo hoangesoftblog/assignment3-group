@@ -16,11 +16,7 @@ class EnterUsernameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserDefaults.standard.set("yellow", forKey: "bgColor")
-        guard let white: String = UserDefaults.standard.object(forKey: "bgColor") as? String else {return}
-        if white == "white" {
-            self.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        }
+
         // Do any additional setup after loading the view.
     }
     

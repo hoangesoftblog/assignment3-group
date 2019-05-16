@@ -82,7 +82,16 @@ class AppearanceViewController: UIViewController {
         }
     }
     
- 
+    @IBOutlet weak var blackButton: UIButton!
+    
+    @IBAction func blackButtonTapped(_ sender: Any) {
+        UserDefaults.standard.set("black", forKey: "bgColor")
+        guard let color: String = UserDefaults.standard.object(forKey: "bgColor") as? String else {return}
+        if color == "black" {
+            self.view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        }
+    }
+    
     
     @IBOutlet weak var greenButton: UIButton!
     
@@ -111,24 +120,12 @@ class AppearanceViewController: UIViewController {
         
         yellowButton.layer.cornerRadius = yellowButton.frame.height / 2.0
         yellowButton.layer.masksToBounds = true
-        self.view.backgroundColor = AppearanceView.sharedService.backgroundColor
-        
-        UserDefaults.standard.set("yellow", forKey: "bgColor")
-        guard let color: String = UserDefaults.standard.object(forKey: "bgColor") as? String else {return}
-        if color == "yellow" {
-            self.view.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
-        }
+        self.view.backgroundColor = AppearanceView.sharedService.backgroundColor;
         
         
         whiteButton.layer.cornerRadius = whiteButton.frame.height / 2.0
         whiteButton.layer.masksToBounds = true
-        self.view.backgroundColor = AppearanceView.sharedService.backgroundColor
-        
-        UserDefaults.standard.set("yellow", forKey: "bgColor")
-        guard let white: String = UserDefaults.standard.object(forKey: "bgColor") as? String else {return}
-        if color == "white" {
-            self.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        }
+        self.view.backgroundColor = AppearanceView.sharedService.backgroundColor;
         
         
         pinkButton.layer.cornerRadius = pinkButton.frame.height / 2.0
@@ -141,15 +138,13 @@ class AppearanceViewController: UIViewController {
         self.view.backgroundColor = AppearanceView.sharedService.backgroundColor;
         
         
-        greenButton.layer.cornerRadius = greenButton.frame.height / 2.0
-        greenButton.layer.masksToBounds = true
-        self.view.backgroundColor = AppearanceView.sharedService.backgroundColor
+        blackButton.layer.cornerRadius = whiteButton.frame.height / 2.0
+        blackButton.layer.masksToBounds = true
+        self.view.backgroundColor = AppearanceView.sharedService.backgroundColor;
         
-        UserDefaults.standard.set("green", forKey: "bgColor")
-        guard let green: String = UserDefaults.standard.object(forKey: "bgColor") as? String else {return}
-        if color == "green" {
-            self.view.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
-        }
+        greenButton.layer.cornerRadius = whiteButton.frame.height / 2.0
+        greenButton.layer.masksToBounds = true
+        self.view.backgroundColor = AppearanceView.sharedService.backgroundColor;
         
         
         

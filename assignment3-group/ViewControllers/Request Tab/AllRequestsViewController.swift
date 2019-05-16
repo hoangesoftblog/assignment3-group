@@ -29,28 +29,10 @@ class AllRequestsViewController: UIViewController,UITableViewDelegate {
     var temp: CGFloat = 0
     let refreshControl = UIRefreshControl()
     var requestDataSnapshot = [DataSnapshot]()
-    
-    @IBAction func moveToPayment(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let paymentMethodVC = storyboard.instantiateViewController(withIdentifier: "PaymentMethodViewController") as! PaymentMethodViewController
-        self.show(paymentMethodVC, sender: nil)
-    }
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let color = UserDefaults.standard.object(forKey: "bgColor") as? String else {
-            return
-        }
-        if color == "yellow" {
-            self.view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
-        }
-        UserDefaults.standard.set("green", forKey: "bgColor")
-        guard let _: String = UserDefaults.standard.object(forKey: "bgColor") as? String else {return}
-        if color == "green" {
-            self.view.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
-        }
         navigationItem.rightBarButtonItem?.title = ""
 //        navigationItem.rightBarButtonItem?.isEnabled = false
         
@@ -137,7 +119,6 @@ class AllRequestsViewController: UIViewController,UITableViewDelegate {
     }
     
 }
-
 
 extension AllRequestsViewController: UITableViewDataSource {
     

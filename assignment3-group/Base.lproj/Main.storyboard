@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -770,19 +769,19 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="79" translatesAutoresizingMaskIntoConstraints="NO" id="Vfy-NN-xSf">
-                                                    <rect key="frame" x="20" y="418" width="374" height="24"/>
+                                                    <rect key="frame" x="20" y="418" width="206" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU8-Z2-lei">
-                                                            <rect key="frame" x="0.0" y="0.0" width="74" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="16" height="22"/>
                                                             <state key="normal" image="Accept"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iap-q6-td5">
-                                                            <rect key="frame" x="153" y="0.0" width="63" height="24"/>
+                                                            <rect key="frame" x="95" y="0.0" width="16" height="22"/>
                                                             <state key="normal" image="Deny"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIV-Fg-es4">
-                                                            <rect key="frame" x="295" y="0.0" width="79" height="24"/>
+                                                            <rect key="frame" x="190" y="0.0" width="16" height="22"/>
                                                             <state key="normal" image="ContactPayment"/>
                                                         </button>
                                                     </subviews>
@@ -1280,15 +1279,6 @@
                                                         <constraint firstAttribute="width" constant="55" id="wgh-yT-1Ec"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZi-dW-etD">
-                                                    <rect key="frame" x="284" y="5" width="113" height="45"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Ready To Pay" backgroundImage="button_secondary"/>
-                                                    <connections>
-                                                        <action selector="moveToPayment:" destination="mPW-It-ST4" eventType="touchUpInside" id="kmq-a5-2CM"/>
-                                                        <segue destination="iko-GF-yd7" kind="show" identifier="goToPaymentMethod" id="UKf-Ef-aU9"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="NH2-Ga-ocF" firstAttribute="top" secondItem="Qhw-wu-gSF" secondAttribute="bottom" constant="8" id="OP6-r6-YXf"/>
@@ -1328,45 +1318,11 @@
                     <connections>
                         <outlet property="tableView" destination="rD6-Eh-sbr" id="kvY-ko-j0Y"/>
                         <segue destination="ZEU-52-lDK" kind="show" identifier="fromRequestToPersonal" id="1ih-rv-tgV"/>
-                        <segue destination="iko-GF-yd7" kind="show" id="Gh5-24-ggp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eON-71-CjS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="831.88405797101461" y="-1639.2857142857142"/>
-        </scene>
-        <!--Payment Method View Controller-->
-        <scene sceneID="u5e-gV-saU">
-            <objects>
-                <viewController storyboardIdentifier="PaymentMethodViewController" id="iko-GF-yd7" customClass="PaymentMethodViewController" customModule="assignment3_group" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fiM-Jo-Qpa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ios_sample_icon" translatesAutoresizingMaskIntoConstraints="NO" id="osA-8L-Bdf">
-                                <rect key="frame" x="87" y="152" width="240" height="176"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJ1-U9-FsB">
-                                <rect key="frame" x="167" y="470" width="96" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Accept" backgroundImage="button_secondary"/>
-                                <connections>
-                                    <action selector="clickToPay:" destination="iko-GF-yd7" eventType="touchUpInside" id="eIA-bE-8tV"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="cEx-Cf-3X1"/>
-                    </view>
-                    <connections>
-                        <outlet property="PaypalBackground" destination="osA-8L-Bdf" id="JtB-T4-Ng6"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0zN-XR-sov" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1584.057971014493" y="-1639.2857142857142"/>
         </scene>
         <!--Account Setting View Controller-->
         <scene sceneID="nRp-lh-b5B">
@@ -1459,6 +1415,14 @@
                                     <action selector="grayButtonTapped:" destination="AYT-TI-lax" eventType="touchUpInside" id="1kd-Uc-0Ax"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqp-DL-sZm">
+                                <rect key="frame" x="155" y="249" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="blackButtonTapped:" destination="AYT-TI-lax" eventType="touchUpInside" id="9I2-JE-8Cr"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLF-f3-P6R" userLabel="Pink Button">
                                 <rect key="frame" x="213" y="249" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1502,6 +1466,7 @@
                         <viewLayoutGuide key="safeArea" id="cOh-B5-YXA"/>
                     </view>
                     <connections>
+                        <outlet property="blackButton" destination="bqp-DL-sZm" id="Tlk-oc-8FG"/>
                         <outlet property="grayButton" destination="fJT-Rn-0IA" id="c1L-jq-itK"/>
                         <outlet property="greenButton" destination="B8h-lF-dFd" id="3fP-Ha-r6c"/>
                         <outlet property="pinkButton" destination="RLF-f3-P6R" id="m2h-6R-j8d"/>
@@ -2166,15 +2131,12 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
         <image name="Image-1" width="34" height="22"/>
         <image name="Shared Symbol" width="31" height="30"/>
         <image name="awesome" width="166.66667175292969" height="32"/>
-        <image name="button_secondary" width="30" height="45"/>
-        <image name="ios_sample_icon" width="60" height="60"/>
         <image name="loginButton" width="231" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ai0-oF-DMh"/>
-        <segue reference="55c-uu-KG9"/>
-        <segue reference="UKf-Ef-aU9"/>
-        <segue reference="4dA-6W-JLb"/>
+        <segue reference="8Fu-od-Qx6"/>
+        <segue reference="Cba-QY-Zxx"/>
         <segue reference="xyI-wM-fN8"/>
     </inferredMetricsTieBreakers>
 </document>

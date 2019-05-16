@@ -21,14 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var mainTabBar: MainTabBarViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         // Override point for customization after application launch.
         FirebaseApp.configure()
         //changeWindowRoot()
         currentUser = Auth.auth().currentUser?.uid
-        
-        // replace abc and xyz with client id
-        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "abc", PayPalEnvironmentSandbox: "xyz"])
         return true
     }
     

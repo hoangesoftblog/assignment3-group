@@ -28,9 +28,10 @@ class DisplayViewController : UIViewController {
     }
     
     @objc func dismissDisplay(sender:UITapGestureRecognizer){
-        performSegue(withIdentifier: "BackToDetail", sender: (fileName,imageView.image))
+//        performSegue(withIdentifier: "BackToDetail", sender: (fileName,imageView.image))
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

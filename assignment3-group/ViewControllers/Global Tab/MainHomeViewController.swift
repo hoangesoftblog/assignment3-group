@@ -30,17 +30,6 @@ class MainHomeViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        guard let color = UserDefaults.standard.object(forKey: "bgColor") as? String else {
-            return
-        }
-        if color == "yellow" {
-            self.view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
-        }
-        UserDefaults.standard.set("yellow", forKey: "bgColor")
-        guard let _: String = UserDefaults.standard.object(forKey: "bgColor") as? String else {return}
-        if _ == "white" {
-            self.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        }
         getDataOnce()
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 23))
         imageView.image = #imageLiteral(resourceName: "awesome")
@@ -61,7 +50,7 @@ class MainHomeViewController: UIViewController {
         imagePhoto.removeAll()
         fileName.removeAll()
         getDataOnce()
-        imageCollection.reloadData()
+        
     }
     
     

@@ -14,12 +14,8 @@ class AboutViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let color = UserDefaults.standard.object(forKey: "bgColor") as? String else {
-            return
-        }
-        if color == "yellow" {
-            self.view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
-        }
+
+        // Do any additional setup after loading the view.
     }
     
 
