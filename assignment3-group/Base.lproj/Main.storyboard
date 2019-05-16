@@ -1584,15 +1584,47 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 <color key="textColor" red="0.9137254901960784" green="0.23529411764705882" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oPq-jk-23b">
+                                <rect key="frame" x="29" y="602" width="28" height="28"/>
+                                <color key="backgroundColor" red="0.69803921568627447" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UU1-I7-40N">
+                                <rect key="frame" x="230" y="602" width="28" height="28"/>
+                                <color key="backgroundColor" red="0.0" green="0.14901960784313725" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vT9-da-ao3">
+                                <rect key="frame" x="65" y="605" width="57" height="25"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Videos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKS-NV-SKS">
+                                <rect key="frame" x="266" y="605" width="57" height="25"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="oPq-jk-23b" firstAttribute="bottom" secondItem="UU1-I7-40N" secondAttribute="bottom" id="2ok-ot-zOb"/>
+                            <constraint firstItem="oPq-jk-23b" firstAttribute="leading" secondItem="N65-Di-ohz" secondAttribute="leading" constant="29" id="HYT-bj-FLF"/>
                             <constraint firstItem="fP1-3C-O8a" firstAttribute="top" secondItem="N65-Di-ohz" secondAttribute="top" constant="26" id="Lft-7n-Qlf"/>
+                            <constraint firstAttribute="trailing" secondItem="oPq-jk-23b" secondAttribute="trailing" constant="357" id="SPe-e6-K7i"/>
                             <constraint firstItem="N65-Di-ohz" firstAttribute="trailing" secondItem="fP1-3C-O8a" secondAttribute="trailing" constant="110" id="gNo-pu-e5a"/>
+                            <constraint firstItem="UU1-I7-40N" firstAttribute="leading" secondItem="uNS-KW-FOG" secondAttribute="leading" constant="230" id="gxN-1O-i7X"/>
+                            <constraint firstItem="oPq-jk-23b" firstAttribute="bottom" secondItem="vT9-da-ao3" secondAttribute="bottom" id="ifA-z9-iBl"/>
                             <constraint firstItem="Zvf-E2-xnh" firstAttribute="top" secondItem="fP1-3C-O8a" secondAttribute="bottom" constant="45" id="iiO-e0-Foe"/>
                             <constraint firstItem="fP1-3C-O8a" firstAttribute="leading" secondItem="N65-Di-ohz" secondAttribute="leading" constant="111" id="kb1-ns-R23"/>
+                            <constraint firstItem="oPq-jk-23b" firstAttribute="bottom" secondItem="XKS-NV-SKS" secondAttribute="bottom" id="ke7-BU-XHE"/>
+                            <constraint firstItem="oPq-jk-23b" firstAttribute="top" secondItem="UU1-I7-40N" secondAttribute="top" id="lGm-53-ZPZ"/>
                             <constraint firstItem="N65-Di-ohz" firstAttribute="trailing" secondItem="Zvf-E2-xnh" secondAttribute="trailing" constant="20" id="mGv-Lo-hD0"/>
                             <constraint firstItem="Zvf-E2-xnh" firstAttribute="leading" secondItem="N65-Di-ohz" secondAttribute="leading" constant="20" id="n9X-kn-86p"/>
+                            <constraint firstItem="vT9-da-ao3" firstAttribute="leading" secondItem="oPq-jk-23b" secondAttribute="trailing" constant="8" id="oeb-aA-7sN"/>
+                            <constraint firstAttribute="trailing" secondItem="UU1-I7-40N" secondAttribute="trailing" constant="156" id="ox0-V1-D5H"/>
+                            <constraint firstItem="vT9-da-ao3" firstAttribute="top" secondItem="Zvf-E2-xnh" secondAttribute="bottom" constant="31" id="rBu-hT-Wuo"/>
+                            <constraint firstItem="oPq-jk-23b" firstAttribute="top" secondItem="Zvf-E2-xnh" secondAttribute="bottom" constant="28" id="yEh-qw-Rx8"/>
+                            <constraint firstItem="XKS-NV-SKS" firstAttribute="leading" secondItem="UU1-I7-40N" secondAttribute="trailing" constant="8" symbolic="YES" id="zsT-j2-7Ew"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N65-Di-ohz"/>
                     </view>
@@ -2145,12 +2177,8 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ai0-oF-DMh"/>
-        <segue reference="rD6-wP-7sS"/>
-        <segue reference="4dA-6W-JLb"/>
-        <segue reference="cW4-b4-L4e"/>
         <segue reference="55c-uu-KG9"/>
         <segue reference="Cba-QY-Zxx"/>
         <segue reference="xyI-wM-fN8"/>
-        
     </inferredMetricsTieBreakers>
 </document>
