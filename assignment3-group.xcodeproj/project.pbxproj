@@ -51,6 +51,9 @@
 		67BA85092265DEDB00239E2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BA85082265DEDB00239E2D /* AppDelegate.swift */; };
 		67BA85132265DEDD00239E2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67BA85112265DEDD00239E2D /* LaunchScreen.storyboard */; };
 		67D0B1BD2280487700BA9810 /* PaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D0B1BC2280487700BA9810 /* PaymentCell.swift */; };
+		748708A6228D99F9001BA886 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748708A5228D99F9001BA886 /* WalkthroughContentViewController.swift */; };
+		748708A8228D9B40001BA886 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748708A7228D9B40001BA886 /* WalkthroughPageViewController.swift */; };
+		748708AA228D9BF6001BA886 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748708A9228D9BF6001BA886 /* WalkthroughViewController.swift */; };
 		749ECBCF228980890071D53D /* PersonalHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749ECBCE228980890071D53D /* PersonalHeaderViewController.swift */; };
 		74ED53DC2282C48D0037F91D /* RequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED53DB2282C48D0037F91D /* RequestCell.swift */; };
 		8838E98E22733071006F4BE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8838E98D22733071006F4BE3 /* Assets.xcassets */; };
@@ -123,6 +126,9 @@
 		67BA85122265DEDD00239E2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67BA85142265DEDD00239E2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67D0B1BC2280487700BA9810 /* PaymentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCell.swift; sourceTree = "<group>"; };
+		748708A5228D99F9001BA886 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
+		748708A7228D9B40001BA886 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
+		748708A9228D9BF6001BA886 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		749ECBCE228980890071D53D /* PersonalHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHeaderViewController.swift; sourceTree = "<group>"; };
 		74ED53DB2282C48D0037F91D /* RequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCell.swift; sourceTree = "<group>"; };
 		7705599C8A045C6963CF7B6E /* Pods-assignment3-group.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-assignment3-group.debug.xcconfig"; path = "Target Support Files/Pods-assignment3-group/Pods-assignment3-group.debug.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +170,7 @@
 		182136ED22714A5500032692 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				748708A4228D99B7001BA886 /* Onboarding */,
 				664BFF1D22899E1E003FFFF8 /* Media */,
 				2033B6842287004800DC27B1 /* Select Person to Share */,
 				2033B6832287000900DC27B1 /* Request Tab */,
@@ -361,6 +368,16 @@
 				749ECBCE228980890071D53D /* PersonalHeaderViewController.swift */,
 			);
 			path = "Personal and Miscellaneous";
+			sourceTree = "<group>";
+		};
+		748708A4228D99B7001BA886 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				748708A5228D99F9001BA886 /* WalkthroughContentViewController.swift */,
+				748708A7228D9B40001BA886 /* WalkthroughPageViewController.swift */,
+				748708A9228D9BF6001BA886 /* WalkthroughViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		E08955A0F88DBEA6BC412FA9 /* Frameworks */ = {
@@ -586,6 +603,7 @@
 				749ECBCF228980890071D53D /* PersonalHeaderViewController.swift in Sources */,
 				664BFF3122899EDA003FFFF8 /* Images.swift in Sources */,
 				182136FD2271AE0A00032692 /* User.swift in Sources */,
+				748708A8228D9B40001BA886 /* WalkthroughPageViewController.swift in Sources */,
 				671682A6227C3F590004AC55 /* PhotoCollectionHeaderView.swift in Sources */,
 				66982C94228C154500C88FED /* DisplayViewController.swift in Sources */,
 				6732234B22857DF100E7FA36 /* MainSharePageViewController.swift in Sources */,
@@ -626,9 +644,11 @@
 				8877A7562270B4490003E08E /* RegisterViewController.swift in Sources */,
 				8BFB7625228C7890009CEF57 /* AccountInfoViewController.swift in Sources */,
 				8877A7582270B4490003E08E /* WaterMarlkViewController.swift in Sources */,
+				748708A6228D99F9001BA886 /* WalkthroughContentViewController.swift in Sources */,
 				88D0C2F52286ACFF0096A51E /* PhotoCollecionViewCell.swift in Sources */,
 				664BFF3F22899EDA003FFFF8 /* Assets.swift in Sources */,
 				67D0B1BD2280487700BA9810 /* PaymentCell.swift in Sources */,
+				748708AA228D9BF6001BA886 /* WalkthroughViewController.swift in Sources */,
 				67BA85092265DEDB00239E2D /* AppDelegate.swift in Sources */,
 				664BFF3A22899EDA003FFFF8 /* MediaImageProcessor.swift in Sources */,
 				664BFF3322899EDA003FFFF8 /* GraphicContext.swift in Sources */,

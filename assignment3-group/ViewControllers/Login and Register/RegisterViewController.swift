@@ -33,6 +33,9 @@ class RegisterViewController: UIViewController, FUIAuthDelegate{
     
     @IBOutlet weak var avtImageView: UIImageView!
     
+    @IBAction func toTutorial(_ sender: Any) {
+        performSegue(withIdentifier: "ToTutorial", sender: (Any).self)
+    }
     var imgData:Data!
     var authUI : FUIAuth?
     
