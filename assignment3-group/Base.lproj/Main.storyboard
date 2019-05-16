@@ -1710,15 +1710,47 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 <color key="textColor" red="0.9137254901960784" green="0.23529411764705882" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oPq-jk-23b">
+                                <rect key="frame" x="29" y="602" width="28" height="28"/>
+                                <color key="backgroundColor" red="0.69803921568627447" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UU1-I7-40N">
+                                <rect key="frame" x="230" y="602" width="28" height="28"/>
+                                <color key="backgroundColor" red="0.0" green="0.14901960784313725" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vT9-da-ao3">
+                                <rect key="frame" x="65" y="605" width="57" height="25"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Videos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKS-NV-SKS">
+                                <rect key="frame" x="266" y="605" width="57" height="25"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="oPq-jk-23b" firstAttribute="bottom" secondItem="UU1-I7-40N" secondAttribute="bottom" id="2ok-ot-zOb"/>
+                            <constraint firstItem="oPq-jk-23b" firstAttribute="leading" secondItem="N65-Di-ohz" secondAttribute="leading" constant="29" id="HYT-bj-FLF"/>
                             <constraint firstItem="fP1-3C-O8a" firstAttribute="top" secondItem="N65-Di-ohz" secondAttribute="top" constant="26" id="Lft-7n-Qlf"/>
+                            <constraint firstAttribute="trailing" secondItem="oPq-jk-23b" secondAttribute="trailing" constant="357" id="SPe-e6-K7i"/>
                             <constraint firstItem="N65-Di-ohz" firstAttribute="trailing" secondItem="fP1-3C-O8a" secondAttribute="trailing" constant="110" id="gNo-pu-e5a"/>
+                            <constraint firstItem="UU1-I7-40N" firstAttribute="leading" secondItem="uNS-KW-FOG" secondAttribute="leading" constant="230" id="gxN-1O-i7X"/>
+                            <constraint firstItem="oPq-jk-23b" firstAttribute="bottom" secondItem="vT9-da-ao3" secondAttribute="bottom" id="ifA-z9-iBl"/>
                             <constraint firstItem="Zvf-E2-xnh" firstAttribute="top" secondItem="fP1-3C-O8a" secondAttribute="bottom" constant="45" id="iiO-e0-Foe"/>
                             <constraint firstItem="fP1-3C-O8a" firstAttribute="leading" secondItem="N65-Di-ohz" secondAttribute="leading" constant="111" id="kb1-ns-R23"/>
+                            <constraint firstItem="oPq-jk-23b" firstAttribute="bottom" secondItem="XKS-NV-SKS" secondAttribute="bottom" id="ke7-BU-XHE"/>
+                            <constraint firstItem="oPq-jk-23b" firstAttribute="top" secondItem="UU1-I7-40N" secondAttribute="top" id="lGm-53-ZPZ"/>
                             <constraint firstItem="N65-Di-ohz" firstAttribute="trailing" secondItem="Zvf-E2-xnh" secondAttribute="trailing" constant="20" id="mGv-Lo-hD0"/>
                             <constraint firstItem="Zvf-E2-xnh" firstAttribute="leading" secondItem="N65-Di-ohz" secondAttribute="leading" constant="20" id="n9X-kn-86p"/>
+                            <constraint firstItem="vT9-da-ao3" firstAttribute="leading" secondItem="oPq-jk-23b" secondAttribute="trailing" constant="8" id="oeb-aA-7sN"/>
+                            <constraint firstAttribute="trailing" secondItem="UU1-I7-40N" secondAttribute="trailing" constant="156" id="ox0-V1-D5H"/>
+                            <constraint firstItem="vT9-da-ao3" firstAttribute="top" secondItem="Zvf-E2-xnh" secondAttribute="bottom" constant="31" id="rBu-hT-Wuo"/>
+                            <constraint firstItem="oPq-jk-23b" firstAttribute="top" secondItem="Zvf-E2-xnh" secondAttribute="bottom" constant="28" id="yEh-qw-Rx8"/>
+                            <constraint firstItem="XKS-NV-SKS" firstAttribute="leading" secondItem="UU1-I7-40N" secondAttribute="trailing" constant="8" symbolic="YES" id="zsT-j2-7Ew"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N65-Di-ohz"/>
                     </view>
@@ -2089,13 +2121,47 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                     <view key="view" contentMode="scaleToFill" id="rdx-js-ta9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1gB-sy-25V">
+                                <rect key="frame" x="20" y="318" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deQ-CM-D0i">
+                                <rect key="frame" x="20" y="271" width="45" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTn-Ki-dWh">
+                                <rect key="frame" x="20" y="481" width="25" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bio" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fbc-A2-htx">
+                                <rect key="frame" x="20" y="510" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="WX3-b3-vyl"/>
                     </view>
+                    <connections>
+                        <outlet property="BioTextfield" destination="fbc-A2-htx" id="VSL-06-yHh"/>
+                        <outlet property="nameTextField" destination="1gB-sy-25V" id="emV-01-CFh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fKu-k7-Q4q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="789" y="-808"/>
+            <point key="canvasLocation" x="788.40579710144937" y="-808.25892857142856"/>
         </scene>
         <!--Photo Action Controller-->
         <scene sceneID="9dz-Cc-ZwO">

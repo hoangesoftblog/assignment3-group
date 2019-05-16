@@ -11,6 +11,8 @@ import FirebaseAuth
 import FirebaseStorage
 import FirebaseUI
 import GoogleSignIn
+import Firebase
+
 let storage = Storage.storage()
 
 var storageRef = storage.reference()
@@ -24,6 +26,10 @@ class RegisterViewController: UIViewController, FUIAuthDelegate{
     @IBOutlet weak var rePassWordTextField: UITextField!
     
     @IBOutlet weak var fullNameTextField: UITextField!
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     
     @IBOutlet weak var avtImageView: UIImageView!
     
@@ -52,6 +58,8 @@ class RegisterViewController: UIViewController, FUIAuthDelegate{
                     Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
                         if error == nil{
                             print("sign in success")
+                            ref.child("IDToUser/\(user!.user.uid)").setValue(self!.fullNameTextField.text!)
+                            
                             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                             let tabBarViewController = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as! MainTabBarViewController
                             self?.show(tabBarViewController, sender: nil)
@@ -174,6 +182,12 @@ class RegisterViewController: UIViewController, FUIAuthDelegate{
         let providers : [FUIAuthProvider] = [FUIGoogleAuth()]
         authUI?.providers = providers
         
+        
+        passwordTextField.delegate = self
+        emailTextField.delegate = self
+        rePassWordTextField.delegate = self
+        fullNameTextField.delegate = self
+        
     }
     
     
@@ -204,5 +218,12 @@ extension String {
         // here, `try!` will always succeed because the pattern is valid
         let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
+    }
+}
+
+extension RegisterViewController {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return false
     }
 }
