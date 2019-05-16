@@ -80,6 +80,10 @@ class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDe
     @IBOutlet weak var facebookButton: UIButton!
     
     @IBOutlet weak var gmailButton: UIButton!
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     var authUI : FUIAuth?
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
@@ -207,6 +211,10 @@ class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDe
         loginButton.center = view.center
         
         view.addSubview(loginButton)
+        
+        //Delegate text field
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -222,6 +230,7 @@ class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDe
     @IBAction func login(_ sender: Any) {
         let email = emailTextField.text
         let password = passwordTextField.text
+        view.endEditing(true)
         if Auth.auth().currentUser == nil {
             Auth.auth().signIn(withEmail: email!, password: password!) { [weak self] user, error in
                 guard let strongSelf = self else { return }
@@ -326,5 +335,13 @@ class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDe
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+}
 
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return false
+    }
 }

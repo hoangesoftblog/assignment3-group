@@ -9,10 +9,18 @@
 import UIKit
 import Firebase
 
-class EnterUsernameViewController: UIViewController {
+class EnterUsernameViewController: UIViewController, UITextFieldDelegate {
     
     let goToMain = "goToMain"
     @IBOutlet weak var username: UITextField!
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

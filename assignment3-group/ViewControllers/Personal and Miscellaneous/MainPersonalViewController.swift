@@ -13,6 +13,9 @@ import FBSDKLoginKit
 private let reuseIdentifier = "personalCollectionViewCell"
 
 class MainPersonalViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+//     func shouldAutorotate() -> Bool {
+//        return false
+//    }
     
     @IBAction func changeBackground(_ sender: Any) {
         print("testing")
@@ -114,7 +117,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
         sideView.layer.borderWidth = 0.25
         sideView.layer.borderColor = UIColor.lightGray.cgColor
         
@@ -149,6 +152,14 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         
         getProfileImage()
         loadTotalFileUsed()
+        getBio()
+    }
+    
+    func getBio(){
+        let workingUser = (showingUser == nil) ? currentUser! : showingUser!
+        ref.child("userPicture/\(workingUser)/Bio").observeSingleEvent(of: .value){ snapshot in
+            self.collectionV?.jobLabel.text = (snapshot.value as? String) ?? "None"
+        }
     }
     
     func loadTotalFileUsed(){
@@ -562,6 +573,15 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         super.viewDidLayoutSubviews()
         
     }
+//    override func viewDidAppear(_ animated: Bool) {
+//         UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+//    }
+//    func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+//        return UIInterfaceOrientationMask.portrait
+//    }
+//    func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
+//        return UIInterfaceOrientation.portrait
+//    }
     
     func updateUI(){
         
@@ -578,6 +598,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
             sideViewLeadingContraint.constant = -200
         }
         else{
+            
             sideView.isHidden = false
             sideViewLeadingContraint.constant = 0
         }
@@ -625,6 +646,7 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         self.show(appearanceVC, sender: nil)
     }
     
+ 
 //    @IBAction func staticTapped(_ sender: UITapGestureRecognizer) {
 //        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
 //        let aboutVC = storyboard.instantiateViewController(withIdentifier: "StatisticsViewController") as! StatisticsViewController
@@ -850,5 +872,4 @@ extension MainPersonalViewController{
     }
     
 }
-
 
