@@ -34,8 +34,17 @@ class PersonalHeaderViewController: UICollectionReusableView {
         avtImageView.image = image
     }
     
+    @IBOutlet weak var additionalView: UIView!
+    
     func changeBackground(image:UIImage){
-        let backgroundImage = UIImageView(frame: topView.bounds)
+        let frame : CGRect = topView.bounds
+        let tempx : CGFloat = topView.frame.origin.x
+        let tempy : CGFloat = topView.frame.origin.y
+        let tempwidth : CGFloat =  frame.width
+        let tempheight : CGFloat = frame.height
+        let newheight : CGFloat = tempheight - 45
+        let newRec : CGRect = CGRect(x: tempx, y: tempy, width: tempwidth, height: newheight)
+        let backgroundImage = UIImageView(frame: newRec)
         backgroundImage.image = image
         backgroundImage.contentMode = .scaleToFill
         topView.insertSubview(backgroundImage, at: 0)

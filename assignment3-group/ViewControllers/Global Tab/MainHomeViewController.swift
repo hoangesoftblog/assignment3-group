@@ -12,10 +12,10 @@ import Firebase
 let ref: DatabaseReference = Database.database().reference()
 
 class MainHomeViewController: UIViewController {
-    let sectionInsets = UIEdgeInsets(top: 50.0,
-                                     left: 20.0,
-                                     bottom: 50.0,
-                                     right: 20.0)
+    let sectionInsets = UIEdgeInsets(top: 10.0,
+                                     left: 10.0,
+                                     bottom: 10.0,
+                                     right: 10.0)
     var fileName: [String] = []
     var imagePhoto: [Int: UIImage] = [:]
     var numberOfColumns: CGFloat = 2
@@ -165,7 +165,7 @@ extension MainHomeViewController {
             else {
                 fatalError("Invalid view type")
             }
-            headerView.layer.borderWidth = 5
+            headerView.layer.borderWidth = 0.5
             
             headerView.button1.addTarget(self, action: #selector(bt1Click), for: .touchUpInside)
             
@@ -220,10 +220,10 @@ extension MainHomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 5
     }
 }

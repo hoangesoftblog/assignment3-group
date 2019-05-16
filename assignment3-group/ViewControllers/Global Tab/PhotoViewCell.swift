@@ -9,5 +9,11 @@
 import UIKit
 
 class PhotoViewCell: UICollectionViewCell {
+    var roundNumber : CGFloat = 15
     @IBOutlet weak var imageView: UIImageView!
+    override func awakeFromNib() {
+            super.awakeFromNib()
+            contentView.layer.cornerRadius = roundNumber
+            contentView.layer.masksToBounds = true
+    }
 }
