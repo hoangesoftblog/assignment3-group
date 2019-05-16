@@ -84,7 +84,12 @@ class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDe
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         if error == nil {
+            if(currentUser == nil){
+                            getCurrentUsername(user: Auth.auth().currentUser!)
+            }
+
             print("log in with Google Acccount")
+            
         }
     }
     
@@ -206,7 +211,7 @@ class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDe
 //        let loginButton = LoginButton(readPermissions: [ .publicProfile ])
         loginButton.center = view.center
         
-        view.addSubview(loginButton)
+//        view.addSubview(loginButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -301,6 +306,8 @@ class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDe
 //        }
 //        // ...
 //    }
+
+    
     @IBAction func gmailTapped(_ sender: Any) {
         if Auth.auth().currentUser == nil {
             if let authVC = authUI?.authViewController() {
