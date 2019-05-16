@@ -88,7 +88,12 @@ class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDe
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         if error == nil {
+            if(currentUser == nil){
+                            getCurrentUsername(user: Auth.auth().currentUser!)
+            }
+
             print("log in with Google Acccount")
+            
         }
     }
     
@@ -215,6 +220,7 @@ class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDe
         //Delegate text field
         emailTextField.delegate = self
         passwordTextField.delegate = self
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -310,6 +316,8 @@ class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDe
 //        }
 //        // ...
 //    }
+
+    
     @IBAction func gmailTapped(_ sender: Any) {
         if Auth.auth().currentUser == nil {
             if let authVC = authUI?.authViewController() {

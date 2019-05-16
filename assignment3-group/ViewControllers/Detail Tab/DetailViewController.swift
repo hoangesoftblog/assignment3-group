@@ -28,11 +28,29 @@ class DetailViewController: UIViewController {
     let goToPersonalPage = "goToPersonalPage"
     var isShared = false
     
+   
+    
+    
+    func shareThroughApps() {
+        let url = URL(string:"https://firebasestorage.googleapis.com/v0/b/assignment3-group.appspot.com/o/woman-591576_1280.jpg?alt=media&token=85b17449-2a76-41fc-b1f3-1d846e6a8d89")
+        let urlArr = [url]
+        if let data = try? Data(contentsOf: url!)
+        {
+            let image: UIImage = UIImage(data: data)!
+//            let image = UIImage(named: "play-watermark")
+            let imageShare = [ image ]
+            let activityViewController = UIActivityViewController(activityItems: urlArr , applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            self.present(activityViewController, animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func openPersonalPage(_ sender: Any) {
         performSegue(withIdentifier: goToPersonalPage, sender: usernameButton.currentTitle)
     }
     @IBOutlet weak var mainPic: UIImageView!
     @IBOutlet weak var profilePic: UIImageView!
+    
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var usernameButton: UIButton!
@@ -132,6 +150,9 @@ class DetailViewController: UIViewController {
                                 if let imageTemp = UIImage(data: data!) {
                                     print("image available")
                                     self.profilePic.image = imageTemp
+                                    self.profilePic.layer.cornerRadius = self.profilePic.frame.height/2
+                                        self.profilePic.layer.masksToBounds = true
+                                    
                                 }
                             }
                         }
@@ -139,32 +160,37 @@ class DetailViewController: UIViewController {
                 }
             }
         }
-        let content = FBSDKShareLinkContent()
-        content.contentURL = URL(string: "https://firebasestorage.googleapis.com/v0/b/assignment3-group.appspot.com/o/Optional(%222019-05-14%2012%3A09%3A47%20%2B0000%22)watermark.mp4?alt=media&token=005446d3-e09c-45aa-9e88-71b9e2e9e02e")
-        let newCenter = CGPoint(x: 300, y: 400)
-        let shareButton = FBSDKShareButton()
-        shareButton.shareContent = content
-        print(self.view.center)
-        shareButton.center = newCenter
-        self.view.addSubview(shareButton)
+//        let content = FBSDKShareLinkContent()
+//        content.contentURL = URL(string: "https://firebasestorage.googleapis.com/v0/b/assignment3-group.appspot.com/o/Optional(%222019-05-14%2012%3A09%3A47%20%2B0000%22)watermark.mp4?alt=media&token=005446d3-e09c-45aa-9e88-71b9e2e9e02e")
+//        let video_content = FBSDKShareVideo()
+//        video_content.videoURL = URL(string: "https://firebasestorage.googleapis.com/v0/b/assignment3-group.appspot.com/o/Optional(%222019-05-15%2010%3A04%3A19%20%2B0000%22).mp4?alt=media&token=55eba7ba-02f3-4326-ad01-df93315aab77")
+//
+//        let newCenter = CGPoint(x: 300, y: 400)
+//        let shareButton = FBSDKShareButton()
+//        shareButton.shareContent = content
+//        print(self.view.center)
+//        shareButton.center = newCenter
+//        self.view.addSubview(shareButton)
+        
+        
     }
     
-//    @objc func playVideo(){
-//        var player = AVPlayer(url: videoURL!)
-//        let playerViewController = AVPlayerViewController()
-//        playerViewController.player = player
-//
-//        present(playerViewController, animated: true) {
-//            player.play()
-//        }
-//    }
+    //    @objc func playVideo(){
+    //        var player = AVPlayer(url: videoURL!)
+    //        let playerViewController = AVPlayerViewController()
+    //        playerViewController.player = player
+    //
+    //        present(playerViewController, animated: true) {
+    //            player.play()
+    //        }
+    //    }
     
-//    @IBAction func imageTapped(sender: UITapGestureRecognizer) {
-//        let imageView = sender.view as! UIImageView
-//        let newImageView = UIImageView(image: imageView.image)
-//        newImageView.frame = UIScreen.main.bounds
-//        newImageView.backgroundColor = .black
-//        newImageView.contentMode = .scaleAspectFit
+    //    @IBAction func imageTapped(sender: UITapGestureRecognizer) {
+    //        let imageView = sender.view as! UIImageView
+    //        let newImageView = UIImageView(image: imageView.image)
+    //        newImageView.frame = UIScreen.main.bounds
+    //        newImageView.backgroundColor = .black
+    //        newImageView.contentMode = .scaleAspectFit
 //        newImageView.isUserInteractionEnabled = true
 //        let tap = UITapGestureRecognizer(target: self, action: Selector("dismissFullscreenImage:"))
 //        newImageView.addGestureRecognizer(tap)
@@ -245,13 +271,18 @@ class DetailViewController: UIViewController {
                 }
             }
         })
+                    action.addAction(UIAlertAction(title: "Share to other apps", style: .default) { (_) in
         
+                        self.shareThroughApps()
+        
+                    })
+
         if currentUser == self.usernameButton.currentTitle{
-            action.addAction(UIAlertAction(title: "Shared with someone", style: .default) { (_) in
-                
-                self.performSegue(withIdentifier: self.selectPerson, sender: (self.usernameButton.currentTitle, self.fileName!))
-                
-            })
+//            action.addAction(UIAlertAction(title: "Shared with someone", style: .default) { (_) in
+//
+//                self.performSegue(withIdentifier: self.selectPerson, sender: (self.usernameButton.currentTitle, self.fileName!))
+//
+//            })
             
             let deleteFile = UIAlertAction(title: "Delete \(((self.fileName?.contains("thumbnail"))! ? "video" : "photo"))", style: .default){ (_) in
                 if self.isAnotherOwner {
