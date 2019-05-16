@@ -36,6 +36,7 @@
 		664BFF4122899F2F003FFFF8 /* MediaProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664BFF4022899F2F003FFFF8 /* MediaProcessor.swift */; };
 		664BFF472289A0E6003FFFF8 /* PhotoActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664BFF442289A0E6003FFFF8 /* PhotoActionController.swift */; };
 		66982C94228C154500C88FED /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66982C93228C154500C88FED /* DisplayViewController.swift */; };
+		66982CFA228D4B8300C88FED /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66982CF9228D4B8300C88FED /* FBSDKCoreKit.framework */; };
 		66B786342282F09C0089E879 /* VideoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B786332282F09C0089E879 /* VideoHelper.swift */; };
 		671682A4227C3F4F0004AC55 /* MainHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671682A3227C3F4F0004AC55 /* MainHomeViewController.swift */; };
 		671682A6227C3F590004AC55 /* PhotoCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671682A5227C3F590004AC55 /* PhotoCollectionHeaderView.swift */; };
@@ -105,6 +106,7 @@
 		664BFF4022899F2F003FFFF8 /* MediaProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaProcessor.swift; sourceTree = "<group>"; };
 		664BFF442289A0E6003FFFF8 /* PhotoActionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoActionController.swift; sourceTree = "<group>"; };
 		66982C93228C154500C88FED /* DisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
+		66982CF9228D4B8300C88FED /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B786332282F09C0089E879 /* VideoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoHelper.swift; sourceTree = "<group>"; };
 		671682A3227C3F4F0004AC55 /* MainHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHomeViewController.swift; sourceTree = "<group>"; };
 		671682A5227C3F590004AC55 /* PhotoCollectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionHeaderView.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66982CFA228D4B8300C88FED /* FBSDKCoreKit.framework in Frameworks */,
 				AC48B2B618378B7059AFFC30 /* Pods_assignment3_group.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,6 +366,7 @@
 		E08955A0F88DBEA6BC412FA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66982CF9228D4B8300C88FED /* FBSDKCoreKit.framework */,
 				BDBA3F323894B8D270B4ABF2 /* Pods_assignment3_group.framework */,
 			);
 			name = Frameworks;
@@ -501,6 +505,7 @@
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -522,6 +527,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -775,13 +781,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8322SXK7YL;
+				DEVELOPMENT_TEAM = CQMXW54F8T;
 				INFOPLIST_FILE = "assignment3-group/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "rmit.assignment3x-groupx";
+				PRODUCT_BUNDLE_IDENTIFIER = "rmit.assignment3xzz-groupxzz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -794,13 +800,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8322SXK7YL;
+				DEVELOPMENT_TEAM = CQMXW54F8T;
 				INFOPLIST_FILE = "assignment3-group/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "rmit.assignment3x-groupx";
+				PRODUCT_BUNDLE_IDENTIFIER = "rmit.assignment3xzz-groupxzz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
