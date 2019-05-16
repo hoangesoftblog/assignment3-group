@@ -30,13 +30,18 @@ class PersonalHeaderViewController: UICollectionReusableView {
     
     @IBOutlet weak var sortButton: UIButton!
     
-    func changAvatar(image:UIImage){
+    func changAvatarOnLocalAndFirebase(image:UIImage, fileLocation: URL){
         avtImageView.image = image
+        
+        //Put file to Database and Storage
+        let fileNameOnDatabse = currentUser! + " " + fileLocation.lastPathComponent
+        storageRef.child(fileNameOnDatabse).putFile(from: fileLocation)
+        ref.child("userPicture/\(currentUser!)/avtImage").setValue(fileNameOnDatabse)
     }
     
     @IBOutlet weak var additionalView: UIView!
     
-    func changeBackground(image:UIImage){
+    func changeBackgroundOnLocalAndDatabse(image:UIImage, fileLocation: URL){
         let frame : CGRect = topView.bounds
         let tempx : CGFloat = topView.frame.origin.x
         let tempy : CGFloat = topView.frame.origin.y
@@ -48,6 +53,11 @@ class PersonalHeaderViewController: UICollectionReusableView {
         backgroundImage.image = image
         backgroundImage.contentMode = .scaleToFill
         topView.insertSubview(backgroundImage, at: 0)
+        
+        //Put file to Database and Storage
+        let fileNameToPut = currentUser! + " " + fileLocation.lastPathComponent
+        storageRef.child(fileNameToPut).putFile(from: fileLocation)
+        ref.child("userPicture/\(currentUser!)/backgroundImage").setValue(fileNameToPut)
     }
 //    @IBOutlet weak var backGroundButton: UIButton!
 //

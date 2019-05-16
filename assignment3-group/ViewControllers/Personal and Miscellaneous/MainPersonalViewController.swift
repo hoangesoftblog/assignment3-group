@@ -33,7 +33,8 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         self.present(actionsheet, animated: true, completion: nil)
     }
     
-    var profilePic: UIImage?
+    var newImageOrBackgroundName: String?
+    var newAvatarOrBackground: UIImage?
     var isLeftBarAbleToShow = true
     var showingUser: String?
     let fromPersonalToDetail = "fromPersonalToDetail"
@@ -138,6 +139,8 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
 //        collectionView.delegate = self
 //        collectionView.dataSource = self
         grabPhoto()
+        getBackgroundImage()
+        getProfileImage()
 //        numberOfColumns = CGFloat( choiceOfColumns.selectedSegmentIndex + 1)
 //        if let layout = collectionView?.collectionViewLayout as? CollectionViewPhotoLayout {
 //            layout.delegate = self as? LayoutDelegate
@@ -195,7 +198,37 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
                     else if data != nil {
                         if let imageTemp = UIImage(data: data!) {
                             print("image available")
-                            self.profilePic = imageTemp
+                            self.collectionV?.avtImageView.image = imageTemp
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+    
+    func getBackgroundImage(){
+        ref.child("userPicture/\((showingUser == nil) ? currentUser! : showingUser!)/backgroundImage").observeSingleEvent(of: .value){ snapshot in
+            if let ImgName = snapshot.value as? String {
+                print("profile picture name is \(ImgName)")
+                storageRef.child(ImgName).getData(maxSize: INT64_MAX){ data, error in
+                    if error != nil {
+                        print("Error occurs: \(error?.localizedDescription)")
+                    }
+                    else if data != nil {
+                        if let imageTemp = UIImage(data: data!) {
+                            print("image available")
+                            let frame : CGRect = (self.collectionV?.topView.bounds)!
+                            let tempx : CGFloat = (self.collectionV?.topView.frame.origin.x)!
+                            let tempy : CGFloat = (self.collectionV?.topView.frame.origin.y)!
+                            let tempwidth : CGFloat =  frame.width
+                            let tempheight : CGFloat = frame.height
+                            let newheight : CGFloat = tempheight - 45
+                            let newRec : CGRect = CGRect(x: tempx, y: tempy, width: tempwidth, height: newheight)
+                            let backgroundImage = UIImageView(frame: newRec)
+                            backgroundImage.image = imageTemp
+                            backgroundImage.contentMode = .scaleToFill
+                            self.collectionV?.topView.insertSubview(backgroundImage, at: 0)
                         }
                     }
                 }
@@ -389,10 +422,10 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
             //            imagestore = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
             //            uploadPhoto()
         if(choicex == 1){
-            collectionV!.changAvatar(image: imageToSend)
+            collectionV!.changAvatarOnLocalAndFirebase(image: imageToSend, fileLocation: (info[.imageURL] as! URL))
         } else if (choicex == 2){
             
-            collectionV!.changeBackground(image: imageToSend)
+            collectionV!.changeBackgroundOnLocalAndDatabse(image: imageToSend, fileLocation: (info[.imageURL] as! URL))
         }
         
 //        dismiss(animated: true, completion: nil)
@@ -779,10 +812,7 @@ extension MainPersonalViewController{
                 headerView.changeBackgroundBt.isHidden = true
             }
             
-//            if profilePic == nil {
-//                print("Sorry it's nil")
-//            }
-//            headerView.avtImageView.image = profilePic
+
             
             headerView.avtImageView.layer.cornerRadius = headerView.avtImageView.frame.height / 2.0
             headerView.uploadPhotoImageView.layer.masksToBounds = true
@@ -815,7 +845,7 @@ extension MainPersonalViewController{
 //        let avatarChange = collectionV?.dequeueReusableCell(withReuseIdentifier: "PersonalHeaderViewController", for: index!) as? PersonalHeaderViewController
 //        avatarChange?.changAvatar(image: image)
         print(image)
-        collectionV!.changAvatar(image: image)
+//        collectionV!.changAvatarOnLocalAndFirebase(image: image, )
         dismiss(animated: true, completion: nil)
     }
     
