@@ -36,8 +36,8 @@ class WalkthroughContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        headingLabel.text = heading
-        subHeadingLabel.text = subHeading
+//        headingLabel.text = heading
+//      subHeadingLabel.text = subHeading
         contentImageView.image = UIImage(named: imageFile)
     }
     
