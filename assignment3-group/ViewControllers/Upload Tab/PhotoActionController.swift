@@ -13,6 +13,11 @@ import Photos
 import MobileCoreServices
 import AVKit
 import Foundation
+import FBSDKCoreKit
+import FBSDKLoginKit
+import FBSDKShareKit
+
+
 
 class PhotoActionController : UIViewController {
    
@@ -22,6 +27,7 @@ class PhotoActionController : UIViewController {
     var image : UIImage?
     var videoUrl : URL?
     var nameTime : Any?
+//    var tabBarController: UITabBarController?
     var txtPosition : CGFloat?
     var imageWatermarked: UIImage?
     var thumbWatermarked: UIImage?
@@ -64,11 +70,23 @@ class PhotoActionController : UIViewController {
         if(image != nil){
             textSize = 150
             txtPosition = 200
+            setFBShare()
 //            uploadPhoto()
 //            saveImageToLocal()
             imageWatermarked = imageTextWatermark(imageTemp: image!)
             imageLarge.image = imageWatermarked
  //           uploadWatermarkedPhoto()
+            
+            let content = FBSDKShareLinkContent()
+            content.contentURL = URL(string: "https://firebasestorage.googleapis.com/v0/b/assignment3-group.appspot.com/o/Optional(%222019-05-14%2012%3A09%3A47%20%2B0000%22)watermark.mp4?alt=media&token=005446d3-e09c-45aa-9e88-71b9e2e9e02e")
+            
+            let shareButton = FBSDKShareButton()
+            shareButton.shareContent = content
+            shareButton.center = self.view.center
+            self.view.addSubview(shareButton)
+            
+            
+            
         }
         if(videoUrl != nil){
             textSize = 20
@@ -83,8 +101,45 @@ class PhotoActionController : UIViewController {
         }
     }
     
+    func setFBShare(){
+       
+        
+    }
+    
     func saveImageToLocal() {
         UIImageWriteToSavedPhotosAlbum(image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    func playButtonWatermark(imageTemp: UIImage) -> UIImage {
+        let item = MediaItem(image: imageTemp)
+        //        imgData = UIImage.pngData(UIImage(named: "Camera-photo.svg")!)()
+        let logoImage = UIImage(named: "play-watermark")
+        //        print("width:\(logoImage!.size.width)")
+        //        print("height:\(logoImage!.size.height)")
+        let widthx = item.size.width / 5
+        let heighx = item.size.width / 5
+        let firstElement = MediaElement(image: logoImage!)
+        firstElement.frame = CGRect(x: item.size.width/2 - 50, y: item.size.height/2 - 50, width: widthx, height: heighx)
+        
+        let testStr = ""
+        let attributes = [ NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: CGFloat(textSize!)) ]
+        let attrStr = NSAttributedString(string: testStr, attributes: attributes)
+        let width2 =    450 + testStr.characters.count*50
+        print(testStr.characters.count)
+        print(width2)
+        print(CGFloat(width2))
+        let secondElement = MediaElement(text: attrStr)
+        secondElement.frame = CGRect(x: 10, y: item.size.height - txtPosition!, width: 450 + CGFloat(width2), height: 150)
+        
+        item.add(elements: [firstElement, secondElement])
+        var resultImage : UIImage?
+        let mediaProcessor = MediaProcessor()
+        mediaProcessor.processElements(item: item) { [weak self] (result, error) in
+            self!.imageLarge.image = result.image
+            resultImage = result.image
+            //            self!.saveImageToLocal()
+        }
+        return resultImage!
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
@@ -94,6 +149,7 @@ class PhotoActionController : UIViewController {
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             present(ac, animated: true)
         } else {
+            
             let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             present(ac, animated: true)
@@ -123,8 +179,8 @@ class PhotoActionController : UIViewController {
         let heighx = (widthx / logoImage!.size.width) * logoImage!.size.height
         let firstElement = MediaElement(image: logoImage!)
         firstElement.frame = CGRect(x: 10, y: 0, width: widthx, height: heighx)
-        
-        let testStr = "\(String(describing: currentUser!))"
+        let curUser = currentUser!
+        let testStr = "\(curUser)"
         let attributes = [ NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: CGFloat(textSize!)) ]
         let attrStr = NSAttributedString(string: testStr, attributes: attributes)
         let width2 =    450 + testStr.characters.count*50
@@ -168,17 +224,17 @@ class PhotoActionController : UIViewController {
         let logoImage = UIImage(named: "awesome")
         
         let firstElement = MediaElement(image: logoImage!)
-        firstElement.frame = CGRect(x: 0, y: item2!.size.height-20, width: logoImage!.size.width/2, height: logoImage!.size.height/2)
+        firstElement.frame = CGRect(x: 10, y: item2!.size.height-20, width: logoImage!.size.width/2, height: logoImage!.size.height/2)
         
-        let testStr = "\(currentUser)"
-        let attributes = [ NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10) ]
+        let testStr = "\(currentUser!)"
+        let attributes = [ NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20) ]
         let attrStr = NSAttributedString(string: testStr, attributes: attributes)
         print("height and width")
         print(item2!.size.height)
         print(item2!.size.width)
         print(testStr.characters.count)
         let secondElement = MediaElement(text: attrStr)
-        secondElement.frame = CGRect(x: 0, y: -20, width: 500, height: 50)
+        secondElement.frame = CGRect(x: 20, y: -20, width: 500, height: 50)
         
         item2!.add(elements: [firstElement, secondElement])
         print("checking control")
@@ -198,10 +254,16 @@ class PhotoActionController : UIViewController {
         do {
             let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(value: 0, timescale: 1), actualTime: nil)
             // !! check the error before proceeding
-            let uiImage = UIImage(cgImage: cgImage)
+            var uiImage = UIImage(cgImage: cgImage)
             //            let imageViewX = UIImageView(image: uiImage)
             imageView.image = uiImage
-            thumb = uiImage
+            let item2 = MediaItem(url: videoUrl!)
+            if(item2!.size.height > item2!.size.width){
+                uiImage = uiImage.rotate(radians: CGFloat(M_PI_2))
+            }
+            thumb = playButtonWatermark(imageTemp: uiImage)
+            
+            
             thumbWatermarked = imageTextWatermark(imageTemp: thumb!)
             print("done")
             //            uploadThumbnail(image: uiImage, name: name2)
@@ -431,6 +493,17 @@ class PhotoActionController : UIViewController {
                 saveVideoToLocal()
             }
         }
+//        let title = "Success"
+//        let message = "Video was proceeded successfully"
+//
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+         tabBarController?.selectedIndex = 0
+        self.navigationController?.popToRootViewController(animated: false)
+
+
+//        present(alert, animated: true, completion: nil)
+        
     }
     
     
@@ -441,4 +514,26 @@ class PhotoActionController : UIViewController {
     
     
     
+}
+extension UIImage {
+    func rotate(radians: CGFloat) -> UIImage {
+        let rotatedSize = CGRect(origin: .zero, size: size)
+            .applying(CGAffineTransform(rotationAngle: CGFloat(radians)))
+            .integral.size
+        UIGraphicsBeginImageContext(rotatedSize)
+        if let context = UIGraphicsGetCurrentContext() {
+            let origin = CGPoint(x: rotatedSize.width / 2.0,
+                                 y: rotatedSize.height / 2.0)
+            context.translateBy(x: origin.x, y: origin.y)
+            context.rotate(by: radians)
+            draw(in: CGRect(x: -origin.y, y: -origin.x,
+                            width: size.width, height: size.height))
+            let rotatedImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            return rotatedImage ?? self
+        }
+        
+        return self
+    }
 }

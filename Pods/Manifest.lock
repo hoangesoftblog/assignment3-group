@@ -18,6 +18,8 @@ PODS:
     - Bolts (~> 1.9)
   - FBSDKLoginKit (4.44.1):
     - FBSDKCoreKit
+  - FBSDKShareKit (4.44.1):
+    - FBSDKCoreKit
   - Firebase (5.20.2):
     - Firebase/Core (= 5.20.2)
   - Firebase/Auth (5.20.2):
@@ -190,6 +192,9 @@ PODS:
 
 DEPENDENCIES:
   - Charts
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
   - Firebase
   - Firebase/Auth
   - Firebase/Core
@@ -204,6 +209,7 @@ SPEC REPOS:
     - Charts
     - FBSDKCoreKit
     - FBSDKLoginKit
+    - FBSDKShareKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -234,6 +240,7 @@ SPEC CHECKSUMS:
   Charts: ec1f57f9340054155691e84d4544a1d239d382c5
   FBSDKCoreKit: a823ae35bdb60ebb8d7a7e51abe7c5d87d2bfced
   FBSDKLoginKit: 54ae59987f2a8703021557c90a9aebb9e5c2bef6
+  FBSDKShareKit: 526d4cfb713d24855fa23d0dd74e191accd3a720
   Firebase: 0c8cf33f266410c61ab3e2265cfa412200351d9c
   FirebaseAnalytics: ece1aa57a4f43c64d53a648b5a5e05151aae947b
   FirebaseAuth: dd7bbf03a5aee0eafb3a1aee4d2812bd74bac890
@@ -258,6 +265,6 @@ SPEC CHECKSUMS:
   TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
   TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
 
-PODFILE CHECKSUM: fd59ba0ef81d2305ee7439e3821eae2d01eb2be4
+PODFILE CHECKSUM: e8d42daa8d15f3ab06c73ca8dd647e7e3b9153a7
 
 COCOAPODS: 1.6.1

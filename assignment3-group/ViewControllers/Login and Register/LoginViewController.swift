@@ -20,7 +20,7 @@ class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDe
         performSegue(withIdentifier: forgetPasswordSegue, sender: sender)
     }
     let enterUsername = "enterUsername"
-    
+
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult, error: Error!) {
         print("running")
 //        print(error.localizedDescription)
