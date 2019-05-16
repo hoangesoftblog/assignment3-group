@@ -33,6 +33,7 @@ class DetailViewController: UIViewController {
     }
     @IBOutlet weak var mainPic: UIImageView!
     @IBOutlet weak var profilePic: UIImageView!
+    
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var usernameButton: UIButton!
@@ -132,6 +133,9 @@ class DetailViewController: UIViewController {
                                 if let imageTemp = UIImage(data: data!) {
                                     print("image available")
                                     self.profilePic.image = imageTemp
+                                    self.profilePic.layer.cornerRadius = self.profilePic.frame.height/2
+                                        self.profilePic.layer.masksToBounds = true
+                                    
                                 }
                             }
                         }
@@ -148,6 +152,7 @@ class DetailViewController: UIViewController {
         shareButton.center = newCenter
         self.view.addSubview(shareButton)
     }
+    
     
 //    @objc func playVideo(){
 //        var player = AVPlayer(url: videoURL!)

@@ -222,6 +222,8 @@ extension MainPaymentViewController: UITableViewDataSource {
                 
                 
                 customCell.profilePicture.image = notificationArray[indexPath.row]?.avtImage
+                customCell.profilePicture.layer.cornerRadius = 50
+                customCell.profilePicture.layer.masksToBounds = true
                 return customCell
             }            
             
