@@ -136,4 +136,15 @@ class SelectPersonViewController: UITableViewController, UISearchBarDelegate {
             dismiss(animated: true, completion: nil)
         }
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("Search button click")
+        searchBar.endEditing(true)
+    }
+    
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print("Scroll view drag")
+
+        searchBar.endEditing(true)
+    }
 }

@@ -48,6 +48,7 @@ class DetailViewController: UIViewController {
     @IBAction func openPersonalPage(_ sender: Any) {
         performSegue(withIdentifier: goToPersonalPage, sender: usernameButton.currentTitle)
     }
+    
     @IBOutlet weak var mainPic: UIImageView!
     @IBOutlet weak var profilePic: UIImageView!
     
@@ -278,11 +279,6 @@ class DetailViewController: UIViewController {
                     })
 
         if currentUser == self.usernameButton.currentTitle{
-//            action.addAction(UIAlertAction(title: "Shared with someone", style: .default) { (_) in
-//
-//                self.performSegue(withIdentifier: self.selectPerson, sender: (self.usernameButton.currentTitle, self.fileName!))
-//
-//            })
             
             let deleteFile = UIAlertAction(title: "Delete \(((self.fileName?.contains("thumbnail"))! ? "video" : "photo"))", style: .default){ (_) in
                 if self.isAnotherOwner {
@@ -307,7 +303,11 @@ class DetailViewController: UIViewController {
         let downWithWatermark = UIAlertAction(title: "Download with watermark", style: .default) { (_) in
             let location = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(self.fileName!)
             if (self.fileName?.contains("thumbnail"))! {
-                let downloadTask = storageRef.child(self.videoName!).write(toFile: location) { url, error in
+                var downloadingFile = self.videoName!.replacingOccurrences(of: ".mp4", with: "")
+                downloadingFile = (!(downloadingFile.contains("watermark"))) ? downloadingFile + "watermark" : downloadingFile
+                downloadingFile = downloadingFile.replacingOccurrences(of: "thumbnail", with: "") + ".mp4"
+                
+                let downloadTask = storageRef.child(downloadingFile).write(toFile: location) { url, error in
                     print("URL to download is \(url?.path)")
 
                     if error != nil {
@@ -332,7 +332,9 @@ class DetailViewController: UIViewController {
             }
 
             else {
-                let downloadTask = storageRef.child(self.videoName!).write(toFile: location) { url, error in
+                let downloadingFile = (!(self.fileName?.contains("watermark"))!) ? self.fileName! + "watermark" : self.fileName!
+                
+                let downloadTask = storageRef.child(downloadingFile).write(toFile: location) { url, error in
                     print("URL to download is \(url?.path)")
                     
                     if error != nil {
@@ -344,13 +346,13 @@ class DetailViewController: UIViewController {
                 }
                 
                 downloadTask.observe(.success) { snapshot in
-                    let tempAction = UIAlertController(title: "Download finished", message: "Video downloaded successfully, file is saved in Download folder", preferredStyle: .alert)
+                    let tempAction = UIAlertController(title: "Download finished", message: "Image downloaded successfully, file is saved in Download folder", preferredStyle: .alert)
                     tempAction.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
                     self.present(tempAction, animated: true, completion: nil)
                 }
                 
                 downloadTask.observe(.failure) { snapshot in
-                    let tempAction = UIAlertController(title: "Download failed", message: "Video downloaded failed, please download again", preferredStyle: .alert)
+                    let tempAction = UIAlertController(title: "Download failed", message: "Image downloaded failed, please download again", preferredStyle: .alert)
                     tempAction.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
                     self.present(tempAction, animated: true, completion: nil)
                 }
@@ -365,10 +367,11 @@ class DetailViewController: UIViewController {
         let temp = UIAlertAction(title: "Download without watermark", style: .default){ _ in
             let location = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(self.fileName!)
             if (self.fileName?.contains("thumbnail"))! {
-                var downloadingFile = ((self.videoName?.contains("watermark"))!) ? self.videoName?.replacingOccurrences(of: "watermark", with: "") : self.videoName!
-                downloadingFile = downloadingFile!.replacingOccurrences(of: "thumbnail", with: "") + ".mp4"
+                var downloadingFile = self.videoName!.replacingOccurrences(of: ".mp4", with: "")
+                downloadingFile = ((downloadingFile.contains("watermark"))) ? downloadingFile.replacingOccurrences(of: "watermark", with: "") : downloadingFile
+                downloadingFile = downloadingFile.replacingOccurrences(of: "thumbnail", with: "") + ".mp4"
                 
-                let downloadTask = storageRef.child(downloadingFile!).write(toFile: location) { url, error in
+                let downloadTask = storageRef.child(downloadingFile).write(toFile: location) { url, error in
                     print("URL to download is \(url?.path)")
                     
                     if error != nil {
@@ -390,6 +393,7 @@ class DetailViewController: UIViewController {
             
             else {
                 let downloadingFile = ((self.fileName?.contains("watermark"))!) ? self.fileName?.replacingOccurrences(of: "watermark", with: "") : self.fileName!
+                
                 let downloadTask = storageRef.child(downloadingFile!).write(toFile: location) { url, error in
                     print("URL to download is \(url?.path)")
                     
@@ -412,11 +416,11 @@ class DetailViewController: UIViewController {
             }
         }
         
-        if currentUser != usernameButton.currentTitle {
-            temp.isEnabled = false
+        if currentUser == usernameButton.currentTitle {
+            action.addAction(temp)
         }
         
-        action.addAction(temp)
+        
         
         if usernameButton.currentTitle != currentUser {
             action.addAction(UIAlertAction(title: "Buy this photo", style: .default){ (_) in
@@ -466,5 +470,9 @@ class DetailViewController: UIViewController {
             }
         }
     }
+    @IBAction func inAppSharing(_ sender: Any) {
+        self.performSegue(withIdentifier: self.selectPerson, sender: (self.usernameButton.currentTitle, self.fileName!))
+    }
 }
+
 

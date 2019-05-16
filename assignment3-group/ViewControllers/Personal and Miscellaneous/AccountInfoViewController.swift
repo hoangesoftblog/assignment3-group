@@ -15,6 +15,7 @@ class AccountInfoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var BioTextfield: UITextField!
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("text field return")
         view.endEditing(true)
         return false
     }
@@ -31,6 +32,9 @@ class AccountInfoViewController: UIViewController, UITextFieldDelegate {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 23))
         imageView.image = #imageLiteral(resourceName: "awesome")
         navigationItem.titleView = imageView
+        
+        nameTextField.delegate = self
+        BioTextfield.delegate = self
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(finishEditing))
     }

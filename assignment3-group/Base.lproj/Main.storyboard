@@ -476,12 +476,12 @@
         <scene sceneID="1Ca-Le-xau">
             <objects>
                 <viewController storyboardIdentifier="WalkthroughContentViewController" id="ktd-ql-get" customClass="WalkthroughContentViewController" customModule="assignment3_group" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="Mpp-ne-EiL">
+                    <view key="view" contentMode="scaleToFill" id="Mpp-ne-EiL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="598"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oFH-le-xMJ">
-                                <rect key="frame" x="0.0" y="124.66666666666669" width="414" height="359"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oFH-le-xMJ">
+                                <rect key="frame" x="0.0" y="5" width="414" height="598"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="359" id="oeq-Bw-AYG"/>
                                 </constraints>
@@ -1100,7 +1100,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bHe-PK-CEU">
-                                <rect key="frame" x="0.0" y="2.6666666666666856" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="5" width="414" height="896"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1130,7 +1130,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEA-pb-PU3">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDM-vD-csP" userLabel="contentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
@@ -1166,7 +1166,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMj-MJ-Shb">
-                                                <rect key="frame" x="369" y="565" width="25" height="37"/>
+                                                <rect key="frame" x="369" y="565" width="25" height="22"/>
                                                 <state key="normal" image="Option"/>
                                                 <connections>
                                                     <action selector="pictureAction:" destination="593-Lz-Njb" eventType="touchUpInside" id="gNA-xH-Q1a"/>
@@ -1179,12 +1179,14 @@
                                                     <constraint firstAttribute="height" constant="500" id="I7k-14-oXF"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2v-BT-zSQ">
-                                                <rect key="frame" x="352" y="621" width="42" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tlf-kA-Uas">
+                                                <rect key="frame" x="358" y="612" width="47" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="In-App"/>
+                                                <connections>
+                                                    <action selector="inAppSharing:" destination="593-Lz-Njb" eventType="touchUpInside" id="FBM-12-SPm"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1195,18 +1197,14 @@
                                             <constraint firstItem="LUz-HR-GvJ" firstAttribute="leading" secondItem="yfg-r2-aWr" secondAttribute="trailing" constant="37" id="9T6-fm-BpI"/>
                                             <constraint firstAttribute="trailing" secondItem="UE3-Gu-loh" secondAttribute="trailing" constant="20" id="Btw-4P-L5Z"/>
                                             <constraint firstItem="dQh-LB-ZYX" firstAttribute="leading" secondItem="cDM-vD-csP" secondAttribute="leading" constant="20" id="Hta-pb-oak"/>
-                                            <constraint firstItem="P2v-BT-zSQ" firstAttribute="top" secondItem="wMj-MJ-Shb" secondAttribute="bottom" constant="19" id="LUv-6N-qdO"/>
                                             <constraint firstItem="3De-bG-1Cd" firstAttribute="leading" secondItem="yfg-r2-aWr" secondAttribute="trailing" constant="37" id="QDv-Vm-Kf2"/>
-                                            <constraint firstItem="P2v-BT-zSQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LUz-HR-GvJ" secondAttribute="trailing" constant="8" symbolic="YES" id="S18-Xm-gdh"/>
                                             <constraint firstAttribute="trailing" secondItem="dQh-LB-ZYX" secondAttribute="trailing" constant="20" id="TX1-V7-LEs"/>
-                                            <constraint firstItem="P2v-BT-zSQ" firstAttribute="trailing" secondItem="wMj-MJ-Shb" secondAttribute="trailing" id="XTn-Zv-ghk"/>
                                             <constraint firstItem="yfg-r2-aWr" firstAttribute="top" secondItem="UE3-Gu-loh" secondAttribute="bottom" constant="45" id="Zfi-dD-lF9"/>
                                             <constraint firstAttribute="height" constant="800" id="bep-rR-uXT"/>
                                             <constraint firstItem="LUz-HR-GvJ" firstAttribute="top" secondItem="3De-bG-1Cd" secondAttribute="bottom" constant="19" id="chT-tR-9zu"/>
                                             <constraint firstItem="UE3-Gu-loh" firstAttribute="leading" secondItem="cDM-vD-csP" secondAttribute="leading" constant="20" id="dXc-9R-bxL"/>
                                             <constraint firstItem="yfg-r2-aWr" firstAttribute="leading" secondItem="cDM-vD-csP" secondAttribute="leading" constant="20" id="kTq-E7-1xx"/>
                                             <constraint firstItem="wMj-MJ-Shb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3De-bG-1Cd" secondAttribute="trailing" constant="8" symbolic="YES" id="kV8-VK-Xxx"/>
-                                            <constraint firstItem="P2v-BT-zSQ" firstAttribute="bottom" secondItem="LUz-HR-GvJ" secondAttribute="bottom" id="mhD-0g-lei"/>
                                             <constraint firstItem="dQh-LB-ZYX" firstAttribute="top" secondItem="cDM-vD-csP" secondAttribute="top" constant="20" id="tsj-Sc-YuT"/>
                                         </constraints>
                                     </view>
@@ -1233,7 +1231,6 @@
                         <outlet property="locationLabel" destination="LUz-HR-GvJ" id="IIW-va-tde"/>
                         <outlet property="mainPic" destination="UE3-Gu-loh" id="FpL-wo-h1I"/>
                         <outlet property="profilePic" destination="yfg-r2-aWr" id="KOe-Jn-gFz"/>
-                        <outlet property="timeLabel" destination="P2v-BT-zSQ" id="LgR-bU-rMi"/>
                         <outlet property="usernameButton" destination="3De-bG-1Cd" id="M69-JS-Sye"/>
                         <outlet property="videoPlayer" destination="dQh-LB-ZYX" id="GAe-t7-prs"/>
                         <segue destination="vtd-Hn-me6" kind="show" identifier="DetailToSelectPerson" id="Kus-7E-hJ6"/>
@@ -1616,25 +1613,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="awesome" translatesAutoresizingMaskIntoConstraints="NO" id="EgV-Tf-pxU">
-                                <rect key="frame" x="103.66666666666669" y="118" width="207" height="40"/>
+                                <rect key="frame" x="103.66666666666669" y="74" width="207" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="leK-yH-2pt"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbC-oY-DHd">
-                                <rect key="frame" x="20" y="486.66666666666669" width="52" height="25"/>
+                                <rect key="frame" x="20" y="442.66666666666669" width="52" height="25"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AwesomePhotos Team." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYf-FT-Dsi">
-                                <rect key="frame" x="20" y="531.66666666666663" width="191" height="25"/>
+                                <rect key="frame" x="20" y="487.66666666666669" width="191" height="25.000000000000057"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5i-8N-YWQ">
-                                <rect key="frame" x="20" y="178.00000000000003" width="374" height="268.66666666666674"/>
+                                <rect key="frame" x="20" y="134.00000000000003" width="374" height="268.66666666666674"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-9"/>
                                 <string key="text">Created by RMIT students having a passion for photography.
@@ -1677,7 +1674,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zvf-E2-xnh" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="20" y="200" width="374" height="374"/>
+                                <rect key="frame" x="20" y="156" width="374" height="374"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxj-ph-Eod" customClass="PieChartView" customModule="Charts">
                                         <rect key="frame" x="67" y="67" width="240" height="240"/>
@@ -1706,27 +1703,27 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memory Used" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fP1-3C-O8a">
-                                <rect key="frame" x="111" y="114" width="193" height="41"/>
+                                <rect key="frame" x="111" y="70" width="193" height="41"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
                                 <color key="textColor" red="0.9137254901960784" green="0.23529411764705882" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oPq-jk-23b">
-                                <rect key="frame" x="29" y="602" width="28" height="28"/>
+                                <rect key="frame" x="29" y="558" width="28" height="28"/>
                                 <color key="backgroundColor" red="0.69803921568627447" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UU1-I7-40N">
-                                <rect key="frame" x="230" y="602" width="28" height="28"/>
+                                <rect key="frame" x="230" y="558" width="28" height="28"/>
                                 <color key="backgroundColor" red="0.0" green="0.14901960784313725" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vT9-da-ao3">
-                                <rect key="frame" x="65" y="605" width="57" height="25"/>
+                                <rect key="frame" x="65" y="561" width="57" height="25"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Videos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKS-NV-SKS">
-                                <rect key="frame" x="266" y="605" width="57" height="25"/>
+                                <rect key="frame" x="266" y="561" width="57" height="25"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1800,7 +1797,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SO6-Mg-JqS">
-                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem id="DfN-yY-rWK">
                                         <barButtonItem key="leftBarButtonItem" image="setting" style="plain" id="YFg-8E-RzB">
@@ -1963,7 +1960,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sh-c4-Ii9" userLabel="sideView">
-                                <rect key="frame" x="-200" y="132" width="200" height="681"/>
+                                <rect key="frame" x="-200" y="88" width="200" height="774"/>
                                 <subviews>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="namtranx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kON-cT-5PK">
                                         <rect key="frame" x="22" y="18" width="156" height="24.666666666666671"/>
@@ -2331,7 +2328,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ai0-oF-DMh"/>
-        <segue reference="1ih-rv-tgV"/>
+        <segue reference="rD6-wP-7sS"/>
         <segue reference="Cba-QY-Zxx"/>
         <segue reference="xyI-wM-fN8"/>
     </inferredMetricsTieBreakers>
