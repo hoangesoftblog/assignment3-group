@@ -38,22 +38,23 @@ class AccountInfoViewController: UIViewController, UITextFieldDelegate {
     @objc func finishEditing() {
         print("Button is pressed")
         
-        if nameTextField.text != nil {
+        if !(nameTextField.text?.isEmpty)! {
             print("nameTextField is working, nametextFiekld is \(nameTextField.text)")
             ref.child("userPicture/\(currentUser!)").observeSingleEvent(of: .value) { snapshot in
                 let data = snapshot.value
                 //Transfer data from old to new node
                 
-                print("Inside nametextfield 1")
                 snapshot.ref.parent?.child(self.nameTextField.text!).setValue(data)
                 print("Inside nametextfield 2")
+               
+               print(Auth.auth().currentUser?.uid)
                 snapshot.ref.parent?.child("IDToUser/\(Auth.auth().currentUser?.uid)").setValue(self.nameTextField.text!)
                 
                 for i in snapshot.childSnapshot(forPath: "fileOwned").children {
                     if let i2 = (i as? DataSnapshot)?.value as? String {
                         
                         print("Inside nametextfield 3")
- snapshot.ref.parent?.child("fileName/\(Media.removeFileExtension(file: i2))/owner").setValue(self.nameTextField.text!)
+                        snapshot.ref.parent?.child("fileName/\(Media.removeFileExtension(file: i2))/owner").setValue(self.nameTextField.text!)
                     }
                 }
                 
@@ -61,7 +62,7 @@ class AccountInfoViewController: UIViewController, UITextFieldDelegate {
                     if let i2 = (i as? DataSnapshot)?.value as? String {
                         print("Inside nametextfield 4")
 
-                        snapshot.ref.parent?.child("fileName/\(i2)/owner").setValue(self.nameTextField.text!)
+                        snapshot.ref.parent?.child("fileName/\(Media.removeFileExtension(file: i2))/owner").setValue(self.nameTextField.text!)
                     }
                 }
                 
@@ -70,9 +71,9 @@ class AccountInfoViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-        if BioTextfield.text != nil {
+        if !(BioTextfield.text?.isEmpty)! {
             print("BioTextField is working, biotextfield is \(BioTextfield.text)")
-            ref.child("userPicture/\((self.nameTextField.text == nil) ? currentUser! : self.nameTextField.text!)/Bio").setValue(BioTextfield.text!)
+            ref.child("userPicture/\(((self.nameTextField.text)?.isEmpty)! ? currentUser! : self.nameTextField.text!)/Bio").setValue(BioTextfield.text!)
         }
         
         self.navigationController?.popViewController(animated: true)
