@@ -34,7 +34,7 @@ class MainHomeViewController: UIViewController {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 23))
         imageView.image = #imageLiteral(resourceName: "awesome")
         navigationItem.titleView = imageView
-        
+        self.tabBarItem.image = UIImage(named: "Public")
         if #available(iOS 10.0, *) {
             self.imageCollection.refreshControl = refreshControl
         } else {

@@ -23,7 +23,7 @@ class PhotoActionController : UIViewController {
    
     @IBOutlet weak var videoLarge: VideoPlayer!
     @IBOutlet weak var imageLarge: UIImageView!
-    @IBOutlet weak var imageView: UIImageView!
+//    @IBOutlet weak var imageView: UIImageView!
     var image : UIImage?
     var videoUrl : URL?
     var nameTime : Any?
@@ -60,7 +60,7 @@ class PhotoActionController : UIViewController {
         super.viewDidLoad()
         print(image)
         print("got here")
-        imageView.image = image
+//        imageView.image = image
         videoLarge.isHidden = true
         imageLarge.image = image
         privateText.isHidden = true
@@ -84,7 +84,7 @@ class PhotoActionController : UIViewController {
             shareButton.shareContent = content
             print(self.view.center)
             shareButton.center = newCenter
-            self.view.addSubview(shareButton)
+//            self.view.addSubview(shareButton)
             
             
             
@@ -257,7 +257,7 @@ class PhotoActionController : UIViewController {
             // !! check the error before proceeding
             var uiImage = UIImage(cgImage: cgImage)
             //            let imageViewX = UIImageView(image: uiImage)
-            imageView.image = uiImage
+//            imageView.image = uiImage
             let item2 = MediaItem(url: videoUrl!)
             if(item2!.size.height > item2!.size.width){
                 uiImage = uiImage.rotate(radians: CGFloat(M_PI_2))
