@@ -113,6 +113,21 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         originalArrImages.removeAll()
         imageNames.removeAll()
         grabPhoto()
+        getBackgroundImage()
+        getProfileImage()
+        getUsername()
+    }
+    
+    func getUsername(){
+        ref.child("IDToUser/\(Auth.auth().currentUser?.uid)").observeSingleEvent(of: .value) { snapshot in
+            let value = (snapshot.value as? String) ?? ""
+            self.collectionV?.usernameLabel.text = value
+            
+            ref.child("fileName/\(value)/Bio").observeSingleEvent(of: .value) { snapshot2 in
+                self.collectionV?.jobLabel.text = snapshot2.value as? String
+                
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -150,9 +165,8 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
 //
 //        }
         
-        getProfileImage()
         loadTotalFileUsed()
-        getBio()
+        
     }
     
     func getBio(){
@@ -573,15 +587,11 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
         super.viewDidLayoutSubviews()
         
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//         UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-//    }
-//    func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-//        return UIInterfaceOrientationMask.portrait
-//    }
-//    func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
-//        return UIInterfaceOrientation.portrait
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        getBio()
+        super.viewDidAppear(true)
+    }
+    
     
     func updateUI(){
         

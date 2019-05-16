@@ -48,13 +48,13 @@ class AccountInfoViewController: UIViewController, UITextFieldDelegate {
                 print("Inside nametextfield 2")
                
                print(Auth.auth().currentUser?.uid)
-                snapshot.ref.parent?.child("IDToUser/\(Auth.auth().currentUser?.uid)").setValue(self.nameTextField.text!)
+                snapshot.ref.root.child("IDToUser/\(Auth.auth().currentUser!.uid)").setValue(self.nameTextField.text!)
                 
                 for i in snapshot.childSnapshot(forPath: "fileOwned").children {
                     if let i2 = (i as? DataSnapshot)?.value as? String {
                         
                         print("Inside nametextfield 3")
-                        snapshot.ref.parent?.child("fileName/\(Media.removeFileExtension(file: i2))/owner").setValue(self.nameTextField.text!)
+                        snapshot.ref.root.child("fileName/\(Media.removeFileExtension(file: i2))/owner").setValue(self.nameTextField.text!)
                     }
                 }
                 
@@ -62,11 +62,11 @@ class AccountInfoViewController: UIViewController, UITextFieldDelegate {
                     if let i2 = (i as? DataSnapshot)?.value as? String {
                         print("Inside nametextfield 4")
 
-                        snapshot.ref.parent?.child("fileName/\(Media.removeFileExtension(file: i2))/owner").setValue(self.nameTextField.text!)
+                        snapshot.ref.root.child("fileName/\(Media.removeFileExtension(file: i2))/owner").setValue(self.nameTextField.text!)
                     }
                 }
                 
-                
+                currentUser = self.nameTextField.text!
                 snapshot.ref.setValue(nil)
             }
         }

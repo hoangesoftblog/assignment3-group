@@ -13,12 +13,14 @@ class Request {
     var imageName: String?
     var image: UIImage?
     var profilePic: UIImage?
+    var time: String?
     
-    init(owner: String, image: UIImage?, imageName: String?, profilePic: UIImage?) {
+    init(owner: String, image: UIImage?, imageName: String?, profilePic: UIImage?, time: String?) {
         self.image = image
         self.imageName = imageName
         self.owner = owner
         self.profilePic = profilePic
+        self.time = time
     }
 }
 
@@ -45,7 +47,8 @@ class AllRequestsViewController: UIViewController,UITableViewDelegate {
             self.tableView.addSubview(refreshControl)
         }
         
-        
+        refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "Reloading")
     }
     
     @objc func refreshView(){
@@ -68,7 +71,7 @@ class AllRequestsViewController: UIViewController,UITableViewDelegate {
             
             self.tableView.reloadData()
             
-            let value = self.requestDataSnapshot.count
+            let value = self.requestDataSnapshot.count - 1
             if value >= 0 {
                 for i in 0..<self.requestDataSnapshot.count {
                     if let val = self.requestDataSnapshot[i].value as? [String: String]{
@@ -96,7 +99,7 @@ class AllRequestsViewController: UIViewController,UITableViewDelegate {
                                         else if data != nil {
                                             if let imageTemp = UIImage(data: data!) {
                                                 print("avt image in payment available")
-                                                self.requestArray[value - i] = Request(owner: val["owner"] ?? "No owner", image: tempPic, imageName: val["image"] ?? "No image", profilePic: imageTemp)
+                                                self.requestArray[value - i] = Request(owner: val["owner"] ?? "No owner", image: tempPic, imageName: val["image"] ?? "No image", profilePic: imageTemp, time: val["timne"])
                                                 self.tableView.reloadData()
                                                 if self.requestDataSnapshot.count == self.requestArray.count {
                                                     self.refreshControl.endRefreshing()
@@ -145,9 +148,9 @@ extension AllRequestsViewController: UITableViewDataSource {
                 customCell.usernameButton.setTitle(requestArray[indexPath.row]?.owner, for: .normal)
                 customCell.usernameButton.addTarget(self, action: #selector(goToSender(sender:)), for: .touchUpInside)
                 
-                
                 print("Profile in Request is nil or not: \(requestArray[indexPath.row]?.profilePic == nil)")
                 customCell.profilePic.image = requestArray[indexPath.row]?.profilePic
+                customCell.timeLabel.text = requestArray[indexPath.row]?.time
     
                 return customCell
             }

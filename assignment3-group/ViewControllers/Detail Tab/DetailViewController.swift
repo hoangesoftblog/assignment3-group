@@ -365,7 +365,8 @@ class DetailViewController: UIViewController {
         let temp = UIAlertAction(title: "Download without watermark", style: .default){ _ in
             let location = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0].appendingPathComponent(self.fileName!)
             if (self.fileName?.contains("thumbnail"))! {
-                let downloadingFile = ((self.videoName?.contains("watermark"))!) ? self.videoName?.replacingOccurrences(of: "watermark", with: "") : self.videoName!
+                var downloadingFile = ((self.videoName?.contains("watermark"))!) ? self.videoName?.replacingOccurrences(of: "watermark", with: "") : self.videoName!
+                downloadingFile = downloadingFile!.replacingOccurrences(of: "thumbnail", with: "") + ".mp4"
                 
                 let downloadTask = storageRef.child(downloadingFile!).write(toFile: location) { url, error in
                     print("URL to download is \(url?.path)")

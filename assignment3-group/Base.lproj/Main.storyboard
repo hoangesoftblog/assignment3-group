@@ -885,11 +885,11 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="442" id="XH3-3g-UsH" customClass="PaymentCell" customModule="assignment3_group" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="442"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="472" id="XH3-3g-UsH" customClass="PaymentCell" customModule="assignment3_group" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="472"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XH3-3g-UsH" id="f8A-xJ-svT">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="441.66666666666669"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="471.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtA-p8-q6T">
@@ -1391,11 +1391,11 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellRequest" rowHeight="442" id="qAq-3s-FCZ" customClass="RequestCell" customModule="assignment3_group" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="442"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellRequest" rowHeight="463" id="qAq-3s-FCZ" customClass="RequestCell" customModule="assignment3_group" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="463"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qAq-3s-FCZ" id="jJL-9P-S67">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="441.66666666666669"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="462.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrB-ua-6sG">
@@ -1442,6 +1442,7 @@
                                             <outlet property="photo" destination="owd-bu-Ly8" id="ikH-na-Mo0"/>
                                             <outlet property="profilePic" destination="hbQ-Ma-7zE" id="JVf-ya-eiT"/>
                                             <outlet property="requestLabel" destination="Qhw-wu-gSF" id="ztZ-Hb-upy"/>
+                                            <outlet property="timeLabel" destination="NH2-Ga-ocF" id="6nn-vm-R7U"/>
                                             <outlet property="usernameButton" destination="FrB-ua-6sG" id="Ba2-iU-7EE"/>
                                         </connections>
                                     </tableViewCell>
@@ -2358,7 +2359,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ai0-oF-DMh"/>
-        <segue reference="55c-uu-KG9"/>
+        <segue reference="1ih-rv-tgV"/>
         <segue reference="Cba-QY-Zxx"/>
         <segue reference="xyI-wM-fN8"/>
     </inferredMetricsTieBreakers>

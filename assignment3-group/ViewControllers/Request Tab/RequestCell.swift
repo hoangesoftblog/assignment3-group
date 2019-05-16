@@ -13,7 +13,7 @@ class RequestCell: UITableViewCell {
     @IBOutlet weak var requestLabel: UILabel!
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var profilePic: UIImageView!
-    
+    @IBOutlet weak var timeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
