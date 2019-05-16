@@ -98,9 +98,13 @@ class AccountSettingViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let color: String = UserDefaults.standard.object(forKey: "bgColor") as? String else {return
-            
+        guard let color = UserDefaults.standard.object(forKey: "bgColor") as? String else {
+            return
         }
+        if color == "yellow" {
+            self.view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        }
+        
         let autosave = UserDefaults.standard.set("on", forKey: "autosave") as? String
         if autosave == "on" {
             let alert = UIAlertController(title: "Saved Image", message: "Your image is saved", preferredStyle: UIAlertController.Style.alert)

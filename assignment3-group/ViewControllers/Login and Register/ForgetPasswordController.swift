@@ -15,7 +15,18 @@ import GoogleSignIn
 class ForgetPasswordController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.set("yellow", forKey: "bgColor")
+        guard let white: String = UserDefaults.standard.object(forKey: "bgColor") as? String else {return}
+        if color == "white" {
+            self.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        }
         print("went to forget")
+        guard let color = UserDefaults.standard.object(forKey: "bgColor") as? String else {
+            return
+        }
+        if color == "yellow" {
+            self.view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        }
     }
 
 
@@ -39,8 +50,6 @@ class ForgetPasswordController : UIViewController {
             callback?(error)
         }
     }
-
-
 
 
 }
