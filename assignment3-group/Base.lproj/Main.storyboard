@@ -769,19 +769,19 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="79" translatesAutoresizingMaskIntoConstraints="NO" id="Vfy-NN-xSf">
-                                                    <rect key="frame" x="20" y="418" width="374" height="24"/>
+                                                    <rect key="frame" x="20" y="418" width="206" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU8-Z2-lei">
-                                                            <rect key="frame" x="0.0" y="0.0" width="74" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="16" height="22"/>
                                                             <state key="normal" image="Accept"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iap-q6-td5">
-                                                            <rect key="frame" x="153" y="0.0" width="63" height="24"/>
+                                                            <rect key="frame" x="95" y="0.0" width="16" height="22"/>
                                                             <state key="normal" image="Deny"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIV-Fg-es4">
-                                                            <rect key="frame" x="295" y="0.0" width="79" height="24"/>
+                                                            <rect key="frame" x="190" y="0.0" width="16" height="22"/>
                                                             <state key="normal" image="ContactPayment"/>
                                                         </button>
                                                     </subviews>
@@ -789,8 +789,8 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uh1-DR-MWK">
                                                     <rect key="frame" x="20" y="12" width="53" height="45"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="53" id="Qmm-gD-dtX"/>
-                                                        <constraint firstAttribute="height" constant="45" id="a7S-nv-Ojn"/>
+                                                        <constraint firstAttribute="width" constant="50" id="Qmm-gD-dtX"/>
+                                                        <constraint firstAttribute="height" constant="50" id="a7S-nv-Ojn"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -1010,27 +1010,27 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UE3-Gu-loh">
-                                                <rect key="frame" x="20" y="20" width="374" height="193"/>
+                                                <rect key="frame" x="20" y="20" width="374" height="500"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="193" id="fnx-xo-Usk"/>
+                                                    <constraint firstAttribute="height" constant="500" id="fnx-xo-Usk"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yfg-r2-aWr">
-                                                <rect key="frame" x="20" y="258" width="70" height="70"/>
-                                                <color key="backgroundColor" red="1" green="0.17301860080000001" blue="0.1373886882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yfg-r2-aWr">
+                                                <rect key="frame" x="20" y="565" width="45" height="45"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="70" id="JeC-F9-wM5"/>
-                                                    <constraint firstAttribute="height" constant="70" id="LfU-0H-cHx"/>
+                                                    <constraint firstAttribute="width" constant="45" id="JeC-F9-wM5"/>
+                                                    <constraint firstAttribute="height" constant="45" id="LfU-0H-cHx"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUz-HR-GvJ">
-                                                <rect key="frame" x="127" y="314" width="42" height="21"/>
+                                                <rect key="frame" x="102" y="621" width="42" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3De-bG-1Cd">
-                                                <rect key="frame" x="127" y="258" width="59" height="37"/>
+                                                <rect key="frame" x="102" y="565" width="59" height="37"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="18"/>
                                                 <state key="normal" title="Button">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1040,21 +1040,21 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMj-MJ-Shb">
-                                                <rect key="frame" x="369" y="258" width="25" height="37"/>
+                                                <rect key="frame" x="369" y="565" width="25" height="37"/>
                                                 <state key="normal" image="Option"/>
                                                 <connections>
                                                     <action selector="pictureAction:" destination="593-Lz-Njb" eventType="touchUpInside" id="gNA-xH-Q1a"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQh-LB-ZYX" customClass="VideoPlayer" customModule="assignment3_group" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="20" width="374" height="193"/>
+                                                <rect key="frame" x="20" y="20" width="374" height="500"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="193" id="I7k-14-oXF"/>
+                                                    <constraint firstAttribute="height" constant="500" id="I7k-14-oXF"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2v-BT-zSQ">
-                                                <rect key="frame" x="352" y="314" width="42" height="21"/>
+                                                <rect key="frame" x="352" y="621" width="42" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1695,13 +1695,13 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="340"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="namtranx" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeG-fg-EH6">
-                                                    <rect key="frame" x="158" y="68" width="86.666666666666686" height="21.333333333333329"/>
+                                                    <rect key="frame" x="158" y="68" width="86.666666666666686" height="41.333333333333343"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Traveler" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12p-7w-hl5">
-                                                    <rect key="frame" x="174" y="94" width="54.333333333333343" height="21"/>
+                                                    <rect key="frame" x="174" y="114" width="54.333333333333343" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="L6i-kL-LcS"/>
                                                     </constraints>
@@ -1710,7 +1710,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dQg-x9-TuM">
-                                                    <rect key="frame" x="151" y="123.33333333333331" width="100" height="100"/>
+                                                    <rect key="frame" x="151" y="143.33333333333334" width="100" height="100"/>
                                                     <color key="backgroundColor" red="1" green="0.17301860080000001" blue="0.1373886882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="XWA-d2-R5P"/>
@@ -1718,11 +1718,11 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="editAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="40c-LF-NE8">
-                                                    <rect key="frame" x="221" y="191" width="50" height="50"/>
+                                                    <rect key="frame" x="221" y="211" width="30" height="30"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="Xyk-0f-DuS"/>
-                                                        <constraint firstAttribute="height" constant="50" id="rI9-VW-30q"/>
+                                                        <constraint firstAttribute="width" constant="30" id="Xyk-0f-DuS"/>
+                                                        <constraint firstAttribute="height" constant="30" id="rI9-VW-30q"/>
                                                     </constraints>
                                                     <connections>
                                                         <outletCollection property="gestureRecognizers" destination="aqn-9o-VBC" appends="YES" id="3Tr-gp-6fX"/>
@@ -2148,5 +2148,9 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
         <segue reference="rD6-wP-7sS"/>
         <segue reference="4dA-6W-JLb"/>
         <segue reference="cW4-b4-L4e"/>
+        <segue reference="55c-uu-KG9"/>
+        <segue reference="Cba-QY-Zxx"/>
+        <segue reference="xyI-wM-fN8"/>
+        
     </inferredMetricsTieBreakers>
 </document>
