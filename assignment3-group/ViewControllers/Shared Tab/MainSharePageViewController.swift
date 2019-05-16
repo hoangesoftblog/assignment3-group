@@ -204,7 +204,7 @@ extension MainSharePageViewController {
                 else {
                     fatalError("Invalid view type")
             }
-            headerView.layer.borderWidth = 5
+            headerView.layer.borderWidth = 0.5
             
             headerView.button1.addTarget(self, action: #selector(bt1Click), for: .touchUpInside)
             

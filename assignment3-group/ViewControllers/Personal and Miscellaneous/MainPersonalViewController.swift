@@ -37,10 +37,10 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     var isLeftBarAbleToShow = true
     var showingUser: String?
     let fromPersonalToDetail = "fromPersonalToDetail"
-    let sectionInsets = UIEdgeInsets(top: 50.0,
-                                     left: 20.0,
-                                     bottom: 50.0,
-                                     right: 20.0)
+    let sectionInsets = UIEdgeInsets(top: 10.0,
+                                     left: 10.0,
+                                     bottom: 10.0,
+                                     right: 10.0)
     var numberOfColumns: CGFloat = 2
     let goToAccountSetting = "goToAccountSetting"
     let goToAppearance = "goToAppearance"
@@ -73,9 +73,9 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
     @IBAction func switchView(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            numberOfColumns = 1
-        case 1:
             numberOfColumns = 2
+        case 1:
+            numberOfColumns = 1
         default:
             break
         }
@@ -789,7 +789,8 @@ extension MainPersonalViewController{
             headerView.uploadPhotoImageView.layer.cornerRadius = headerView.uploadPhotoImageView.frame.height/2
             headerView.uploadPhotoImageView.layer.masksToBounds = true
             
-            numberOfColumns = CGFloat(headerView.choiceOfColumns.selectedSegmentIndex+1)
+            headerView.additionalView.layer.borderWidth = 0.25
+//            numberOfColumns = CGFloat(headerView.choiceOfColumns.selectedSegmentIndex + 1)
             headerView.choiceOfColumns.addTarget(self, action: #selector(switchView(_:)), for: .valueChanged)
             
             headerView.sortButton.addTarget(self, action: #selector(sorting(_:)), for: .touchUpInside)
