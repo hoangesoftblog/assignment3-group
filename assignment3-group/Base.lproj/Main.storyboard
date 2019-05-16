@@ -769,19 +769,19 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="79" translatesAutoresizingMaskIntoConstraints="NO" id="Vfy-NN-xSf">
-                                                    <rect key="frame" x="20" y="418" width="374" height="24"/>
+                                                    <rect key="frame" x="20" y="418" width="206" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU8-Z2-lei">
-                                                            <rect key="frame" x="0.0" y="0.0" width="74" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="16" height="22"/>
                                                             <state key="normal" image="Accept"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iap-q6-td5">
-                                                            <rect key="frame" x="153" y="0.0" width="63" height="24"/>
+                                                            <rect key="frame" x="95" y="0.0" width="16" height="22"/>
                                                             <state key="normal" image="Deny"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIV-Fg-es4">
-                                                            <rect key="frame" x="295" y="0.0" width="79" height="24"/>
+                                                            <rect key="frame" x="190" y="0.0" width="16" height="22"/>
                                                             <state key="normal" image="ContactPayment"/>
                                                         </button>
                                                     </subviews>
@@ -1695,13 +1695,13 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="340"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="namtranx" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeG-fg-EH6">
-                                                    <rect key="frame" x="158" y="68" width="86.666666666666686" height="21.333333333333329"/>
+                                                    <rect key="frame" x="158" y="68" width="86.666666666666686" height="41.333333333333343"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Traveler" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12p-7w-hl5">
-                                                    <rect key="frame" x="174" y="94" width="54.333333333333343" height="21"/>
+                                                    <rect key="frame" x="174" y="114" width="54.333333333333343" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="L6i-kL-LcS"/>
                                                     </constraints>
@@ -1710,7 +1710,7 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dQg-x9-TuM">
-                                                    <rect key="frame" x="151" y="123.33333333333331" width="100" height="100"/>
+                                                    <rect key="frame" x="151" y="143.33333333333334" width="100" height="100"/>
                                                     <color key="backgroundColor" red="1" green="0.17301860080000001" blue="0.1373886882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="XWA-d2-R5P"/>
@@ -1718,11 +1718,11 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="editAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="40c-LF-NE8">
-                                                    <rect key="frame" x="221" y="191" width="50" height="50"/>
+                                                    <rect key="frame" x="221" y="211" width="30" height="30"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="Xyk-0f-DuS"/>
-                                                        <constraint firstAttribute="height" constant="50" id="rI9-VW-30q"/>
+                                                        <constraint firstAttribute="width" constant="30" id="Xyk-0f-DuS"/>
+                                                        <constraint firstAttribute="height" constant="30" id="rI9-VW-30q"/>
                                                     </constraints>
                                                     <connections>
                                                         <outletCollection property="gestureRecognizers" destination="aqn-9o-VBC" appends="YES" id="3Tr-gp-6fX"/>
@@ -2147,6 +2147,6 @@ AwesomePhotos is a photo community for discovering, sharing, buying and selling 
         <segue reference="ai0-oF-DMh"/>
         <segue reference="55c-uu-KG9"/>
         <segue reference="Cba-QY-Zxx"/>
-        <segue reference="Z2d-Vi-Tdg"/>
+        <segue reference="xyI-wM-fN8"/>
     </inferredMetricsTieBreakers>
 </document>

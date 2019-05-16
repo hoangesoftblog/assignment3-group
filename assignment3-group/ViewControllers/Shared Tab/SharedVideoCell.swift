@@ -9,5 +9,11 @@
 import UIKit
 
 class SharedVideoCell: UICollectionViewCell {
+    var roundNumber:CGFloat = 15
     @IBOutlet weak var thumbnailView: UIImageView!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        contentView.layer.cornerRadius = roundNumber
+        contentView.layer.masksToBounds = true
+    }
 }

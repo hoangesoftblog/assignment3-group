@@ -12,10 +12,10 @@ import Firebase
 class MainSharePageViewController: UIViewController {
     var fileName: [String] = []
     var imagePhoto: [Int: UIImage] = [:]
-    let sectionInsets = UIEdgeInsets(top: 50.0,
-                                     left: 20.0,
-                                     bottom: 50.0,
-                                     right: 20.0)
+    let sectionInsets = UIEdgeInsets(top: 10.0,
+                                     left: 10.0,
+                                     bottom: 10.0,
+                                     right: 10.0)
     var numberOfColumns: CGFloat = 2
     
     @IBOutlet weak var imageCollection: UICollectionView!
