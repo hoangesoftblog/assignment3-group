@@ -79,10 +79,11 @@ class PhotoActionController : UIViewController {
             
             let content = FBSDKShareLinkContent()
             content.contentURL = URL(string: "https://firebasestorage.googleapis.com/v0/b/assignment3-group.appspot.com/o/Optional(%222019-05-14%2012%3A09%3A47%20%2B0000%22)watermark.mp4?alt=media&token=005446d3-e09c-45aa-9e88-71b9e2e9e02e")
-            
+            let newCenter = CGPoint(x: 300, y: 400)
             let shareButton = FBSDKShareButton()
             shareButton.shareContent = content
-            shareButton.center = self.view.center
+            print(self.view.center)
+            shareButton.center = newCenter
             self.view.addSubview(shareButton)
             
             
