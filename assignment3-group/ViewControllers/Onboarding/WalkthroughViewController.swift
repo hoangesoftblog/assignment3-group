@@ -14,6 +14,8 @@ class WalkthroughViewController: UIViewController, WalkthroughPageViewController
     
     @IBOutlet var pageControl: UIPageControl!
     
+    let fromTutorialToMain = "fromTutorialToMain"
+    
     @IBOutlet var nextButton: UIButton! {
         didSet {
             nextButton.layer.cornerRadius = 25.0
@@ -31,7 +33,10 @@ class WalkthroughViewController: UIViewController, WalkthroughPageViewController
     
     @IBAction func skipButtonTapped(sender: UIButton) {
         UserDefaults.standard.set(true, forKey: "hasViewedWalkthrough")
-        dismiss(animated: true, completion: nil)
+//        dismiss(animated: true, completion: nil)
+        
+        performSegue(withIdentifier: fromTutorialToMain, sender: self)
+        
     }
     
     @IBAction func nextButtonTapped(sender: UIButton) {
@@ -42,7 +47,8 @@ class WalkthroughViewController: UIViewController, WalkthroughPageViewController
                 
             case 2:
                 UserDefaults.standard.set(true, forKey: "hasViewedWalkthrough")
-                dismiss(animated: true, completion: nil)
+//                dismiss(animated: true, completion: nil)
+                performSegue(withIdentifier: fromTutorialToMain, sender: self)
                 
             default: break
             }

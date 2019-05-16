@@ -668,21 +668,25 @@ class MainPersonalViewController: UIViewController, UIImagePickerControllerDeleg
             try Auth.auth().signOut()
             let loginManager = FBSDKLoginManager()
             loginManager.logOut()
-            self.dismiss(animated: true, completion: nil)
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            self.navigationController?.pushViewController(loginViewController, animated: true)
+//            self.dismiss(animated: true, completion: nil)
         }
         catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            print("sign out success")
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-            self.navigationController?.pushViewController(loginViewController, animated: true)
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
+//        let firebaseAuth = Auth.auth()
+//        do {
+//            try firebaseAuth.signOut()
+//            print("sign out success")
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+//            self.navigationController?.pushViewController(loginViewController, animated: true)
+//        } catch let signOutError as NSError {
+//            print ("Error signing out: %@", signOutError)
+//        }
         
     }
     

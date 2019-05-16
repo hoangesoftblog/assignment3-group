@@ -34,8 +34,9 @@ class RegisterViewController: UIViewController, FUIAuthDelegate{
     @IBOutlet weak var avtImageView: UIImageView!
     
     @IBAction func toTutorial(_ sender: Any) {
-        performSegue(withIdentifier: "ToTutorial", sender: (Any).self)
+        
     }
+    
     var imgData:Data!
     var authUI : FUIAuth?
     
@@ -60,10 +61,15 @@ class RegisterViewController: UIViewController, FUIAuthDelegate{
                             print("sign in success")
                             ref.child("IDToUser/\(user!.user.uid)").setValue(self!.fullNameTextField.text!)
                             
-                            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                            let tabBarViewController = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as! MainTabBarViewController
-                            self?.show(tabBarViewController, sender: nil)
+                            currentUser = (self?.fullNameTextField.text)!
+                            
+//                            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//                            let tabBarViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
+                            
+ //                           self?.show(tabBarViewController, sender: nil)
+                            self?.performSegue(withIdentifier: "ToTutorial", sender: (Any).self)
                         }
+                            
                         else{
                             print(error?.localizedDescription)
                         }
@@ -110,6 +116,7 @@ class RegisterViewController: UIViewController, FUIAuthDelegate{
                             }
                         }
                     }
+                    
                     // uploading task on firebase
                     uploadTask.resume()
                 }

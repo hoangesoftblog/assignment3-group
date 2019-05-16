@@ -224,6 +224,7 @@ class LoginViewController: UIViewController, FUIAuthDelegate, FBSDKLoginButtonDe
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
         if let user = Auth.auth().currentUser {
             getCurrentUsername(user: user)
             print("Already login")
